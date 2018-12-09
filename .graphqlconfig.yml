@@ -1,7 +1,12 @@
 projects:
-  database:
-    schemaPath: database/generated/prisma-types.generated
+  app:
     extensions:
+      endpoints:
+        default: http://localhost:3000
+  database:
+    schemaPath: database/generated/prisma-types.graphql
+    extensions:
+      prisma: database/prisma.yml
       endpoints:
         default: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
       codegen:
