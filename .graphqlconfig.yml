@@ -1,0 +1,11 @@
+projects:
+  database:
+    schemaPath: database/generated/prisma-types.generated
+    extensions:
+      endpoints:
+        default: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
+      codegen:
+      - generator: prisma-binding
+        language: typescript
+        output:
+          binding: src/prisma/prisma.binding.ts
