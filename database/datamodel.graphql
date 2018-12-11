@@ -1,0 +1,71 @@
+type User {
+  id: ID! @unique
+  email: String!
+  password: String!
+  role: Role! @default(value: "USER")
+  active: Boolean! @default(value: "true")
+  name: String
+  beerComments: [BeerComment!]
+  breweryComments: [BreweryComment!]
+  beerRatings: [BeerRating!]
+}
+
+type Beer {
+  id: ID! @unique
+  name: String!
+  photo: String
+  description: String
+  bars: [Bar!]
+  beerRating: [BeerRating!]
+  comments: [BeerComment!]
+}
+
+type Bar {
+  id: ID! @unique
+  brewery: Brewery!
+  name: String!
+  address: String!
+  lat: String!
+  long: String!
+  openTime: DateTime
+  closeTime: DateTime
+  photos: [String!]
+  beers: [Beer!]
+}
+
+type BeerRating {
+  id: ID! @unique
+  user: User!
+  beer: Beer!
+}
+
+type Brewery {
+  id: ID! @unique
+  name: String!
+  logo: String
+  country: String
+  description: String
+  beers: [Beer!]
+  comments: [BreweryComment!]
+}
+
+type BreweryComment {
+  id: ID! @unique
+  brewery: Brewery!
+  user: User!
+  comment: String!
+  timestamp: DateTime!
+}
+
+type BeerComment {
+  id: ID! @unique
+  beer: Beer!
+  user: User!
+  comment: String!
+  timestamp: DateTime!
+}
+
+enum Role {
+  USER
+  ADMIN
+}

@@ -51,5 +51,11 @@
             false
         ]
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "./src/graphql.schema.d.ts",
+            "./src/prisma/prisma.binding.ts"
+        ]
+    }
 }

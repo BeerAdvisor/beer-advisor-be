@@ -1,180 +1,139 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Mon Dec 10 2018 00:38:21 GMT+0100 (CET)
+# timestamp: Tue Dec 11 2018 23:21:29 GMT+0100 (CET)
+
+type AggregateBar {
+  count: Int!
+}
+
+type AggregateBeer {
+  count: Int!
+}
+
+type AggregateBeerComment {
+  count: Int!
+}
+
+type AggregateBeerRating {
+  count: Int!
+}
+
+type AggregateBrewery {
+  count: Int!
+}
+
+type AggregateBreweryComment {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
 }
 
-type BatchPayload {
-  """The number of nodes that have been affected by the Batch operation."""
-  count: Long!
-}
-
-"""
-The `Long` scalar type represents non-fractional signed whole numeric values.
-Long can represent values between -(2^63) and 2^63 - 1.
-"""
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  deleteUser(where: UserWhereUniqueInput!): User
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-}
-
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-"""An object with an ID"""
-interface Node {
-  """The id of the object."""
+type Bar implements Node {
   id: ID!
-}
-
-"""Information about pagination in a connection."""
-type PageInfo {
-  """When paginating forwards, are there more items?"""
-  hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
-  hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
-  startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
-  endCursor: String
-}
-
-type Query {
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  user(where: UserWhereUniqueInput!): User
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-
-  """Fetches an object given its ID"""
-  node(
-    """The ID of an object"""
-    id: ID!
-  ): Node
-}
-
-type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-}
-
-type User implements Node {
-  id: ID!
+  brewery: Brewery!
   name: String!
-  email: String!
+  address: String!
+  lat: String!
+  long: String!
+  openTime: DateTime
+  closeTime: DateTime
+  photos: [String!]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer!]
 }
 
 """A connection to a list of items."""
-type UserConnection {
+type BarConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [BarEdge]!
+  aggregate: AggregateBar!
 }
 
-input UserCreateInput {
+input BarCreateInput {
   name: String!
-  email: String!
+  address: String!
+  lat: String!
+  long: String!
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarCreatephotosInput
+  brewery: BreweryCreateOneInput!
+  beers: BeerCreateManyWithoutBarsInput
+}
+
+input BarCreateManyWithoutBeersInput {
+  create: [BarCreateWithoutBeersInput!]
+  connect: [BarWhereUniqueInput!]
+}
+
+input BarCreatephotosInput {
+  set: [String!]
+}
+
+input BarCreateWithoutBeersInput {
+  name: String!
+  address: String!
+  lat: String!
+  long: String!
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarCreatephotosInput
+  brewery: BreweryCreateOneInput!
 }
 
 """An edge in a connection."""
-type UserEdge {
+type BarEdge {
   """The item at the end of the edge."""
-  node: User!
+  node: Bar!
 
   """A cursor for use in pagination."""
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum BarOrderByInput {
   id_ASC
   id_DESC
   name_ASC
   name_DESC
-  email_ASC
-  email_DESC
+  address_ASC
+  address_DESC
+  lat_ASC
+  lat_DESC
+  long_ASC
+  long_DESC
+  openTime_ASC
+  openTime_DESC
+  closeTime_ASC
+  closeTime_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
 }
 
-type UserPreviousValues {
+type BarPreviousValues {
   id: ID!
   name: String!
-  email: String!
+  address: String!
+  lat: String!
+  long: String!
+  openTime: DateTime
+  closeTime: DateTime
+  photos: [String!]!
 }
 
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
+input BarScalarWhereInput {
   """Logical AND on all given filters."""
-  AND: [UserSubscriptionWhereInput!]
+  AND: [BarScalarWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [UserSubscriptionWhereInput!]
+  OR: [BarScalarWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [UserSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-}
-
-input UserUpdateInput {
-  name: String
-  email: String
-}
-
-input UserUpdateManyMutationInput {
-  name: String
-  email: String
-}
-
-input UserWhereInput {
-  """Logical AND on all given filters."""
-  AND: [UserWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [UserWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [UserWhereInput!]
+  NOT: [BarScalarWhereInput!]
   id: ID
 
   """All values that are not equal to given value."""
@@ -255,6 +214,3099 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  address: String
+
+  """All values that are not equal to given value."""
+  address_not: String
+
+  """All values that are contained in given list."""
+  address_in: [String!]
+
+  """All values that are not contained in given list."""
+  address_not_in: [String!]
+
+  """All values less than the given value."""
+  address_lt: String
+
+  """All values less than or equal the given value."""
+  address_lte: String
+
+  """All values greater than the given value."""
+  address_gt: String
+
+  """All values greater than or equal the given value."""
+  address_gte: String
+
+  """All values containing the given string."""
+  address_contains: String
+
+  """All values not containing the given string."""
+  address_not_contains: String
+
+  """All values starting with the given string."""
+  address_starts_with: String
+
+  """All values not starting with the given string."""
+  address_not_starts_with: String
+
+  """All values ending with the given string."""
+  address_ends_with: String
+
+  """All values not ending with the given string."""
+  address_not_ends_with: String
+  lat: String
+
+  """All values that are not equal to given value."""
+  lat_not: String
+
+  """All values that are contained in given list."""
+  lat_in: [String!]
+
+  """All values that are not contained in given list."""
+  lat_not_in: [String!]
+
+  """All values less than the given value."""
+  lat_lt: String
+
+  """All values less than or equal the given value."""
+  lat_lte: String
+
+  """All values greater than the given value."""
+  lat_gt: String
+
+  """All values greater than or equal the given value."""
+  lat_gte: String
+
+  """All values containing the given string."""
+  lat_contains: String
+
+  """All values not containing the given string."""
+  lat_not_contains: String
+
+  """All values starting with the given string."""
+  lat_starts_with: String
+
+  """All values not starting with the given string."""
+  lat_not_starts_with: String
+
+  """All values ending with the given string."""
+  lat_ends_with: String
+
+  """All values not ending with the given string."""
+  lat_not_ends_with: String
+  long: String
+
+  """All values that are not equal to given value."""
+  long_not: String
+
+  """All values that are contained in given list."""
+  long_in: [String!]
+
+  """All values that are not contained in given list."""
+  long_not_in: [String!]
+
+  """All values less than the given value."""
+  long_lt: String
+
+  """All values less than or equal the given value."""
+  long_lte: String
+
+  """All values greater than the given value."""
+  long_gt: String
+
+  """All values greater than or equal the given value."""
+  long_gte: String
+
+  """All values containing the given string."""
+  long_contains: String
+
+  """All values not containing the given string."""
+  long_not_contains: String
+
+  """All values starting with the given string."""
+  long_starts_with: String
+
+  """All values not starting with the given string."""
+  long_not_starts_with: String
+
+  """All values ending with the given string."""
+  long_ends_with: String
+
+  """All values not ending with the given string."""
+  long_not_ends_with: String
+  openTime: DateTime
+
+  """All values that are not equal to given value."""
+  openTime_not: DateTime
+
+  """All values that are contained in given list."""
+  openTime_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  openTime_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  openTime_lt: DateTime
+
+  """All values less than or equal the given value."""
+  openTime_lte: DateTime
+
+  """All values greater than the given value."""
+  openTime_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  openTime_gte: DateTime
+  closeTime: DateTime
+
+  """All values that are not equal to given value."""
+  closeTime_not: DateTime
+
+  """All values that are contained in given list."""
+  closeTime_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  closeTime_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  closeTime_lt: DateTime
+
+  """All values less than or equal the given value."""
+  closeTime_lte: DateTime
+
+  """All values greater than the given value."""
+  closeTime_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  closeTime_gte: DateTime
+}
+
+type BarSubscriptionPayload {
+  mutation: MutationType!
+  node: Bar
+  updatedFields: [String!]
+  previousValues: BarPreviousValues
+}
+
+input BarSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BarSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BarSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BarSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BarWhereInput
+}
+
+input BarUpdateInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+  brewery: BreweryUpdateOneRequiredInput
+  beers: BeerUpdateManyWithoutBarsInput
+}
+
+input BarUpdateManyDataInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+}
+
+input BarUpdateManyMutationInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+}
+
+input BarUpdateManyWithoutBeersInput {
+  create: [BarCreateWithoutBeersInput!]
+  connect: [BarWhereUniqueInput!]
+  disconnect: [BarWhereUniqueInput!]
+  delete: [BarWhereUniqueInput!]
+  update: [BarUpdateWithWhereUniqueWithoutBeersInput!]
+  updateMany: [BarUpdateManyWithWhereNestedInput!]
+  deleteMany: [BarScalarWhereInput!]
+  upsert: [BarUpsertWithWhereUniqueWithoutBeersInput!]
+}
+
+input BarUpdateManyWithWhereNestedInput {
+  where: BarScalarWhereInput!
+  data: BarUpdateManyDataInput!
+}
+
+input BarUpdatephotosInput {
+  set: [String!]
+}
+
+input BarUpdateWithoutBeersDataInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+  brewery: BreweryUpdateOneRequiredInput
+}
+
+input BarUpdateWithWhereUniqueWithoutBeersInput {
+  where: BarWhereUniqueInput!
+  data: BarUpdateWithoutBeersDataInput!
+}
+
+input BarUpsertWithWhereUniqueWithoutBeersInput {
+  where: BarWhereUniqueInput!
+  update: BarUpdateWithoutBeersDataInput!
+  create: BarCreateWithoutBeersInput!
+}
+
+input BarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  address: String
+
+  """All values that are not equal to given value."""
+  address_not: String
+
+  """All values that are contained in given list."""
+  address_in: [String!]
+
+  """All values that are not contained in given list."""
+  address_not_in: [String!]
+
+  """All values less than the given value."""
+  address_lt: String
+
+  """All values less than or equal the given value."""
+  address_lte: String
+
+  """All values greater than the given value."""
+  address_gt: String
+
+  """All values greater than or equal the given value."""
+  address_gte: String
+
+  """All values containing the given string."""
+  address_contains: String
+
+  """All values not containing the given string."""
+  address_not_contains: String
+
+  """All values starting with the given string."""
+  address_starts_with: String
+
+  """All values not starting with the given string."""
+  address_not_starts_with: String
+
+  """All values ending with the given string."""
+  address_ends_with: String
+
+  """All values not ending with the given string."""
+  address_not_ends_with: String
+  lat: String
+
+  """All values that are not equal to given value."""
+  lat_not: String
+
+  """All values that are contained in given list."""
+  lat_in: [String!]
+
+  """All values that are not contained in given list."""
+  lat_not_in: [String!]
+
+  """All values less than the given value."""
+  lat_lt: String
+
+  """All values less than or equal the given value."""
+  lat_lte: String
+
+  """All values greater than the given value."""
+  lat_gt: String
+
+  """All values greater than or equal the given value."""
+  lat_gte: String
+
+  """All values containing the given string."""
+  lat_contains: String
+
+  """All values not containing the given string."""
+  lat_not_contains: String
+
+  """All values starting with the given string."""
+  lat_starts_with: String
+
+  """All values not starting with the given string."""
+  lat_not_starts_with: String
+
+  """All values ending with the given string."""
+  lat_ends_with: String
+
+  """All values not ending with the given string."""
+  lat_not_ends_with: String
+  long: String
+
+  """All values that are not equal to given value."""
+  long_not: String
+
+  """All values that are contained in given list."""
+  long_in: [String!]
+
+  """All values that are not contained in given list."""
+  long_not_in: [String!]
+
+  """All values less than the given value."""
+  long_lt: String
+
+  """All values less than or equal the given value."""
+  long_lte: String
+
+  """All values greater than the given value."""
+  long_gt: String
+
+  """All values greater than or equal the given value."""
+  long_gte: String
+
+  """All values containing the given string."""
+  long_contains: String
+
+  """All values not containing the given string."""
+  long_not_contains: String
+
+  """All values starting with the given string."""
+  long_starts_with: String
+
+  """All values not starting with the given string."""
+  long_not_starts_with: String
+
+  """All values ending with the given string."""
+  long_ends_with: String
+
+  """All values not ending with the given string."""
+  long_not_ends_with: String
+  openTime: DateTime
+
+  """All values that are not equal to given value."""
+  openTime_not: DateTime
+
+  """All values that are contained in given list."""
+  openTime_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  openTime_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  openTime_lt: DateTime
+
+  """All values less than or equal the given value."""
+  openTime_lte: DateTime
+
+  """All values greater than the given value."""
+  openTime_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  openTime_gte: DateTime
+  closeTime: DateTime
+
+  """All values that are not equal to given value."""
+  closeTime_not: DateTime
+
+  """All values that are contained in given list."""
+  closeTime_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  closeTime_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  closeTime_lt: DateTime
+
+  """All values less than or equal the given value."""
+  closeTime_lte: DateTime
+
+  """All values greater than the given value."""
+  closeTime_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  closeTime_gte: DateTime
+  brewery: BreweryWhereInput
+  beers_every: BeerWhereInput
+  beers_some: BeerWhereInput
+  beers_none: BeerWhereInput
+}
+
+input BarWhereUniqueInput {
+  id: ID
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Beer implements Node {
+  id: ID!
+  name: String!
+  photo: String
+  description: String
+  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
+  beerRating(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
+  comments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment!]
+}
+
+type BeerComment implements Node {
+  id: ID!
+  beer: Beer!
+  user: User!
+  comment: String!
+  timestamp: DateTime!
+}
+
+"""A connection to a list of items."""
+type BeerCommentConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerCommentEdge]!
+  aggregate: AggregateBeerComment!
+}
+
+input BeerCommentCreateInput {
+  comment: String!
+  timestamp: DateTime!
+  beer: BeerCreateOneWithoutCommentsInput!
+  user: UserCreateOneWithoutBeerCommentsInput!
+}
+
+input BeerCommentCreateManyWithoutBeerInput {
+  create: [BeerCommentCreateWithoutBeerInput!]
+  connect: [BeerCommentWhereUniqueInput!]
+}
+
+input BeerCommentCreateManyWithoutUserInput {
+  create: [BeerCommentCreateWithoutUserInput!]
+  connect: [BeerCommentWhereUniqueInput!]
+}
+
+input BeerCommentCreateWithoutBeerInput {
+  comment: String!
+  timestamp: DateTime!
+  user: UserCreateOneWithoutBeerCommentsInput!
+}
+
+input BeerCommentCreateWithoutUserInput {
+  comment: String!
+  timestamp: DateTime!
+  beer: BeerCreateOneWithoutCommentsInput!
+}
+
+"""An edge in a connection."""
+type BeerCommentEdge {
+  """The item at the end of the edge."""
+  node: BeerComment!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerCommentOrderByInput {
+  id_ASC
+  id_DESC
+  comment_ASC
+  comment_DESC
+  timestamp_ASC
+  timestamp_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerCommentPreviousValues {
+  id: ID!
+  comment: String!
+  timestamp: DateTime!
+}
+
+input BeerCommentScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerCommentScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerCommentScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerCommentScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  comment: String
+
+  """All values that are not equal to given value."""
+  comment_not: String
+
+  """All values that are contained in given list."""
+  comment_in: [String!]
+
+  """All values that are not contained in given list."""
+  comment_not_in: [String!]
+
+  """All values less than the given value."""
+  comment_lt: String
+
+  """All values less than or equal the given value."""
+  comment_lte: String
+
+  """All values greater than the given value."""
+  comment_gt: String
+
+  """All values greater than or equal the given value."""
+  comment_gte: String
+
+  """All values containing the given string."""
+  comment_contains: String
+
+  """All values not containing the given string."""
+  comment_not_contains: String
+
+  """All values starting with the given string."""
+  comment_starts_with: String
+
+  """All values not starting with the given string."""
+  comment_not_starts_with: String
+
+  """All values ending with the given string."""
+  comment_ends_with: String
+
+  """All values not ending with the given string."""
+  comment_not_ends_with: String
+  timestamp: DateTime
+
+  """All values that are not equal to given value."""
+  timestamp_not: DateTime
+
+  """All values that are contained in given list."""
+  timestamp_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  timestamp_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  timestamp_lt: DateTime
+
+  """All values less than or equal the given value."""
+  timestamp_lte: DateTime
+
+  """All values greater than the given value."""
+  timestamp_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  timestamp_gte: DateTime
+}
+
+type BeerCommentSubscriptionPayload {
+  mutation: MutationType!
+  node: BeerComment
+  updatedFields: [String!]
+  previousValues: BeerCommentPreviousValues
+}
+
+input BeerCommentSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerCommentSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerCommentSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerCommentSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerCommentWhereInput
+}
+
+input BeerCommentUpdateInput {
+  comment: String
+  timestamp: DateTime
+  beer: BeerUpdateOneRequiredWithoutCommentsInput
+  user: UserUpdateOneRequiredWithoutBeerCommentsInput
+}
+
+input BeerCommentUpdateManyDataInput {
+  comment: String
+  timestamp: DateTime
+}
+
+input BeerCommentUpdateManyMutationInput {
+  comment: String
+  timestamp: DateTime
+}
+
+input BeerCommentUpdateManyWithoutBeerInput {
+  create: [BeerCommentCreateWithoutBeerInput!]
+  connect: [BeerCommentWhereUniqueInput!]
+  disconnect: [BeerCommentWhereUniqueInput!]
+  delete: [BeerCommentWhereUniqueInput!]
+  update: [BeerCommentUpdateWithWhereUniqueWithoutBeerInput!]
+  updateMany: [BeerCommentUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerCommentScalarWhereInput!]
+  upsert: [BeerCommentUpsertWithWhereUniqueWithoutBeerInput!]
+}
+
+input BeerCommentUpdateManyWithoutUserInput {
+  create: [BeerCommentCreateWithoutUserInput!]
+  connect: [BeerCommentWhereUniqueInput!]
+  disconnect: [BeerCommentWhereUniqueInput!]
+  delete: [BeerCommentWhereUniqueInput!]
+  update: [BeerCommentUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [BeerCommentUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerCommentScalarWhereInput!]
+  upsert: [BeerCommentUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input BeerCommentUpdateManyWithWhereNestedInput {
+  where: BeerCommentScalarWhereInput!
+  data: BeerCommentUpdateManyDataInput!
+}
+
+input BeerCommentUpdateWithoutBeerDataInput {
+  comment: String
+  timestamp: DateTime
+  user: UserUpdateOneRequiredWithoutBeerCommentsInput
+}
+
+input BeerCommentUpdateWithoutUserDataInput {
+  comment: String
+  timestamp: DateTime
+  beer: BeerUpdateOneRequiredWithoutCommentsInput
+}
+
+input BeerCommentUpdateWithWhereUniqueWithoutBeerInput {
+  where: BeerCommentWhereUniqueInput!
+  data: BeerCommentUpdateWithoutBeerDataInput!
+}
+
+input BeerCommentUpdateWithWhereUniqueWithoutUserInput {
+  where: BeerCommentWhereUniqueInput!
+  data: BeerCommentUpdateWithoutUserDataInput!
+}
+
+input BeerCommentUpsertWithWhereUniqueWithoutBeerInput {
+  where: BeerCommentWhereUniqueInput!
+  update: BeerCommentUpdateWithoutBeerDataInput!
+  create: BeerCommentCreateWithoutBeerInput!
+}
+
+input BeerCommentUpsertWithWhereUniqueWithoutUserInput {
+  where: BeerCommentWhereUniqueInput!
+  update: BeerCommentUpdateWithoutUserDataInput!
+  create: BeerCommentCreateWithoutUserInput!
+}
+
+input BeerCommentWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerCommentWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerCommentWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerCommentWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  comment: String
+
+  """All values that are not equal to given value."""
+  comment_not: String
+
+  """All values that are contained in given list."""
+  comment_in: [String!]
+
+  """All values that are not contained in given list."""
+  comment_not_in: [String!]
+
+  """All values less than the given value."""
+  comment_lt: String
+
+  """All values less than or equal the given value."""
+  comment_lte: String
+
+  """All values greater than the given value."""
+  comment_gt: String
+
+  """All values greater than or equal the given value."""
+  comment_gte: String
+
+  """All values containing the given string."""
+  comment_contains: String
+
+  """All values not containing the given string."""
+  comment_not_contains: String
+
+  """All values starting with the given string."""
+  comment_starts_with: String
+
+  """All values not starting with the given string."""
+  comment_not_starts_with: String
+
+  """All values ending with the given string."""
+  comment_ends_with: String
+
+  """All values not ending with the given string."""
+  comment_not_ends_with: String
+  timestamp: DateTime
+
+  """All values that are not equal to given value."""
+  timestamp_not: DateTime
+
+  """All values that are contained in given list."""
+  timestamp_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  timestamp_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  timestamp_lt: DateTime
+
+  """All values less than or equal the given value."""
+  timestamp_lte: DateTime
+
+  """All values greater than the given value."""
+  timestamp_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  timestamp_gte: DateTime
+  beer: BeerWhereInput
+  user: UserWhereInput
+}
+
+input BeerCommentWhereUniqueInput {
+  id: ID
+}
+
+"""A connection to a list of items."""
+type BeerConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerEdge]!
+  aggregate: AggregateBeer!
+}
+
+input BeerCreateInput {
+  name: String!
+  photo: String
+  description: String
+  bars: BarCreateManyWithoutBeersInput
+  beerRating: BeerRatingCreateManyWithoutBeerInput
+  comments: BeerCommentCreateManyWithoutBeerInput
+}
+
+input BeerCreateManyInput {
+  create: [BeerCreateInput!]
+  connect: [BeerWhereUniqueInput!]
+}
+
+input BeerCreateManyWithoutBarsInput {
+  create: [BeerCreateWithoutBarsInput!]
+  connect: [BeerWhereUniqueInput!]
+}
+
+input BeerCreateOneWithoutBeerRatingInput {
+  create: BeerCreateWithoutBeerRatingInput
+  connect: BeerWhereUniqueInput
+}
+
+input BeerCreateOneWithoutCommentsInput {
+  create: BeerCreateWithoutCommentsInput
+  connect: BeerWhereUniqueInput
+}
+
+input BeerCreateWithoutBarsInput {
+  name: String!
+  photo: String
+  description: String
+  beerRating: BeerRatingCreateManyWithoutBeerInput
+  comments: BeerCommentCreateManyWithoutBeerInput
+}
+
+input BeerCreateWithoutBeerRatingInput {
+  name: String!
+  photo: String
+  description: String
+  bars: BarCreateManyWithoutBeersInput
+  comments: BeerCommentCreateManyWithoutBeerInput
+}
+
+input BeerCreateWithoutCommentsInput {
+  name: String!
+  photo: String
+  description: String
+  bars: BarCreateManyWithoutBeersInput
+  beerRating: BeerRatingCreateManyWithoutBeerInput
+}
+
+"""An edge in a connection."""
+type BeerEdge {
+  """The item at the end of the edge."""
+  node: Beer!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  photo_ASC
+  photo_DESC
+  description_ASC
+  description_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerPreviousValues {
+  id: ID!
+  name: String!
+  photo: String
+  description: String
+}
+
+type BeerRating implements Node {
+  id: ID!
+  user: User!
+  beer: Beer!
+}
+
+"""A connection to a list of items."""
+type BeerRatingConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerRatingEdge]!
+  aggregate: AggregateBeerRating!
+}
+
+input BeerRatingCreateInput {
+  user: UserCreateOneWithoutBeerRatingsInput!
+  beer: BeerCreateOneWithoutBeerRatingInput!
+}
+
+input BeerRatingCreateManyWithoutBeerInput {
+  create: [BeerRatingCreateWithoutBeerInput!]
+  connect: [BeerRatingWhereUniqueInput!]
+}
+
+input BeerRatingCreateManyWithoutUserInput {
+  create: [BeerRatingCreateWithoutUserInput!]
+  connect: [BeerRatingWhereUniqueInput!]
+}
+
+input BeerRatingCreateWithoutBeerInput {
+  user: UserCreateOneWithoutBeerRatingsInput!
+}
+
+input BeerRatingCreateWithoutUserInput {
+  beer: BeerCreateOneWithoutBeerRatingInput!
+}
+
+"""An edge in a connection."""
+type BeerRatingEdge {
+  """The item at the end of the edge."""
+  node: BeerRating!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerRatingOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerRatingPreviousValues {
+  id: ID!
+}
+
+input BeerRatingScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerRatingScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerRatingScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerRatingScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+}
+
+type BeerRatingSubscriptionPayload {
+  mutation: MutationType!
+  node: BeerRating
+  updatedFields: [String!]
+  previousValues: BeerRatingPreviousValues
+}
+
+input BeerRatingSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerRatingSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerRatingSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerRatingSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerRatingWhereInput
+}
+
+input BeerRatingUpdateInput {
+  user: UserUpdateOneRequiredWithoutBeerRatingsInput
+  beer: BeerUpdateOneRequiredWithoutBeerRatingInput
+}
+
+input BeerRatingUpdateManyWithoutBeerInput {
+  create: [BeerRatingCreateWithoutBeerInput!]
+  connect: [BeerRatingWhereUniqueInput!]
+  disconnect: [BeerRatingWhereUniqueInput!]
+  delete: [BeerRatingWhereUniqueInput!]
+  update: [BeerRatingUpdateWithWhereUniqueWithoutBeerInput!]
+  deleteMany: [BeerRatingScalarWhereInput!]
+  upsert: [BeerRatingUpsertWithWhereUniqueWithoutBeerInput!]
+}
+
+input BeerRatingUpdateManyWithoutUserInput {
+  create: [BeerRatingCreateWithoutUserInput!]
+  connect: [BeerRatingWhereUniqueInput!]
+  disconnect: [BeerRatingWhereUniqueInput!]
+  delete: [BeerRatingWhereUniqueInput!]
+  update: [BeerRatingUpdateWithWhereUniqueWithoutUserInput!]
+  deleteMany: [BeerRatingScalarWhereInput!]
+  upsert: [BeerRatingUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input BeerRatingUpdateWithoutBeerDataInput {
+  user: UserUpdateOneRequiredWithoutBeerRatingsInput
+}
+
+input BeerRatingUpdateWithoutUserDataInput {
+  beer: BeerUpdateOneRequiredWithoutBeerRatingInput
+}
+
+input BeerRatingUpdateWithWhereUniqueWithoutBeerInput {
+  where: BeerRatingWhereUniqueInput!
+  data: BeerRatingUpdateWithoutBeerDataInput!
+}
+
+input BeerRatingUpdateWithWhereUniqueWithoutUserInput {
+  where: BeerRatingWhereUniqueInput!
+  data: BeerRatingUpdateWithoutUserDataInput!
+}
+
+input BeerRatingUpsertWithWhereUniqueWithoutBeerInput {
+  where: BeerRatingWhereUniqueInput!
+  update: BeerRatingUpdateWithoutBeerDataInput!
+  create: BeerRatingCreateWithoutBeerInput!
+}
+
+input BeerRatingUpsertWithWhereUniqueWithoutUserInput {
+  where: BeerRatingWhereUniqueInput!
+  update: BeerRatingUpdateWithoutUserDataInput!
+  create: BeerRatingCreateWithoutUserInput!
+}
+
+input BeerRatingWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerRatingWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerRatingWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerRatingWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  user: UserWhereInput
+  beer: BeerWhereInput
+}
+
+input BeerRatingWhereUniqueInput {
+  id: ID
+}
+
+input BeerScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  photo: String
+
+  """All values that are not equal to given value."""
+  photo_not: String
+
+  """All values that are contained in given list."""
+  photo_in: [String!]
+
+  """All values that are not contained in given list."""
+  photo_not_in: [String!]
+
+  """All values less than the given value."""
+  photo_lt: String
+
+  """All values less than or equal the given value."""
+  photo_lte: String
+
+  """All values greater than the given value."""
+  photo_gt: String
+
+  """All values greater than or equal the given value."""
+  photo_gte: String
+
+  """All values containing the given string."""
+  photo_contains: String
+
+  """All values not containing the given string."""
+  photo_not_contains: String
+
+  """All values starting with the given string."""
+  photo_starts_with: String
+
+  """All values not starting with the given string."""
+  photo_not_starts_with: String
+
+  """All values ending with the given string."""
+  photo_ends_with: String
+
+  """All values not ending with the given string."""
+  photo_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+}
+
+type BeerSubscriptionPayload {
+  mutation: MutationType!
+  node: Beer
+  updatedFields: [String!]
+  previousValues: BeerPreviousValues
+}
+
+input BeerSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerWhereInput
+}
+
+input BeerUpdateDataInput {
+  name: String
+  photo: String
+  description: String
+  bars: BarUpdateManyWithoutBeersInput
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+  comments: BeerCommentUpdateManyWithoutBeerInput
+}
+
+input BeerUpdateInput {
+  name: String
+  photo: String
+  description: String
+  bars: BarUpdateManyWithoutBeersInput
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+  comments: BeerCommentUpdateManyWithoutBeerInput
+}
+
+input BeerUpdateManyDataInput {
+  name: String
+  photo: String
+  description: String
+}
+
+input BeerUpdateManyInput {
+  create: [BeerCreateInput!]
+  connect: [BeerWhereUniqueInput!]
+  disconnect: [BeerWhereUniqueInput!]
+  delete: [BeerWhereUniqueInput!]
+  update: [BeerUpdateWithWhereUniqueNestedInput!]
+  updateMany: [BeerUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerScalarWhereInput!]
+  upsert: [BeerUpsertWithWhereUniqueNestedInput!]
+}
+
+input BeerUpdateManyMutationInput {
+  name: String
+  photo: String
+  description: String
+}
+
+input BeerUpdateManyWithoutBarsInput {
+  create: [BeerCreateWithoutBarsInput!]
+  connect: [BeerWhereUniqueInput!]
+  disconnect: [BeerWhereUniqueInput!]
+  delete: [BeerWhereUniqueInput!]
+  update: [BeerUpdateWithWhereUniqueWithoutBarsInput!]
+  updateMany: [BeerUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerScalarWhereInput!]
+  upsert: [BeerUpsertWithWhereUniqueWithoutBarsInput!]
+}
+
+input BeerUpdateManyWithWhereNestedInput {
+  where: BeerScalarWhereInput!
+  data: BeerUpdateManyDataInput!
+}
+
+input BeerUpdateOneRequiredWithoutBeerRatingInput {
+  create: BeerCreateWithoutBeerRatingInput
+  connect: BeerWhereUniqueInput
+  update: BeerUpdateWithoutBeerRatingDataInput
+  upsert: BeerUpsertWithoutBeerRatingInput
+}
+
+input BeerUpdateOneRequiredWithoutCommentsInput {
+  create: BeerCreateWithoutCommentsInput
+  connect: BeerWhereUniqueInput
+  update: BeerUpdateWithoutCommentsDataInput
+  upsert: BeerUpsertWithoutCommentsInput
+}
+
+input BeerUpdateWithoutBarsDataInput {
+  name: String
+  photo: String
+  description: String
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+  comments: BeerCommentUpdateManyWithoutBeerInput
+}
+
+input BeerUpdateWithoutBeerRatingDataInput {
+  name: String
+  photo: String
+  description: String
+  bars: BarUpdateManyWithoutBeersInput
+  comments: BeerCommentUpdateManyWithoutBeerInput
+}
+
+input BeerUpdateWithoutCommentsDataInput {
+  name: String
+  photo: String
+  description: String
+  bars: BarUpdateManyWithoutBeersInput
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+}
+
+input BeerUpdateWithWhereUniqueNestedInput {
+  where: BeerWhereUniqueInput!
+  data: BeerUpdateDataInput!
+}
+
+input BeerUpdateWithWhereUniqueWithoutBarsInput {
+  where: BeerWhereUniqueInput!
+  data: BeerUpdateWithoutBarsDataInput!
+}
+
+input BeerUpsertWithoutBeerRatingInput {
+  update: BeerUpdateWithoutBeerRatingDataInput!
+  create: BeerCreateWithoutBeerRatingInput!
+}
+
+input BeerUpsertWithoutCommentsInput {
+  update: BeerUpdateWithoutCommentsDataInput!
+  create: BeerCreateWithoutCommentsInput!
+}
+
+input BeerUpsertWithWhereUniqueNestedInput {
+  where: BeerWhereUniqueInput!
+  update: BeerUpdateDataInput!
+  create: BeerCreateInput!
+}
+
+input BeerUpsertWithWhereUniqueWithoutBarsInput {
+  where: BeerWhereUniqueInput!
+  update: BeerUpdateWithoutBarsDataInput!
+  create: BeerCreateWithoutBarsInput!
+}
+
+input BeerWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  photo: String
+
+  """All values that are not equal to given value."""
+  photo_not: String
+
+  """All values that are contained in given list."""
+  photo_in: [String!]
+
+  """All values that are not contained in given list."""
+  photo_not_in: [String!]
+
+  """All values less than the given value."""
+  photo_lt: String
+
+  """All values less than or equal the given value."""
+  photo_lte: String
+
+  """All values greater than the given value."""
+  photo_gt: String
+
+  """All values greater than or equal the given value."""
+  photo_gte: String
+
+  """All values containing the given string."""
+  photo_contains: String
+
+  """All values not containing the given string."""
+  photo_not_contains: String
+
+  """All values starting with the given string."""
+  photo_starts_with: String
+
+  """All values not starting with the given string."""
+  photo_not_starts_with: String
+
+  """All values ending with the given string."""
+  photo_ends_with: String
+
+  """All values not ending with the given string."""
+  photo_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  bars_every: BarWhereInput
+  bars_some: BarWhereInput
+  bars_none: BarWhereInput
+  beerRating_every: BeerRatingWhereInput
+  beerRating_some: BeerRatingWhereInput
+  beerRating_none: BeerRatingWhereInput
+  comments_every: BeerCommentWhereInput
+  comments_some: BeerCommentWhereInput
+  comments_none: BeerCommentWhereInput
+}
+
+input BeerWhereUniqueInput {
+  id: ID
+}
+
+type Brewery implements Node {
+  id: ID!
+  name: String!
+  logo: String
+  country: String
+  description: String
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer!]
+  comments(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BreweryComment!]
+}
+
+type BreweryComment implements Node {
+  id: ID!
+  brewery: Brewery!
+  user: User!
+  comment: String!
+  timestamp: DateTime!
+}
+
+"""A connection to a list of items."""
+type BreweryCommentConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BreweryCommentEdge]!
+  aggregate: AggregateBreweryComment!
+}
+
+input BreweryCommentCreateInput {
+  comment: String!
+  timestamp: DateTime!
+  brewery: BreweryCreateOneWithoutCommentsInput!
+  user: UserCreateOneWithoutBreweryCommentsInput!
+}
+
+input BreweryCommentCreateManyWithoutBreweryInput {
+  create: [BreweryCommentCreateWithoutBreweryInput!]
+  connect: [BreweryCommentWhereUniqueInput!]
+}
+
+input BreweryCommentCreateManyWithoutUserInput {
+  create: [BreweryCommentCreateWithoutUserInput!]
+  connect: [BreweryCommentWhereUniqueInput!]
+}
+
+input BreweryCommentCreateWithoutBreweryInput {
+  comment: String!
+  timestamp: DateTime!
+  user: UserCreateOneWithoutBreweryCommentsInput!
+}
+
+input BreweryCommentCreateWithoutUserInput {
+  comment: String!
+  timestamp: DateTime!
+  brewery: BreweryCreateOneWithoutCommentsInput!
+}
+
+"""An edge in a connection."""
+type BreweryCommentEdge {
+  """The item at the end of the edge."""
+  node: BreweryComment!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BreweryCommentOrderByInput {
+  id_ASC
+  id_DESC
+  comment_ASC
+  comment_DESC
+  timestamp_ASC
+  timestamp_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BreweryCommentPreviousValues {
+  id: ID!
+  comment: String!
+  timestamp: DateTime!
+}
+
+input BreweryCommentScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BreweryCommentScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BreweryCommentScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BreweryCommentScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  comment: String
+
+  """All values that are not equal to given value."""
+  comment_not: String
+
+  """All values that are contained in given list."""
+  comment_in: [String!]
+
+  """All values that are not contained in given list."""
+  comment_not_in: [String!]
+
+  """All values less than the given value."""
+  comment_lt: String
+
+  """All values less than or equal the given value."""
+  comment_lte: String
+
+  """All values greater than the given value."""
+  comment_gt: String
+
+  """All values greater than or equal the given value."""
+  comment_gte: String
+
+  """All values containing the given string."""
+  comment_contains: String
+
+  """All values not containing the given string."""
+  comment_not_contains: String
+
+  """All values starting with the given string."""
+  comment_starts_with: String
+
+  """All values not starting with the given string."""
+  comment_not_starts_with: String
+
+  """All values ending with the given string."""
+  comment_ends_with: String
+
+  """All values not ending with the given string."""
+  comment_not_ends_with: String
+  timestamp: DateTime
+
+  """All values that are not equal to given value."""
+  timestamp_not: DateTime
+
+  """All values that are contained in given list."""
+  timestamp_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  timestamp_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  timestamp_lt: DateTime
+
+  """All values less than or equal the given value."""
+  timestamp_lte: DateTime
+
+  """All values greater than the given value."""
+  timestamp_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  timestamp_gte: DateTime
+}
+
+type BreweryCommentSubscriptionPayload {
+  mutation: MutationType!
+  node: BreweryComment
+  updatedFields: [String!]
+  previousValues: BreweryCommentPreviousValues
+}
+
+input BreweryCommentSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BreweryCommentSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BreweryCommentSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BreweryCommentSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BreweryCommentWhereInput
+}
+
+input BreweryCommentUpdateInput {
+  comment: String
+  timestamp: DateTime
+  brewery: BreweryUpdateOneRequiredWithoutCommentsInput
+  user: UserUpdateOneRequiredWithoutBreweryCommentsInput
+}
+
+input BreweryCommentUpdateManyDataInput {
+  comment: String
+  timestamp: DateTime
+}
+
+input BreweryCommentUpdateManyMutationInput {
+  comment: String
+  timestamp: DateTime
+}
+
+input BreweryCommentUpdateManyWithoutBreweryInput {
+  create: [BreweryCommentCreateWithoutBreweryInput!]
+  connect: [BreweryCommentWhereUniqueInput!]
+  disconnect: [BreweryCommentWhereUniqueInput!]
+  delete: [BreweryCommentWhereUniqueInput!]
+  update: [BreweryCommentUpdateWithWhereUniqueWithoutBreweryInput!]
+  updateMany: [BreweryCommentUpdateManyWithWhereNestedInput!]
+  deleteMany: [BreweryCommentScalarWhereInput!]
+  upsert: [BreweryCommentUpsertWithWhereUniqueWithoutBreweryInput!]
+}
+
+input BreweryCommentUpdateManyWithoutUserInput {
+  create: [BreweryCommentCreateWithoutUserInput!]
+  connect: [BreweryCommentWhereUniqueInput!]
+  disconnect: [BreweryCommentWhereUniqueInput!]
+  delete: [BreweryCommentWhereUniqueInput!]
+  update: [BreweryCommentUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [BreweryCommentUpdateManyWithWhereNestedInput!]
+  deleteMany: [BreweryCommentScalarWhereInput!]
+  upsert: [BreweryCommentUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input BreweryCommentUpdateManyWithWhereNestedInput {
+  where: BreweryCommentScalarWhereInput!
+  data: BreweryCommentUpdateManyDataInput!
+}
+
+input BreweryCommentUpdateWithoutBreweryDataInput {
+  comment: String
+  timestamp: DateTime
+  user: UserUpdateOneRequiredWithoutBreweryCommentsInput
+}
+
+input BreweryCommentUpdateWithoutUserDataInput {
+  comment: String
+  timestamp: DateTime
+  brewery: BreweryUpdateOneRequiredWithoutCommentsInput
+}
+
+input BreweryCommentUpdateWithWhereUniqueWithoutBreweryInput {
+  where: BreweryCommentWhereUniqueInput!
+  data: BreweryCommentUpdateWithoutBreweryDataInput!
+}
+
+input BreweryCommentUpdateWithWhereUniqueWithoutUserInput {
+  where: BreweryCommentWhereUniqueInput!
+  data: BreweryCommentUpdateWithoutUserDataInput!
+}
+
+input BreweryCommentUpsertWithWhereUniqueWithoutBreweryInput {
+  where: BreweryCommentWhereUniqueInput!
+  update: BreweryCommentUpdateWithoutBreweryDataInput!
+  create: BreweryCommentCreateWithoutBreweryInput!
+}
+
+input BreweryCommentUpsertWithWhereUniqueWithoutUserInput {
+  where: BreweryCommentWhereUniqueInput!
+  update: BreweryCommentUpdateWithoutUserDataInput!
+  create: BreweryCommentCreateWithoutUserInput!
+}
+
+input BreweryCommentWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BreweryCommentWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BreweryCommentWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BreweryCommentWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  comment: String
+
+  """All values that are not equal to given value."""
+  comment_not: String
+
+  """All values that are contained in given list."""
+  comment_in: [String!]
+
+  """All values that are not contained in given list."""
+  comment_not_in: [String!]
+
+  """All values less than the given value."""
+  comment_lt: String
+
+  """All values less than or equal the given value."""
+  comment_lte: String
+
+  """All values greater than the given value."""
+  comment_gt: String
+
+  """All values greater than or equal the given value."""
+  comment_gte: String
+
+  """All values containing the given string."""
+  comment_contains: String
+
+  """All values not containing the given string."""
+  comment_not_contains: String
+
+  """All values starting with the given string."""
+  comment_starts_with: String
+
+  """All values not starting with the given string."""
+  comment_not_starts_with: String
+
+  """All values ending with the given string."""
+  comment_ends_with: String
+
+  """All values not ending with the given string."""
+  comment_not_ends_with: String
+  timestamp: DateTime
+
+  """All values that are not equal to given value."""
+  timestamp_not: DateTime
+
+  """All values that are contained in given list."""
+  timestamp_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  timestamp_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  timestamp_lt: DateTime
+
+  """All values less than or equal the given value."""
+  timestamp_lte: DateTime
+
+  """All values greater than the given value."""
+  timestamp_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  timestamp_gte: DateTime
+  brewery: BreweryWhereInput
+  user: UserWhereInput
+}
+
+input BreweryCommentWhereUniqueInput {
+  id: ID
+}
+
+"""A connection to a list of items."""
+type BreweryConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BreweryEdge]!
+  aggregate: AggregateBrewery!
+}
+
+input BreweryCreateInput {
+  name: String!
+  logo: String
+  country: String
+  description: String
+  beers: BeerCreateManyInput
+  comments: BreweryCommentCreateManyWithoutBreweryInput
+}
+
+input BreweryCreateOneInput {
+  create: BreweryCreateInput
+  connect: BreweryWhereUniqueInput
+}
+
+input BreweryCreateOneWithoutCommentsInput {
+  create: BreweryCreateWithoutCommentsInput
+  connect: BreweryWhereUniqueInput
+}
+
+input BreweryCreateWithoutCommentsInput {
+  name: String!
+  logo: String
+  country: String
+  description: String
+  beers: BeerCreateManyInput
+}
+
+"""An edge in a connection."""
+type BreweryEdge {
+  """The item at the end of the edge."""
+  node: Brewery!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BreweryOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  logo_ASC
+  logo_DESC
+  country_ASC
+  country_DESC
+  description_ASC
+  description_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BreweryPreviousValues {
+  id: ID!
+  name: String!
+  logo: String
+  country: String
+  description: String
+}
+
+type BrewerySubscriptionPayload {
+  mutation: MutationType!
+  node: Brewery
+  updatedFields: [String!]
+  previousValues: BreweryPreviousValues
+}
+
+input BrewerySubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BrewerySubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BrewerySubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BrewerySubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BreweryWhereInput
+}
+
+input BreweryUpdateDataInput {
+  name: String
+  logo: String
+  country: String
+  description: String
+  beers: BeerUpdateManyInput
+  comments: BreweryCommentUpdateManyWithoutBreweryInput
+}
+
+input BreweryUpdateInput {
+  name: String
+  logo: String
+  country: String
+  description: String
+  beers: BeerUpdateManyInput
+  comments: BreweryCommentUpdateManyWithoutBreweryInput
+}
+
+input BreweryUpdateManyMutationInput {
+  name: String
+  logo: String
+  country: String
+  description: String
+}
+
+input BreweryUpdateOneRequiredInput {
+  create: BreweryCreateInput
+  connect: BreweryWhereUniqueInput
+  update: BreweryUpdateDataInput
+  upsert: BreweryUpsertNestedInput
+}
+
+input BreweryUpdateOneRequiredWithoutCommentsInput {
+  create: BreweryCreateWithoutCommentsInput
+  connect: BreweryWhereUniqueInput
+  update: BreweryUpdateWithoutCommentsDataInput
+  upsert: BreweryUpsertWithoutCommentsInput
+}
+
+input BreweryUpdateWithoutCommentsDataInput {
+  name: String
+  logo: String
+  country: String
+  description: String
+  beers: BeerUpdateManyInput
+}
+
+input BreweryUpsertNestedInput {
+  update: BreweryUpdateDataInput!
+  create: BreweryCreateInput!
+}
+
+input BreweryUpsertWithoutCommentsInput {
+  update: BreweryUpdateWithoutCommentsDataInput!
+  create: BreweryCreateWithoutCommentsInput!
+}
+
+input BreweryWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BreweryWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BreweryWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BreweryWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  logo: String
+
+  """All values that are not equal to given value."""
+  logo_not: String
+
+  """All values that are contained in given list."""
+  logo_in: [String!]
+
+  """All values that are not contained in given list."""
+  logo_not_in: [String!]
+
+  """All values less than the given value."""
+  logo_lt: String
+
+  """All values less than or equal the given value."""
+  logo_lte: String
+
+  """All values greater than the given value."""
+  logo_gt: String
+
+  """All values greater than or equal the given value."""
+  logo_gte: String
+
+  """All values containing the given string."""
+  logo_contains: String
+
+  """All values not containing the given string."""
+  logo_not_contains: String
+
+  """All values starting with the given string."""
+  logo_starts_with: String
+
+  """All values not starting with the given string."""
+  logo_not_starts_with: String
+
+  """All values ending with the given string."""
+  logo_ends_with: String
+
+  """All values not ending with the given string."""
+  logo_not_ends_with: String
+  country: String
+
+  """All values that are not equal to given value."""
+  country_not: String
+
+  """All values that are contained in given list."""
+  country_in: [String!]
+
+  """All values that are not contained in given list."""
+  country_not_in: [String!]
+
+  """All values less than the given value."""
+  country_lt: String
+
+  """All values less than or equal the given value."""
+  country_lte: String
+
+  """All values greater than the given value."""
+  country_gt: String
+
+  """All values greater than or equal the given value."""
+  country_gte: String
+
+  """All values containing the given string."""
+  country_contains: String
+
+  """All values not containing the given string."""
+  country_not_contains: String
+
+  """All values starting with the given string."""
+  country_starts_with: String
+
+  """All values not starting with the given string."""
+  country_not_starts_with: String
+
+  """All values ending with the given string."""
+  country_ends_with: String
+
+  """All values not ending with the given string."""
+  country_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  beers_every: BeerWhereInput
+  beers_some: BeerWhereInput
+  beers_none: BeerWhereInput
+  comments_every: BreweryCommentWhereInput
+  comments_some: BreweryCommentWhereInput
+  comments_none: BreweryCommentWhereInput
+}
+
+input BreweryWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createBar(data: BarCreateInput!): Bar!
+  createBeerRating(data: BeerRatingCreateInput!): BeerRating!
+  createBreweryComment(data: BreweryCommentCreateInput!): BreweryComment!
+  createBeerComment(data: BeerCommentCreateInput!): BeerComment!
+  createBeer(data: BeerCreateInput!): Beer!
+  createBrewery(data: BreweryCreateInput!): Brewery!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
+  updateBeerRating(data: BeerRatingUpdateInput!, where: BeerRatingWhereUniqueInput!): BeerRating
+  updateBreweryComment(data: BreweryCommentUpdateInput!, where: BreweryCommentWhereUniqueInput!): BreweryComment
+  updateBeerComment(data: BeerCommentUpdateInput!, where: BeerCommentWhereUniqueInput!): BeerComment
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
+  updateBrewery(data: BreweryUpdateInput!, where: BreweryWhereUniqueInput!): Brewery
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteBar(where: BarWhereUniqueInput!): Bar
+  deleteBeerRating(where: BeerRatingWhereUniqueInput!): BeerRating
+  deleteBreweryComment(where: BreweryCommentWhereUniqueInput!): BreweryComment
+  deleteBeerComment(where: BeerCommentWhereUniqueInput!): BeerComment
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
+  deleteBrewery(where: BreweryWhereUniqueInput!): Brewery
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
+  upsertBeerRating(where: BeerRatingWhereUniqueInput!, create: BeerRatingCreateInput!, update: BeerRatingUpdateInput!): BeerRating!
+  upsertBreweryComment(where: BreweryCommentWhereUniqueInput!, create: BreweryCommentCreateInput!, update: BreweryCommentUpdateInput!): BreweryComment!
+  upsertBeerComment(where: BeerCommentWhereUniqueInput!, create: BeerCommentCreateInput!, update: BeerCommentUpdateInput!): BeerComment!
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
+  upsertBrewery(where: BreweryWhereUniqueInput!, create: BreweryCreateInput!, update: BreweryUpdateInput!): Brewery!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
+  updateManyBreweryComments(data: BreweryCommentUpdateManyMutationInput!, where: BreweryCommentWhereInput): BatchPayload!
+  updateManyBeerComments(data: BeerCommentUpdateManyMutationInput!, where: BeerCommentWhereInput): BatchPayload!
+  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
+  updateManyBreweries(data: BreweryUpdateManyMutationInput!, where: BreweryWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyBars(where: BarWhereInput): BatchPayload!
+  deleteManyBeerRatings(where: BeerRatingWhereInput): BatchPayload!
+  deleteManyBreweryComments(where: BreweryCommentWhereInput): BatchPayload!
+  deleteManyBeerComments(where: BeerCommentWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
+  deleteManyBreweries(where: BreweryWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
+  beerRatings(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating]!
+  breweryComments(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BreweryComment]!
+  beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
+  breweries(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brewery]!
+  user(where: UserWhereUniqueInput!): User
+  bar(where: BarWhereUniqueInput!): Bar
+  beerRating(where: BeerRatingWhereUniqueInput!): BeerRating
+  breweryComment(where: BreweryCommentWhereUniqueInput!): BreweryComment
+  beerComment(where: BeerCommentWhereUniqueInput!): BeerComment
+  beer(where: BeerWhereUniqueInput!): Beer
+  brewery(where: BreweryWhereUniqueInput!): Brewery
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
+  beerRatingsConnection(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerRatingConnection!
+  breweryCommentsConnection(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryCommentConnection!
+  beerCommentsConnection(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerCommentConnection!
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
+  breweriesConnection(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+type Subscription {
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
+  beerRating(where: BeerRatingSubscriptionWhereInput): BeerRatingSubscriptionPayload
+  breweryComment(where: BreweryCommentSubscriptionWhereInput): BreweryCommentSubscriptionPayload
+  beerComment(where: BeerCommentSubscriptionWhereInput): BeerCommentSubscriptionPayload
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
+  brewery(where: BrewerySubscriptionWhereInput): BrewerySubscriptionPayload
+}
+
+type User implements Node {
+  id: ID!
+  email: String!
+  password: String!
+  role: Role!
+  active: Boolean!
+  name: String
+  beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment!]
+  breweryComments(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BreweryComment!]
+  beerRatings(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentCreateManyWithoutUserInput
+  breweryComments: BreweryCommentCreateManyWithoutUserInput
+  beerRatings: BeerRatingCreateManyWithoutUserInput
+}
+
+input UserCreateOneWithoutBeerCommentsInput {
+  create: UserCreateWithoutBeerCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutBeerRatingsInput {
+  create: UserCreateWithoutBeerRatingsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutBreweryCommentsInput {
+  create: UserCreateWithoutBreweryCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutBeerCommentsInput {
+  email: String!
+  password: String!
+  role: Role
+  active: Boolean
+  name: String
+  breweryComments: BreweryCommentCreateManyWithoutUserInput
+  beerRatings: BeerRatingCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutBeerRatingsInput {
+  email: String!
+  password: String!
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentCreateManyWithoutUserInput
+  breweryComments: BreweryCommentCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutBreweryCommentsInput {
+  email: String!
+  password: String!
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentCreateManyWithoutUserInput
+  beerRatings: BeerRatingCreateManyWithoutUserInput
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  role_ASC
+  role_DESC
+  active_ASC
+  active_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  email: String!
+  password: String!
+  role: Role!
+  active: Boolean!
+  name: String
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentUpdateManyWithoutUserInput
+  breweryComments: BreweryCommentUpdateManyWithoutUserInput
+  beerRatings: BeerRatingUpdateManyWithoutUserInput
+}
+
+input UserUpdateManyMutationInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  name: String
+}
+
+input UserUpdateOneRequiredWithoutBeerCommentsInput {
+  create: UserCreateWithoutBeerCommentsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutBeerCommentsDataInput
+  upsert: UserUpsertWithoutBeerCommentsInput
+}
+
+input UserUpdateOneRequiredWithoutBeerRatingsInput {
+  create: UserCreateWithoutBeerRatingsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutBeerRatingsDataInput
+  upsert: UserUpsertWithoutBeerRatingsInput
+}
+
+input UserUpdateOneRequiredWithoutBreweryCommentsInput {
+  create: UserCreateWithoutBreweryCommentsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutBreweryCommentsDataInput
+  upsert: UserUpsertWithoutBreweryCommentsInput
+}
+
+input UserUpdateWithoutBeerCommentsDataInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  name: String
+  breweryComments: BreweryCommentUpdateManyWithoutUserInput
+  beerRatings: BeerRatingUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutBeerRatingsDataInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentUpdateManyWithoutUserInput
+  breweryComments: BreweryCommentUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutBreweryCommentsDataInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  name: String
+  beerComments: BeerCommentUpdateManyWithoutUserInput
+  beerRatings: BeerRatingUpdateManyWithoutUserInput
+}
+
+input UserUpsertWithoutBeerCommentsInput {
+  update: UserUpdateWithoutBeerCommentsDataInput!
+  create: UserCreateWithoutBeerCommentsInput!
+}
+
+input UserUpsertWithoutBeerRatingsInput {
+  update: UserUpdateWithoutBeerRatingsDataInput!
+  create: UserCreateWithoutBeerRatingsInput!
+}
+
+input UserUpsertWithoutBreweryCommentsInput {
+  update: UserUpdateWithoutBreweryCommentsDataInput!
+  create: UserCreateWithoutBreweryCommentsInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   email: String
 
   """All values that are not equal to given value."""
@@ -295,6 +3347,109 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  role: Role
+
+  """All values that are not equal to given value."""
+  role_not: Role
+
+  """All values that are contained in given list."""
+  role_in: [Role!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [Role!]
+  active: Boolean
+
+  """All values that are not equal to given value."""
+  active_not: Boolean
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  beerComments_every: BeerCommentWhereInput
+  beerComments_some: BeerCommentWhereInput
+  beerComments_none: BeerCommentWhereInput
+  breweryComments_every: BreweryCommentWhereInput
+  breweryComments_some: BreweryCommentWhereInput
+  breweryComments_none: BreweryCommentWhereInput
+  beerRatings_every: BeerRatingWhereInput
+  beerRatings_some: BeerRatingWhereInput
+  beerRatings_none: BeerRatingWhereInput
 }
 
 input UserWhereUniqueInput {
