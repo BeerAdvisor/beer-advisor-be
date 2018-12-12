@@ -1,0 +1,25 @@
+type Beer {
+    id: ID! @unique
+    name: String!
+    brewery: Brewery!
+    photo: String
+    description: String
+    bars: [Bar!]
+    beerRating: [BeerRating!]
+    comments: [BeerComment!]
+}
+
+type BeerRating {
+    id: ID! @unique
+    user: User!
+    beer: Beer!
+    rating: Float!
+}
+
+type BeerComment {
+    id: ID! @unique
+    beer: Beer!
+    user: User!
+    comment: String!
+    timestamp: DateTime!
+}

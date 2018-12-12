@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Wed Dec 12 2018 09:45:28 GMT+0100 (CET)
+# timestamp: Wed Dec 12 2018 23:05:33 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -1301,6 +1301,7 @@ type BeerRating implements Node {
   id: ID!
   user: User!
   beer: Beer!
+  rating: Float!
 }
 
 """A connection to a list of items."""
@@ -1314,6 +1315,7 @@ type BeerRatingConnection {
 }
 
 input BeerRatingCreateInput {
+  rating: Float!
   user: UserCreateOneWithoutBeerRatingsInput!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
@@ -1329,10 +1331,12 @@ input BeerRatingCreateManyWithoutUserInput {
 }
 
 input BeerRatingCreateWithoutBeerInput {
+  rating: Float!
   user: UserCreateOneWithoutBeerRatingsInput!
 }
 
 input BeerRatingCreateWithoutUserInput {
+  rating: Float!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
 
@@ -1348,6 +1352,8 @@ type BeerRatingEdge {
 enum BeerRatingOrderByInput {
   id_ASC
   id_DESC
+  rating_ASC
+  rating_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -1356,6 +1362,7 @@ enum BeerRatingOrderByInput {
 
 type BeerRatingPreviousValues {
   id: ID!
+  rating: Float!
 }
 
 input BeerRatingScalarWhereInput {
@@ -1407,6 +1414,28 @@ input BeerRatingScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  rating: Float
+
+  """All values that are not equal to given value."""
+  rating_not: Float
+
+  """All values that are contained in given list."""
+  rating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  rating_not_in: [Float!]
+
+  """All values less than the given value."""
+  rating_lt: Float
+
+  """All values less than or equal the given value."""
+  rating_lte: Float
+
+  """All values greater than the given value."""
+  rating_gt: Float
+
+  """All values greater than or equal the given value."""
+  rating_gte: Float
 }
 
 type BeerRatingSubscriptionPayload {
@@ -1449,8 +1478,17 @@ input BeerRatingSubscriptionWhereInput {
 }
 
 input BeerRatingUpdateInput {
+  rating: Float
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
+}
+
+input BeerRatingUpdateManyDataInput {
+  rating: Float
+}
+
+input BeerRatingUpdateManyMutationInput {
+  rating: Float
 }
 
 input BeerRatingUpdateManyWithoutBeerInput {
@@ -1459,6 +1497,7 @@ input BeerRatingUpdateManyWithoutBeerInput {
   disconnect: [BeerRatingWhereUniqueInput!]
   delete: [BeerRatingWhereUniqueInput!]
   update: [BeerRatingUpdateWithWhereUniqueWithoutBeerInput!]
+  updateMany: [BeerRatingUpdateManyWithWhereNestedInput!]
   deleteMany: [BeerRatingScalarWhereInput!]
   upsert: [BeerRatingUpsertWithWhereUniqueWithoutBeerInput!]
 }
@@ -1469,15 +1508,23 @@ input BeerRatingUpdateManyWithoutUserInput {
   disconnect: [BeerRatingWhereUniqueInput!]
   delete: [BeerRatingWhereUniqueInput!]
   update: [BeerRatingUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [BeerRatingUpdateManyWithWhereNestedInput!]
   deleteMany: [BeerRatingScalarWhereInput!]
   upsert: [BeerRatingUpsertWithWhereUniqueWithoutUserInput!]
 }
 
+input BeerRatingUpdateManyWithWhereNestedInput {
+  where: BeerRatingScalarWhereInput!
+  data: BeerRatingUpdateManyDataInput!
+}
+
 input BeerRatingUpdateWithoutBeerDataInput {
+  rating: Float
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
 }
 
 input BeerRatingUpdateWithoutUserDataInput {
+  rating: Float
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
@@ -1552,6 +1599,28 @@ input BeerRatingWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  rating: Float
+
+  """All values that are not equal to given value."""
+  rating_not: Float
+
+  """All values that are contained in given list."""
+  rating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  rating_not_in: [Float!]
+
+  """All values less than the given value."""
+  rating_lt: Float
+
+  """All values less than or equal the given value."""
+  rating_lte: Float
+
+  """All values greater than the given value."""
+  rating_gt: Float
+
+  """All values greater than or equal the given value."""
+  rating_gte: Float
   user: UserWhereInput
   beer: BeerWhereInput
 }
@@ -2924,47 +2993,48 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
-  createBeer(data: BeerCreateInput!): Beer!
   createBar(data: BarCreateInput!): Bar!
+  createBeer(data: BeerCreateInput!): Beer!
   createBeerRating(data: BeerRatingCreateInput!): BeerRating!
+  createBeerComment(data: BeerCommentCreateInput!): BeerComment!
+  createUser(data: UserCreateInput!): User!
   createBrewery(data: BreweryCreateInput!): Brewery!
   createBreweryComment(data: BreweryCommentCreateInput!): BreweryComment!
-  createBeerComment(data: BeerCommentCreateInput!): BeerComment!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
   updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
   updateBeerRating(data: BeerRatingUpdateInput!, where: BeerRatingWhereUniqueInput!): BeerRating
+  updateBeerComment(data: BeerCommentUpdateInput!, where: BeerCommentWhereUniqueInput!): BeerComment
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateBrewery(data: BreweryUpdateInput!, where: BreweryWhereUniqueInput!): Brewery
   updateBreweryComment(data: BreweryCommentUpdateInput!, where: BreweryCommentWhereUniqueInput!): BreweryComment
-  updateBeerComment(data: BeerCommentUpdateInput!, where: BeerCommentWhereUniqueInput!): BeerComment
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteBeer(where: BeerWhereUniqueInput!): Beer
   deleteBar(where: BarWhereUniqueInput!): Bar
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
   deleteBeerRating(where: BeerRatingWhereUniqueInput!): BeerRating
+  deleteBeerComment(where: BeerCommentWhereUniqueInput!): BeerComment
+  deleteUser(where: UserWhereUniqueInput!): User
   deleteBrewery(where: BreweryWhereUniqueInput!): Brewery
   deleteBreweryComment(where: BreweryCommentWhereUniqueInput!): BreweryComment
-  deleteBeerComment(where: BeerCommentWhereUniqueInput!): BeerComment
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
   upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
   upsertBeerRating(where: BeerRatingWhereUniqueInput!, create: BeerRatingCreateInput!, update: BeerRatingUpdateInput!): BeerRating!
+  upsertBeerComment(where: BeerCommentWhereUniqueInput!, create: BeerCommentCreateInput!, update: BeerCommentUpdateInput!): BeerComment!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertBrewery(where: BreweryWhereUniqueInput!, create: BreweryCreateInput!, update: BreweryUpdateInput!): Brewery!
   upsertBreweryComment(where: BreweryCommentWhereUniqueInput!, create: BreweryCommentCreateInput!, update: BreweryCommentUpdateInput!): BreweryComment!
-  upsertBeerComment(where: BeerCommentWhereUniqueInput!, create: BeerCommentCreateInput!, update: BeerCommentUpdateInput!): BeerComment!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
   updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
+  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
+  updateManyBeerRatings(data: BeerRatingUpdateManyMutationInput!, where: BeerRatingWhereInput): BatchPayload!
+  updateManyBeerComments(data: BeerCommentUpdateManyMutationInput!, where: BeerCommentWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyBreweries(data: BreweryUpdateManyMutationInput!, where: BreweryWhereInput): BatchPayload!
   updateManyBreweryComments(data: BreweryCommentUpdateManyMutationInput!, where: BreweryCommentWhereInput): BatchPayload!
-  updateManyBeerComments(data: BeerCommentUpdateManyMutationInput!, where: BeerCommentWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyBeers(where: BeerWhereInput): BatchPayload!
   deleteManyBars(where: BarWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
   deleteManyBeerRatings(where: BeerRatingWhereInput): BatchPayload!
+  deleteManyBeerComments(where: BeerCommentWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyBreweries(where: BreweryWhereInput): BatchPayload!
   deleteManyBreweryComments(where: BreweryCommentWhereInput): BatchPayload!
-  deleteManyBeerComments(where: BeerCommentWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -2995,27 +3065,27 @@ type PageInfo {
 }
 
 type Query {
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
   beerRatings(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating]!
+  beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   breweries(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brewery]!
   breweryComments(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BreweryComment]!
-  beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment]!
-  user(where: UserWhereUniqueInput!): User
-  beer(where: BeerWhereUniqueInput!): Beer
   bar(where: BarWhereUniqueInput!): Bar
+  beer(where: BeerWhereUniqueInput!): Beer
   beerRating(where: BeerRatingWhereUniqueInput!): BeerRating
+  beerComment(where: BeerCommentWhereUniqueInput!): BeerComment
+  user(where: UserWhereUniqueInput!): User
   brewery(where: BreweryWhereUniqueInput!): Brewery
   breweryComment(where: BreweryCommentWhereUniqueInput!): BreweryComment
-  beerComment(where: BeerCommentWhereUniqueInput!): BeerComment
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
   barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
   beerRatingsConnection(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerRatingConnection!
+  beerCommentsConnection(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerCommentConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   breweriesConnection(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryConnection!
   breweryCommentsConnection(where: BreweryCommentWhereInput, orderBy: BreweryCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryCommentConnection!
-  beerCommentsConnection(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerCommentConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -3030,13 +3100,13 @@ enum Role {
 }
 
 type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
   bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
   beerRating(where: BeerRatingSubscriptionWhereInput): BeerRatingSubscriptionPayload
+  beerComment(where: BeerCommentSubscriptionWhereInput): BeerCommentSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   brewery(where: BrewerySubscriptionWhereInput): BrewerySubscriptionPayload
   breweryComment(where: BreweryCommentSubscriptionWhereInput): BreweryCommentSubscriptionPayload
-  beerComment(where: BeerCommentSubscriptionWhereInput): BeerCommentSubscriptionPayload
 }
 
 type User implements Node {

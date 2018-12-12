@@ -1,0 +1,11 @@
+type Bar {
+    id: ID! @unique
+    name: String!
+    address: String!
+    lat: String!
+    long: String!
+    openTime: DateTime
+    closeTime: DateTime
+    photos: [String!]
+    beers: [Beer!]
+}
