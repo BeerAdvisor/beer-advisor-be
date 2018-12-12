@@ -13,6 +13,7 @@ type User {
 type Beer {
   id: ID! @unique
   name: String!
+  brewery: Brewery!
   photo: String
   description: String
   bars: [Bar!]
@@ -22,7 +23,6 @@ type Beer {
 
 type Bar {
   id: ID! @unique
-  brewery: Brewery!
   name: String!
   address: String!
   lat: String!
