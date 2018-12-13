@@ -1,168 +1,83 @@
-export enum MutationType {
-    CREATED = "CREATED",
-    UPDATED = "UPDATED",
-    DELETED = "DELETED"
+export enum Role {
+    USER = "USER",
+    ADMIN = "ADMIN"
 }
 
-export enum UserOrderByInput {
-    id_ASC = "id_ASC",
-    id_DESC = "id_DESC",
-    name_ASC = "name_ASC",
-    name_DESC = "name_DESC",
-    email_ASC = "email_ASC",
-    email_DESC = "email_DESC",
-    updatedAt_ASC = "updatedAt_ASC",
-    updatedAt_DESC = "updatedAt_DESC",
-    createdAt_ASC = "createdAt_ASC",
-    createdAt_DESC = "createdAt_DESC"
-}
-
-export class UserCreateInput {
-    name: string;
-    email: string;
-}
-
-export class UserSubscriptionWhereInput {
-    AND: UserSubscriptionWhereInput[];
-    OR: UserSubscriptionWhereInput[];
-    NOT: UserSubscriptionWhereInput[];
-    mutation_in: MutationType[];
-    updatedFields_contains?: string;
-    updatedFields_contains_every: string[];
-    updatedFields_contains_some: string[];
-    node?: UserWhereInput;
-}
-
-export class UserUpdateInput {
-    name?: string;
-    email?: string;
-}
-
-export class UserUpdateManyMutationInput {
-    name?: string;
-    email?: string;
-}
-
-export class UserWhereInput {
-    AND: UserWhereInput[];
-    OR: UserWhereInput[];
-    NOT: UserWhereInput[];
-    id?: string;
-    id_not?: string;
-    id_in: string[];
-    id_not_in: string[];
-    id_lt?: string;
-    id_lte?: string;
-    id_gt?: string;
-    id_gte?: string;
-    id_contains?: string;
-    id_not_contains?: string;
-    id_starts_with?: string;
-    id_not_starts_with?: string;
-    id_ends_with?: string;
-    id_not_ends_with?: string;
-    name?: string;
-    name_not?: string;
-    name_in: string[];
-    name_not_in: string[];
-    name_lt?: string;
-    name_lte?: string;
-    name_gt?: string;
-    name_gte?: string;
-    name_contains?: string;
-    name_not_contains?: string;
-    name_starts_with?: string;
-    name_not_starts_with?: string;
-    name_ends_with?: string;
-    name_not_ends_with?: string;
-    email?: string;
-    email_not?: string;
-    email_in: string[];
-    email_not_in: string[];
-    email_lt?: string;
-    email_lte?: string;
-    email_gt?: string;
-    email_gte?: string;
-    email_contains?: string;
-    email_not_contains?: string;
-    email_starts_with?: string;
-    email_not_starts_with?: string;
-    email_ends_with?: string;
-    email_not_ends_with?: string;
-}
-
-export class UserWhereUniqueInput {
-    id?: string;
-}
-
-export interface Node {
+export class Bar {
     id: string;
+    name: string;
+    address: string;
+    lat: string;
+    long: string;
+    openTime?: DateTime;
+    closeTime?: DateTime;
+    photos: string[];
+    beers: Beer[];
 }
 
-export class AggregateUser {
-    count: number;
+export class Beer {
+    id: string;
+    name: string;
+    brewery: Brewery;
+    photo?: string;
+    description?: string;
+    bars: Bar[];
+    beerRating: BeerRating[];
+    comments: BeerComment[];
 }
 
-export class BatchPayload {
-    count: Long;
+export class BeerComment {
+    id: string;
+    beer: Beer;
+    user: User;
+    comment: string;
+    timestamp: DateTime;
+}
+
+export class BeerRating {
+    id: string;
+    user: User;
+    beer: Beer;
+    rating: number;
+}
+
+export class Brewery {
+    id: string;
+    name: string;
+    logo?: string;
+    country?: string;
+    description?: string;
+    beers: Beer[];
+    comments: BreweryComment[];
+}
+
+export class BreweryComment {
+    id: string;
+    brewery: Brewery;
+    user: User;
+    comment: string;
+    timestamp: DateTime;
 }
 
 export abstract class IMutation {
-    abstract createUser(data: UserCreateInput): User | Promise<User>;
-    abstract updateUser(data: UserUpdateInput, where: UserWhereUniqueInput): User | Promise<User>;
-    abstract deleteUser(where: UserWhereUniqueInput): User | Promise<User>;
-    abstract upsertUser(where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput): User | Promise<User>;
-    abstract updateManyUsers(data: UserUpdateManyMutationInput, where?: UserWhereInput): BatchPayload | Promise<BatchPayload>;
-    abstract deleteManyUsers(where?: UserWhereInput): BatchPayload | Promise<BatchPayload>;
-}
-
-export class PageInfo {
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-    startCursor?: string;
-    endCursor?: string;
+    abstract createBeer(name: string, photo?: string, description?: string): Beer | Promise<Beer>;
 }
 
 export abstract class IQuery {
-    abstract users(where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: number, after?: string, before?: string, first?: number, last?: number): User[] | Promise<User[]>;
-    abstract user(where: UserWhereUniqueInput): User | Promise<User>;
-    abstract usersConnection(where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: number, after?: string, before?: string, first?: number, last?: number): UserConnection | Promise<UserConnection>;
-    abstract node(id: string): Node | Promise<Node>;
+    abstract getBeers(): Beer[] | Promise<Beer[]>;
     abstract temp__(): boolean | Promise<boolean>;
 }
 
-export abstract class ISubscription {
-    abstract user(where?: UserSubscriptionWhereInput): UserSubscriptionPayload | Promise<UserSubscriptionPayload>;
-}
-
-export class User implements Node {
+export class User {
     id: string;
-    name: string;
     email: string;
+    password: string;
+    role: Role;
+    active: boolean;
+    name?: string;
+    beerComments: BeerComment[];
+    breweryComments: BreweryComment[];
+    beerRatings: BeerRating[];
 }
 
-export class UserConnection {
-    pageInfo: PageInfo;
-    edges?: UserEdge[];
-    aggregate: AggregateUser;
-}
-
-export class UserEdge {
-    node: User;
-    cursor: string;
-}
-
-export class UserPreviousValues {
-    id: string;
-    name: string;
-    email: string;
-}
-
-export class UserSubscriptionPayload {
-    mutation: MutationType;
-    node?: User;
-    updatedFields: string[];
-    previousValues?: UserPreviousValues;
-}
-
-export type Long = any;
+export type DateTime = any;

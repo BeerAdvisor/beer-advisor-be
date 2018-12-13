@@ -1,0 +1,17 @@
+type User {
+    id: ID!
+    email: String!
+    password: String!
+    role: Role!
+    active: Boolean!
+    name: String
+    beerComments: [BeerComment!]
+    breweryComments: [BreweryComment!]
+    beerRatings: [BeerRating!]
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+

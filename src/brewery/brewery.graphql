@@ -1,0 +1,17 @@
+type Brewery {
+    id: ID!
+    name: String!
+    logo: String
+    country: String
+    description: String
+    beers: [Beer!]
+    comments: [BreweryComment!]
+}
+
+type BreweryComment {
+    id: ID!
+    brewery: Brewery!
+    user: User!
+    comment: String!
+    timestamp: DateTime!
+}

@@ -1,0 +1,33 @@
+type Query {
+    getBeers: [Beer!]
+}
+
+type Mutation {
+    createBeer(name: String!, photo: String, description: String): Beer!
+}
+
+type Beer {
+    id: ID!
+    name: String!
+    brewery: Brewery!
+    photo: String
+    description: String
+    bars: [Bar!]
+    beerRating: [BeerRating!]
+    comments: [BeerComment!]
+}
+
+type BeerRating {
+    id: ID!
+    user: User!
+    beer: Beer!
+    rating: Float!
+}
+
+type BeerComment {
+    id: ID!
+    beer: Beer!
+    user: User!
+    comment: String!
+    timestamp: DateTime!
+}
