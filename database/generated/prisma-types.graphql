@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Wed Dec 12 2018 23:05:33 GMT+0100 (CET)
+# timestamp: Thu Dec 13 2018 22:45:32 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -758,7 +758,7 @@ type BatchPayload {
 type Beer implements Node {
   id: ID!
   name: String!
-  brewery: Brewery!
+  brewery: Brewery
   photo: String
   description: String
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
@@ -1204,7 +1204,7 @@ input BeerCreateInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
@@ -1234,7 +1234,7 @@ input BeerCreateWithoutBarsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1243,7 +1243,7 @@ input BeerCreateWithoutBeerRatingInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1261,7 +1261,7 @@ input BeerCreateWithoutCommentsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
 }
@@ -1843,7 +1843,7 @@ input BeerUpdateInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
@@ -1906,7 +1906,7 @@ input BeerUpdateWithoutBarsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -1915,7 +1915,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -1933,7 +1933,7 @@ input BeerUpdateWithoutCommentsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
 }
@@ -2723,18 +2723,20 @@ input BreweryUpdateManyMutationInput {
   description: String
 }
 
-input BreweryUpdateOneRequiredWithoutBeersInput {
-  create: BreweryCreateWithoutBeersInput
-  connect: BreweryWhereUniqueInput
-  update: BreweryUpdateWithoutBeersDataInput
-  upsert: BreweryUpsertWithoutBeersInput
-}
-
 input BreweryUpdateOneRequiredWithoutCommentsInput {
   create: BreweryCreateWithoutCommentsInput
   connect: BreweryWhereUniqueInput
   update: BreweryUpdateWithoutCommentsDataInput
   upsert: BreweryUpsertWithoutCommentsInput
+}
+
+input BreweryUpdateOneWithoutBeersInput {
+  create: BreweryCreateWithoutBeersInput
+  connect: BreweryWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BreweryUpdateWithoutBeersDataInput
+  upsert: BreweryUpsertWithoutBeersInput
 }
 
 input BreweryUpdateWithoutBeersDataInput {

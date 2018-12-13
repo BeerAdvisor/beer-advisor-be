@@ -16,6 +16,7 @@ export class GraphqlOptions implements GqlOptionsFactory {
         path: join(process.cwd(), 'src/graphql.schema.d.ts'),
         outputAs: 'class',
       },
+      debug: true,
     };
   }
 }

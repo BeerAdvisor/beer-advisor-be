@@ -18,7 +18,7 @@ export class Bar {
 export class Beer {
     id: string;
     name: string;
-    brewery: Brewery;
+    brewery?: Brewery;
     photo?: string;
     description?: string;
     bars: Bar[];

@@ -1,14 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { Beer, BeerCreateInput } from '../prisma/prisma.bindings.generated';
 import { GraphQLResolveInfo } from 'graphql';
+import { Beer } from '../graphql.schema';
 
 @Injectable()
 export class BeerService {
   constructor(private readonly prisma: PrismaService) {}
 
-  createBeer(beer: { data: BeerCreateInput }, info: GraphQLResolveInfo): Promise<Beer> {
-    return this.prisma.mutation.createBeer(beer, info);
+  createBeer(
+    beer,
+    info: GraphQLResolveInfo,
+  ): Promise<Beer> {
+    return this.prisma.mutation.createBeer({ data: beer }, info);
   }
 
   getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {

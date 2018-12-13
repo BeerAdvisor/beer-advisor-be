@@ -872,7 +872,7 @@ type BatchPayload {
 type Beer implements Node {
   id: ID!
   name: String!
-  brewery: Brewery!
+  brewery: Brewery
   photo: String
   description: String
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
@@ -1318,7 +1318,7 @@ input BeerCreateInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
@@ -1348,7 +1348,7 @@ input BeerCreateWithoutBarsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1357,7 +1357,7 @@ input BeerCreateWithoutBeerRatingInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1375,7 +1375,7 @@ input BeerCreateWithoutCommentsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput!
+  brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
 }
@@ -1957,7 +1957,7 @@ input BeerUpdateInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
@@ -2020,7 +2020,7 @@ input BeerUpdateWithoutBarsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -2029,7 +2029,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -2047,7 +2047,7 @@ input BeerUpdateWithoutCommentsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
 }
@@ -2837,18 +2837,20 @@ input BreweryUpdateManyMutationInput {
   description: String
 }
 
-input BreweryUpdateOneRequiredWithoutBeersInput {
-  create: BreweryCreateWithoutBeersInput
-  connect: BreweryWhereUniqueInput
-  update: BreweryUpdateWithoutBeersDataInput
-  upsert: BreweryUpsertWithoutBeersInput
-}
-
 input BreweryUpdateOneRequiredWithoutCommentsInput {
   create: BreweryCreateWithoutCommentsInput
   connect: BreweryWhereUniqueInput
   update: BreweryUpdateWithoutCommentsDataInput
   upsert: BreweryUpsertWithoutCommentsInput
+}
+
+input BreweryUpdateOneWithoutBeersInput {
+  create: BreweryCreateWithoutBeersInput
+  connect: BreweryWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: BreweryUpdateWithoutBeersDataInput
+  upsert: BreweryUpsertWithoutBeersInput
 }
 
 input BreweryUpdateWithoutBeersDataInput {
@@ -4285,7 +4287,7 @@ export interface BeerCreateInput {
   name: String
   photo?: String
   description?: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery?: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
   comments?: BeerCommentCreateManyWithoutBeerInput
@@ -4315,7 +4317,7 @@ export interface BeerCreateWithoutBarsInput {
   name: String
   photo?: String
   description?: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery?: BreweryCreateOneWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
   comments?: BeerCommentCreateManyWithoutBeerInput
 }
@@ -4324,7 +4326,7 @@ export interface BeerCreateWithoutBeerRatingInput {
   name: String
   photo?: String
   description?: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery?: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   comments?: BeerCommentCreateManyWithoutBeerInput
 }
@@ -4342,7 +4344,7 @@ export interface BeerCreateWithoutCommentsInput {
   name: String
   photo?: String
   description?: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery?: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
 }
@@ -4596,7 +4598,7 @@ export interface BeerUpdateInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery?: BreweryUpdateOneWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
@@ -4659,7 +4661,7 @@ export interface BeerUpdateWithoutBarsDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery?: BreweryUpdateOneWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -4668,7 +4670,7 @@ export interface BeerUpdateWithoutBeerRatingDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery?: BreweryUpdateOneWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -4686,7 +4688,7 @@ export interface BeerUpdateWithoutCommentsDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
+  brewery?: BreweryUpdateOneWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
 }
@@ -5069,18 +5071,20 @@ export interface BreweryUpdateManyMutationInput {
   description?: String
 }
 
-export interface BreweryUpdateOneRequiredWithoutBeersInput {
-  create?: BreweryCreateWithoutBeersInput
-  connect?: BreweryWhereUniqueInput
-  update?: BreweryUpdateWithoutBeersDataInput
-  upsert?: BreweryUpsertWithoutBeersInput
-}
-
 export interface BreweryUpdateOneRequiredWithoutCommentsInput {
   create?: BreweryCreateWithoutCommentsInput
   connect?: BreweryWhereUniqueInput
   update?: BreweryUpdateWithoutCommentsDataInput
   upsert?: BreweryUpsertWithoutCommentsInput
+}
+
+export interface BreweryUpdateOneWithoutBeersInput {
+  create?: BreweryCreateWithoutBeersInput
+  connect?: BreweryWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: BreweryUpdateWithoutBeersDataInput
+  upsert?: BreweryUpsertWithoutBeersInput
 }
 
 export interface BreweryUpdateWithoutBeersDataInput {
@@ -5520,7 +5524,7 @@ export interface BatchPayload {
 export interface Beer extends Node {
   id: ID_Output
   name: String
-  brewery: Brewery
+  brewery?: Brewery
   photo?: String
   description?: String
   bars?: Bar[]
