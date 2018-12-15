@@ -2,7 +2,7 @@ type User {
     id: ID! @unique
     email: String!
     password: String!
-    role: Role! @default(value: "USER")
+    role: Role! @default(value: USER)
     active: Boolean! @default(value: "true")
     name: String
     beerComments: [BeerComment!]
