@@ -3,10 +3,10 @@ endpoint: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
 
 # Definition of data model.
 datamodel:
-  - datamodel/bar.graphql
-  - datamodel/beer.graphql
-  - datamodel/user.graphql
-  - datamodel/brewery.graphql
+  - datamodel/bar.model.graphql
+  - datamodel/beer.model.graphql
+  - datamodel/user.model.graphql
+  - datamodel/brewery.model.graphql
 
 # Downloads the GraphQL schema of the Prisma API
 # `database/generated/prisma-types.generated` (as specfied in `.graphqlconfig.yml`).
