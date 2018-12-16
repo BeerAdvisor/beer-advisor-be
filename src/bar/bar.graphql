@@ -1,3 +1,13 @@
+type Query {
+    getBars: [Bar!]
+    bar(id: ID!): Bar!
+}
+
+type Mutation {
+    createBar(createBarInput: CreateBarInput): Bar!
+}
+
+
 type Bar {
     id: ID!
     name: String!
@@ -8,4 +18,15 @@ type Bar {
     closeTime: DateTime
     photos: [String!]
     beers: [Beer!]
+}
+
+input CreateBarInput {
+    name: String!
+    address: String!
+    lat: String!
+    long: String!
+    openTime: DateTime
+    closeTime: DateTime
+    photos: [String!]
+    beerIds: [String!]
 }

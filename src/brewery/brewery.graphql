@@ -1,3 +1,13 @@
+type Query {
+    getBreweries: [Brewery!]
+    brewery(id: ID!): Brewery!
+}
+
+type Mutation {
+    createBrewery(createBreweryInput: CreateBreweryInput): Brewery!
+    commentBrewery(commentBreweryInput: CommentBreweryInput): BreweryComment!
+}
+
 type Brewery {
     id: ID!
     name: String!
@@ -14,4 +24,17 @@ type BreweryComment {
     user: User!
     comment: String!
     timestamp: DateTime!
+}
+
+input CreateBreweryInput{
+    name: String!
+    logo: String
+    country: String
+    description: String
+    beerIds: [String!]
+}
+
+input CommentBreweryInput{
+    breweryId: ID!
+    comment: String!
 }

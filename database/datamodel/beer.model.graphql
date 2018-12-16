@@ -13,7 +13,7 @@ type BeerRating {
     id: ID! @unique
     user: User!
     beer: Beer!
-    rating: Float!
+    rating: Int!
 }
 
 type BeerComment {
