@@ -29,6 +29,7 @@ export class CreateBeerInput {
     breweryId: string;
     description?: string;
     photo?: string;
+    barIds: string[];
 }
 
 export class CreateBreweryInput {
@@ -102,20 +103,31 @@ export class BreweryComment {
 
 export abstract class IMutation {
     abstract createBar(createBarInput?: CreateBarInput): Bar | Promise<Bar>;
+
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
+
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
+
     abstract rateBeer(rateBeerInput?: RateBeerInput): BeerRating | Promise<BeerRating>;
+
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
+
     abstract commentBrewery(commentBreweryInput?: CommentBreweryInput): BreweryComment | Promise<BreweryComment>;
 }
 
 export abstract class IQuery {
     abstract getBars(): Bar[] | Promise<Bar[]>;
+
     abstract bar(id: string): Bar | Promise<Bar>;
+
     abstract getBeers(): Beer[] | Promise<Beer[]>;
+
     abstract beer(id: string): Beer | Promise<Beer>;
+
     abstract getBreweries(): Brewery[] | Promise<Brewery[]>;
+
     abstract brewery(id: string): Brewery | Promise<Brewery>;
+
     abstract temp__(): boolean | Promise<boolean>;
 }
 

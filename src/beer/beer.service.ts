@@ -1,20 +1,69 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { Beer } from '../graphql.schema';
+import {
+  Beer,
+  BeerComment,
+  BeerRating,
+  CommentBeerInput,
+  CreateBeerInput,
+  RateBeerInput,
+} from '../graphql.schema.generated';
+import { mapConnectIds } from '../shared/helpers';
 
 @Injectable()
 export class BeerService {
   constructor(private readonly prisma: PrismaService) {}
 
-  createBeer(
-    beer,
-    info: GraphQLResolveInfo,
-  ): Promise<Beer> {
-    return this.prisma.mutation.createBeer({ data: beer }, info);
-  }
-
   getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.prisma.query.beers(args, info);
+  }
+
+  getBeer(id: string, info: GraphQLResolveInfo): Promise<Beer> {
+    return this.prisma.query.beer({ where: { id } }, info);
+  }
+
+  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<Beer> {
+    return this.prisma.mutation.createBeer(
+      {
+        data: {
+          name: beer.name,
+          description: beer.description,
+          photo: beer.photo,
+          brewery: { connect: { id: beer.breweryId } },
+          bars: { connect: mapConnectIds(beer.barIds) },
+        },
+      },
+      info,
+    );
+  }
+
+  commentBeer(
+    comment: CommentBeerInput,
+    info: GraphQLResolveInfo,
+  ): Promise<BeerComment> {
+    return this.prisma.mutation.createBeerComment(
+      {
+        data: {
+          comment: comment.comment,
+          user: { connect: { id: 'user_id_here' } }, // TODO
+          beer: { connect: { id: comment.beerId } },
+        },
+      },
+      info,
+    );
+  }
+
+  rateBeer(
+    rating: RateBeerInput,
+    info: GraphQLResolveInfo,
+  ): Promise<BeerRating> {
+    return this.prisma.mutation.createBeerRating({
+      data: {
+        rating: rating.rating,
+        user: { connect: { id: 'user_id_here' } }, // TODO
+        beer: { connect: { id: rating.beerId } },
+      },
+    });
   }
 }

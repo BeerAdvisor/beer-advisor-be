@@ -872,7 +872,7 @@ type BatchPayload {
 type Beer implements Node {
   id: ID!
   name: String!
-  brewery: Brewery
+  brewery: Brewery!
   photo: String
   description: String
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
@@ -885,7 +885,7 @@ type BeerComment implements Node {
   beer: Beer!
   user: User!
   comment: String!
-  timestamp: DateTime!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -900,7 +900,6 @@ type BeerCommentConnection {
 
 input BeerCommentCreateInput {
   comment: String!
-  timestamp: DateTime!
   beer: BeerCreateOneWithoutCommentsInput!
   user: UserCreateOneWithoutBeerCommentsInput!
 }
@@ -917,13 +916,11 @@ input BeerCommentCreateManyWithoutUserInput {
 
 input BeerCommentCreateWithoutBeerInput {
   comment: String!
-  timestamp: DateTime!
   user: UserCreateOneWithoutBeerCommentsInput!
 }
 
 input BeerCommentCreateWithoutUserInput {
   comment: String!
-  timestamp: DateTime!
   beer: BeerCreateOneWithoutCommentsInput!
 }
 
@@ -941,18 +938,16 @@ enum BeerCommentOrderByInput {
   id_DESC
   comment_ASC
   comment_DESC
-  timestamp_ASC
-  timestamp_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerCommentPreviousValues {
   id: ID!
   comment: String!
-  timestamp: DateTime!
+  createdAt: DateTime!
 }
 
 input BeerCommentScalarWhereInput {
@@ -1044,28 +1039,28 @@ input BeerCommentScalarWhereInput {
 
   """All values not ending with the given string."""
   comment_not_ends_with: String
-  timestamp: DateTime
+  createdAt: DateTime
 
   """All values that are not equal to given value."""
-  timestamp_not: DateTime
+  createdAt_not: DateTime
 
   """All values that are contained in given list."""
-  timestamp_in: [DateTime!]
+  createdAt_in: [DateTime!]
 
   """All values that are not contained in given list."""
-  timestamp_not_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
 
   """All values less than the given value."""
-  timestamp_lt: DateTime
+  createdAt_lt: DateTime
 
   """All values less than or equal the given value."""
-  timestamp_lte: DateTime
+  createdAt_lte: DateTime
 
   """All values greater than the given value."""
-  timestamp_gt: DateTime
+  createdAt_gt: DateTime
 
   """All values greater than or equal the given value."""
-  timestamp_gte: DateTime
+  createdAt_gte: DateTime
 }
 
 type BeerCommentSubscriptionPayload {
@@ -1109,19 +1104,16 @@ input BeerCommentSubscriptionWhereInput {
 
 input BeerCommentUpdateInput {
   comment: String
-  timestamp: DateTime
   beer: BeerUpdateOneRequiredWithoutCommentsInput
   user: UserUpdateOneRequiredWithoutBeerCommentsInput
 }
 
 input BeerCommentUpdateManyDataInput {
   comment: String
-  timestamp: DateTime
 }
 
 input BeerCommentUpdateManyMutationInput {
   comment: String
-  timestamp: DateTime
 }
 
 input BeerCommentUpdateManyWithoutBeerInput {
@@ -1153,13 +1145,11 @@ input BeerCommentUpdateManyWithWhereNestedInput {
 
 input BeerCommentUpdateWithoutBeerDataInput {
   comment: String
-  timestamp: DateTime
   user: UserUpdateOneRequiredWithoutBeerCommentsInput
 }
 
 input BeerCommentUpdateWithoutUserDataInput {
   comment: String
-  timestamp: DateTime
   beer: BeerUpdateOneRequiredWithoutCommentsInput
 }
 
@@ -1274,28 +1264,28 @@ input BeerCommentWhereInput {
 
   """All values not ending with the given string."""
   comment_not_ends_with: String
-  timestamp: DateTime
+  createdAt: DateTime
 
   """All values that are not equal to given value."""
-  timestamp_not: DateTime
+  createdAt_not: DateTime
 
   """All values that are contained in given list."""
-  timestamp_in: [DateTime!]
+  createdAt_in: [DateTime!]
 
   """All values that are not contained in given list."""
-  timestamp_not_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
 
   """All values less than the given value."""
-  timestamp_lt: DateTime
+  createdAt_lt: DateTime
 
   """All values less than or equal the given value."""
-  timestamp_lte: DateTime
+  createdAt_lte: DateTime
 
   """All values greater than the given value."""
-  timestamp_gt: DateTime
+  createdAt_gt: DateTime
 
   """All values greater than or equal the given value."""
-  timestamp_gte: DateTime
+  createdAt_gte: DateTime
   beer: BeerWhereInput
   user: UserWhereInput
 }
@@ -1318,7 +1308,7 @@ input BeerCreateInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput!
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
@@ -1348,7 +1338,7 @@ input BeerCreateWithoutBarsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1357,7 +1347,7 @@ input BeerCreateWithoutBeerRatingInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput!
   bars: BarCreateManyWithoutBeersInput
   comments: BeerCommentCreateManyWithoutBeerInput
 }
@@ -1375,7 +1365,7 @@ input BeerCreateWithoutCommentsInput {
   name: String!
   photo: String
   description: String
-  brewery: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput!
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
 }
@@ -1415,7 +1405,7 @@ type BeerRating implements Node {
   id: ID!
   user: User!
   beer: Beer!
-  rating: Float!
+  rating: Int!
 }
 
 """A connection to a list of items."""
@@ -1429,7 +1419,7 @@ type BeerRatingConnection {
 }
 
 input BeerRatingCreateInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
@@ -1445,12 +1435,12 @@ input BeerRatingCreateManyWithoutUserInput {
 }
 
 input BeerRatingCreateWithoutBeerInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
 }
 
 input BeerRatingCreateWithoutUserInput {
-  rating: Float!
+  rating: Int!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
 
@@ -1476,7 +1466,7 @@ enum BeerRatingOrderByInput {
 
 type BeerRatingPreviousValues {
   id: ID!
-  rating: Float!
+  rating: Int!
 }
 
 input BeerRatingScalarWhereInput {
@@ -1528,28 +1518,28 @@ input BeerRatingScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
 }
 
 type BeerRatingSubscriptionPayload {
@@ -1592,17 +1582,17 @@ input BeerRatingSubscriptionWhereInput {
 }
 
 input BeerRatingUpdateInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
 input BeerRatingUpdateManyDataInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyMutationInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyWithoutBeerInput {
@@ -1633,12 +1623,12 @@ input BeerRatingUpdateManyWithWhereNestedInput {
 }
 
 input BeerRatingUpdateWithoutBeerDataInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
 }
 
 input BeerRatingUpdateWithoutUserDataInput {
-  rating: Float
+  rating: Int
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
@@ -1713,28 +1703,28 @@ input BeerRatingWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
   user: UserWhereInput
   beer: BeerWhereInput
 }
@@ -1957,7 +1947,7 @@ input BeerUpdateInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneWithoutBeersInput
+  brewery: BreweryUpdateOneRequiredWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
@@ -2020,7 +2010,7 @@ input BeerUpdateWithoutBarsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneWithoutBeersInput
+  brewery: BreweryUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -2029,7 +2019,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneWithoutBeersInput
+  brewery: BreweryUpdateOneRequiredWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   comments: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -2047,7 +2037,7 @@ input BeerUpdateWithoutCommentsDataInput {
   name: String
   photo: String
   description: String
-  brewery: BreweryUpdateOneWithoutBeersInput
+  brewery: BreweryUpdateOneRequiredWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
 }
@@ -2837,20 +2827,18 @@ input BreweryUpdateManyMutationInput {
   description: String
 }
 
+input BreweryUpdateOneRequiredWithoutBeersInput {
+  create: BreweryCreateWithoutBeersInput
+  connect: BreweryWhereUniqueInput
+  update: BreweryUpdateWithoutBeersDataInput
+  upsert: BreweryUpsertWithoutBeersInput
+}
+
 input BreweryUpdateOneRequiredWithoutCommentsInput {
   create: BreweryCreateWithoutCommentsInput
   connect: BreweryWhereUniqueInput
   update: BreweryUpdateWithoutCommentsDataInput
   upsert: BreweryUpsertWithoutCommentsInput
-}
-
-input BreweryUpdateOneWithoutBeersInput {
-  create: BreweryCreateWithoutBeersInput
-  connect: BreweryWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
-  update: BreweryUpdateWithoutBeersDataInput
-  upsert: BreweryUpsertWithoutBeersInput
 }
 
 input BreweryUpdateWithoutBeersDataInput {
@@ -3692,12 +3680,10 @@ export type BeerCommentOrderByInput =   'id_ASC' |
   'id_DESC' |
   'comment_ASC' |
   'comment_DESC' |
-  'timestamp_ASC' |
-  'timestamp_DESC' |
-  'updatedAt_ASC' |
-  'updatedAt_DESC' |
   'createdAt_ASC' |
-  'createdAt_DESC'
+  'createdAt_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC'
 
 export type BeerOrderByInput =   'id_ASC' |
   'id_DESC' |
@@ -4077,7 +4063,6 @@ export interface BarWhereUniqueInput {
 
 export interface BeerCommentCreateInput {
   comment: String
-  timestamp: DateTime
   beer: BeerCreateOneWithoutCommentsInput
   user: UserCreateOneWithoutBeerCommentsInput
 }
@@ -4094,13 +4079,11 @@ export interface BeerCommentCreateManyWithoutUserInput {
 
 export interface BeerCommentCreateWithoutBeerInput {
   comment: String
-  timestamp: DateTime
   user: UserCreateOneWithoutBeerCommentsInput
 }
 
 export interface BeerCommentCreateWithoutUserInput {
   comment: String
-  timestamp: DateTime
   beer: BeerCreateOneWithoutCommentsInput
 }
 
@@ -4136,14 +4119,14 @@ export interface BeerCommentScalarWhereInput {
   comment_not_starts_with?: String
   comment_ends_with?: String
   comment_not_ends_with?: String
-  timestamp?: DateTime
-  timestamp_not?: DateTime
-  timestamp_in?: DateTime[] | DateTime
-  timestamp_not_in?: DateTime[] | DateTime
-  timestamp_lt?: DateTime
-  timestamp_lte?: DateTime
-  timestamp_gt?: DateTime
-  timestamp_gte?: DateTime
+  createdAt?: DateTime
+  createdAt_not?: DateTime
+  createdAt_in?: DateTime[] | DateTime
+  createdAt_not_in?: DateTime[] | DateTime
+  createdAt_lt?: DateTime
+  createdAt_lte?: DateTime
+  createdAt_gt?: DateTime
+  createdAt_gte?: DateTime
 }
 
 export interface BeerCommentSubscriptionWhereInput {
@@ -4159,19 +4142,16 @@ export interface BeerCommentSubscriptionWhereInput {
 
 export interface BeerCommentUpdateInput {
   comment?: String
-  timestamp?: DateTime
   beer?: BeerUpdateOneRequiredWithoutCommentsInput
   user?: UserUpdateOneRequiredWithoutBeerCommentsInput
 }
 
 export interface BeerCommentUpdateManyDataInput {
   comment?: String
-  timestamp?: DateTime
 }
 
 export interface BeerCommentUpdateManyMutationInput {
   comment?: String
-  timestamp?: DateTime
 }
 
 export interface BeerCommentUpdateManyWithoutBeerInput {
@@ -4203,13 +4183,11 @@ export interface BeerCommentUpdateManyWithWhereNestedInput {
 
 export interface BeerCommentUpdateWithoutBeerDataInput {
   comment?: String
-  timestamp?: DateTime
   user?: UserUpdateOneRequiredWithoutBeerCommentsInput
 }
 
 export interface BeerCommentUpdateWithoutUserDataInput {
   comment?: String
-  timestamp?: DateTime
   beer?: BeerUpdateOneRequiredWithoutCommentsInput
 }
 
@@ -4267,14 +4245,14 @@ export interface BeerCommentWhereInput {
   comment_not_starts_with?: String
   comment_ends_with?: String
   comment_not_ends_with?: String
-  timestamp?: DateTime
-  timestamp_not?: DateTime
-  timestamp_in?: DateTime[] | DateTime
-  timestamp_not_in?: DateTime[] | DateTime
-  timestamp_lt?: DateTime
-  timestamp_lte?: DateTime
-  timestamp_gt?: DateTime
-  timestamp_gte?: DateTime
+  createdAt?: DateTime
+  createdAt_not?: DateTime
+  createdAt_in?: DateTime[] | DateTime
+  createdAt_not_in?: DateTime[] | DateTime
+  createdAt_lt?: DateTime
+  createdAt_lte?: DateTime
+  createdAt_gt?: DateTime
+  createdAt_gte?: DateTime
   beer?: BeerWhereInput
   user?: UserWhereInput
 }
@@ -4287,7 +4265,7 @@ export interface BeerCreateInput {
   name: String
   photo?: String
   description?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
   comments?: BeerCommentCreateManyWithoutBeerInput
@@ -4317,7 +4295,7 @@ export interface BeerCreateWithoutBarsInput {
   name: String
   photo?: String
   description?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
   comments?: BeerCommentCreateManyWithoutBeerInput
 }
@@ -4326,7 +4304,7 @@ export interface BeerCreateWithoutBeerRatingInput {
   name: String
   photo?: String
   description?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   comments?: BeerCommentCreateManyWithoutBeerInput
 }
@@ -4344,13 +4322,13 @@ export interface BeerCreateWithoutCommentsInput {
   name: String
   photo?: String
   description?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
+  brewery: BreweryCreateOneWithoutBeersInput
   bars?: BarCreateManyWithoutBeersInput
   beerRating?: BeerRatingCreateManyWithoutBeerInput
 }
 
 export interface BeerRatingCreateInput {
-  rating: Float
+  rating: Int
   user: UserCreateOneWithoutBeerRatingsInput
   beer: BeerCreateOneWithoutBeerRatingInput
 }
@@ -4366,12 +4344,12 @@ export interface BeerRatingCreateManyWithoutUserInput {
 }
 
 export interface BeerRatingCreateWithoutBeerInput {
-  rating: Float
+  rating: Int
   user: UserCreateOneWithoutBeerRatingsInput
 }
 
 export interface BeerRatingCreateWithoutUserInput {
-  rating: Float
+  rating: Int
   beer: BeerCreateOneWithoutBeerRatingInput
 }
 
@@ -4393,14 +4371,14 @@ export interface BeerRatingScalarWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
+  rating?: Int
+  rating_not?: Int
+  rating_in?: Int[] | Int
+  rating_not_in?: Int[] | Int
+  rating_lt?: Int
+  rating_lte?: Int
+  rating_gt?: Int
+  rating_gte?: Int
 }
 
 export interface BeerRatingSubscriptionWhereInput {
@@ -4415,17 +4393,17 @@ export interface BeerRatingSubscriptionWhereInput {
 }
 
 export interface BeerRatingUpdateInput {
-  rating?: Float
+  rating?: Int
   user?: UserUpdateOneRequiredWithoutBeerRatingsInput
   beer?: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
 export interface BeerRatingUpdateManyDataInput {
-  rating?: Float
+  rating?: Int
 }
 
 export interface BeerRatingUpdateManyMutationInput {
-  rating?: Float
+  rating?: Int
 }
 
 export interface BeerRatingUpdateManyWithoutBeerInput {
@@ -4456,12 +4434,12 @@ export interface BeerRatingUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerRatingUpdateWithoutBeerDataInput {
-  rating?: Float
+  rating?: Int
   user?: UserUpdateOneRequiredWithoutBeerRatingsInput
 }
 
 export interface BeerRatingUpdateWithoutUserDataInput {
-  rating?: Float
+  rating?: Int
   beer?: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
@@ -4505,14 +4483,14 @@ export interface BeerRatingWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
+  rating?: Int
+  rating_not?: Int
+  rating_in?: Int[] | Int
+  rating_not_in?: Int[] | Int
+  rating_lt?: Int
+  rating_lte?: Int
+  rating_gt?: Int
+  rating_gte?: Int
   user?: UserWhereInput
   beer?: BeerWhereInput
 }
@@ -4598,7 +4576,7 @@ export interface BeerUpdateInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
+  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
@@ -4661,7 +4639,7 @@ export interface BeerUpdateWithoutBarsDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
+  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -4670,7 +4648,7 @@ export interface BeerUpdateWithoutBeerRatingDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
+  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   comments?: BeerCommentUpdateManyWithoutBeerInput
 }
@@ -4688,7 +4666,7 @@ export interface BeerUpdateWithoutCommentsDataInput {
   name?: String
   photo?: String
   description?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
+  brewery?: BreweryUpdateOneRequiredWithoutBeersInput
   bars?: BarUpdateManyWithoutBeersInput
   beerRating?: BeerRatingUpdateManyWithoutBeerInput
 }
@@ -5071,20 +5049,18 @@ export interface BreweryUpdateManyMutationInput {
   description?: String
 }
 
+export interface BreweryUpdateOneRequiredWithoutBeersInput {
+  create?: BreweryCreateWithoutBeersInput
+  connect?: BreweryWhereUniqueInput
+  update?: BreweryUpdateWithoutBeersDataInput
+  upsert?: BreweryUpsertWithoutBeersInput
+}
+
 export interface BreweryUpdateOneRequiredWithoutCommentsInput {
   create?: BreweryCreateWithoutCommentsInput
   connect?: BreweryWhereUniqueInput
   update?: BreweryUpdateWithoutCommentsDataInput
   upsert?: BreweryUpsertWithoutCommentsInput
-}
-
-export interface BreweryUpdateOneWithoutBeersInput {
-  create?: BreweryCreateWithoutBeersInput
-  connect?: BreweryWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: BreweryUpdateWithoutBeersDataInput
-  upsert?: BreweryUpsertWithoutBeersInput
 }
 
 export interface BreweryUpdateWithoutBeersDataInput {
@@ -5524,7 +5500,7 @@ export interface BatchPayload {
 export interface Beer extends Node {
   id: ID_Output
   name: String
-  brewery?: Brewery
+  brewery: Brewery
   photo?: String
   description?: String
   bars?: Bar[]
@@ -5537,7 +5513,7 @@ export interface BeerComment extends Node {
   beer: Beer
   user: User
   comment: String
-  timestamp: DateTime
+  createdAt: DateTime
 }
 
 /*
@@ -5562,7 +5538,7 @@ export interface BeerCommentEdge {
 export interface BeerCommentPreviousValues {
   id: ID_Output
   comment: String
-  timestamp: DateTime
+  createdAt: DateTime
 }
 
 export interface BeerCommentSubscriptionPayload {
@@ -5602,7 +5578,7 @@ export interface BeerRating extends Node {
   id: ID_Output
   user: User
   beer: Beer
-  rating: Float
+  rating: Int
 }
 
 /*
@@ -5626,7 +5602,7 @@ export interface BeerRatingEdge {
 
 export interface BeerRatingPreviousValues {
   id: ID_Output
-  rating: Float
+  rating: Int
 }
 
 export interface BeerRatingSubscriptionPayload {
@@ -5791,11 +5767,6 @@ The `Boolean` scalar type represents `true` or `false`.
 export type Boolean = boolean
 
 export type DateTime = Date | string
-
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.

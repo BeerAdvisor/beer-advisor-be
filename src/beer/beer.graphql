@@ -45,6 +45,7 @@ input CreateBeerInput {
     breweryId: ID!
     description: String
     photo: String
+    barIds: [String!]
 }
 
 input CommentBeerInput {
