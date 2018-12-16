@@ -23,12 +23,12 @@ export class BeerResolvers {
   }
 
   @Mutation()
-  commentBeer(@Args() args: CommentBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerComment> {
+  commentBeer(@Args('commentBeerInput') args: CommentBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerComment> {
     return this.beerService.commentBeer(args, info);
   }
 
   @Mutation()
-  rateBeer(@Args() args: RateBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerRating> {
+  rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerRating> {
     return this.beerService.rateBeer(args, info);
   }
 }

@@ -58,12 +58,15 @@ export class BeerService {
     rating: RateBeerInput,
     info: GraphQLResolveInfo,
   ): Promise<BeerRating> {
-    return this.prisma.mutation.createBeerRating({
-      data: {
-        rating: rating.rating,
-        user: { connect: { id: 'user_id_here' } }, // TODO
-        beer: { connect: { id: rating.beerId } },
+    return this.prisma.mutation.createBeerRating(
+      {
+        data: {
+          rating: rating.rating,
+          user: { connect: { id: 'user_id_here' } }, // TODO
+          beer: { connect: { id: rating.beerId } },
+        },
       },
-    });
+      info,
+    );
   }
 }
