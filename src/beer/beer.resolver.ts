@@ -1,14 +1,17 @@
-import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Info, Mutation, Query, Resolver, Context, GqlExecutionContext } from '@nestjs/graphql';
 import { BeerService } from './beer.service';
 import { Beer, BeerComment, BeerRating, CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { GraphQLResolveInfo } from 'graphql';
+import { ExecutionContext, Req } from '@nestjs/common';
 
 @Resolver('Beer')
 export class BeerResolvers {
   constructor(private readonly beerService: BeerService) {}
 
   @Query()
-  getBeers(@Args() args, @Info() info: GraphQLResolveInfo): Promise<Beer[]> {
+  getBeers(@Args() args, @Info() info: GraphQLResolveInfo, @Req() req, @Context() ctx): Promise<Beer[]> {
+    const xxx = GqlExecutionContext.create(ctx);
+    ctx.res.cookie('cookieName', 'asdadasdasd', { httpOnly: true });
     return this.beerService.getAllBeers(args, info);
   }
 

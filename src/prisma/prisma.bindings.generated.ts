@@ -3648,6 +3648,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 `
 
@@ -5406,6 +5407,7 @@ export interface UserWhereInput {
 
 export interface UserWhereUniqueInput {
   id?: ID_Input
+  email?: String
 }
 
 /*

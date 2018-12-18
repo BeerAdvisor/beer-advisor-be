@@ -1,7 +1,5 @@
 type User {
     id: ID!
-    email: String!
-    password: String!
     role: Role!
     active: Boolean!
     name: String
@@ -15,3 +13,11 @@ enum Role {
     ADMIN
 }
 
+type Mutation {
+    signup(email: String!, password: String!, name: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+    user: User
+}

@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Sun Dec 16 2018 21:48:30 GMT+0100 (CET)
+# timestamp: Tue Dec 18 2018 22:44:58 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -3534,4 +3534,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }

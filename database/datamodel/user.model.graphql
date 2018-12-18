@@ -1,6 +1,6 @@
 type User {
     id: ID! @unique
-    email: String!
+    email: String! @unique
     password: String!
     role: Role! @default(value: USER)
     active: Boolean! @default(value: "true")

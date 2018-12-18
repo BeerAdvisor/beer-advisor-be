@@ -45,6 +45,10 @@ export class RateBeerInput {
     rating: number;
 }
 
+export class AuthPayload {
+    user?: User;
+}
+
 export class Bar {
     id: string;
     name: string;
@@ -113,6 +117,10 @@ export abstract class IMutation {
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
     abstract commentBrewery(commentBreweryInput?: CommentBreweryInput): BreweryComment | Promise<BreweryComment>;
+
+    abstract signup(email: string, password: string, name: string): AuthPayload | Promise<AuthPayload>;
+
+    abstract login(email: string, password: string): AuthPayload | Promise<AuthPayload>;
 }
 
 export abstract class IQuery {
@@ -133,8 +141,6 @@ export abstract class IQuery {
 
 export class User {
     id: string;
-    email: string;
-    password: string;
     role: Role;
     active: boolean;
     name?: string;
