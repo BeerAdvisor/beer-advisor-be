@@ -1,27 +1,18 @@
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Req } from '@nestjs/common';
-import { Request } from 'express';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Response } from 'express';
 import * as bcryptjs from 'bcryptjs';
 import * as jsonwebtoken from 'jsonwebtoken';
 
 import { UserService } from './user.service';
-import { AppService } from '../app.service';
+import { AuthPayload, LoginInput, SignUpInput, User } from '../graphql.schema.generated';
+import { ResGql } from '../shared/decorators/req-res-graphql.decorator';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(
-    private readonly user: UserService,
-  ) {}
-
-  // TODO do we really need find user?
-  // @Query()
-  // findUser(@Args('email') email: string) {
-  //   // TODO types
-  //   return this.user.find({ email });
-  // }
+  constructor(private readonly user: UserService) {}
 
   @Mutation()
-  async login(@Args() { email, password }, @Context() ctx) {
+  async login(@Args('loginInput') { email, password }: LoginInput, @ResGql() res: Response): Promise<AuthPayload> {
     const user = await this.user.find({ email });
     if (!user) {
       throw new Error('no user'); // TODO errors
@@ -33,19 +24,13 @@ export class UserResolver {
     }
 
     const jwt = jsonwebtoken.sign({ userId: user.id }, 'secret'); // TODO secret
-    ctx.res.cookie('token', jwt, { httpOnly: true });
+    res.cookie('token', jwt, { httpOnly: true });
 
-    return {
-      user,
-    };
+    return { user };
   }
 
   @Mutation()
-  async signup(
-    @Args() { email, name, password },
-    @Req() req: Request,
-    @Context() ctx,
-  ) {
+  async signup(@Args('signUpInput') { email, name, password }: SignUpInput, @ResGql() res: Response): Promise<AuthPayload> {
     const errors: any = {};
 
     if (password.length < 6) {
@@ -66,17 +51,11 @@ export class UserResolver {
       throw new Error('hm'); // todo
     }
 
-    const user = await this.user.create({
-      email,
-      name,
-      password,
-    });
+    const user = await this.user.create({ email, name, password });
 
     const jwt = jsonwebtoken.sign({ userId: user.id }, 'secret'); // TODO secret
-    ctx.res.cookie('token', jwt, { httpOnly: true });
+    res.cookie('token', jwt, { httpOnly: true });
 
-    return {
-      user,
-    };
+    return { user };
   }
 }

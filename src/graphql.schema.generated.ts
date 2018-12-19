@@ -40,9 +40,20 @@ export class CreateBreweryInput {
     beerIds: string[];
 }
 
+export class LoginInput {
+    email: string;
+    password: string;
+}
+
 export class RateBeerInput {
     beerId: string;
     rating: number;
+}
+
+export class SignUpInput {
+    email: string;
+    password: string;
+    name: string;
 }
 
 export class AuthPayload {
@@ -118,9 +129,9 @@ export abstract class IMutation {
 
     abstract commentBrewery(commentBreweryInput?: CommentBreweryInput): BreweryComment | Promise<BreweryComment>;
 
-    abstract signup(email: string, password: string, name: string): AuthPayload | Promise<AuthPayload>;
+    abstract signup(signUpInput?: SignUpInput): AuthPayload | Promise<AuthPayload>;
 
-    abstract login(email: string, password: string): AuthPayload | Promise<AuthPayload>;
+    abstract login(loginInput?: LoginInput): AuthPayload | Promise<AuthPayload>;
 }
 
 export abstract class IQuery {

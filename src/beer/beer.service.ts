@@ -1,29 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import {
-  Beer,
-  BeerComment,
-  BeerRating,
-  CommentBeerInput,
-  CreateBeerInput,
-  RateBeerInput,
-} from '../graphql.schema.generated';
+import { CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
 
 @Injectable()
 export class BeerService {
   constructor(private readonly prisma: PrismaService) {}
 
-  getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {
+  getAllBeers(args, info: GraphQLResolveInfo): Promise<any> {
     return this.prisma.query.beers(args, info);
   }
 
-  getBeer(id: string, info: GraphQLResolveInfo): Promise<Beer> {
+  getBeer(id: string, info: GraphQLResolveInfo): Promise<any> {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<Beer> {
+  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<any> {
     return this.prisma.mutation.createBeer(
       {
         data: {
@@ -38,10 +31,7 @@ export class BeerService {
     );
   }
 
-  commentBeer(
-    comment: CommentBeerInput,
-    info: GraphQLResolveInfo,
-  ): Promise<BeerComment> {
+  commentBeer(comment: CommentBeerInput, info: GraphQLResolveInfo): Promise<any> {
     return this.prisma.mutation.createBeerComment(
       {
         data: {
@@ -54,10 +44,7 @@ export class BeerService {
     );
   }
 
-  rateBeer(
-    rating: RateBeerInput,
-    info: GraphQLResolveInfo,
-  ): Promise<BeerRating> {
+  rateBeer(rating: RateBeerInput, info: GraphQLResolveInfo): Promise<any> {
     return this.prisma.mutation.createBeerRating(
       {
         data: {

@@ -6,19 +6,19 @@ import * as bcryptjs from 'bcryptjs';
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
-  public update(args) {
+  public update(args): Promise<any> {
     return this.prisma.mutation.updateUser(args);
   }
 
-  public find(where) {
+  public find(where): Promise<any> {
     return this.prisma.query.user({ where });
   }
 
-  public exists(where) {
+  public exists(where): Promise<boolean> {
     return this.prisma.exists.User(where);
   }
 
-  public async create(user) {
+  public async create(user): Promise<any> {
     const password = await bcryptjs.hash(user.password, 10);
 
     return await this.prisma.mutation.createUser({

@@ -1,3 +1,12 @@
+type Mutation {
+    signup(signUpInput: SignUpInput): AuthPayload
+    login(loginInput: LoginInput): AuthPayload
+}
+
+type AuthPayload {
+    user: User
+}
+
 type User {
     id: ID!
     role: Role!
@@ -13,11 +22,13 @@ enum Role {
     ADMIN
 }
 
-type Mutation {
-    signup(email: String!, password: String!, name: String!): AuthPayload
-    login(email: String!, password: String!): AuthPayload
+input SignUpInput {
+    email: String!
+    password: String!
+    name: String!
 }
 
-type AuthPayload {
-    user: User
+input LoginInput {
+    email: String!
+    password: String!
 }
