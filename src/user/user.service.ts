@@ -21,7 +21,7 @@ export class UserService {
   public async create(user): Promise<any> {
     const password = await bcryptjs.hash(user.password, 10);
 
-    return await this.prisma.mutation.createUser({
+    return this.prisma.mutation.createUser({
       data: {
         ...user,
         password,
