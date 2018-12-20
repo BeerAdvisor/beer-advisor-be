@@ -1,7 +1,7 @@
 import { SignUpInput } from '../../graphql.schema.generated';
 import { IsEmail, MinLength } from 'class-validator';
 
-export class SignupInputDto extends SignUpInput {
+export class SignUpInputDto extends SignUpInput {
   @IsEmail()
   readonly email: string;
 
