@@ -4,8 +4,9 @@ import * as bcryptjs from 'bcryptjs';
 import * as jsonwebtoken from 'jsonwebtoken';
 
 import { UserService } from './user.service';
-import { AuthPayload, LoginInput, SignUpInput, User } from '../graphql.schema.generated';
+import { AuthPayload, LoginInput, User } from '../graphql.schema.generated';
 import { ResGql } from '../shared/decorators/req-res-graphql.decorator';
+import { SignupInputDto } from './dto/signup-input.dto';
 
 @Resolver('User')
 export class UserResolver {
@@ -30,7 +31,7 @@ export class UserResolver {
   }
 
   @Mutation()
-  async signup(@Args('signUpInput') { email, name, password }: SignUpInput, @ResGql() res: Response): Promise<AuthPayload> {
+  async signup(@Args('signUpInput') { email, name, password }: SignupInputDto, @ResGql() res: Response): Promise<AuthPayload> {
     const errors: any = {};
 
     if (password.length < 6) {

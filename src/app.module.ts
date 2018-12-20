@@ -4,6 +4,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { GraphqlOptions } from './graphql.options';
 import { BeerModule } from './beer/beer.module';
 import { UserModule } from './user/user.module';
+import { ErrorModule } from './error/error.module';
+import { APP_PIPE } from '@nestjs/core';
+import { GqlValidationPipe } from './shared/pipes/gql-validation.pipe';
 
 @Module({
   imports: [
@@ -13,6 +16,13 @@ import { UserModule } from './user/user.module';
     PrismaModule,
     BeerModule,
     UserModule,
+    ErrorModule,
+  ],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: GqlValidationPipe,
+    },
   ],
 })
 export class ApplicationModule {}
