@@ -1,7 +1,7 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint:recommended"
+        "tslint:latest"
     ],
     "jsRules": {
         "no-unused-expression": true
@@ -49,13 +49,14 @@
         ],
         "one-variable-per-declaration": [
             false
-        ]
+        ],
+        "no-implicit-dependencies": false
     },
     "rulesDirectory": [],
     "linterOptions": {
         "exclude": [
-            "./src/graphql.schema.d.ts",
-            "./src/prisma/prisma.binding.ts"
+            "src/graphql.schema.generated.ts",
+            "src/prisma/prisma.binding.generated.ts"
         ]
     }
 }
