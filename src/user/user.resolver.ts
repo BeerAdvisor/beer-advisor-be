@@ -34,10 +34,6 @@ export class UserResolver {
   async signup(@Args('signUpInput') { email, name, password }: SignUpInputDto, @ResGql() res: Response): Promise<AuthPayload> {
     const errors: any = {};
 
-    if (password.length < 6) {
-      errors.password = `Password must be at least 6 characters`;
-    }
-
     const emailExists = await this.user.exists({ email });
     if (emailExists) {
       errors.email = `Email ${email} is already in use`;
