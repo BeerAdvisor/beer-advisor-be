@@ -1,0 +1,4 @@
+export enum ErrorCodes {
+  EMAIL_OR_PAS_INCORRECT = 'EMAIL_OR_PAS_INCORRECT',
+  EMAIL_IN_USE = 'EMAIL_IN_USE',
+}

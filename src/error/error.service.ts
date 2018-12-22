@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserInputError } from 'apollo-server-errors';
+import { ApolloError, UserInputError } from 'apollo-server-errors';
 import { ValidationError } from 'class-validator';
 
 @Injectable()
@@ -9,5 +9,9 @@ export class ErrorService {
       `UserInputError`,
       { validationErrors },
     );
+  }
+
+  public throwCustomError(message: string, code?: string, props?: Record<string, any>) {
+    throw new ApolloError(message, code, props);
   }
 }

@@ -17,7 +17,7 @@ export class GraphqlOptions implements GqlOptionsFactory {
         path: join(process.cwd(), 'src/graphql.schema.generated.ts'),
         outputAs: 'class',
       },
-      debug: true,
+      debug: true, // Toggle error stack trace in responses
     };
   }
 }

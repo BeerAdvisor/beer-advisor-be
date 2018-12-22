@@ -7,22 +7,20 @@ import { UserService } from './user.service';
 import { AuthPayload, LoginInput, User } from '../graphql.schema.generated';
 import { ResGql } from '../shared/decorators/req-res-graphql.decorator';
 import { SignUpInputDto } from './dto/sign-up-input.dto';
+import { ErrorService } from '../error/error.service';
+import { ErrorCodes } from '../shared/enums/error-codes.enum';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(private readonly user: UserService) {}
+  constructor(private readonly user: UserService, private readonly errorService: ErrorService) {}
 
   @Mutation()
   async login(@Args('loginInput') { email, password }: LoginInput, @ResGql() res: Response): Promise<AuthPayload> {
     const user = await this.user.find({ email });
-    if (!user) {
-      throw new Error('no user'); // TODO errors
-    }
+    if (!user) this.throwLoginError();
 
     const valid = await bcryptjs.compare(password, user.password);
-    if (!valid) {
-      throw new Error('not valid');
-    }
+    if (!valid) this.throwLoginError();
 
     const jwt = jsonwebtoken.sign({ userId: user.id }, 'secret'); // TODO secret
     res.cookie('token', jwt, { httpOnly: true });
@@ -32,21 +30,8 @@ export class UserResolver {
 
   @Mutation()
   async signup(@Args('signUpInput') { email, name, password }: SignUpInputDto, @ResGql() res: Response): Promise<AuthPayload> {
-    const errors: any = {};
-
     const emailExists = await this.user.exists({ email });
-    if (emailExists) {
-      errors.email = `Email ${email} is already in use`;
-    }
-
-    const usernameExists = await this.user.exists({ name });
-    if (usernameExists) {
-      errors.username = `Username ${name} is already in use`;
-    }
-
-    if (false) {
-      throw new Error('hm'); // todo
-    }
+    if (emailExists) this.errorService.throwCustomError('Email already in use', ErrorCodes.EMAIL_IN_USE);
 
     const user = await this.user.create({ email, name, password });
 
@@ -54,5 +39,9 @@ export class UserResolver {
     res.cookie('token', jwt, { httpOnly: true });
 
     return { user };
+  }
+
+  private throwLoginError() {
+    this.errorService.throwCustomError('Email or password incorrect', ErrorCodes.EMAIL_OR_PAS_INCORRECT);
   }
 }
