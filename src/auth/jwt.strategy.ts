@@ -23,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate({ id }) {
     const user = await this.user.find({ id });
     if (!user) {
-      throw new AuthenticationError('Must authenticate');
+      throw new AuthenticationError('Authenticate validation error');
     }
 
     return user;
