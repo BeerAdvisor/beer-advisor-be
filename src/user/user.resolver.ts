@@ -1,7 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { Response } from 'express';
 import * as bcryptjs from 'bcryptjs';
-import * as jsonwebtoken from 'jsonwebtoken';
 
 import { UserService } from './user.service';
 import { AuthPayload, LoginInput, User } from '../graphql.schema.generated';
@@ -9,10 +8,11 @@ import { ResGql } from '../shared/decorators/req-res-graphql.decorator';
 import { SignUpInputDto } from './dto/sign-up-input.dto';
 import { ErrorService } from '../error/error.service';
 import { ErrorCodes } from '../shared/enums/error-codes.enum';
+import { JwtService } from '@nestjs/jwt';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(private readonly user: UserService, private readonly errorService: ErrorService) {}
+  constructor(private readonly user: UserService, private readonly errorService: ErrorService, private readonly jwt: JwtService) {}
 
   @Mutation()
   async login(@Args('loginInput') { email, password }: LoginInput, @ResGql() res: Response): Promise<AuthPayload> {
@@ -22,7 +22,7 @@ export class UserResolver {
     const valid = await bcryptjs.compare(password, user.password);
     if (!valid) this.throwLoginError();
 
-    const jwt = jsonwebtoken.sign({ userId: user.id }, 'secret'); // TODO secret
+    const jwt = this.jwt.sign({ id: user.id });
     res.cookie('token', jwt, { httpOnly: true });
 
     return { user };
@@ -35,7 +35,7 @@ export class UserResolver {
 
     const user = await this.user.create({ email, name, password });
 
-    const jwt = jsonwebtoken.sign({ userId: user.id }, 'secret'); // TODO secret
+    const jwt = this.jwt.sign({ id: user.id });
     res.cookie('token', jwt, { httpOnly: true });
 
     return { user };

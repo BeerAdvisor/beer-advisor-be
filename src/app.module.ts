@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ErrorModule } from './error/error.module';
 import { APP_PIPE } from '@nestjs/core';
 import { GqlValidationPipe } from './shared/pipes/gql-validation.pipe';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { GqlValidationPipe } from './shared/pipes/gql-validation.pipe';
     BeerModule,
     UserModule,
     ErrorModule,
+    AuthModule,
   ],
   providers: [
     {

@@ -2,12 +2,15 @@ import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BeerService } from './beer.service';
 import { Beer, BeerComment, BeerRating, CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { GraphQLResolveInfo } from 'graphql';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from '../auth/graphql-auth.guard';
 
 @Resolver('Beer')
 export class BeerResolvers {
   constructor(private readonly beerService: BeerService) {}
 
   @Query()
+  @UseGuards(GqlAuthGuard)
   getBeers(@Args() args, @Info() info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.beerService.getAllBeers(args, info);
   }
