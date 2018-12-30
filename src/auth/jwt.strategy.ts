@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserService } from '../user/user.service';
-import { AuthenticationError } from 'apollo-server-errors';
 import { Request } from 'express';
+import { AuthService } from './auth.service';
+import { JwtData } from '../shared/interfaces/jwt-data.interface';
 
-const cookieExtractor = (req: Request) => {
+const cookieExtractor = (req: Request): string | null => {
   let token = null;
   if (req && req.cookies) token = req.cookies['token'];
   return token;
@@ -13,19 +13,14 @@ const cookieExtractor = (req: Request) => {
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly user: UserService) {
+  constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: cookieExtractor,
       secretOrKey: 'secret', // TODO
     });
   }
 
-  async validate({ id }) {
-    const user = await this.user.find({ id });
-    if (!user) {
-      throw new AuthenticationError('Authenticate validation error');
-    }
-
-    return user;
+  validate(jwtData: JwtData) {
+    return this.authService.validate(jwtData);
   }
 }
