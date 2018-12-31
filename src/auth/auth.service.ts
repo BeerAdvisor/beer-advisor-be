@@ -7,8 +7,8 @@ import { JwtData } from '../shared/interfaces/jwt-data.interface';
 export class AuthService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async validate(jwtData: JwtData): Promise<any> {
-    const user = await this.prisma.query.user({ where: { id: jwtData.id } });
+  async validate({ id }: JwtData): Promise<any> {
+    const user = await this.prisma.query.user({ where: { id } });
     if (!user) {
       throw new AuthenticationError('Authenticate validation error');
     }

@@ -4,6 +4,8 @@ import { Beer, BeerComment, BeerRating, CommentBeerInput, CreateBeerInput, RateB
 import { GraphQLResolveInfo } from 'graphql';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';
+import { ReqGql } from '../shared/decorators/req-res-graphql.decorator';
+import { Request } from 'express';
 
 @Resolver('Beer')
 export class BeerResolvers {
@@ -11,7 +13,7 @@ export class BeerResolvers {
 
   @Query()
   @UseGuards(GqlAuthGuard)
-  getBeers(@Args() args, @Info() info: GraphQLResolveInfo): Promise<Beer[]> {
+  getBeers(@Args() args, @Info() info: GraphQLResolveInfo, @ReqGql() req: Request): Promise<Beer[]> {
     return this.beerService.getAllBeers(args, info);
   }
 
