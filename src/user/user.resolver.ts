@@ -3,7 +3,7 @@ import { Response } from 'express';
 import * as bcryptjs from 'bcryptjs';
 
 import { UserService } from './user.service';
-import { AuthPayload, LoginInput, User } from '../graphql.schema.generated';
+import { LoginInput, User } from '../graphql.schema.generated';
 import { ResGql } from '../shared/decorators/req-res-graphql.decorator';
 import { SignUpInputDto } from './dto/sign-up-input.dto';
 import { ErrorService } from '../error/error.service';
@@ -15,7 +15,7 @@ export class UserResolver {
   constructor(private readonly user: UserService, private readonly errorService: ErrorService, private readonly jwt: JwtService) {}
 
   @Mutation()
-  async login(@Args('loginInput') { email, password }: LoginInput, @ResGql() res: Response): Promise<AuthPayload> {
+  async login(@Args('loginInput') { email, password }: LoginInput, @ResGql() res: Response) {
     const user = await this.user.find({ email });
     if (!user) this.throwLoginError();
 
@@ -29,7 +29,7 @@ export class UserResolver {
   }
 
   @Mutation()
-  async signup(@Args('signUpInput') { email, name, password }: SignUpInputDto, @ResGql() res: Response): Promise<AuthPayload> {
+  async signup(@Args('signUpInput') { email, name, password }: SignUpInputDto, @ResGql() res: Response) {
     const emailExists = await this.user.exists({ email });
     if (emailExists) this.errorService.throwCustomError('Email already in use', ErrorCodes.EMAIL_IN_USE);
 

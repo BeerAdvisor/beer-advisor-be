@@ -3,20 +3,21 @@ import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
 import { CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
+import { Beer, BeerRating, BeerComment } from '../prisma/prisma.bindings.generated';
 
 @Injectable()
 export class BeerService {
   constructor(private readonly prisma: PrismaService) {}
 
-  getAllBeers(args, info: GraphQLResolveInfo): Promise<any> {
+  getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.prisma.query.beers(args, info);
   }
 
-  getBeer(id: string, info: GraphQLResolveInfo): Promise<any> {
+  getBeer(id: string, info: GraphQLResolveInfo): Promise<Beer> {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<any> {
+  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<Beer> {
     return this.prisma.mutation.createBeer(
       {
         data: {
@@ -31,7 +32,7 @@ export class BeerService {
     );
   }
 
-  commentBeer(comment: CommentBeerInput, info: GraphQLResolveInfo): Promise<any> {
+  commentBeer(comment: CommentBeerInput, info: GraphQLResolveInfo): Promise<BeerComment> {
     return this.prisma.mutation.createBeerComment(
       {
         data: {
@@ -44,7 +45,7 @@ export class BeerService {
     );
   }
 
-  rateBeer(rating: RateBeerInput, info: GraphQLResolveInfo): Promise<any> {
+  rateBeer(rating: RateBeerInput, info: GraphQLResolveInfo): Promise<BeerRating> {
     return this.prisma.mutation.createBeerRating(
       {
         data: {

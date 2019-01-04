@@ -13,27 +13,27 @@ export class BeerResolvers {
 
   @Query()
   @UseGuards(GqlAuthGuard)
-  getBeers(@Args() args, @Info() info: GraphQLResolveInfo, @GqlUser() user: User): Promise<Beer[]> {
+  getBeers(@Args() args, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
     return this.beerService.getAllBeers(args, info);
   }
 
   @Query()
-  beer(@Args('id') id: string, @Info() info: GraphQLResolveInfo): Promise<Beer> {
+  beer(@Args('id') id: string, @Info() info: GraphQLResolveInfo) {
     return this.beerService.getBeer(id, info);
   }
 
   @Mutation()
-  createBeer(@Args('createBeerInput') args: CreateBeerInput, @Info() info: GraphQLResolveInfo): Promise<Beer> {
+  createBeer(@Args('createBeerInput') args: CreateBeerInput, @Info() info: GraphQLResolveInfo) {
     return this.beerService.createBeer(args, info);
   }
 
   @Mutation()
-  commentBeer(@Args('commentBeerInput') args: CommentBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerComment> {
+  commentBeer(@Args('commentBeerInput') args: CommentBeerInput, @Info() info: GraphQLResolveInfo) {
     return this.beerService.commentBeer(args, info);
   }
 
   @Mutation()
-  rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo): Promise<BeerRating> {
+  rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo) {
     return this.beerService.rateBeer(args, info);
   }
 }
