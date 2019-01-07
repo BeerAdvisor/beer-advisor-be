@@ -1,9 +1,10 @@
 type Beer {
     id: ID! @unique
     name: String!
-    brewery: Brewery!
+    type: String!
+    strength: String
     photo: String
-    description: String
+    brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!]
     comments: [BeerComment!]

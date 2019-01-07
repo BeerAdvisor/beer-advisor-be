@@ -2,8 +2,10 @@ type Bar {
     id: ID! @unique
     name: String!
     address: String!
+    # TODO limit lat long by prague
     lat: String!
     long: String!
+    phone: String
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]

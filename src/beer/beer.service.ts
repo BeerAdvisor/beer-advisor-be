@@ -9,7 +9,7 @@ import { Beer, BeerRating, BeerComment } from '../prisma/prisma.bindings.generat
 export class BeerService {
   constructor(private readonly prisma: PrismaService) {}
 
-  getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {
+  getAllBeers(args, info: GraphQLResolveInfo): Promise<string> {
     return this.prisma.query.beers(args, info);
   }
 

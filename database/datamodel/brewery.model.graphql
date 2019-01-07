@@ -2,16 +2,6 @@ type Brewery {
     id: ID! @unique
     name: String!
     logo: String
-    country: String
-    description: String
+    country: String!
     beers: [Beer!]
-    comments: [BreweryComment!]
-}
-
-type BreweryComment {
-    id: ID! @unique
-    brewery: Brewery!
-    user: User!
-    comment: String!
-    timestamp: DateTime!
 }

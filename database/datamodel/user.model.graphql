@@ -4,7 +4,12 @@ type User {
     password: String!
     role: Role! @default(value: USER)
     active: Boolean! @default(value: "true")
+    nickname: String!
+    birthdate: DateTime!
+    sex: Sex!
+    createdAt: DateTime!
     name: String
+    surname: String
     beerComments: [BeerComment!]
     breweryComments: [BreweryComment!]
     beerRatings: [BeerRating!]
@@ -15,3 +20,7 @@ enum Role {
     ADMIN
 }
 
+enum Sex {
+    MALE
+    FEMALE
+}
