@@ -10,4 +10,42 @@ type Bar {
     closeTime: DateTime
     photos: [String!]
     beers: [Beer!]
+    barRating: [BarRating!]
+    beerPrices: [BeerPrice!]
+    barComments: [BarComment!]
+    barChanges: [BarChange!]
+    createdBy: User! @relation(name: "BarCreatedByRelation")
+    likedBy: [User!] @relation(name: "BarLikedByRelation")
+}
+
+type BarRating {
+    id: ID! @unique
+    rating: Float!
+    user: User!
+    bar: Bar!
+}
+
+type BarComment {
+    id: ID! @unique
+    comment: String!
+    bar: Bar!
+    user: User!
+    createdAt: DateTime!
+}
+
+type BarChange {
+    id: ID! @unique
+    price: Float!
+    field: String!
+    newValue: String!
+    user: User!
+    bar: Bar!
+    upvotes: [BarChangeUpvote!]
+    createdAt: DateTime!
+}
+
+type BarChangeUpvote {
+    id: ID! @unique
+    user: User!
+    barChange: BarChange!
 }

@@ -9,8 +9,9 @@ type Beer {
     beerRating: [BeerRating!]
     beerPrices: [BeerPrice!]
     beerComments: [BeerComment!]
-    createdBy: User! @relation(name: "CreatedByRelation")
-    likedBy: [User!] @relation(name: "LikedByRelation")
+    beerChanges: [BeerChange!]
+    createdBy: User! @relation(name: "BeerCreatedByRelation")
+    likedBy: [User!] @relation(name: "BeerLikedByRelation")
 }
 
 type BeerRating {
@@ -35,6 +36,7 @@ type BeerChange {
     newValue: String!
     user: User!
     beer: Beer!
+    upvotes: [BeerChangeUpvote!]
     createdAt: DateTime!
 }
 
