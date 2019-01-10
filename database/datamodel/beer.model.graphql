@@ -2,25 +2,52 @@ type Beer {
     id: ID! @unique
     name: String!
     type: String!
-    strength: String
+    strong: String
     photo: String
     brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!]
-    comments: [BeerComment!]
+    beerPrices: [BeerPrice!]
+    beerComments: [BeerComment!]
+    createdBy: User! @relation(name: "CreatedByRelation")
+    likedBy: [User!] @relation(name: "LikedByRelation")
 }
 
 type BeerRating {
     id: ID! @unique
+    rating: Float!
     user: User!
     beer: Beer!
-    rating: Int!
 }
 
 type BeerComment {
     id: ID! @unique
+    comment: String!
     beer: Beer!
     user: User!
-    comment: String!
     createdAt: DateTime!
+}
+
+type BeerChange {
+    id: ID! @unique
+    price: Float!
+    field: String!
+    newValue: String!
+    user: User!
+    beer: Beer!
+    createdAt: DateTime!
+}
+
+type BeerChangeUpvote {
+    id: ID! @unique
+    user: User!
+    beerChange: BeerChange!
+}
+
+type BeerPrice {
+    id: ID! @unique
+    price: Float!
+    user: User!
+    bar: Bar!
+    beer: Beer!
 }
