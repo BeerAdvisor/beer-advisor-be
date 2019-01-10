@@ -1,7 +1,7 @@
 type Brewery {
     id: ID! @unique
     name: String!
-    logo: String
     country: String!
+    logo: String
     beers: [Beer!]
 }

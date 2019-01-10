@@ -14,8 +14,8 @@ type Bar {
     beerPrices: [BeerPrice!]
     barComments: [BarComment!]
     barChanges: [BarChange!]
-    createdBy: User! @relation(name: "BarCreatedByRelation")
-    likedBy: [User!] @relation(name: "BarLikedByRelation")
+    createdBy: User! @relation(name: "BarCreatedRelation")
+    likedBy: [User!] @relation(name: "BarLikedRelation")
 }
 
 type BarRating {

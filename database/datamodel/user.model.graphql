@@ -11,8 +11,19 @@ type User {
     name: String
     surname: String
     beerComments: [BeerComment!]
-    breweryComments: [BreweryComment!]
+    barComments: [BarComment!]
     beerRatings: [BeerRating!]
+    barRatings: [BarRating!]
+    beerChanges: [BeerChange!]
+    barChanges: [BarChange!]
+    beerChangeUpvotes: [BeerChangeUpvote!]
+    barChangeUpvotes: [BarChangeUpvote!]
+    pricedBeers: [BeerPrice!]
+    likedBeers: [Beer!] @relation(name: "BeerLikedRelation")
+    likedBars: [Bar!] @relation(name: "BarLikedRelation")
+    createdBeers: [Beer!] @relation(name: "BeerCreatedRelation")
+    createdBars: [Bar!] @relation(name: "BarCreatedRelation")
+    createdAt: DateTime!
 }
 
 enum Role {
