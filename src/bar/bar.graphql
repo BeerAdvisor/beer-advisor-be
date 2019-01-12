@@ -12,12 +12,52 @@ type Bar {
     id: ID!
     name: String!
     address: String!
+    # TODO limit lat long by prague
     lat: String!
     long: String!
+    phone: String
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]
     beers: [Beer!]
+    barRating: [BarRating!]
+    beerPrices: [BeerPrice!]
+    barComments: [BarComment!]
+    barChanges: [BarChange!]
+    createdBy: User!
+    likedBy: [User!]
+}
+
+type BarRating {
+    id: ID!
+    rating: Float!
+    user: User!
+    bar: Bar!
+}
+
+type BarComment {
+    id: ID!
+    comment: String!
+    bar: Bar!
+    user: User!
+    createdAt: DateTime!
+}
+
+type BarChange {
+    id: ID!
+    price: Float!
+    field: String!
+    newValue: String!
+    user: User!
+    bar: Bar!
+    upvotes: [BarChangeUpvote!]
+    createdAt: DateTime!
+}
+
+type BarChangeUpvote {
+    id: ID!
+    user: User!
+    barChange: BarChange!
 }
 
 input CreateBarInput {

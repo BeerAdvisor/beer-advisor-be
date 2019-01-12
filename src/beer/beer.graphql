@@ -12,27 +12,57 @@ type Mutation {
 type Beer {
     id: ID!
     name: String!
-    brewery: Brewery!
+    type: String!
+    strong: String
     photo: String
-    description: String
+    brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!]
-    comments: [BeerComment!]
+    beerPrices: [BeerPrice!]
+    beerComments: [BeerComment!]
+    beerChanges: [BeerChange!]
+    createdBy: User!
+    likedBy: [User!]
 }
 
 type BeerRating {
     id: ID!
+    rating: Float!
     user: User!
     beer: Beer!
-    rating: Int!
 }
 
 type BeerComment {
     id: ID!
+    comment: String!
     beer: Beer!
     user: User!
-    comment: String!
-    timestamp: DateTime!
+    createdAt: DateTime!
+}
+
+type BeerChange {
+    id: ID!
+    price: Float!
+    field: String!
+    newValue: String!
+    user: User!
+    beer: Beer!
+    upvotes: [BeerChangeUpvote!]
+    createdAt: DateTime!
+}
+
+type BeerChangeUpvote {
+    id: ID!
+    user: User!
+    beerChange: BeerChange!
+}
+
+type BeerPrice {
+    id: ID!
+    price: Float!
+    user: User!
+    bar: Bar!
+    beer: Beer!
 }
 
 input RateBeerInput {
@@ -42,9 +72,10 @@ input RateBeerInput {
 
 input CreateBeerInput {
     name: String!
-    breweryId: ID!
-    description: String
+    type: String!
     photo: String
+    strong: String
+    breweryId: String
     barIds: [String!]
 }
 

@@ -22,8 +22,9 @@ export class BeerService {
       {
         data: {
           name: beer.name,
-          description: beer.description,
           photo: beer.photo,
+          type: beer.type,
+          createdBy: { connect: { id: 'userId' } }, // TODO
           brewery: { connect: { id: beer.breweryId } },
           bars: { connect: mapConnectIds(beer.barIds) },
         },

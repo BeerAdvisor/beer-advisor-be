@@ -3,6 +3,11 @@ export enum Role {
     ADMIN = "ADMIN"
 }
 
+export enum Sex {
+    MALE = "MALE",
+    FEMALE = "FEMALE"
+}
+
 export class CommentBeerInput {
     beerId: string;
     comment: string;
@@ -26,9 +31,10 @@ export class CreateBarInput {
 
 export class CreateBeerInput {
     name: string;
-    breweryId: string;
-    description?: string;
+    type: string;
     photo?: string;
+    strong?: string;
+    breweryId?: string;
     barIds: string[];
 }
 
@@ -53,7 +59,9 @@ export class RateBeerInput {
 export class SignUpInput {
     email: string;
     password: string;
-    name: string;
+    nickname: string;
+    sex: Sex;
+    birthdate: DateTime;
 }
 
 export class AuthPayload {
@@ -66,36 +74,105 @@ export class Bar {
     address: string;
     lat: string;
     long: string;
+    phone?: string;
     openTime?: DateTime;
     closeTime?: DateTime;
     photos: string[];
     beers: Beer[];
+    barRating: BarRating[];
+    beerPrices: BeerPrice[];
+    barComments: BarComment[];
+    barChanges: BarChange[];
+    createdBy: User;
+    likedBy: User[];
+}
+
+export class BarChange {
+    id: string;
+    price: number;
+    field: string;
+    newValue: string;
+    user: User;
+    bar: Bar;
+    upvotes: BarChangeUpvote[];
+    createdAt: DateTime;
+}
+
+export class BarChangeUpvote {
+    id: string;
+    user: User;
+    barChange: BarChange;
+}
+
+export class BarComment {
+    id: string;
+    comment: string;
+    bar: Bar;
+    user: User;
+    createdAt: DateTime;
+}
+
+export class BarRating {
+    id: string;
+    rating: number;
+    user: User;
+    bar: Bar;
 }
 
 export class Beer {
     id: string;
     name: string;
-    brewery: Brewery;
+    type: string;
+    strong?: string;
     photo?: string;
-    description?: string;
+    brewery?: Brewery;
     bars: Bar[];
     beerRating: BeerRating[];
-    comments: BeerComment[];
+    beerPrices: BeerPrice[];
+    beerComments: BeerComment[];
+    beerChanges: BeerChange[];
+    createdBy: User;
+    likedBy: User[];
+}
+
+export class BeerChange {
+    id: string;
+    price: number;
+    field: string;
+    newValue: string;
+    user: User;
+    beer: Beer;
+    upvotes: BeerChangeUpvote[];
+    createdAt: DateTime;
+}
+
+export class BeerChangeUpvote {
+    id: string;
+    user: User;
+    beerChange: BeerChange;
 }
 
 export class BeerComment {
     id: string;
+    comment: string;
     beer: Beer;
     user: User;
-    comment: string;
-    timestamp: DateTime;
+    createdAt: DateTime;
+}
+
+export class BeerPrice {
+    id: string;
+    price: number;
+    user: User;
+    bar: Bar;
+    beer: Beer;
 }
 
 export class BeerRating {
     id: string;
+    rating: number;
     user: User;
     beer: Beer;
-    rating: number;
 }
 
 export class Brewery {
@@ -152,12 +229,28 @@ export abstract class IQuery {
 
 export class User {
     id: string;
+    email: string;
     role: Role;
     active: boolean;
+    nickname: string;
+    birthdate: DateTime;
+    sex: Sex;
     name?: string;
+    surname?: string;
     beerComments: BeerComment[];
-    breweryComments: BreweryComment[];
+    barComments: BarComment[];
     beerRatings: BeerRating[];
+    barRatings: BarRating[];
+    beerChanges: BeerChange[];
+    barChanges: BarChange[];
+    beerChangeUpvotes: BeerChangeUpvote[];
+    barChangeUpvotes: BarChangeUpvote[];
+    pricedBeers: BeerPrice[];
+    likedBeers: Beer[];
+    likedBars: Bar[];
+    createdBeers: Beer[];
+    createdBars: Bar[];
+    createdAt: DateTime;
 }
 
 export type DateTime = any;

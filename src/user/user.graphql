@@ -9,12 +9,28 @@ type AuthPayload {
 
 type User {
     id: ID!
+    email: String!
     role: Role!
     active: Boolean!
+    nickname: String!
+    birthdate: DateTime!
+    sex: Sex!
     name: String
+    surname: String
     beerComments: [BeerComment!]
-    breweryComments: [BreweryComment!]
+    barComments: [BarComment!]
     beerRatings: [BeerRating!]
+    barRatings: [BarRating!]
+    beerChanges: [BeerChange!]
+    barChanges: [BarChange!]
+    beerChangeUpvotes: [BeerChangeUpvote!]
+    barChangeUpvotes: [BarChangeUpvote!]
+    pricedBeers: [BeerPrice!]
+    likedBeers: [Beer!]
+    likedBars: [Bar!]
+    createdBeers: [Beer!]
+    createdBars: [Bar!]
+    createdAt: DateTime!
 }
 
 enum Role {
@@ -22,10 +38,17 @@ enum Role {
     ADMIN
 }
 
+enum Sex {
+    MALE
+    FEMALE
+}
+
 input SignUpInput {
     email: String!
     password: String!
-    name: String!
+    nickname: String!
+    sex: Sex!
+    birthdate: DateTime!
 }
 
 input LoginInput {

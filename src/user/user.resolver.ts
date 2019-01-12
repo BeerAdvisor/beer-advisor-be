@@ -29,11 +29,11 @@ export class UserResolver {
   }
 
   @Mutation()
-  async signup(@Args('signUpInput') { email, name, password }: SignUpInputDto, @ResGql() res: Response) {
-    const emailExists = await this.user.exists({ email });
+  async signup(@Args('signUpInput') userDto: SignUpInputDto, @ResGql() res: Response) {
+    const emailExists = await this.user.exists({ email: userDto.email });
     if (emailExists) this.errorService.throwCustomError('Email already in use', ErrorCodes.EMAIL_IN_USE);
 
-    const user = await this.user.create({ email, name, password });
+    const user = await this.user.create(userDto);
 
     const jwt = this.jwt.sign({ id: user.id });
     res.cookie('token', jwt, { httpOnly: true });
