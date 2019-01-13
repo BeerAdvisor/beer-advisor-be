@@ -104,7 +104,6 @@ export class Bar {
 
 export class BarChange {
     id: string;
-    price: number;
     field: string;
     newValue: string;
     user: User;
@@ -152,7 +151,6 @@ export class Beer {
 
 export class BeerChange {
     id: string;
-    price: number;
     field: BeerField;
     newValue: string;
     user: User;

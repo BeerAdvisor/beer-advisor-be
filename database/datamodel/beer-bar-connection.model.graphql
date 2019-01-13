@@ -4,6 +4,8 @@ type BeerBarConnectionChange {
     user: User!
     beer: Beer!
     bar: Bar!
+    upvotes: [BeerBarConnectionChangeUpvote!]
+    createdAt: DateTime!
 }
 
 type BeerBarConnectionChangeUpvote {

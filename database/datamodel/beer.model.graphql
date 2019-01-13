@@ -51,6 +51,22 @@ type BeerPrice {
     user: User!
     bar: Bar!
     beer: Beer!
+    changes: [BeerPriceChange!]
+}
+
+type BeerPriceChange {
+    id: ID! @unique
+    newPrice: Float!
+    beerPrice: BeerPrice!
+    user: User!
+    upvotes: [BeerPriceChangeUpvote!]
+    createdAt: DateTime!
+}
+
+type BeerPriceChangeUpvote {
+    id: ID! @unique
+    user: User!
+    beerPriceChange: BeerPriceChange!
 }
 
 enum BeerField {
