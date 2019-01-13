@@ -3,7 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
 import { CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
-import { Beer, BeerRating, BeerComment } from '../prisma/prisma.bindings.generated';
+import { Beer, BeerRating, BeerComment, User } from '../prisma/prisma.bindings.generated';
 
 @Injectable()
 export class BeerService {
@@ -17,15 +17,15 @@ export class BeerService {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  createBeer(beer: CreateBeerInput, info: GraphQLResolveInfo): Promise<Beer> {
+  createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
     return this.prisma.mutation.createBeer(
       {
         data: {
           name: beer.name,
           photo: beer.photo,
           type: beer.type,
-          createdBy: { connect: { id: 'userId' } }, // TODO
-          brewery: { connect: { id: beer.breweryId } },
+          createdBy: { connect: { id: user.id } },
+          ...(beer.breweryId && { brewery: { connect: { id: beer.breweryId } } }), // TODO wtf not working without spread
           bars: { connect: mapConnectIds(beer.barIds) },
         },
       },

@@ -31,7 +31,7 @@ export class UserResolver {
   @Mutation()
   async signup(@Args('signUpInput') userDto: SignUpInputDto, @ResGql() res: Response) {
     const emailExists = await this.user.exists({ email: userDto.email });
-    if (emailExists) this.errorService.throwCustomError('Email already in use', ErrorCodes.EMAIL_IN_USE);
+    if (emailExists) this.errorService.throwCustomError('Email is already in use', ErrorCodes.EMAIL_IN_USE);
 
     const user = await this.user.create(userDto);
 

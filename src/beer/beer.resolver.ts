@@ -12,8 +12,7 @@ export class BeerResolvers {
   constructor(private readonly beerService: BeerService) {}
 
   @Query()
-  @UseGuards(GqlAuthGuard)
-  getBeers(@Args() args, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
+  getBeers(@Args() args, @Info() info: GraphQLResolveInfo) {
     return this.beerService.getAllBeers(args, info);
   }
 
@@ -23,8 +22,9 @@ export class BeerResolvers {
   }
 
   @Mutation()
-  createBeer(@Args('createBeerInput') args: CreateBeerInput, @Info() info: GraphQLResolveInfo) {
-    return this.beerService.createBeer(args, info);
+  @UseGuards(GqlAuthGuard)
+  createBeer(@Args('createBeerInput') args: CreateBeerInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
+    return this.beerService.createBeer(args, user, info);
   }
 
   @Mutation()
