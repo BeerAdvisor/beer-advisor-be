@@ -4,157 +4,178 @@ import { Options } from 'graphql-binding'
 import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
-    bars: <T = Array<Bar | null>>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barRatings: <T = Array<BarRating | null>>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barComments: <T = Array<BarComment | null>>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChanges: <T = Array<BarChange | null>>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangeUpvotes: <T = Array<BarChangeUpvote | null>>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beers: <T = Array<Beer | null>>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerRatings: <T = Array<BeerRating | null>>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerComments: <T = Array<BeerComment | null>>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChanges: <T = Array<BeerChange | null>>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChangeUpvotes: <T = Array<BeerChangeUpvote | null>>(args: { where?: BeerChangeUpvoteWhereInput | null, orderBy?: BeerChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPrices: <T = Array<BeerPrice | null>>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    users: <T = Array<User | null>>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     breweries: <T = Array<Brewery | null>>(args: { where?: BreweryWhereInput | null, orderBy?: BreweryOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    bar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerBarConnectionChangeUpvotes: <T = Array<BeerBarConnectionChangeUpvote | null>>(args: { where?: BeerBarConnectionChangeUpvoteWhereInput | null, orderBy?: BeerBarConnectionChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    bars: <T = Array<Bar | null>>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beers: <T = Array<Beer | null>>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerBarConnectionChanges: <T = Array<BeerBarConnectionChange | null>>(args: { where?: BeerBarConnectionChangeWhereInput | null, orderBy?: BeerBarConnectionChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    users: <T = Array<User | null>>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerChangeUpvote: <T = BeerChangeUpvote | null>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     brewery: <T = Brewery | null>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvote | null>(args: { where: BeerBarConnectionChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    bar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerBarConnectionChange: <T = BeerBarConnectionChange | null>(args: { where: BeerBarConnectionChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barRatingsConnection: <T = BarRatingConnection>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barCommentsConnection: <T = BarCommentConnection>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangesConnection: <T = BarChangeConnection>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangeUpvotesConnection: <T = BarChangeUpvoteConnection>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerRatingsConnection: <T = BeerRatingConnection>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerCommentsConnection: <T = BeerCommentConnection>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChangesConnection: <T = BeerChangeConnection>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChangeUpvotesConnection: <T = BeerChangeUpvoteConnection>(args: { where?: BeerChangeUpvoteWhereInput | null, orderBy?: BeerChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPricesConnection: <T = BeerPriceConnection>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     breweriesConnection: <T = BreweryConnection>(args: { where?: BreweryWhereInput | null, orderBy?: BreweryOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerBarConnectionChangeUpvotesConnection: <T = BeerBarConnectionChangeUpvoteConnection>(args: { where?: BeerBarConnectionChangeUpvoteWhereInput | null, orderBy?: BeerBarConnectionChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerBarConnectionChangesConnection: <T = BeerBarConnectionChangeConnection>(args: { where?: BeerBarConnectionChangeWhereInput | null, orderBy?: BeerBarConnectionChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
   }
 
 export interface Mutation {
-    createBar: <T = Bar>(args: { data: BarCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarRating: <T = BarRating>(args: { data: BarRatingCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarComment: <T = BarComment>(args: { data: BarCommentCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarChange: <T = BarChange>(args: { data: BarChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarChangeUpvote: <T = BarChangeUpvote>(args: { data: BarChangeUpvoteCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createBeer: <T = Beer>(args: { data: BeerCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerRating: <T = BeerRating>(args: { data: BeerRatingCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerComment: <T = BeerComment>(args: { data: BeerCommentCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerChange: <T = BeerChange>(args: { data: BeerChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerChangeUpvote: <T = BeerChangeUpvote>(args: { data: BeerChangeUpvoteCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerPrice: <T = BeerPrice>(args: { data: BeerPriceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBrewery: <T = Brewery>(args: { data: BreweryCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateBar: <T = Bar | null>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    createBeerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvote>(args: { data: BeerBarConnectionChangeUpvoteCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBar: <T = Bar>(args: { data: BarCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBeer: <T = Beer>(args: { data: BeerCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBeerBarConnectionChange: <T = BeerBarConnectionChange>(args: { data: BeerBarConnectionChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateBarRating: <T = BarRating | null>(args: { data: BarRatingUpdateInput, where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarComment: <T = BarComment | null>(args: { data: BarCommentUpdateInput, where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarChange: <T = BarChange | null>(args: { data: BarChangeUpdateInput, where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarChangeUpvote: <T = BarChangeUpvote | null>(args: { data: BarChangeUpvoteUpdateInput, where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeer: <T = Beer | null>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerRating: <T = BeerRating | null>(args: { data: BeerRatingUpdateInput, where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerComment: <T = BeerComment | null>(args: { data: BeerCommentUpdateInput, where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerChange: <T = BeerChange | null>(args: { data: BeerChangeUpdateInput, where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerChangeUpvote: <T = BeerChangeUpvote | null>(args: { data: BeerChangeUpvoteUpdateInput, where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerPrice: <T = BeerPrice | null>(args: { data: BeerPriceUpdateInput, where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBrewery: <T = Brewery | null>(args: { data: BreweryUpdateInput, where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvote | null>(args: { data: BeerBarConnectionChangeUpvoteUpdateInput, where: BeerBarConnectionChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBar: <T = Bar | null>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeer: <T = Beer | null>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerBarConnectionChange: <T = BeerBarConnectionChange | null>(args: { data: BeerBarConnectionChangeUpdateInput, where: BeerBarConnectionChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerChangeUpvote: <T = BeerChangeUpvote | null>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBrewery: <T = Brewery | null>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    upsertBar: <T = Bar>(args: { where: BarWhereUniqueInput, create: BarCreateInput, update: BarUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteBeerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvote | null>(args: { where: BeerBarConnectionChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerBarConnectionChange: <T = BeerBarConnectionChange | null>(args: { where: BeerBarConnectionChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     upsertBarRating: <T = BarRating>(args: { where: BarRatingWhereUniqueInput, create: BarRatingCreateInput, update: BarRatingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarComment: <T = BarComment>(args: { where: BarCommentWhereUniqueInput, create: BarCommentCreateInput, update: BarCommentUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarChange: <T = BarChange>(args: { where: BarChangeWhereUniqueInput, create: BarChangeCreateInput, update: BarChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarChangeUpvote: <T = BarChangeUpvote>(args: { where: BarChangeUpvoteWhereUniqueInput, create: BarChangeUpvoteCreateInput, update: BarChangeUpvoteUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertBeer: <T = Beer>(args: { where: BeerWhereUniqueInput, create: BeerCreateInput, update: BeerUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerRating: <T = BeerRating>(args: { where: BeerRatingWhereUniqueInput, create: BeerRatingCreateInput, update: BeerRatingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerComment: <T = BeerComment>(args: { where: BeerCommentWhereUniqueInput, create: BeerCommentCreateInput, update: BeerCommentUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerChange: <T = BeerChange>(args: { where: BeerChangeWhereUniqueInput, create: BeerChangeCreateInput, update: BeerChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerChangeUpvote: <T = BeerChangeUpvote>(args: { where: BeerChangeUpvoteWhereUniqueInput, create: BeerChangeUpvoteCreateInput, update: BeerChangeUpvoteUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerPrice: <T = BeerPrice>(args: { where: BeerPriceWhereUniqueInput, create: BeerPriceCreateInput, update: BeerPriceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBrewery: <T = Brewery>(args: { where: BreweryWhereUniqueInput, create: BreweryCreateInput, update: BreweryUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBeerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvote>(args: { where: BeerBarConnectionChangeUpvoteWhereUniqueInput, create: BeerBarConnectionChangeUpvoteCreateInput, update: BeerBarConnectionChangeUpvoteUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBar: <T = Bar>(args: { where: BarWhereUniqueInput, create: BarCreateInput, update: BarUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBeer: <T = Beer>(args: { where: BeerWhereUniqueInput, create: BeerCreateInput, update: BeerUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBeerBarConnectionChange: <T = BeerBarConnectionChange>(args: { where: BeerBarConnectionChangeWhereUniqueInput, create: BeerBarConnectionChangeCreateInput, update: BeerBarConnectionChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarRatings: <T = BatchPayload>(args: { data: BarRatingUpdateManyMutationInput, where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarComments: <T = BatchPayload>(args: { data: BarCommentUpdateManyMutationInput, where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarChanges: <T = BatchPayload>(args: { data: BarChangeUpdateManyMutationInput, where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerRatings: <T = BatchPayload>(args: { data: BeerRatingUpdateManyMutationInput, where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerComments: <T = BatchPayload>(args: { data: BeerCommentUpdateManyMutationInput, where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerChanges: <T = BatchPayload>(args: { data: BeerChangeUpdateManyMutationInput, where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerPrices: <T = BatchPayload>(args: { data: BeerPriceUpdateManyMutationInput, where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBreweries: <T = BatchPayload>(args: { data: BreweryUpdateManyMutationInput, where?: BreweryWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeerBarConnectionChanges: <T = BatchPayload>(args: { data: BeerBarConnectionChangeUpdateManyMutationInput, where?: BeerBarConnectionChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarRatings: <T = BatchPayload>(args: { where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarComments: <T = BatchPayload>(args: { where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarChanges: <T = BatchPayload>(args: { where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarChangeUpvotes: <T = BatchPayload>(args: { where?: BarChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerRatings: <T = BatchPayload>(args: { where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerComments: <T = BatchPayload>(args: { where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerChanges: <T = BatchPayload>(args: { where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerChangeUpvotes: <T = BatchPayload>(args: { where?: BeerChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerPrices: <T = BatchPayload>(args: { where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBreweries: <T = BatchPayload>(args: { where?: BreweryWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
+    deleteManyBreweries: <T = BatchPayload>(args: { where?: BreweryWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerBarConnectionChangeUpvotes: <T = BatchPayload>(args: { where?: BeerBarConnectionChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerBarConnectionChanges: <T = BatchPayload>(args: { where?: BeerBarConnectionChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
-    bar: <T = BarSubscriptionPayload | null>(args: { where?: BarSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barRating: <T = BarRatingSubscriptionPayload | null>(args: { where?: BarRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barComment: <T = BarCommentSubscriptionPayload | null>(args: { where?: BarCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barChange: <T = BarChangeSubscriptionPayload | null>(args: { where?: BarChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barChangeUpvote: <T = BarChangeUpvoteSubscriptionPayload | null>(args: { where?: BarChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beer: <T = BeerSubscriptionPayload | null>(args: { where?: BeerSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerRating: <T = BeerRatingSubscriptionPayload | null>(args: { where?: BeerRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerComment: <T = BeerCommentSubscriptionPayload | null>(args: { where?: BeerCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerChange: <T = BeerChangeSubscriptionPayload | null>(args: { where?: BeerChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerChangeUpvote: <T = BeerChangeUpvoteSubscriptionPayload | null>(args: { where?: BeerChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerPrice: <T = BeerPriceSubscriptionPayload | null>(args: { where?: BeerPriceSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    brewery: <T = BrewerySubscriptionPayload | null>(args: { where?: BrewerySubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
+    brewery: <T = BrewerySubscriptionPayload | null>(args: { where?: BrewerySubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerBarConnectionChangeUpvote: <T = BeerBarConnectionChangeUpvoteSubscriptionPayload | null>(args: { where?: BeerBarConnectionChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    bar: <T = BarSubscriptionPayload | null>(args: { where?: BarSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beer: <T = BeerSubscriptionPayload | null>(args: { where?: BeerSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerBarConnectionChange: <T = BeerBarConnectionChangeSubscriptionPayload | null>(args: { where?: BeerBarConnectionChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
   }
 
 export interface Exists {
-  Bar: (where?: BarWhereInput) => Promise<boolean>
   BarRating: (where?: BarRatingWhereInput) => Promise<boolean>
   BarComment: (where?: BarCommentWhereInput) => Promise<boolean>
   BarChange: (where?: BarChangeWhereInput) => Promise<boolean>
   BarChangeUpvote: (where?: BarChangeUpvoteWhereInput) => Promise<boolean>
-  Beer: (where?: BeerWhereInput) => Promise<boolean>
   BeerRating: (where?: BeerRatingWhereInput) => Promise<boolean>
   BeerComment: (where?: BeerCommentWhereInput) => Promise<boolean>
   BeerChange: (where?: BeerChangeWhereInput) => Promise<boolean>
   BeerChangeUpvote: (where?: BeerChangeUpvoteWhereInput) => Promise<boolean>
   BeerPrice: (where?: BeerPriceWhereInput) => Promise<boolean>
-  User: (where?: UserWhereInput) => Promise<boolean>
   Brewery: (where?: BreweryWhereInput) => Promise<boolean>
+  BeerBarConnectionChangeUpvote: (where?: BeerBarConnectionChangeUpvoteWhereInput) => Promise<boolean>
+  Bar: (where?: BarWhereInput) => Promise<boolean>
+  Beer: (where?: BeerWhereInput) => Promise<boolean>
+  BeerBarConnectionChange: (where?: BeerBarConnectionChangeWhereInput) => Promise<boolean>
+  User: (where?: UserWhereInput) => Promise<boolean>
 }
 
 export interface Prisma {
@@ -200,6 +221,14 @@ type AggregateBarRating {
 }
 
 type AggregateBeer {
+  count: Int!
+}
+
+type AggregateBeerBarConnectionChange {
+  count: Int!
+}
+
+type AggregateBeerBarConnectionChangeUpvote {
   count: Int!
 }
 
@@ -1523,6 +1552,11 @@ input BarCreateManyWithoutLikedByInput {
   connect: [BarWhereUniqueInput!]
 }
 
+input BarCreateOneInput {
+  create: BarCreateInput
+  connect: BarWhereUniqueInput
+}
+
 input BarCreateOneWithoutBarChangesInput {
   create: BarCreateWithoutBarChangesInput
   connect: BarWhereUniqueInput
@@ -2378,6 +2412,24 @@ input BarSubscriptionWhereInput {
   node: BarWhereInput
 }
 
+input BarUpdateDataInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  phone: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+  beers: BeerUpdateManyWithoutBarsInput
+  barRating: BarRatingUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  barComments: BarCommentUpdateManyWithoutBarInput
+  barChanges: BarChangeUpdateManyWithoutBarInput
+  createdBy: UserUpdateOneRequiredWithoutCreatedBarsInput
+  likedBy: UserUpdateManyWithoutLikedBarsInput
+}
+
 input BarUpdateInput {
   name: String
   address: String
@@ -2457,6 +2509,13 @@ input BarUpdateManyWithoutLikedByInput {
 input BarUpdateManyWithWhereNestedInput {
   where: BarScalarWhereInput!
   data: BarUpdateManyDataInput!
+}
+
+input BarUpdateOneRequiredInput {
+  create: BarCreateInput
+  connect: BarWhereUniqueInput
+  update: BarUpdateDataInput
+  upsert: BarUpsertNestedInput
 }
 
 input BarUpdateOneRequiredWithoutBarChangesInput {
@@ -2623,6 +2682,11 @@ input BarUpdateWithWhereUniqueWithoutCreatedByInput {
 input BarUpdateWithWhereUniqueWithoutLikedByInput {
   where: BarWhereUniqueInput!
   data: BarUpdateWithoutLikedByDataInput!
+}
+
+input BarUpsertNestedInput {
+  update: BarUpdateDataInput!
+  create: BarCreateInput!
 }
 
 input BarUpsertWithoutBarChangesInput {
@@ -3000,6 +3064,342 @@ type Beer implements Node {
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange!]
   createdBy: User!
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+}
+
+type BeerBarConnectionChange implements Node {
+  id: ID!
+  type: ConnectionChangeType!
+  user: User!
+  beer: Beer!
+  bar: Bar!
+}
+
+"""A connection to a list of items."""
+type BeerBarConnectionChangeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerBarConnectionChangeEdge]!
+  aggregate: AggregateBeerBarConnectionChange!
+}
+
+input BeerBarConnectionChangeCreateInput {
+  type: ConnectionChangeType!
+  user: UserCreateOneInput!
+  beer: BeerCreateOneInput!
+  bar: BarCreateOneInput!
+}
+
+input BeerBarConnectionChangeCreateOneInput {
+  create: BeerBarConnectionChangeCreateInput
+  connect: BeerBarConnectionChangeWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type BeerBarConnectionChangeEdge {
+  """The item at the end of the edge."""
+  node: BeerBarConnectionChange!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerBarConnectionChangeOrderByInput {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerBarConnectionChangePreviousValues {
+  id: ID!
+  type: ConnectionChangeType!
+}
+
+type BeerBarConnectionChangeSubscriptionPayload {
+  mutation: MutationType!
+  node: BeerBarConnectionChange
+  updatedFields: [String!]
+  previousValues: BeerBarConnectionChangePreviousValues
+}
+
+input BeerBarConnectionChangeSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerBarConnectionChangeSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerBarConnectionChangeSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerBarConnectionChangeSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerBarConnectionChangeWhereInput
+}
+
+input BeerBarConnectionChangeUpdateDataInput {
+  type: ConnectionChangeType
+  user: UserUpdateOneRequiredInput
+  beer: BeerUpdateOneRequiredInput
+  bar: BarUpdateOneRequiredInput
+}
+
+input BeerBarConnectionChangeUpdateInput {
+  type: ConnectionChangeType
+  user: UserUpdateOneRequiredInput
+  beer: BeerUpdateOneRequiredInput
+  bar: BarUpdateOneRequiredInput
+}
+
+input BeerBarConnectionChangeUpdateManyMutationInput {
+  type: ConnectionChangeType
+}
+
+input BeerBarConnectionChangeUpdateOneRequiredInput {
+  create: BeerBarConnectionChangeCreateInput
+  connect: BeerBarConnectionChangeWhereUniqueInput
+  update: BeerBarConnectionChangeUpdateDataInput
+  upsert: BeerBarConnectionChangeUpsertNestedInput
+}
+
+input BeerBarConnectionChangeUpsertNestedInput {
+  update: BeerBarConnectionChangeUpdateDataInput!
+  create: BeerBarConnectionChangeCreateInput!
+}
+
+type BeerBarConnectionChangeUpvote implements Node {
+  id: ID!
+  user: User!
+  beerBarConnectionChange: BeerBarConnectionChange!
+}
+
+"""A connection to a list of items."""
+type BeerBarConnectionChangeUpvoteConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerBarConnectionChangeUpvoteEdge]!
+  aggregate: AggregateBeerBarConnectionChangeUpvote!
+}
+
+input BeerBarConnectionChangeUpvoteCreateInput {
+  user: UserCreateOneInput!
+  beerBarConnectionChange: BeerBarConnectionChangeCreateOneInput!
+}
+
+"""An edge in a connection."""
+type BeerBarConnectionChangeUpvoteEdge {
+  """The item at the end of the edge."""
+  node: BeerBarConnectionChangeUpvote!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerBarConnectionChangeUpvoteOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type BeerBarConnectionChangeUpvotePreviousValues {
+  id: ID!
+}
+
+type BeerBarConnectionChangeUpvoteSubscriptionPayload {
+  mutation: MutationType!
+  node: BeerBarConnectionChangeUpvote
+  updatedFields: [String!]
+  previousValues: BeerBarConnectionChangeUpvotePreviousValues
+}
+
+input BeerBarConnectionChangeUpvoteSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerBarConnectionChangeUpvoteSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerBarConnectionChangeUpvoteSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerBarConnectionChangeUpvoteSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerBarConnectionChangeUpvoteWhereInput
+}
+
+input BeerBarConnectionChangeUpvoteUpdateInput {
+  user: UserUpdateOneRequiredInput
+  beerBarConnectionChange: BeerBarConnectionChangeUpdateOneRequiredInput
+}
+
+input BeerBarConnectionChangeUpvoteWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerBarConnectionChangeUpvoteWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerBarConnectionChangeUpvoteWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerBarConnectionChangeUpvoteWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  user: UserWhereInput
+  beerBarConnectionChange: BeerBarConnectionChangeWhereInput
+}
+
+input BeerBarConnectionChangeUpvoteWhereUniqueInput {
+  id: ID
+}
+
+input BeerBarConnectionChangeWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerBarConnectionChangeWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerBarConnectionChangeWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerBarConnectionChangeWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  type: ConnectionChangeType
+
+  """All values that are not equal to given value."""
+  type_not: ConnectionChangeType
+
+  """All values that are contained in given list."""
+  type_in: [ConnectionChangeType!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [ConnectionChangeType!]
+  user: UserWhereInput
+  beer: BeerWhereInput
+  bar: BarWhereInput
+}
+
+input BeerBarConnectionChangeWhereUniqueInput {
+  id: ID
 }
 
 type BeerChange implements Node {
@@ -4217,6 +4617,11 @@ input BeerCreateManyWithoutLikedByInput {
   connect: [BeerWhereUniqueInput!]
 }
 
+input BeerCreateOneInput {
+  create: BeerCreateInput
+  connect: BeerWhereUniqueInput
+}
+
 input BeerCreateOneWithoutBeerChangesInput {
   create: BeerCreateWithoutBeerChangesInput
   connect: BeerWhereUniqueInput
@@ -4364,8 +4769,6 @@ enum BeerField {
   STRONG
   PHOTO
   BREWERY
-  ADD_BAR
-  REMOVE_BAR
 }
 
 enum BeerOrderByInput {
@@ -5359,6 +5762,21 @@ input BeerSubscriptionWhereInput {
   node: BeerWhereInput
 }
 
+input BeerUpdateDataInput {
+  name: String
+  type: String
+  strong: String
+  photo: String
+  brewery: BreweryUpdateOneWithoutBeersInput
+  bars: BarUpdateManyWithoutBeersInput
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  beerComments: BeerCommentUpdateManyWithoutBeerInput
+  beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  createdBy: UserUpdateOneRequiredWithoutCreatedBeersInput
+  likedBy: UserUpdateManyWithoutLikedBeersInput
+}
+
 input BeerUpdateInput {
   name: String
   type: String
@@ -5439,6 +5857,13 @@ input BeerUpdateManyWithoutLikedByInput {
 input BeerUpdateManyWithWhereNestedInput {
   where: BeerScalarWhereInput!
   data: BeerUpdateManyDataInput!
+}
+
+input BeerUpdateOneRequiredInput {
+  create: BeerCreateInput
+  connect: BeerWhereUniqueInput
+  update: BeerUpdateDataInput
+  upsert: BeerUpsertNestedInput
 }
 
 input BeerUpdateOneRequiredWithoutBeerChangesInput {
@@ -5599,6 +6024,11 @@ input BeerUpdateWithWhereUniqueWithoutCreatedByInput {
 input BeerUpdateWithWhereUniqueWithoutLikedByInput {
   where: BeerWhereUniqueInput!
   data: BeerUpdateWithoutLikedByDataInput!
+}
+
+input BeerUpsertNestedInput {
+  update: BeerUpdateDataInput!
+  create: BeerCreateInput!
 }
 
 input BeerUpsertWithoutBeerChangesInput {
@@ -6197,6 +6627,11 @@ input BreweryWhereUniqueInput {
   id: ID
 }
 
+enum ConnectionChangeType {
+  ADD
+  REMOVE
+}
+
 scalar DateTime
 
 """
@@ -6206,82 +6641,93 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createBar(data: BarCreateInput!): Bar!
   createBarRating(data: BarRatingCreateInput!): BarRating!
   createBarComment(data: BarCommentCreateInput!): BarComment!
   createBarChange(data: BarChangeCreateInput!): BarChange!
   createBarChangeUpvote(data: BarChangeUpvoteCreateInput!): BarChangeUpvote!
-  createBeer(data: BeerCreateInput!): Beer!
   createBeerRating(data: BeerRatingCreateInput!): BeerRating!
   createBeerComment(data: BeerCommentCreateInput!): BeerComment!
   createBeerChange(data: BeerChangeCreateInput!): BeerChange!
   createBeerChangeUpvote(data: BeerChangeUpvoteCreateInput!): BeerChangeUpvote!
   createBeerPrice(data: BeerPriceCreateInput!): BeerPrice!
-  createUser(data: UserCreateInput!): User!
   createBrewery(data: BreweryCreateInput!): Brewery!
-  updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
+  createBeerBarConnectionChangeUpvote(data: BeerBarConnectionChangeUpvoteCreateInput!): BeerBarConnectionChangeUpvote!
+  createBar(data: BarCreateInput!): Bar!
+  createBeer(data: BeerCreateInput!): Beer!
+  createBeerBarConnectionChange(data: BeerBarConnectionChangeCreateInput!): BeerBarConnectionChange!
+  createUser(data: UserCreateInput!): User!
   updateBarRating(data: BarRatingUpdateInput!, where: BarRatingWhereUniqueInput!): BarRating
   updateBarComment(data: BarCommentUpdateInput!, where: BarCommentWhereUniqueInput!): BarComment
   updateBarChange(data: BarChangeUpdateInput!, where: BarChangeWhereUniqueInput!): BarChange
   updateBarChangeUpvote(data: BarChangeUpvoteUpdateInput!, where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
-  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
   updateBeerRating(data: BeerRatingUpdateInput!, where: BeerRatingWhereUniqueInput!): BeerRating
   updateBeerComment(data: BeerCommentUpdateInput!, where: BeerCommentWhereUniqueInput!): BeerComment
   updateBeerChange(data: BeerChangeUpdateInput!, where: BeerChangeWhereUniqueInput!): BeerChange
   updateBeerChangeUpvote(data: BeerChangeUpvoteUpdateInput!, where: BeerChangeUpvoteWhereUniqueInput!): BeerChangeUpvote
   updateBeerPrice(data: BeerPriceUpdateInput!, where: BeerPriceWhereUniqueInput!): BeerPrice
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateBrewery(data: BreweryUpdateInput!, where: BreweryWhereUniqueInput!): Brewery
-  deleteBar(where: BarWhereUniqueInput!): Bar
+  updateBeerBarConnectionChangeUpvote(data: BeerBarConnectionChangeUpvoteUpdateInput!, where: BeerBarConnectionChangeUpvoteWhereUniqueInput!): BeerBarConnectionChangeUpvote
+  updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
+  updateBeerBarConnectionChange(data: BeerBarConnectionChangeUpdateInput!, where: BeerBarConnectionChangeWhereUniqueInput!): BeerBarConnectionChange
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   deleteBarRating(where: BarRatingWhereUniqueInput!): BarRating
   deleteBarComment(where: BarCommentWhereUniqueInput!): BarComment
   deleteBarChange(where: BarChangeWhereUniqueInput!): BarChange
   deleteBarChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
-  deleteBeer(where: BeerWhereUniqueInput!): Beer
   deleteBeerRating(where: BeerRatingWhereUniqueInput!): BeerRating
   deleteBeerComment(where: BeerCommentWhereUniqueInput!): BeerComment
   deleteBeerChange(where: BeerChangeWhereUniqueInput!): BeerChange
   deleteBeerChangeUpvote(where: BeerChangeUpvoteWhereUniqueInput!): BeerChangeUpvote
   deleteBeerPrice(where: BeerPriceWhereUniqueInput!): BeerPrice
-  deleteUser(where: UserWhereUniqueInput!): User
   deleteBrewery(where: BreweryWhereUniqueInput!): Brewery
-  upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
+  deleteBeerBarConnectionChangeUpvote(where: BeerBarConnectionChangeUpvoteWhereUniqueInput!): BeerBarConnectionChangeUpvote
+  deleteBar(where: BarWhereUniqueInput!): Bar
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
+  deleteBeerBarConnectionChange(where: BeerBarConnectionChangeWhereUniqueInput!): BeerBarConnectionChange
+  deleteUser(where: UserWhereUniqueInput!): User
   upsertBarRating(where: BarRatingWhereUniqueInput!, create: BarRatingCreateInput!, update: BarRatingUpdateInput!): BarRating!
   upsertBarComment(where: BarCommentWhereUniqueInput!, create: BarCommentCreateInput!, update: BarCommentUpdateInput!): BarComment!
   upsertBarChange(where: BarChangeWhereUniqueInput!, create: BarChangeCreateInput!, update: BarChangeUpdateInput!): BarChange!
   upsertBarChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!, create: BarChangeUpvoteCreateInput!, update: BarChangeUpvoteUpdateInput!): BarChangeUpvote!
-  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
   upsertBeerRating(where: BeerRatingWhereUniqueInput!, create: BeerRatingCreateInput!, update: BeerRatingUpdateInput!): BeerRating!
   upsertBeerComment(where: BeerCommentWhereUniqueInput!, create: BeerCommentCreateInput!, update: BeerCommentUpdateInput!): BeerComment!
   upsertBeerChange(where: BeerChangeWhereUniqueInput!, create: BeerChangeCreateInput!, update: BeerChangeUpdateInput!): BeerChange!
   upsertBeerChangeUpvote(where: BeerChangeUpvoteWhereUniqueInput!, create: BeerChangeUpvoteCreateInput!, update: BeerChangeUpvoteUpdateInput!): BeerChangeUpvote!
   upsertBeerPrice(where: BeerPriceWhereUniqueInput!, create: BeerPriceCreateInput!, update: BeerPriceUpdateInput!): BeerPrice!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertBrewery(where: BreweryWhereUniqueInput!, create: BreweryCreateInput!, update: BreweryUpdateInput!): Brewery!
-  updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
+  upsertBeerBarConnectionChangeUpvote(where: BeerBarConnectionChangeUpvoteWhereUniqueInput!, create: BeerBarConnectionChangeUpvoteCreateInput!, update: BeerBarConnectionChangeUpvoteUpdateInput!): BeerBarConnectionChangeUpvote!
+  upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
+  upsertBeerBarConnectionChange(where: BeerBarConnectionChangeWhereUniqueInput!, create: BeerBarConnectionChangeCreateInput!, update: BeerBarConnectionChangeUpdateInput!): BeerBarConnectionChange!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   updateManyBarRatings(data: BarRatingUpdateManyMutationInput!, where: BarRatingWhereInput): BatchPayload!
   updateManyBarComments(data: BarCommentUpdateManyMutationInput!, where: BarCommentWhereInput): BatchPayload!
   updateManyBarChanges(data: BarChangeUpdateManyMutationInput!, where: BarChangeWhereInput): BatchPayload!
-  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
   updateManyBeerRatings(data: BeerRatingUpdateManyMutationInput!, where: BeerRatingWhereInput): BatchPayload!
   updateManyBeerComments(data: BeerCommentUpdateManyMutationInput!, where: BeerCommentWhereInput): BatchPayload!
   updateManyBeerChanges(data: BeerChangeUpdateManyMutationInput!, where: BeerChangeWhereInput): BatchPayload!
   updateManyBeerPrices(data: BeerPriceUpdateManyMutationInput!, where: BeerPriceWhereInput): BatchPayload!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyBreweries(data: BreweryUpdateManyMutationInput!, where: BreweryWhereInput): BatchPayload!
-  deleteManyBars(where: BarWhereInput): BatchPayload!
+  updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
+  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
+  updateManyBeerBarConnectionChanges(data: BeerBarConnectionChangeUpdateManyMutationInput!, where: BeerBarConnectionChangeWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   deleteManyBarRatings(where: BarRatingWhereInput): BatchPayload!
   deleteManyBarComments(where: BarCommentWhereInput): BatchPayload!
   deleteManyBarChanges(where: BarChangeWhereInput): BatchPayload!
   deleteManyBarChangeUpvotes(where: BarChangeUpvoteWhereInput): BatchPayload!
-  deleteManyBeers(where: BeerWhereInput): BatchPayload!
   deleteManyBeerRatings(where: BeerRatingWhereInput): BatchPayload!
   deleteManyBeerComments(where: BeerCommentWhereInput): BatchPayload!
   deleteManyBeerChanges(where: BeerChangeWhereInput): BatchPayload!
   deleteManyBeerChangeUpvotes(where: BeerChangeUpvoteWhereInput): BatchPayload!
   deleteManyBeerPrices(where: BeerPriceWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyBreweries(where: BreweryWhereInput): BatchPayload!
+  deleteManyBeerBarConnectionChangeUpvotes(where: BeerBarConnectionChangeUpvoteWhereInput): BatchPayload!
+  deleteManyBars(where: BarWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
+  deleteManyBeerBarConnectionChanges(where: BeerBarConnectionChangeWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -6312,45 +6758,51 @@ type PageInfo {
 }
 
 type Query {
-  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
   barRatings(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarRating]!
   barComments(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarComment]!
   barChanges(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChange]!
   barChangeUpvotes(where: BarChangeUpvoteWhereInput, orderBy: BarChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChangeUpvote]!
-  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
   beerRatings(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating]!
   beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment]!
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange]!
   beerChangeUpvotes(where: BeerChangeUpvoteWhereInput, orderBy: BeerChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChangeUpvote]!
   beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice]!
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   breweries(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brewery]!
-  bar(where: BarWhereUniqueInput!): Bar
+  beerBarConnectionChangeUpvotes(where: BeerBarConnectionChangeUpvoteWhereInput, orderBy: BeerBarConnectionChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerBarConnectionChangeUpvote]!
+  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
+  beerBarConnectionChanges(where: BeerBarConnectionChangeWhereInput, orderBy: BeerBarConnectionChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerBarConnectionChange]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   barRating(where: BarRatingWhereUniqueInput!): BarRating
   barComment(where: BarCommentWhereUniqueInput!): BarComment
   barChange(where: BarChangeWhereUniqueInput!): BarChange
   barChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
-  beer(where: BeerWhereUniqueInput!): Beer
   beerRating(where: BeerRatingWhereUniqueInput!): BeerRating
   beerComment(where: BeerCommentWhereUniqueInput!): BeerComment
   beerChange(where: BeerChangeWhereUniqueInput!): BeerChange
   beerChangeUpvote(where: BeerChangeUpvoteWhereUniqueInput!): BeerChangeUpvote
   beerPrice(where: BeerPriceWhereUniqueInput!): BeerPrice
-  user(where: UserWhereUniqueInput!): User
   brewery(where: BreweryWhereUniqueInput!): Brewery
-  barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
+  beerBarConnectionChangeUpvote(where: BeerBarConnectionChangeUpvoteWhereUniqueInput!): BeerBarConnectionChangeUpvote
+  bar(where: BarWhereUniqueInput!): Bar
+  beer(where: BeerWhereUniqueInput!): Beer
+  beerBarConnectionChange(where: BeerBarConnectionChangeWhereUniqueInput!): BeerBarConnectionChange
+  user(where: UserWhereUniqueInput!): User
   barRatingsConnection(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarRatingConnection!
   barCommentsConnection(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarCommentConnection!
   barChangesConnection(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarChangeConnection!
   barChangeUpvotesConnection(where: BarChangeUpvoteWhereInput, orderBy: BarChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarChangeUpvoteConnection!
-  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
   beerRatingsConnection(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerRatingConnection!
   beerCommentsConnection(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerCommentConnection!
   beerChangesConnection(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerChangeConnection!
   beerChangeUpvotesConnection(where: BeerChangeUpvoteWhereInput, orderBy: BeerChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerChangeUpvoteConnection!
   beerPricesConnection(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerPriceConnection!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   breweriesConnection(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryConnection!
+  beerBarConnectionChangeUpvotesConnection(where: BeerBarConnectionChangeUpvoteWhereInput, orderBy: BeerBarConnectionChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerBarConnectionChangeUpvoteConnection!
+  barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
+  beerBarConnectionChangesConnection(where: BeerBarConnectionChangeWhereInput, orderBy: BeerBarConnectionChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerBarConnectionChangeConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -6370,19 +6822,21 @@ enum Sex {
 }
 
 type Subscription {
-  bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
   barRating(where: BarRatingSubscriptionWhereInput): BarRatingSubscriptionPayload
   barComment(where: BarCommentSubscriptionWhereInput): BarCommentSubscriptionPayload
   barChange(where: BarChangeSubscriptionWhereInput): BarChangeSubscriptionPayload
   barChangeUpvote(where: BarChangeUpvoteSubscriptionWhereInput): BarChangeUpvoteSubscriptionPayload
-  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
   beerRating(where: BeerRatingSubscriptionWhereInput): BeerRatingSubscriptionPayload
   beerComment(where: BeerCommentSubscriptionWhereInput): BeerCommentSubscriptionPayload
   beerChange(where: BeerChangeSubscriptionWhereInput): BeerChangeSubscriptionPayload
   beerChangeUpvote(where: BeerChangeUpvoteSubscriptionWhereInput): BeerChangeUpvoteSubscriptionPayload
   beerPrice(where: BeerPriceSubscriptionWhereInput): BeerPriceSubscriptionPayload
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   brewery(where: BrewerySubscriptionWhereInput): BrewerySubscriptionPayload
+  beerBarConnectionChangeUpvote(where: BeerBarConnectionChangeUpvoteSubscriptionWhereInput): BeerBarConnectionChangeUpvoteSubscriptionPayload
+  bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
+  beerBarConnectionChange(where: BeerBarConnectionChangeSubscriptionWhereInput): BeerBarConnectionChangeSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
 type User implements Node {
@@ -6455,6 +6909,11 @@ input UserCreateManyWithoutLikedBarsInput {
 input UserCreateManyWithoutLikedBeersInput {
   create: [UserCreateWithoutLikedBeersInput!]
   connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 input UserCreateOneWithoutBarChangesInput {
@@ -7232,6 +7691,31 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
+input UserUpdateDataInput {
+  email: String
+  password: String
+  role: Role
+  active: Boolean
+  nickname: String
+  birthdate: DateTime
+  sex: Sex
+  name: String
+  surname: String
+  beerComments: BeerCommentUpdateManyWithoutUserInput
+  barComments: BarCommentUpdateManyWithoutUserInput
+  beerRatings: BeerRatingUpdateManyWithoutUserInput
+  barRatings: BarRatingUpdateManyWithoutUserInput
+  beerChanges: BeerChangeUpdateManyWithoutUserInput
+  barChanges: BarChangeUpdateManyWithoutUserInput
+  beerChangeUpvotes: BeerChangeUpvoteUpdateManyWithoutUserInput
+  barChangeUpvotes: BarChangeUpvoteUpdateManyWithoutUserInput
+  pricedBeers: BeerPriceUpdateManyWithoutUserInput
+  likedBeers: BeerUpdateManyWithoutLikedByInput
+  likedBars: BarUpdateManyWithoutLikedByInput
+  createdBeers: BeerUpdateManyWithoutCreatedByInput
+  createdBars: BarUpdateManyWithoutCreatedByInput
+}
+
 input UserUpdateInput {
   email: String
   password: String
@@ -7308,6 +7792,13 @@ input UserUpdateManyWithoutLikedBeersInput {
 input UserUpdateManyWithWhereNestedInput {
   where: UserScalarWhereInput!
   data: UserUpdateManyDataInput!
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
 }
 
 input UserUpdateOneRequiredWithoutBarChangesInput {
@@ -7707,6 +8198,11 @@ input UserUpdateWithWhereUniqueWithoutLikedBarsInput {
 input UserUpdateWithWhereUniqueWithoutLikedBeersInput {
   where: UserWhereUniqueInput!
   data: UserUpdateWithoutLikedBeersDataInput!
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserUpsertWithoutBarChangesInput {
@@ -8203,6 +8699,22 @@ export type BarRatingOrderByInput =   'id_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
+export type BeerBarConnectionChangeOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'type_ASC' |
+  'type_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC'
+
+export type BeerBarConnectionChangeUpvoteOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC'
+
 export type BeerChangeOrderByInput =   'id_ASC' |
   'id_DESC' |
   'field_ASC' |
@@ -8234,9 +8746,7 @@ export type BeerField =   'NAME' |
   'TYPE' |
   'STRONG' |
   'PHOTO' |
-  'BREWERY' |
-  'ADD_BAR' |
-  'REMOVE_BAR'
+  'BREWERY'
 
 export type BeerOrderByInput =   'id_ASC' |
   'id_DESC' |
@@ -8283,6 +8793,9 @@ export type BreweryOrderByInput =   'id_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC'
+
+export type ConnectionChangeType =   'ADD' |
+  'REMOVE'
 
 export type MutationType =   'CREATED' |
   'UPDATED' |
@@ -8969,6 +9482,11 @@ export interface BarCreateManyWithoutLikedByInput {
   connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
 }
 
+export interface BarCreateOneInput {
+  create?: BarCreateInput | null
+  connect?: BarWhereUniqueInput | null
+}
+
 export interface BarCreateOneWithoutBarChangesInput {
   create?: BarCreateWithoutBarChangesInput | null
   connect?: BarWhereUniqueInput | null
@@ -9403,6 +9921,24 @@ export interface BarSubscriptionWhereInput {
   node?: BarWhereInput | null
 }
 
+export interface BarUpdateDataInput {
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
+}
+
 export interface BarUpdateInput {
   name?: String | null
   address?: String | null
@@ -9482,6 +10018,13 @@ export interface BarUpdateManyWithoutLikedByInput {
 export interface BarUpdateManyWithWhereNestedInput {
   where: BarScalarWhereInput
   data: BarUpdateManyDataInput
+}
+
+export interface BarUpdateOneRequiredInput {
+  create?: BarCreateInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateDataInput | null
+  upsert?: BarUpsertNestedInput | null
 }
 
 export interface BarUpdateOneRequiredWithoutBarChangesInput {
@@ -9650,6 +10193,11 @@ export interface BarUpdateWithWhereUniqueWithoutLikedByInput {
   data: BarUpdateWithoutLikedByDataInput
 }
 
+export interface BarUpsertNestedInput {
+  update: BarUpdateDataInput
+  create: BarCreateInput
+}
+
 export interface BarUpsertWithoutBarChangesInput {
   update: BarUpdateWithoutBarChangesDataInput
   create: BarCreateWithoutBarChangesInput
@@ -9814,6 +10362,137 @@ export interface BarWhereInput {
 }
 
 export interface BarWhereUniqueInput {
+  id?: ID_Input | null
+}
+
+export interface BeerBarConnectionChangeCreateInput {
+  type: ConnectionChangeType
+  user: UserCreateOneInput
+  beer: BeerCreateOneInput
+  bar: BarCreateOneInput
+}
+
+export interface BeerBarConnectionChangeCreateOneInput {
+  create?: BeerBarConnectionChangeCreateInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput | null
+}
+
+export interface BeerBarConnectionChangeSubscriptionWhereInput {
+  AND?: BeerBarConnectionChangeSubscriptionWhereInput[] | BeerBarConnectionChangeSubscriptionWhereInput | null
+  OR?: BeerBarConnectionChangeSubscriptionWhereInput[] | BeerBarConnectionChangeSubscriptionWhereInput | null
+  NOT?: BeerBarConnectionChangeSubscriptionWhereInput[] | BeerBarConnectionChangeSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerBarConnectionChangeWhereInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateDataInput {
+  type?: ConnectionChangeType | null
+  user?: UserUpdateOneRequiredInput | null
+  beer?: BeerUpdateOneRequiredInput | null
+  bar?: BarUpdateOneRequiredInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateInput {
+  type?: ConnectionChangeType | null
+  user?: UserUpdateOneRequiredInput | null
+  beer?: BeerUpdateOneRequiredInput | null
+  bar?: BarUpdateOneRequiredInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateManyMutationInput {
+  type?: ConnectionChangeType | null
+}
+
+export interface BeerBarConnectionChangeUpdateOneRequiredInput {
+  create?: BeerBarConnectionChangeCreateInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput | null
+  update?: BeerBarConnectionChangeUpdateDataInput | null
+  upsert?: BeerBarConnectionChangeUpsertNestedInput | null
+}
+
+export interface BeerBarConnectionChangeUpsertNestedInput {
+  update: BeerBarConnectionChangeUpdateDataInput
+  create: BeerBarConnectionChangeCreateInput
+}
+
+export interface BeerBarConnectionChangeUpvoteCreateInput {
+  user: UserCreateOneInput
+  beerBarConnectionChange: BeerBarConnectionChangeCreateOneInput
+}
+
+export interface BeerBarConnectionChangeUpvoteSubscriptionWhereInput {
+  AND?: BeerBarConnectionChangeUpvoteSubscriptionWhereInput[] | BeerBarConnectionChangeUpvoteSubscriptionWhereInput | null
+  OR?: BeerBarConnectionChangeUpvoteSubscriptionWhereInput[] | BeerBarConnectionChangeUpvoteSubscriptionWhereInput | null
+  NOT?: BeerBarConnectionChangeUpvoteSubscriptionWhereInput[] | BeerBarConnectionChangeUpvoteSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerBarConnectionChangeUpvoteWhereInput | null
+}
+
+export interface BeerBarConnectionChangeUpvoteUpdateInput {
+  user?: UserUpdateOneRequiredInput | null
+  beerBarConnectionChange?: BeerBarConnectionChangeUpdateOneRequiredInput | null
+}
+
+export interface BeerBarConnectionChangeUpvoteWhereInput {
+  AND?: BeerBarConnectionChangeUpvoteWhereInput[] | BeerBarConnectionChangeUpvoteWhereInput | null
+  OR?: BeerBarConnectionChangeUpvoteWhereInput[] | BeerBarConnectionChangeUpvoteWhereInput | null
+  NOT?: BeerBarConnectionChangeUpvoteWhereInput[] | BeerBarConnectionChangeUpvoteWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  user?: UserWhereInput | null
+  beerBarConnectionChange?: BeerBarConnectionChangeWhereInput | null
+}
+
+export interface BeerBarConnectionChangeUpvoteWhereUniqueInput {
+  id?: ID_Input | null
+}
+
+export interface BeerBarConnectionChangeWhereInput {
+  AND?: BeerBarConnectionChangeWhereInput[] | BeerBarConnectionChangeWhereInput | null
+  OR?: BeerBarConnectionChangeWhereInput[] | BeerBarConnectionChangeWhereInput | null
+  NOT?: BeerBarConnectionChangeWhereInput[] | BeerBarConnectionChangeWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  type?: ConnectionChangeType | null
+  type_not?: ConnectionChangeType | null
+  type_in?: ConnectionChangeType[] | ConnectionChangeType | null
+  type_not_in?: ConnectionChangeType[] | ConnectionChangeType | null
+  user?: UserWhereInput | null
+  beer?: BeerWhereInput | null
+  bar?: BarWhereInput | null
+}
+
+export interface BeerBarConnectionChangeWhereUniqueInput {
   id?: ID_Input | null
 }
 
@@ -10449,6 +11128,11 @@ export interface BeerCreateManyWithoutLikedByInput {
   connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
+export interface BeerCreateOneInput {
+  create?: BeerCreateInput | null
+  connect?: BeerWhereUniqueInput | null
+}
+
 export interface BeerCreateOneWithoutBeerChangesInput {
   create?: BeerCreateWithoutBeerChangesInput | null
   connect?: BeerWhereUniqueInput | null
@@ -11063,6 +11747,21 @@ export interface BeerSubscriptionWhereInput {
   node?: BeerWhereInput | null
 }
 
+export interface BeerUpdateDataInput {
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
+}
+
 export interface BeerUpdateInput {
   name?: String | null
   type?: String | null
@@ -11143,6 +11842,13 @@ export interface BeerUpdateManyWithoutLikedByInput {
 export interface BeerUpdateManyWithWhereNestedInput {
   where: BeerScalarWhereInput
   data: BeerUpdateManyDataInput
+}
+
+export interface BeerUpdateOneRequiredInput {
+  create?: BeerCreateInput | null
+  connect?: BeerWhereUniqueInput | null
+  update?: BeerUpdateDataInput | null
+  upsert?: BeerUpsertNestedInput | null
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerChangesInput {
@@ -11303,6 +12009,11 @@ export interface BeerUpdateWithWhereUniqueWithoutCreatedByInput {
 export interface BeerUpdateWithWhereUniqueWithoutLikedByInput {
   where: BeerWhereUniqueInput
   data: BeerUpdateWithoutLikedByDataInput
+}
+
+export interface BeerUpsertNestedInput {
+  update: BeerUpdateDataInput
+  create: BeerCreateInput
 }
 
 export interface BeerUpsertWithoutBeerChangesInput {
@@ -11613,6 +12324,11 @@ export interface UserCreateManyWithoutLikedBarsInput {
 export interface UserCreateManyWithoutLikedBeersInput {
   create?: UserCreateWithoutLikedBeersInput[] | UserCreateWithoutLikedBeersInput | null
   connect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+}
+
+export interface UserCreateOneInput {
+  create?: UserCreateInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBarChangesInput {
@@ -12109,6 +12825,31 @@ export interface UserSubscriptionWhereInput {
   node?: UserWhereInput | null
 }
 
+export interface UserUpdateDataInput {
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
+}
+
 export interface UserUpdateInput {
   email?: String | null
   password?: String | null
@@ -12185,6 +12926,13 @@ export interface UserUpdateManyWithoutLikedBeersInput {
 export interface UserUpdateManyWithWhereNestedInput {
   where: UserScalarWhereInput
   data: UserUpdateManyDataInput
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: UserCreateInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateDataInput | null
+  upsert?: UserUpsertNestedInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBarChangesInput {
@@ -12586,6 +13334,11 @@ export interface UserUpdateWithWhereUniqueWithoutLikedBeersInput {
   data: UserUpdateWithoutLikedBeersDataInput
 }
 
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput
+  create: UserCreateInput
+}
+
 export interface UserUpsertWithoutBarChangesInput {
   update: UserUpdateWithoutBarChangesDataInput
   create: UserCreateWithoutBarChangesInput
@@ -12842,6 +13595,14 @@ export interface AggregateBarRating {
 }
 
 export interface AggregateBeer {
+  count: Int
+}
+
+export interface AggregateBeerBarConnectionChange {
+  count: Int
+}
+
+export interface AggregateBeerBarConnectionChangeUpvote {
   count: Int
 }
 
@@ -13105,6 +13866,81 @@ export interface Beer extends Node {
   beerChanges?: Array<BeerChange> | null
   createdBy: User
   likedBy?: Array<User> | null
+}
+
+export interface BeerBarConnectionChange extends Node {
+  id: ID_Output
+  type: ConnectionChangeType
+  user: User
+  beer: Beer
+  bar: Bar
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface BeerBarConnectionChangeConnection {
+  pageInfo: PageInfo
+  edges: Array<BeerBarConnectionChangeEdge | null>
+  aggregate: AggregateBeerBarConnectionChange
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface BeerBarConnectionChangeEdge {
+  node: BeerBarConnectionChange
+  cursor: String
+}
+
+export interface BeerBarConnectionChangePreviousValues {
+  id: ID_Output
+  type: ConnectionChangeType
+}
+
+export interface BeerBarConnectionChangeSubscriptionPayload {
+  mutation: MutationType
+  node?: BeerBarConnectionChange | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerBarConnectionChangePreviousValues | null
+}
+
+export interface BeerBarConnectionChangeUpvote extends Node {
+  id: ID_Output
+  user: User
+  beerBarConnectionChange: BeerBarConnectionChange
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface BeerBarConnectionChangeUpvoteConnection {
+  pageInfo: PageInfo
+  edges: Array<BeerBarConnectionChangeUpvoteEdge | null>
+  aggregate: AggregateBeerBarConnectionChangeUpvote
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface BeerBarConnectionChangeUpvoteEdge {
+  node: BeerBarConnectionChangeUpvote
+  cursor: String
+}
+
+export interface BeerBarConnectionChangeUpvotePreviousValues {
+  id: ID_Output
+}
+
+export interface BeerBarConnectionChangeUpvoteSubscriptionPayload {
+  mutation: MutationType
+  node?: BeerBarConnectionChangeUpvote | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerBarConnectionChangeUpvotePreviousValues | null
 }
 
 export interface BeerChange extends Node {

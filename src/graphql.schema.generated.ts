@@ -4,9 +4,7 @@ export enum BeerField {
     TYPE = "TYPE",
     STRONG = "STRONG",
     PHOTO = "PHOTO",
-    BREWERY = "BREWERY",
-    ADD_BAR = "ADD_BAR",
-    REMOVE_BAR = "REMOVE_BAR"
+    BREWERY = "BREWERY"
 }
 
 export enum Role {

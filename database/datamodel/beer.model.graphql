@@ -59,6 +59,4 @@ enum BeerField {
     STRONG
     PHOTO
     BREWERY
-    ADD_BAR
-    REMOVE_BAR
 }
