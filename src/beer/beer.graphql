@@ -83,3 +83,7 @@ input CommentBeerInput {
     beerId: ID!
     comment: String!
 }
+
+input ChangeBeerInput {
+
+}

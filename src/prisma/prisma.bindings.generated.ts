@@ -252,7 +252,6 @@ type Bar implements Node {
 
 type BarChange implements Node {
   id: ID!
-  price: Float!
   field: String!
   newValue: String!
   user: User!
@@ -272,7 +271,6 @@ type BarChangeConnection {
 }
 
 input BarChangeCreateInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBarChangesInput!
@@ -296,7 +294,6 @@ input BarChangeCreateOneWithoutUpvotesInput {
 }
 
 input BarChangeCreateWithoutBarInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBarChangesInput!
@@ -304,7 +301,6 @@ input BarChangeCreateWithoutBarInput {
 }
 
 input BarChangeCreateWithoutUpvotesInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBarChangesInput!
@@ -312,7 +308,6 @@ input BarChangeCreateWithoutUpvotesInput {
 }
 
 input BarChangeCreateWithoutUserInput {
-  price: Float!
   field: String!
   newValue: String!
   bar: BarCreateOneWithoutBarChangesInput!
@@ -331,8 +326,6 @@ type BarChangeEdge {
 enum BarChangeOrderByInput {
   id_ASC
   id_DESC
-  price_ASC
-  price_DESC
   field_ASC
   field_DESC
   newValue_ASC
@@ -345,7 +338,6 @@ enum BarChangeOrderByInput {
 
 type BarChangePreviousValues {
   id: ID!
-  price: Float!
   field: String!
   newValue: String!
   createdAt: DateTime!
@@ -400,28 +392,6 @@ input BarChangeScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
   field: String
 
   """All values that are not equal to given value."""
@@ -566,7 +536,6 @@ input BarChangeSubscriptionWhereInput {
 }
 
 input BarChangeUpdateInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBarChangesInput
@@ -575,13 +544,11 @@ input BarChangeUpdateInput {
 }
 
 input BarChangeUpdateManyDataInput {
-  price: Float
   field: String
   newValue: String
 }
 
 input BarChangeUpdateManyMutationInput {
-  price: Float
   field: String
   newValue: String
 }
@@ -623,7 +590,6 @@ input BarChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 input BarChangeUpdateWithoutBarDataInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBarChangesInput
@@ -631,7 +597,6 @@ input BarChangeUpdateWithoutBarDataInput {
 }
 
 input BarChangeUpdateWithoutUpvotesDataInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBarChangesInput
@@ -639,7 +604,6 @@ input BarChangeUpdateWithoutUpvotesDataInput {
 }
 
 input BarChangeUpdateWithoutUserDataInput {
-  price: Float
   field: String
   newValue: String
   bar: BarUpdateOneRequiredWithoutBarChangesInput
@@ -987,28 +951,6 @@ input BarChangeWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
   field: String
 
   """All values that are not equal to given value."""
@@ -3062,7 +3004,6 @@ type Beer implements Node {
 
 type BeerChange implements Node {
   id: ID!
-  price: Float!
   field: String!
   newValue: String!
   user: User!
@@ -3082,7 +3023,6 @@ type BeerChangeConnection {
 }
 
 input BeerChangeCreateInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
@@ -3106,7 +3046,6 @@ input BeerChangeCreateOneWithoutUpvotesInput {
 }
 
 input BeerChangeCreateWithoutBeerInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
@@ -3114,7 +3053,6 @@ input BeerChangeCreateWithoutBeerInput {
 }
 
 input BeerChangeCreateWithoutUpvotesInput {
-  price: Float!
   field: String!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
@@ -3122,7 +3060,6 @@ input BeerChangeCreateWithoutUpvotesInput {
 }
 
 input BeerChangeCreateWithoutUserInput {
-  price: Float!
   field: String!
   newValue: String!
   beer: BeerCreateOneWithoutBeerChangesInput!
@@ -3141,8 +3078,6 @@ type BeerChangeEdge {
 enum BeerChangeOrderByInput {
   id_ASC
   id_DESC
-  price_ASC
-  price_DESC
   field_ASC
   field_DESC
   newValue_ASC
@@ -3155,7 +3090,6 @@ enum BeerChangeOrderByInput {
 
 type BeerChangePreviousValues {
   id: ID!
-  price: Float!
   field: String!
   newValue: String!
   createdAt: DateTime!
@@ -3210,28 +3144,6 @@ input BeerChangeScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
   field: String
 
   """All values that are not equal to given value."""
@@ -3376,7 +3288,6 @@ input BeerChangeSubscriptionWhereInput {
 }
 
 input BeerChangeUpdateInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
@@ -3385,13 +3296,11 @@ input BeerChangeUpdateInput {
 }
 
 input BeerChangeUpdateManyDataInput {
-  price: Float
   field: String
   newValue: String
 }
 
 input BeerChangeUpdateManyMutationInput {
-  price: Float
   field: String
   newValue: String
 }
@@ -3433,7 +3342,6 @@ input BeerChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 input BeerChangeUpdateWithoutBeerDataInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
@@ -3441,7 +3349,6 @@ input BeerChangeUpdateWithoutBeerDataInput {
 }
 
 input BeerChangeUpdateWithoutUpvotesDataInput {
-  price: Float
   field: String
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
@@ -3449,7 +3356,6 @@ input BeerChangeUpdateWithoutUpvotesDataInput {
 }
 
 input BeerChangeUpdateWithoutUserDataInput {
-  price: Float
   field: String
   newValue: String
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
@@ -3797,28 +3703,6 @@ input BeerChangeWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
   field: String
 
   """All values that are not equal to given value."""
@@ -8314,8 +8198,6 @@ export const Prisma = makePrismaBindingClass<BindingConstructor<Prisma>>({typeDe
 
 export type BarChangeOrderByInput =   'id_ASC' |
   'id_DESC' |
-  'price_ASC' |
-  'price_DESC' |
   'field_ASC' |
   'field_DESC' |
   'newValue_ASC' |
@@ -8373,8 +8255,6 @@ export type BarRatingOrderByInput =   'id_ASC' |
 
 export type BeerChangeOrderByInput =   'id_ASC' |
   'id_DESC' |
-  'price_ASC' |
-  'price_DESC' |
   'field_ASC' |
   'field_DESC' |
   'newValue_ASC' |
@@ -8482,7 +8362,6 @@ export type UserOrderByInput =   'id_ASC' |
   'updatedAt_DESC'
 
 export interface BarChangeCreateInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBarChangesInput
@@ -8506,7 +8385,6 @@ export interface BarChangeCreateOneWithoutUpvotesInput {
 }
 
 export interface BarChangeCreateWithoutBarInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBarChangesInput
@@ -8514,7 +8392,6 @@ export interface BarChangeCreateWithoutBarInput {
 }
 
 export interface BarChangeCreateWithoutUpvotesInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBarChangesInput
@@ -8522,7 +8399,6 @@ export interface BarChangeCreateWithoutUpvotesInput {
 }
 
 export interface BarChangeCreateWithoutUserInput {
-  price: Float
   field: String
   newValue: String
   bar: BarCreateOneWithoutBarChangesInput
@@ -8547,14 +8423,6 @@ export interface BarChangeScalarWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  price?: Float | null
-  price_not?: Float | null
-  price_in?: Float[] | Float | null
-  price_not_in?: Float[] | Float | null
-  price_lt?: Float | null
-  price_lte?: Float | null
-  price_gt?: Float | null
-  price_gte?: Float | null
   field?: String | null
   field_not?: String | null
   field_in?: String[] | String | null
@@ -8605,7 +8473,6 @@ export interface BarChangeSubscriptionWhereInput {
 }
 
 export interface BarChangeUpdateInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBarChangesInput | null
@@ -8614,13 +8481,11 @@ export interface BarChangeUpdateInput {
 }
 
 export interface BarChangeUpdateManyDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
 }
 
 export interface BarChangeUpdateManyMutationInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
 }
@@ -8662,7 +8527,6 @@ export interface BarChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 export interface BarChangeUpdateWithoutBarDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBarChangesInput | null
@@ -8670,7 +8534,6 @@ export interface BarChangeUpdateWithoutBarDataInput {
 }
 
 export interface BarChangeUpdateWithoutUpvotesDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBarChangesInput | null
@@ -8678,7 +8541,6 @@ export interface BarChangeUpdateWithoutUpvotesDataInput {
 }
 
 export interface BarChangeUpdateWithoutUserDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
@@ -8867,14 +8729,6 @@ export interface BarChangeWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  price?: Float | null
-  price_not?: Float | null
-  price_in?: Float[] | Float | null
-  price_not_in?: Float[] | Float | null
-  price_lt?: Float | null
-  price_lte?: Float | null
-  price_gt?: Float | null
-  price_gte?: Float | null
   field?: String | null
   field_not?: String | null
   field_in?: String[] | String | null
@@ -10006,7 +9860,6 @@ export interface BarWhereUniqueInput {
 }
 
 export interface BeerChangeCreateInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
@@ -10030,7 +9883,6 @@ export interface BeerChangeCreateOneWithoutUpvotesInput {
 }
 
 export interface BeerChangeCreateWithoutBeerInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
@@ -10038,7 +9890,6 @@ export interface BeerChangeCreateWithoutBeerInput {
 }
 
 export interface BeerChangeCreateWithoutUpvotesInput {
-  price: Float
   field: String
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
@@ -10046,7 +9897,6 @@ export interface BeerChangeCreateWithoutUpvotesInput {
 }
 
 export interface BeerChangeCreateWithoutUserInput {
-  price: Float
   field: String
   newValue: String
   beer: BeerCreateOneWithoutBeerChangesInput
@@ -10071,14 +9921,6 @@ export interface BeerChangeScalarWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  price?: Float | null
-  price_not?: Float | null
-  price_in?: Float[] | Float | null
-  price_not_in?: Float[] | Float | null
-  price_lt?: Float | null
-  price_lte?: Float | null
-  price_gt?: Float | null
-  price_gte?: Float | null
   field?: String | null
   field_not?: String | null
   field_in?: String[] | String | null
@@ -10129,7 +9971,6 @@ export interface BeerChangeSubscriptionWhereInput {
 }
 
 export interface BeerChangeUpdateInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
@@ -10138,13 +9979,11 @@ export interface BeerChangeUpdateInput {
 }
 
 export interface BeerChangeUpdateManyDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
 }
 
 export interface BeerChangeUpdateManyMutationInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
 }
@@ -10186,7 +10025,6 @@ export interface BeerChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 export interface BeerChangeUpdateWithoutBeerDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
@@ -10194,7 +10032,6 @@ export interface BeerChangeUpdateWithoutBeerDataInput {
 }
 
 export interface BeerChangeUpdateWithoutUpvotesDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
@@ -10202,7 +10039,6 @@ export interface BeerChangeUpdateWithoutUpvotesDataInput {
 }
 
 export interface BeerChangeUpdateWithoutUserDataInput {
-  price?: Float | null
   field?: String | null
   newValue?: String | null
   beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
@@ -10391,14 +10227,6 @@ export interface BeerChangeWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  price?: Float | null
-  price_not?: Float | null
-  price_in?: Float[] | Float | null
-  price_not_in?: Float[] | Float | null
-  price_lt?: Float | null
-  price_lte?: Float | null
-  price_gt?: Float | null
-  price_gte?: Float | null
   field?: String | null
   field_not?: String | null
   field_in?: String[] | String | null
@@ -13128,7 +12956,6 @@ export interface Bar extends Node {
 
 export interface BarChange extends Node {
   id: ID_Output
-  price: Float
   field: String
   newValue: String
   user: User
@@ -13158,7 +12985,6 @@ export interface BarChangeEdge {
 
 export interface BarChangePreviousValues {
   id: ID_Output
-  price: Float
   field: String
   newValue: String
   createdAt: DateTime
@@ -13345,7 +13171,6 @@ export interface Beer extends Node {
 
 export interface BeerChange extends Node {
   id: ID_Output
-  price: Float
   field: String
   newValue: String
   user: User
@@ -13375,7 +13200,6 @@ export interface BeerChangeEdge {
 
 export interface BeerChangePreviousValues {
   id: ID_Output
-  price: Float
   field: String
   newValue: String
   createdAt: DateTime
