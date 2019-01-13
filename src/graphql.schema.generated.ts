@@ -1,3 +1,14 @@
+/* tslint:disable */
+export enum BeerField {
+    NAME = "NAME",
+    TYPE = "TYPE",
+    STRONG = "STRONG",
+    PHOTO = "PHOTO",
+    BREWERY = "BREWERY",
+    ADD_BAR = "ADD_BAR",
+    REMOVE_BAR = "REMOVE_BAR"
+}
+
 export enum Role {
     USER = "USER",
     ADMIN = "ADMIN"
@@ -6,6 +17,12 @@ export enum Role {
 export enum Sex {
     MALE = "MALE",
     FEMALE = "FEMALE"
+}
+
+export class ChangeBeerInput {
+    field: BeerField;
+    newValue: string;
+    beerId: string;
 }
 
 export class CommentBeerInput {
@@ -138,7 +155,7 @@ export class Beer {
 export class BeerChange {
     id: string;
     price: number;
-    field: string;
+    field: BeerField;
     newValue: string;
     user: User;
     beer: Beer;
@@ -201,6 +218,8 @@ export abstract class IMutation {
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
 
     abstract rateBeer(rateBeerInput?: RateBeerInput): BeerRating | Promise<BeerRating>;
+
+    abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 

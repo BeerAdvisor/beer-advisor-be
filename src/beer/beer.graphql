@@ -7,6 +7,7 @@ type Mutation {
     createBeer(createBeerInput: CreateBeerInput): Beer!
     commentBeer(commentBeerInput: CommentBeerInput): BeerComment!
     rateBeer(rateBeerInput: RateBeerInput): BeerRating!
+    changeBeer(changeBeerInput: ChangeBeerInput): BeerChange!
 }
 
 type Beer {
@@ -43,7 +44,7 @@ type BeerComment {
 type BeerChange {
     id: ID!
     price: Float!
-    field: String!
+    field: BeerField!
     newValue: String!
     user: User!
     beer: Beer!
@@ -63,6 +64,16 @@ type BeerPrice {
     user: User!
     bar: Bar!
     beer: Beer!
+}
+
+enum BeerField {
+    NAME
+    TYPE
+    STRONG
+    PHOTO
+    BREWERY
+    ADD_BAR
+    REMOVE_BAR
 }
 
 input RateBeerInput {
@@ -85,5 +96,7 @@ input CommentBeerInput {
 }
 
 input ChangeBeerInput {
-
+    field: BeerField!
+    newValue: String!
+    beerId: String!
 }

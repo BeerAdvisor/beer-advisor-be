@@ -31,7 +31,7 @@ type BeerComment {
 
 type BeerChange {
     id: ID! @unique
-    field: String!
+    field: BeerField!
     newValue: String!
     user: User!
     beer: Beer!
@@ -51,4 +51,14 @@ type BeerPrice {
     user: User!
     bar: Bar!
     beer: Beer!
+}
+
+enum BeerField {
+    NAME
+    TYPE
+    STRONG
+    PHOTO
+    BREWERY
+    ADD_BAR
+    REMOVE_BAR
 }

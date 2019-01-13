@@ -3004,7 +3004,7 @@ type Beer implements Node {
 
 type BeerChange implements Node {
   id: ID!
-  field: String!
+  field: BeerField!
   newValue: String!
   user: User!
   beer: Beer!
@@ -3023,7 +3023,7 @@ type BeerChangeConnection {
 }
 
 input BeerChangeCreateInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   beer: BeerCreateOneWithoutBeerChangesInput!
@@ -3046,21 +3046,21 @@ input BeerChangeCreateOneWithoutUpvotesInput {
 }
 
 input BeerChangeCreateWithoutBeerInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   upvotes: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
 }
 
 input BeerChangeCreateWithoutUpvotesInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   beer: BeerCreateOneWithoutBeerChangesInput!
 }
 
 input BeerChangeCreateWithoutUserInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   beer: BeerCreateOneWithoutBeerChangesInput!
   upvotes: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
@@ -3090,7 +3090,7 @@ enum BeerChangeOrderByInput {
 
 type BeerChangePreviousValues {
   id: ID!
-  field: String!
+  field: BeerField!
   newValue: String!
   createdAt: DateTime!
 }
@@ -3144,46 +3144,16 @@ input BeerChangeScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  field: String
+  field: BeerField
 
   """All values that are not equal to given value."""
-  field_not: String
+  field_not: BeerField
 
   """All values that are contained in given list."""
-  field_in: [String!]
+  field_in: [BeerField!]
 
   """All values that are not contained in given list."""
-  field_not_in: [String!]
-
-  """All values less than the given value."""
-  field_lt: String
-
-  """All values less than or equal the given value."""
-  field_lte: String
-
-  """All values greater than the given value."""
-  field_gt: String
-
-  """All values greater than or equal the given value."""
-  field_gte: String
-
-  """All values containing the given string."""
-  field_contains: String
-
-  """All values not containing the given string."""
-  field_not_contains: String
-
-  """All values starting with the given string."""
-  field_starts_with: String
-
-  """All values not starting with the given string."""
-  field_not_starts_with: String
-
-  """All values ending with the given string."""
-  field_ends_with: String
-
-  """All values not ending with the given string."""
-  field_not_ends_with: String
+  field_not_in: [BeerField!]
   newValue: String
 
   """All values that are not equal to given value."""
@@ -3288,7 +3258,7 @@ input BeerChangeSubscriptionWhereInput {
 }
 
 input BeerChangeUpdateInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
@@ -3296,12 +3266,12 @@ input BeerChangeUpdateInput {
 }
 
 input BeerChangeUpdateManyDataInput {
-  field: String
+  field: BeerField
   newValue: String
 }
 
 input BeerChangeUpdateManyMutationInput {
-  field: String
+  field: BeerField
   newValue: String
 }
 
@@ -3342,21 +3312,21 @@ input BeerChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 input BeerChangeUpdateWithoutBeerDataInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   upvotes: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
 }
 
 input BeerChangeUpdateWithoutUpvotesDataInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
 }
 
 input BeerChangeUpdateWithoutUserDataInput {
-  field: String
+  field: BeerField
   newValue: String
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
   upvotes: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
@@ -3703,46 +3673,16 @@ input BeerChangeWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  field: String
+  field: BeerField
 
   """All values that are not equal to given value."""
-  field_not: String
+  field_not: BeerField
 
   """All values that are contained in given list."""
-  field_in: [String!]
+  field_in: [BeerField!]
 
   """All values that are not contained in given list."""
-  field_not_in: [String!]
-
-  """All values less than the given value."""
-  field_lt: String
-
-  """All values less than or equal the given value."""
-  field_lte: String
-
-  """All values greater than the given value."""
-  field_gt: String
-
-  """All values greater than or equal the given value."""
-  field_gte: String
-
-  """All values containing the given string."""
-  field_contains: String
-
-  """All values not containing the given string."""
-  field_not_contains: String
-
-  """All values starting with the given string."""
-  field_starts_with: String
-
-  """All values not starting with the given string."""
-  field_not_starts_with: String
-
-  """All values ending with the given string."""
-  field_ends_with: String
-
-  """All values not ending with the given string."""
-  field_not_ends_with: String
+  field_not_in: [BeerField!]
   newValue: String
 
   """All values that are not equal to given value."""
@@ -4416,6 +4356,16 @@ type BeerEdge {
 
   """A cursor for use in pagination."""
   cursor: String!
+}
+
+enum BeerField {
+  NAME
+  TYPE
+  STRONG
+  PHOTO
+  BREWERY
+  ADD_BAR
+  REMOVE_BAR
 }
 
 enum BeerOrderByInput {
@@ -8280,6 +8230,14 @@ export type BeerCommentOrderByInput =   'id_ASC' |
   'updatedAt_ASC' |
   'updatedAt_DESC'
 
+export type BeerField =   'NAME' |
+  'TYPE' |
+  'STRONG' |
+  'PHOTO' |
+  'BREWERY' |
+  'ADD_BAR' |
+  'REMOVE_BAR'
+
 export type BeerOrderByInput =   'id_ASC' |
   'id_DESC' |
   'name_ASC' |
@@ -9860,7 +9818,7 @@ export interface BarWhereUniqueInput {
 }
 
 export interface BeerChangeCreateInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
   beer: BeerCreateOneWithoutBeerChangesInput
@@ -9883,21 +9841,21 @@ export interface BeerChangeCreateOneWithoutUpvotesInput {
 }
 
 export interface BeerChangeCreateWithoutBeerInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
   upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeCreateWithoutUpvotesInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
   beer: BeerCreateOneWithoutBeerChangesInput
 }
 
 export interface BeerChangeCreateWithoutUserInput {
-  field: String
+  field: BeerField
   newValue: String
   beer: BeerCreateOneWithoutBeerChangesInput
   upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput | null
@@ -9921,20 +9879,10 @@ export interface BeerChangeScalarWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  field?: String | null
-  field_not?: String | null
-  field_in?: String[] | String | null
-  field_not_in?: String[] | String | null
-  field_lt?: String | null
-  field_lte?: String | null
-  field_gt?: String | null
-  field_gte?: String | null
-  field_contains?: String | null
-  field_not_contains?: String | null
-  field_starts_with?: String | null
-  field_not_starts_with?: String | null
-  field_ends_with?: String | null
-  field_not_ends_with?: String | null
+  field?: BeerField | null
+  field_not?: BeerField | null
+  field_in?: BeerField[] | BeerField | null
+  field_not_in?: BeerField[] | BeerField | null
   newValue?: String | null
   newValue_not?: String | null
   newValue_in?: String[] | String | null
@@ -9971,7 +9919,7 @@ export interface BeerChangeSubscriptionWhereInput {
 }
 
 export interface BeerChangeUpdateInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
   beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
@@ -9979,12 +9927,12 @@ export interface BeerChangeUpdateInput {
 }
 
 export interface BeerChangeUpdateManyDataInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
 }
 
 export interface BeerChangeUpdateManyMutationInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
 }
 
@@ -10025,21 +9973,21 @@ export interface BeerChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 export interface BeerChangeUpdateWithoutBeerDataInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
   upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeUpdateWithoutUpvotesDataInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
   user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
   beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
 }
 
 export interface BeerChangeUpdateWithoutUserDataInput {
-  field?: String | null
+  field?: BeerField | null
   newValue?: String | null
   beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
   upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput | null
@@ -10227,20 +10175,10 @@ export interface BeerChangeWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
-  field?: String | null
-  field_not?: String | null
-  field_in?: String[] | String | null
-  field_not_in?: String[] | String | null
-  field_lt?: String | null
-  field_lte?: String | null
-  field_gt?: String | null
-  field_gte?: String | null
-  field_contains?: String | null
-  field_not_contains?: String | null
-  field_starts_with?: String | null
-  field_not_starts_with?: String | null
-  field_ends_with?: String | null
-  field_not_ends_with?: String | null
+  field?: BeerField | null
+  field_not?: BeerField | null
+  field_in?: BeerField[] | BeerField | null
+  field_not_in?: BeerField[] | BeerField | null
   newValue?: String | null
   newValue_not?: String | null
   newValue_in?: String[] | String | null
@@ -13171,7 +13109,7 @@ export interface Beer extends Node {
 
 export interface BeerChange extends Node {
   id: ID_Output
-  field: String
+  field: BeerField
   newValue: String
   user: User
   beer: Beer
@@ -13200,7 +13138,7 @@ export interface BeerChangeEdge {
 
 export interface BeerChangePreviousValues {
   id: ID_Output
-  field: String
+  field: BeerField
   newValue: String
   createdAt: DateTime
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
+import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
-import { Beer, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
+import { Beer, BeerChange, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
 
 @Injectable()
 export class BeerService {
@@ -61,6 +61,20 @@ export class BeerService {
         },
         update: {
           rating: rating.rating,
+        },
+      },
+      info,
+    );
+  }
+
+  changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {
+    return this.prisma.mutation.createBeerChange(
+      {
+        data: {
+          field: change.field,
+          newValue: change.newValue,
+          user: { connect: { id: user.id } },
+          beer: { connect: { id: change.beerId } },
         },
       },
       info,

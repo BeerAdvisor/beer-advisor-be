@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Sun Jan 13 2019 20:30:52 GMT+0100 (CET)
+# timestamp: Sun Jan 13 2019 21:16:51 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -2826,7 +2826,7 @@ type Beer implements Node {
 
 type BeerChange implements Node {
   id: ID!
-  field: String!
+  field: BeerField!
   newValue: String!
   user: User!
   beer: Beer!
@@ -2845,7 +2845,7 @@ type BeerChangeConnection {
 }
 
 input BeerChangeCreateInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   beer: BeerCreateOneWithoutBeerChangesInput!
@@ -2868,21 +2868,21 @@ input BeerChangeCreateOneWithoutUpvotesInput {
 }
 
 input BeerChangeCreateWithoutBeerInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   upvotes: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
 }
 
 input BeerChangeCreateWithoutUpvotesInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   user: UserCreateOneWithoutBeerChangesInput!
   beer: BeerCreateOneWithoutBeerChangesInput!
 }
 
 input BeerChangeCreateWithoutUserInput {
-  field: String!
+  field: BeerField!
   newValue: String!
   beer: BeerCreateOneWithoutBeerChangesInput!
   upvotes: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
@@ -2912,7 +2912,7 @@ enum BeerChangeOrderByInput {
 
 type BeerChangePreviousValues {
   id: ID!
-  field: String!
+  field: BeerField!
   newValue: String!
   createdAt: DateTime!
 }
@@ -2966,46 +2966,16 @@ input BeerChangeScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  field: String
+  field: BeerField
 
   """All values that are not equal to given value."""
-  field_not: String
+  field_not: BeerField
 
   """All values that are contained in given list."""
-  field_in: [String!]
+  field_in: [BeerField!]
 
   """All values that are not contained in given list."""
-  field_not_in: [String!]
-
-  """All values less than the given value."""
-  field_lt: String
-
-  """All values less than or equal the given value."""
-  field_lte: String
-
-  """All values greater than the given value."""
-  field_gt: String
-
-  """All values greater than or equal the given value."""
-  field_gte: String
-
-  """All values containing the given string."""
-  field_contains: String
-
-  """All values not containing the given string."""
-  field_not_contains: String
-
-  """All values starting with the given string."""
-  field_starts_with: String
-
-  """All values not starting with the given string."""
-  field_not_starts_with: String
-
-  """All values ending with the given string."""
-  field_ends_with: String
-
-  """All values not ending with the given string."""
-  field_not_ends_with: String
+  field_not_in: [BeerField!]
   newValue: String
 
   """All values that are not equal to given value."""
@@ -3110,7 +3080,7 @@ input BeerChangeSubscriptionWhereInput {
 }
 
 input BeerChangeUpdateInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
@@ -3118,12 +3088,12 @@ input BeerChangeUpdateInput {
 }
 
 input BeerChangeUpdateManyDataInput {
-  field: String
+  field: BeerField
   newValue: String
 }
 
 input BeerChangeUpdateManyMutationInput {
-  field: String
+  field: BeerField
   newValue: String
 }
 
@@ -3164,21 +3134,21 @@ input BeerChangeUpdateOneRequiredWithoutUpvotesInput {
 }
 
 input BeerChangeUpdateWithoutBeerDataInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   upvotes: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
 }
 
 input BeerChangeUpdateWithoutUpvotesDataInput {
-  field: String
+  field: BeerField
   newValue: String
   user: UserUpdateOneRequiredWithoutBeerChangesInput
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
 }
 
 input BeerChangeUpdateWithoutUserDataInput {
-  field: String
+  field: BeerField
   newValue: String
   beer: BeerUpdateOneRequiredWithoutBeerChangesInput
   upvotes: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
@@ -3525,46 +3495,16 @@ input BeerChangeWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  field: String
+  field: BeerField
 
   """All values that are not equal to given value."""
-  field_not: String
+  field_not: BeerField
 
   """All values that are contained in given list."""
-  field_in: [String!]
+  field_in: [BeerField!]
 
   """All values that are not contained in given list."""
-  field_not_in: [String!]
-
-  """All values less than the given value."""
-  field_lt: String
-
-  """All values less than or equal the given value."""
-  field_lte: String
-
-  """All values greater than the given value."""
-  field_gt: String
-
-  """All values greater than or equal the given value."""
-  field_gte: String
-
-  """All values containing the given string."""
-  field_contains: String
-
-  """All values not containing the given string."""
-  field_not_contains: String
-
-  """All values starting with the given string."""
-  field_starts_with: String
-
-  """All values not starting with the given string."""
-  field_not_starts_with: String
-
-  """All values ending with the given string."""
-  field_ends_with: String
-
-  """All values not ending with the given string."""
-  field_not_ends_with: String
+  field_not_in: [BeerField!]
   newValue: String
 
   """All values that are not equal to given value."""
@@ -4238,6 +4178,16 @@ type BeerEdge {
 
   """A cursor for use in pagination."""
   cursor: String!
+}
+
+enum BeerField {
+  NAME
+  TYPE
+  STRONG
+  PHOTO
+  BREWERY
+  ADD_BAR
+  REMOVE_BAR
 }
 
 enum BeerOrderByInput {
