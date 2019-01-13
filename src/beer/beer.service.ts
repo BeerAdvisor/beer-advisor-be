@@ -33,12 +33,12 @@ export class BeerService {
     );
   }
 
-  commentBeer(comment: CommentBeerInput, info: GraphQLResolveInfo): Promise<BeerComment> {
+  commentBeer(comment: CommentBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerComment> {
     return this.prisma.mutation.createBeerComment(
       {
         data: {
           comment: comment.comment,
-          user: { connect: { id: 'user_id_here' } }, // TODO
+          user: { connect: { id: user.id } },
           beer: { connect: { id: comment.beerId } },
         },
       },

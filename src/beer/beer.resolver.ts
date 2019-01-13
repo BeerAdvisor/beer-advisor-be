@@ -28,8 +28,9 @@ export class BeerResolvers {
   }
 
   @Mutation()
-  commentBeer(@Args('commentBeerInput') args: CommentBeerInput, @Info() info: GraphQLResolveInfo) {
-    return this.beerService.commentBeer(args, info);
+  @UseGuards(GqlAuthGuard)
+  commentBeer(@Args('commentBeerInput') args: CommentBeerInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
+    return this.beerService.commentBeer(args, user, info);
   }
 
   @Mutation()
