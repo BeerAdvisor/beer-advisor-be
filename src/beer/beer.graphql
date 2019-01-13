@@ -43,7 +43,6 @@ type BeerComment {
 
 type BeerChange {
     id: ID!
-    price: Float!
     field: BeerField!
     newValue: String!
     user: User!

@@ -45,7 +45,6 @@ type BarComment {
 
 type BarChange {
     id: ID!
-    price: Float!
     field: String!
     newValue: String!
     user: User!
