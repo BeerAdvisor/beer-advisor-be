@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Thu Jan 10 2019 21:13:30 GMT+0100 (CET)
+# timestamp: Sun Jan 13 2019 16:02:02 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -4765,7 +4765,7 @@ input BeerPriceWhereUniqueInput {
 
 type BeerRating implements Node {
   id: ID!
-  rating: Float!
+  rating: Int!
   user: User!
   beer: Beer!
 }
@@ -4781,7 +4781,7 @@ type BeerRatingConnection {
 }
 
 input BeerRatingCreateInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
@@ -4797,12 +4797,12 @@ input BeerRatingCreateManyWithoutUserInput {
 }
 
 input BeerRatingCreateWithoutBeerInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
 }
 
 input BeerRatingCreateWithoutUserInput {
-  rating: Float!
+  rating: Int!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
 
@@ -4828,7 +4828,7 @@ enum BeerRatingOrderByInput {
 
 type BeerRatingPreviousValues {
   id: ID!
-  rating: Float!
+  rating: Int!
 }
 
 input BeerRatingScalarWhereInput {
@@ -4880,28 +4880,28 @@ input BeerRatingScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
 }
 
 type BeerRatingSubscriptionPayload {
@@ -4944,17 +4944,17 @@ input BeerRatingSubscriptionWhereInput {
 }
 
 input BeerRatingUpdateInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
 input BeerRatingUpdateManyDataInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyMutationInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyWithoutBeerInput {
@@ -4987,12 +4987,12 @@ input BeerRatingUpdateManyWithWhereNestedInput {
 }
 
 input BeerRatingUpdateWithoutBeerDataInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
 }
 
 input BeerRatingUpdateWithoutUserDataInput {
-  rating: Float
+  rating: Int
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
@@ -5067,28 +5067,28 @@ input BeerRatingWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
   user: UserWhereInput
   beer: BeerWhereInput
 }

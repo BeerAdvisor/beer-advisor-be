@@ -4,46 +4,46 @@ import { Options } from 'graphql-binding'
 import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
-    bars: <T = Bar[]>(args: { where?: BarWhereInput, orderBy?: BarOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barRatings: <T = BarRating[]>(args: { where?: BarRatingWhereInput, orderBy?: BarRatingOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barComments: <T = BarComment[]>(args: { where?: BarCommentWhereInput, orderBy?: BarCommentOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barChanges: <T = BarChange[]>(args: { where?: BarChangeWhereInput, orderBy?: BarChangeOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barChangeUpvotes: <T = BarChangeUpvote[]>(args: { where?: BarChangeUpvoteWhereInput, orderBy?: BarChangeUpvoteOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beers: <T = Beer[]>(args: { where?: BeerWhereInput, orderBy?: BeerOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerRatings: <T = BeerRating[]>(args: { where?: BeerRatingWhereInput, orderBy?: BeerRatingOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerComments: <T = BeerComment[]>(args: { where?: BeerCommentWhereInput, orderBy?: BeerCommentOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerChanges: <T = BeerChange[]>(args: { where?: BeerChangeWhereInput, orderBy?: BeerChangeOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerChangeUpvotes: <T = BeerChangeUpvote[]>(args: { where?: BeerChangeUpvoteWhereInput, orderBy?: BeerChangeUpvoteOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerPrices: <T = BeerPrice[]>(args: { where?: BeerPriceWhereInput, orderBy?: BeerPriceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    breweries: <T = Brewery[]>(args: { where?: BreweryWhereInput, orderBy?: BreweryOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    bar: <T = Bar>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barRating: <T = BarRating>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barComment: <T = BarComment>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barChange: <T = BarChange>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barChangeUpvote: <T = BarChangeUpvote>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beer: <T = Beer>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beerRating: <T = BeerRating>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beerComment: <T = BeerComment>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beerChange: <T = BeerChange>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beerChangeUpvote: <T = BeerChangeUpvote>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beerPrice: <T = BeerPrice>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    user: <T = User>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    brewery: <T = Brewery>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput, orderBy?: BarOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barRatingsConnection: <T = BarRatingConnection>(args: { where?: BarRatingWhereInput, orderBy?: BarRatingOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barCommentsConnection: <T = BarCommentConnection>(args: { where?: BarCommentWhereInput, orderBy?: BarCommentOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barChangesConnection: <T = BarChangeConnection>(args: { where?: BarChangeWhereInput, orderBy?: BarChangeOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barChangeUpvotesConnection: <T = BarChangeUpvoteConnection>(args: { where?: BarChangeUpvoteWhereInput, orderBy?: BarChangeUpvoteOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput, orderBy?: BeerOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerRatingsConnection: <T = BeerRatingConnection>(args: { where?: BeerRatingWhereInput, orderBy?: BeerRatingOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerCommentsConnection: <T = BeerCommentConnection>(args: { where?: BeerCommentWhereInput, orderBy?: BeerCommentOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerChangesConnection: <T = BeerChangeConnection>(args: { where?: BeerChangeWhereInput, orderBy?: BeerChangeOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerChangeUpvotesConnection: <T = BeerChangeUpvoteConnection>(args: { where?: BeerChangeUpvoteWhereInput, orderBy?: BeerChangeUpvoteOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beerPricesConnection: <T = BeerPriceConnection>(args: { where?: BeerPriceWhereInput, orderBy?: BeerPriceOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    breweriesConnection: <T = BreweryConnection>(args: { where?: BreweryWhereInput, orderBy?: BreweryOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    node: <T = Node>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
+    bars: <T = Array<Bar | null>>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barRatings: <T = Array<BarRating | null>>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barComments: <T = Array<BarComment | null>>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barChanges: <T = Array<BarChange | null>>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barChangeUpvotes: <T = Array<BarChangeUpvote | null>>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beers: <T = Array<Beer | null>>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerRatings: <T = Array<BeerRating | null>>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerComments: <T = Array<BeerComment | null>>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerChanges: <T = Array<BeerChange | null>>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerChangeUpvotes: <T = Array<BeerChangeUpvote | null>>(args: { where?: BeerChangeUpvoteWhereInput | null, orderBy?: BeerChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerPrices: <T = Array<BeerPrice | null>>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    users: <T = Array<User | null>>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    breweries: <T = Array<Brewery | null>>(args: { where?: BreweryWhereInput | null, orderBy?: BreweryOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    bar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerChangeUpvote: <T = BeerChangeUpvote | null>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    brewery: <T = Brewery | null>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barRatingsConnection: <T = BarRatingConnection>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barCommentsConnection: <T = BarCommentConnection>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barChangesConnection: <T = BarChangeConnection>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    barChangeUpvotesConnection: <T = BarChangeUpvoteConnection>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerRatingsConnection: <T = BeerRatingConnection>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerCommentsConnection: <T = BeerCommentConnection>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerChangesConnection: <T = BeerChangeConnection>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerChangeUpvotesConnection: <T = BeerChangeUpvoteConnection>(args: { where?: BeerChangeUpvoteWhereInput | null, orderBy?: BeerChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beerPricesConnection: <T = BeerPriceConnection>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    breweriesConnection: <T = BreweryConnection>(args: { where?: BreweryWhereInput | null, orderBy?: BreweryOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
   }
 
 export interface Mutation {
@@ -60,32 +60,32 @@ export interface Mutation {
     createBeerPrice: <T = BeerPrice>(args: { data: BeerPriceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBrewery: <T = Brewery>(args: { data: BreweryCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateBar: <T = Bar>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBarRating: <T = BarRating>(args: { data: BarRatingUpdateInput, where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBarComment: <T = BarComment>(args: { data: BarCommentUpdateInput, where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBarChange: <T = BarChange>(args: { data: BarChangeUpdateInput, where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBarChangeUpvote: <T = BarChangeUpvote>(args: { data: BarChangeUpvoteUpdateInput, where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeer: <T = Beer>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeerRating: <T = BeerRating>(args: { data: BeerRatingUpdateInput, where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeerComment: <T = BeerComment>(args: { data: BeerCommentUpdateInput, where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeerChange: <T = BeerChange>(args: { data: BeerChangeUpdateInput, where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeerChangeUpvote: <T = BeerChangeUpvote>(args: { data: BeerChangeUpvoteUpdateInput, where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeerPrice: <T = BeerPrice>(args: { data: BeerPriceUpdateInput, where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateUser: <T = User>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBrewery: <T = Brewery>(args: { data: BreweryUpdateInput, where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBar: <T = Bar>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBarRating: <T = BarRating>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBarComment: <T = BarComment>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBarChange: <T = BarChange>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBarChangeUpvote: <T = BarChangeUpvote>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeer: <T = Beer>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeerRating: <T = BeerRating>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeerComment: <T = BeerComment>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeerChange: <T = BeerChange>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeerChangeUpvote: <T = BeerChangeUpvote>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeerPrice: <T = BeerPrice>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteUser: <T = User>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBrewery: <T = Brewery>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBar: <T = Bar | null>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBarRating: <T = BarRating | null>(args: { data: BarRatingUpdateInput, where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBarComment: <T = BarComment | null>(args: { data: BarCommentUpdateInput, where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBarChange: <T = BarChange | null>(args: { data: BarChangeUpdateInput, where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBarChangeUpvote: <T = BarChangeUpvote | null>(args: { data: BarChangeUpvoteUpdateInput, where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeer: <T = Beer | null>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerRating: <T = BeerRating | null>(args: { data: BeerRatingUpdateInput, where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerComment: <T = BeerComment | null>(args: { data: BeerCommentUpdateInput, where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerChange: <T = BeerChange | null>(args: { data: BeerChangeUpdateInput, where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerChangeUpvote: <T = BeerChangeUpvote | null>(args: { data: BeerChangeUpvoteUpdateInput, where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeerPrice: <T = BeerPrice | null>(args: { data: BeerPriceUpdateInput, where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBrewery: <T = Brewery | null>(args: { data: BreweryUpdateInput, where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBarRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBarComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBarChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBarChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerChangeUpvote: <T = BeerChangeUpvote | null>(args: { where: BeerChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBrewery: <T = Brewery | null>(args: { where: BreweryWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     upsertBar: <T = Bar>(args: { where: BarWhereUniqueInput, create: BarCreateInput, update: BarUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarRating: <T = BarRating>(args: { where: BarRatingWhereUniqueInput, create: BarRatingCreateInput, update: BarRatingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarComment: <T = BarComment>(args: { where: BarCommentWhereUniqueInput, create: BarCommentCreateInput, update: BarCommentUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -99,46 +99,46 @@ export interface Mutation {
     upsertBeerPrice: <T = BeerPrice>(args: { where: BeerPriceWhereUniqueInput, create: BeerPriceCreateInput, update: BeerPriceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBrewery: <T = Brewery>(args: { where: BreweryWhereUniqueInput, create: BreweryCreateInput, update: BreweryUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBarRatings: <T = BatchPayload>(args: { data: BarRatingUpdateManyMutationInput, where?: BarRatingWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBarComments: <T = BatchPayload>(args: { data: BarCommentUpdateManyMutationInput, where?: BarCommentWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBarChanges: <T = BatchPayload>(args: { data: BarChangeUpdateManyMutationInput, where?: BarChangeWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeerRatings: <T = BatchPayload>(args: { data: BeerRatingUpdateManyMutationInput, where?: BeerRatingWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeerComments: <T = BatchPayload>(args: { data: BeerCommentUpdateManyMutationInput, where?: BeerCommentWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeerChanges: <T = BatchPayload>(args: { data: BeerChangeUpdateManyMutationInput, where?: BeerChangeWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeerPrices: <T = BatchPayload>(args: { data: BeerPriceUpdateManyMutationInput, where?: BeerPriceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBreweries: <T = BatchPayload>(args: { data: BreweryUpdateManyMutationInput, where?: BreweryWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBarRatings: <T = BatchPayload>(args: { where?: BarRatingWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBarComments: <T = BatchPayload>(args: { where?: BarCommentWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBarChanges: <T = BatchPayload>(args: { where?: BarChangeWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBarChangeUpvotes: <T = BatchPayload>(args: { where?: BarChangeUpvoteWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeerRatings: <T = BatchPayload>(args: { where?: BeerRatingWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeerComments: <T = BatchPayload>(args: { where?: BeerCommentWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeerChanges: <T = BatchPayload>(args: { where?: BeerChangeWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeerChangeUpvotes: <T = BatchPayload>(args: { where?: BeerChangeUpvoteWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeerPrices: <T = BatchPayload>(args: { where?: BeerPriceWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBreweries: <T = BatchPayload>(args: { where?: BreweryWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
+    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBarRatings: <T = BatchPayload>(args: { data: BarRatingUpdateManyMutationInput, where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBarComments: <T = BatchPayload>(args: { data: BarCommentUpdateManyMutationInput, where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBarChanges: <T = BatchPayload>(args: { data: BarChangeUpdateManyMutationInput, where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeerRatings: <T = BatchPayload>(args: { data: BeerRatingUpdateManyMutationInput, where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeerComments: <T = BatchPayload>(args: { data: BeerCommentUpdateManyMutationInput, where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeerChanges: <T = BatchPayload>(args: { data: BeerChangeUpdateManyMutationInput, where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeerPrices: <T = BatchPayload>(args: { data: BeerPriceUpdateManyMutationInput, where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBreweries: <T = BatchPayload>(args: { data: BreweryUpdateManyMutationInput, where?: BreweryWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBarRatings: <T = BatchPayload>(args: { where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBarComments: <T = BatchPayload>(args: { where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBarChanges: <T = BatchPayload>(args: { where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBarChangeUpvotes: <T = BatchPayload>(args: { where?: BarChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerRatings: <T = BatchPayload>(args: { where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerComments: <T = BatchPayload>(args: { where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerChanges: <T = BatchPayload>(args: { where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerChangeUpvotes: <T = BatchPayload>(args: { where?: BeerChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeerPrices: <T = BatchPayload>(args: { where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBreweries: <T = BatchPayload>(args: { where?: BreweryWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
-    bar: <T = BarSubscriptionPayload>(args: { where?: BarSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    barRating: <T = BarRatingSubscriptionPayload>(args: { where?: BarRatingSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    barComment: <T = BarCommentSubscriptionPayload>(args: { where?: BarCommentSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    barChange: <T = BarChangeSubscriptionPayload>(args: { where?: BarChangeSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    barChangeUpvote: <T = BarChangeUpvoteSubscriptionPayload>(args: { where?: BarChangeUpvoteSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beer: <T = BeerSubscriptionPayload>(args: { where?: BeerSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beerRating: <T = BeerRatingSubscriptionPayload>(args: { where?: BeerRatingSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beerComment: <T = BeerCommentSubscriptionPayload>(args: { where?: BeerCommentSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beerChange: <T = BeerChangeSubscriptionPayload>(args: { where?: BeerChangeSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beerChangeUpvote: <T = BeerChangeUpvoteSubscriptionPayload>(args: { where?: BeerChangeUpvoteSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beerPrice: <T = BeerPriceSubscriptionPayload>(args: { where?: BeerPriceSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    user: <T = UserSubscriptionPayload>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    brewery: <T = BrewerySubscriptionPayload>(args: { where?: BrewerySubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
+    bar: <T = BarSubscriptionPayload | null>(args: { where?: BarSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    barRating: <T = BarRatingSubscriptionPayload | null>(args: { where?: BarRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    barComment: <T = BarCommentSubscriptionPayload | null>(args: { where?: BarCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    barChange: <T = BarChangeSubscriptionPayload | null>(args: { where?: BarChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    barChangeUpvote: <T = BarChangeUpvoteSubscriptionPayload | null>(args: { where?: BarChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beer: <T = BeerSubscriptionPayload | null>(args: { where?: BeerSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerRating: <T = BeerRatingSubscriptionPayload | null>(args: { where?: BeerRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerComment: <T = BeerCommentSubscriptionPayload | null>(args: { where?: BeerCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerChange: <T = BeerChangeSubscriptionPayload | null>(args: { where?: BeerChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerChangeUpvote: <T = BeerChangeUpvoteSubscriptionPayload | null>(args: { where?: BeerChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beerPrice: <T = BeerPriceSubscriptionPayload | null>(args: { where?: BeerPriceSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    brewery: <T = BrewerySubscriptionPayload | null>(args: { where?: BrewerySubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
   }
 
 export interface Exists {
@@ -4943,7 +4943,7 @@ input BeerPriceWhereUniqueInput {
 
 type BeerRating implements Node {
   id: ID!
-  rating: Float!
+  rating: Int!
   user: User!
   beer: Beer!
 }
@@ -4959,7 +4959,7 @@ type BeerRatingConnection {
 }
 
 input BeerRatingCreateInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
@@ -4975,12 +4975,12 @@ input BeerRatingCreateManyWithoutUserInput {
 }
 
 input BeerRatingCreateWithoutBeerInput {
-  rating: Float!
+  rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput!
 }
 
 input BeerRatingCreateWithoutUserInput {
-  rating: Float!
+  rating: Int!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
 
@@ -5006,7 +5006,7 @@ enum BeerRatingOrderByInput {
 
 type BeerRatingPreviousValues {
   id: ID!
-  rating: Float!
+  rating: Int!
 }
 
 input BeerRatingScalarWhereInput {
@@ -5058,28 +5058,28 @@ input BeerRatingScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
 }
 
 type BeerRatingSubscriptionPayload {
@@ -5122,17 +5122,17 @@ input BeerRatingSubscriptionWhereInput {
 }
 
 input BeerRatingUpdateInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
 input BeerRatingUpdateManyDataInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyMutationInput {
-  rating: Float
+  rating: Int
 }
 
 input BeerRatingUpdateManyWithoutBeerInput {
@@ -5165,12 +5165,12 @@ input BeerRatingUpdateManyWithWhereNestedInput {
 }
 
 input BeerRatingUpdateWithoutBeerDataInput {
-  rating: Float
+  rating: Int
   user: UserUpdateOneRequiredWithoutBeerRatingsInput
 }
 
 input BeerRatingUpdateWithoutUserDataInput {
-  rating: Float
+  rating: Int
   beer: BeerUpdateOneRequiredWithoutBeerRatingInput
 }
 
@@ -5245,28 +5245,28 @@ input BeerRatingWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  rating: Float
+  rating: Int
 
   """All values that are not equal to given value."""
-  rating_not: Float
+  rating_not: Int
 
   """All values that are contained in given list."""
-  rating_in: [Float!]
+  rating_in: [Int!]
 
   """All values that are not contained in given list."""
-  rating_not_in: [Float!]
+  rating_not_in: [Int!]
 
   """All values less than the given value."""
-  rating_lt: Float
+  rating_lt: Int
 
   """All values less than or equal the given value."""
-  rating_lte: Float
+  rating_lte: Int
 
   """All values greater than the given value."""
-  rating_gt: Float
+  rating_gt: Int
 
   """All values greater than or equal the given value."""
-  rating_gte: Float
+  rating_gte: Int
   user: UserWhereInput
   beer: BeerWhereInput
 }
@@ -8487,22 +8487,22 @@ export interface BarChangeCreateInput {
   newValue: String
   user: UserCreateOneWithoutBarChangesInput
   bar: BarCreateOneWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput
+  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeCreateManyWithoutBarInput {
-  create?: BarChangeCreateWithoutBarInput[] | BarChangeCreateWithoutBarInput
-  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
+  create?: BarChangeCreateWithoutBarInput[] | BarChangeCreateWithoutBarInput | null
+  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
 }
 
 export interface BarChangeCreateManyWithoutUserInput {
-  create?: BarChangeCreateWithoutUserInput[] | BarChangeCreateWithoutUserInput
-  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
+  create?: BarChangeCreateWithoutUserInput[] | BarChangeCreateWithoutUserInput | null
+  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
 }
 
 export interface BarChangeCreateOneWithoutUpvotesInput {
-  create?: BarChangeCreateWithoutUpvotesInput
-  connect?: BarChangeWhereUniqueInput
+  create?: BarChangeCreateWithoutUpvotesInput | null
+  connect?: BarChangeWhereUniqueInput | null
 }
 
 export interface BarChangeCreateWithoutBarInput {
@@ -8510,7 +8510,7 @@ export interface BarChangeCreateWithoutBarInput {
   field: String
   newValue: String
   user: UserCreateOneWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput
+  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeCreateWithoutUpvotesInput {
@@ -8526,127 +8526,127 @@ export interface BarChangeCreateWithoutUserInput {
   field: String
   newValue: String
   bar: BarCreateOneWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput
+  upvotes?: BarChangeUpvoteCreateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeScalarWhereInput {
-  AND?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput
-  OR?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput
-  NOT?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
-  field?: String
-  field_not?: String
-  field_in?: String[] | String
-  field_not_in?: String[] | String
-  field_lt?: String
-  field_lte?: String
-  field_gt?: String
-  field_gte?: String
-  field_contains?: String
-  field_not_contains?: String
-  field_starts_with?: String
-  field_not_starts_with?: String
-  field_ends_with?: String
-  field_not_ends_with?: String
-  newValue?: String
-  newValue_not?: String
-  newValue_in?: String[] | String
-  newValue_not_in?: String[] | String
-  newValue_lt?: String
-  newValue_lte?: String
-  newValue_gt?: String
-  newValue_gte?: String
-  newValue_contains?: String
-  newValue_not_contains?: String
-  newValue_starts_with?: String
-  newValue_not_starts_with?: String
-  newValue_ends_with?: String
-  newValue_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
+  AND?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput | null
+  OR?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput | null
+  NOT?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
+  field?: String | null
+  field_not?: String | null
+  field_in?: String[] | String | null
+  field_not_in?: String[] | String | null
+  field_lt?: String | null
+  field_lte?: String | null
+  field_gt?: String | null
+  field_gte?: String | null
+  field_contains?: String | null
+  field_not_contains?: String | null
+  field_starts_with?: String | null
+  field_not_starts_with?: String | null
+  field_ends_with?: String | null
+  field_not_ends_with?: String | null
+  newValue?: String | null
+  newValue_not?: String | null
+  newValue_in?: String[] | String | null
+  newValue_not_in?: String[] | String | null
+  newValue_lt?: String | null
+  newValue_lte?: String | null
+  newValue_gt?: String | null
+  newValue_gte?: String | null
+  newValue_contains?: String | null
+  newValue_not_contains?: String | null
+  newValue_starts_with?: String | null
+  newValue_not_starts_with?: String | null
+  newValue_ends_with?: String | null
+  newValue_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
 }
 
 export interface BarChangeSubscriptionWhereInput {
-  AND?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput
-  OR?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput
-  NOT?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BarChangeWhereInput
+  AND?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput | null
+  OR?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput | null
+  NOT?: BarChangeSubscriptionWhereInput[] | BarChangeSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BarChangeWhereInput | null
 }
 
 export interface BarChangeUpdateInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBarChangesInput
-  bar?: BarUpdateOneRequiredWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBarChangesInput | null
+  bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
+  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeUpdateManyDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
 }
 
 export interface BarChangeUpdateManyMutationInput {
-  price?: Float
-  field?: String
-  newValue?: String
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
 }
 
 export interface BarChangeUpdateManyWithoutBarInput {
-  create?: BarChangeCreateWithoutBarInput[] | BarChangeCreateWithoutBarInput
-  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  set?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  disconnect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  delete?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  update?: BarChangeUpdateWithWhereUniqueWithoutBarInput[] | BarChangeUpdateWithWhereUniqueWithoutBarInput
-  updateMany?: BarChangeUpdateManyWithWhereNestedInput[] | BarChangeUpdateManyWithWhereNestedInput
-  deleteMany?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput
-  upsert?: BarChangeUpsertWithWhereUniqueWithoutBarInput[] | BarChangeUpsertWithWhereUniqueWithoutBarInput
+  create?: BarChangeCreateWithoutBarInput[] | BarChangeCreateWithoutBarInput | null
+  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  set?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  disconnect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  delete?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  update?: BarChangeUpdateWithWhereUniqueWithoutBarInput[] | BarChangeUpdateWithWhereUniqueWithoutBarInput | null
+  updateMany?: BarChangeUpdateManyWithWhereNestedInput[] | BarChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput | null
+  upsert?: BarChangeUpsertWithWhereUniqueWithoutBarInput[] | BarChangeUpsertWithWhereUniqueWithoutBarInput | null
 }
 
 export interface BarChangeUpdateManyWithoutUserInput {
-  create?: BarChangeCreateWithoutUserInput[] | BarChangeCreateWithoutUserInput
-  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  set?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  disconnect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  delete?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput
-  update?: BarChangeUpdateWithWhereUniqueWithoutUserInput[] | BarChangeUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BarChangeUpdateManyWithWhereNestedInput[] | BarChangeUpdateManyWithWhereNestedInput
-  deleteMany?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput
-  upsert?: BarChangeUpsertWithWhereUniqueWithoutUserInput[] | BarChangeUpsertWithWhereUniqueWithoutUserInput
+  create?: BarChangeCreateWithoutUserInput[] | BarChangeCreateWithoutUserInput | null
+  connect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  set?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  disconnect?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  delete?: BarChangeWhereUniqueInput[] | BarChangeWhereUniqueInput | null
+  update?: BarChangeUpdateWithWhereUniqueWithoutUserInput[] | BarChangeUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BarChangeUpdateManyWithWhereNestedInput[] | BarChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarChangeScalarWhereInput[] | BarChangeScalarWhereInput | null
+  upsert?: BarChangeUpsertWithWhereUniqueWithoutUserInput[] | BarChangeUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BarChangeUpdateManyWithWhereNestedInput {
@@ -8655,34 +8655,34 @@ export interface BarChangeUpdateManyWithWhereNestedInput {
 }
 
 export interface BarChangeUpdateOneRequiredWithoutUpvotesInput {
-  create?: BarChangeCreateWithoutUpvotesInput
-  connect?: BarChangeWhereUniqueInput
-  update?: BarChangeUpdateWithoutUpvotesDataInput
-  upsert?: BarChangeUpsertWithoutUpvotesInput
+  create?: BarChangeCreateWithoutUpvotesInput | null
+  connect?: BarChangeWhereUniqueInput | null
+  update?: BarChangeUpdateWithoutUpvotesDataInput | null
+  upsert?: BarChangeUpsertWithoutUpvotesInput | null
 }
 
 export interface BarChangeUpdateWithoutBarDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBarChangesInput | null
+  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeUpdateWithoutUpvotesDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBarChangesInput
-  bar?: BarUpdateOneRequiredWithoutBarChangesInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBarChangesInput | null
+  bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
 }
 
 export interface BarChangeUpdateWithoutUserDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  bar?: BarUpdateOneRequiredWithoutBarChangesInput
-  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
+  upvotes?: BarChangeUpvoteUpdateManyWithoutBarChangeInput | null
 }
 
 export interface BarChangeUpdateWithWhereUniqueWithoutBarInput {
@@ -8718,13 +8718,13 @@ export interface BarChangeUpvoteCreateInput {
 }
 
 export interface BarChangeUpvoteCreateManyWithoutBarChangeInput {
-  create?: BarChangeUpvoteCreateWithoutBarChangeInput[] | BarChangeUpvoteCreateWithoutBarChangeInput
-  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
+  create?: BarChangeUpvoteCreateWithoutBarChangeInput[] | BarChangeUpvoteCreateWithoutBarChangeInput | null
+  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
 }
 
 export interface BarChangeUpvoteCreateManyWithoutUserInput {
-  create?: BarChangeUpvoteCreateWithoutUserInput[] | BarChangeUpvoteCreateWithoutUserInput
-  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
+  create?: BarChangeUpvoteCreateWithoutUserInput[] | BarChangeUpvoteCreateWithoutUserInput | null
+  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
 }
 
 export interface BarChangeUpvoteCreateWithoutBarChangeInput {
@@ -8736,69 +8736,69 @@ export interface BarChangeUpvoteCreateWithoutUserInput {
 }
 
 export interface BarChangeUpvoteScalarWhereInput {
-  AND?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput
-  OR?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput
-  NOT?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
+  AND?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput | null
+  OR?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput | null
+  NOT?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
 }
 
 export interface BarChangeUpvoteSubscriptionWhereInput {
-  AND?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput
-  OR?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput
-  NOT?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BarChangeUpvoteWhereInput
+  AND?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput | null
+  OR?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput | null
+  NOT?: BarChangeUpvoteSubscriptionWhereInput[] | BarChangeUpvoteSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BarChangeUpvoteWhereInput | null
 }
 
 export interface BarChangeUpvoteUpdateInput {
-  user?: UserUpdateOneRequiredWithoutBarChangeUpvotesInput
-  barChange?: BarChangeUpdateOneRequiredWithoutUpvotesInput
+  user?: UserUpdateOneRequiredWithoutBarChangeUpvotesInput | null
+  barChange?: BarChangeUpdateOneRequiredWithoutUpvotesInput | null
 }
 
 export interface BarChangeUpvoteUpdateManyWithoutBarChangeInput {
-  create?: BarChangeUpvoteCreateWithoutBarChangeInput[] | BarChangeUpvoteCreateWithoutBarChangeInput
-  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  set?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  disconnect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  delete?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  update?: BarChangeUpvoteUpdateWithWhereUniqueWithoutBarChangeInput[] | BarChangeUpvoteUpdateWithWhereUniqueWithoutBarChangeInput
-  deleteMany?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput
-  upsert?: BarChangeUpvoteUpsertWithWhereUniqueWithoutBarChangeInput[] | BarChangeUpvoteUpsertWithWhereUniqueWithoutBarChangeInput
+  create?: BarChangeUpvoteCreateWithoutBarChangeInput[] | BarChangeUpvoteCreateWithoutBarChangeInput | null
+  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  set?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  disconnect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  delete?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  update?: BarChangeUpvoteUpdateWithWhereUniqueWithoutBarChangeInput[] | BarChangeUpvoteUpdateWithWhereUniqueWithoutBarChangeInput | null
+  deleteMany?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput | null
+  upsert?: BarChangeUpvoteUpsertWithWhereUniqueWithoutBarChangeInput[] | BarChangeUpvoteUpsertWithWhereUniqueWithoutBarChangeInput | null
 }
 
 export interface BarChangeUpvoteUpdateManyWithoutUserInput {
-  create?: BarChangeUpvoteCreateWithoutUserInput[] | BarChangeUpvoteCreateWithoutUserInput
-  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  set?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  disconnect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  delete?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput
-  update?: BarChangeUpvoteUpdateWithWhereUniqueWithoutUserInput[] | BarChangeUpvoteUpdateWithWhereUniqueWithoutUserInput
-  deleteMany?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput
-  upsert?: BarChangeUpvoteUpsertWithWhereUniqueWithoutUserInput[] | BarChangeUpvoteUpsertWithWhereUniqueWithoutUserInput
+  create?: BarChangeUpvoteCreateWithoutUserInput[] | BarChangeUpvoteCreateWithoutUserInput | null
+  connect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  set?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  disconnect?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  delete?: BarChangeUpvoteWhereUniqueInput[] | BarChangeUpvoteWhereUniqueInput | null
+  update?: BarChangeUpvoteUpdateWithWhereUniqueWithoutUserInput[] | BarChangeUpvoteUpdateWithWhereUniqueWithoutUserInput | null
+  deleteMany?: BarChangeUpvoteScalarWhereInput[] | BarChangeUpvoteScalarWhereInput | null
+  upsert?: BarChangeUpvoteUpsertWithWhereUniqueWithoutUserInput[] | BarChangeUpvoteUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BarChangeUpvoteUpdateWithoutBarChangeDataInput {
-  user?: UserUpdateOneRequiredWithoutBarChangeUpvotesInput
+  user?: UserUpdateOneRequiredWithoutBarChangeUpvotesInput | null
 }
 
 export interface BarChangeUpvoteUpdateWithoutUserDataInput {
-  barChange?: BarChangeUpdateOneRequiredWithoutUpvotesInput
+  barChange?: BarChangeUpdateOneRequiredWithoutUpvotesInput | null
 }
 
 export interface BarChangeUpvoteUpdateWithWhereUniqueWithoutBarChangeInput {
@@ -8824,102 +8824,102 @@ export interface BarChangeUpvoteUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BarChangeUpvoteWhereInput {
-  AND?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput
-  OR?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput
-  NOT?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  user?: UserWhereInput
-  barChange?: BarChangeWhereInput
+  AND?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput | null
+  OR?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput | null
+  NOT?: BarChangeUpvoteWhereInput[] | BarChangeUpvoteWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  user?: UserWhereInput | null
+  barChange?: BarChangeWhereInput | null
 }
 
 export interface BarChangeUpvoteWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BarChangeWhereInput {
-  AND?: BarChangeWhereInput[] | BarChangeWhereInput
-  OR?: BarChangeWhereInput[] | BarChangeWhereInput
-  NOT?: BarChangeWhereInput[] | BarChangeWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
-  field?: String
-  field_not?: String
-  field_in?: String[] | String
-  field_not_in?: String[] | String
-  field_lt?: String
-  field_lte?: String
-  field_gt?: String
-  field_gte?: String
-  field_contains?: String
-  field_not_contains?: String
-  field_starts_with?: String
-  field_not_starts_with?: String
-  field_ends_with?: String
-  field_not_ends_with?: String
-  newValue?: String
-  newValue_not?: String
-  newValue_in?: String[] | String
-  newValue_not_in?: String[] | String
-  newValue_lt?: String
-  newValue_lte?: String
-  newValue_gt?: String
-  newValue_gte?: String
-  newValue_contains?: String
-  newValue_not_contains?: String
-  newValue_starts_with?: String
-  newValue_not_starts_with?: String
-  newValue_ends_with?: String
-  newValue_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  user?: UserWhereInput
-  bar?: BarWhereInput
-  upvotes_every?: BarChangeUpvoteWhereInput
-  upvotes_some?: BarChangeUpvoteWhereInput
-  upvotes_none?: BarChangeUpvoteWhereInput
+  AND?: BarChangeWhereInput[] | BarChangeWhereInput | null
+  OR?: BarChangeWhereInput[] | BarChangeWhereInput | null
+  NOT?: BarChangeWhereInput[] | BarChangeWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
+  field?: String | null
+  field_not?: String | null
+  field_in?: String[] | String | null
+  field_not_in?: String[] | String | null
+  field_lt?: String | null
+  field_lte?: String | null
+  field_gt?: String | null
+  field_gte?: String | null
+  field_contains?: String | null
+  field_not_contains?: String | null
+  field_starts_with?: String | null
+  field_not_starts_with?: String | null
+  field_ends_with?: String | null
+  field_not_ends_with?: String | null
+  newValue?: String | null
+  newValue_not?: String | null
+  newValue_in?: String[] | String | null
+  newValue_not_in?: String[] | String | null
+  newValue_lt?: String | null
+  newValue_lte?: String | null
+  newValue_gt?: String | null
+  newValue_gte?: String | null
+  newValue_contains?: String | null
+  newValue_not_contains?: String | null
+  newValue_starts_with?: String | null
+  newValue_not_starts_with?: String | null
+  newValue_ends_with?: String | null
+  newValue_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  user?: UserWhereInput | null
+  bar?: BarWhereInput | null
+  upvotes_every?: BarChangeUpvoteWhereInput | null
+  upvotes_some?: BarChangeUpvoteWhereInput | null
+  upvotes_none?: BarChangeUpvoteWhereInput | null
 }
 
 export interface BarChangeWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BarCommentCreateInput {
@@ -8929,13 +8929,13 @@ export interface BarCommentCreateInput {
 }
 
 export interface BarCommentCreateManyWithoutBarInput {
-  create?: BarCommentCreateWithoutBarInput[] | BarCommentCreateWithoutBarInput
-  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
+  create?: BarCommentCreateWithoutBarInput[] | BarCommentCreateWithoutBarInput | null
+  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
 }
 
 export interface BarCommentCreateManyWithoutUserInput {
-  create?: BarCommentCreateWithoutUserInput[] | BarCommentCreateWithoutUserInput
-  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
+  create?: BarCommentCreateWithoutUserInput[] | BarCommentCreateWithoutUserInput | null
+  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
 }
 
 export interface BarCommentCreateWithoutBarInput {
@@ -8949,94 +8949,94 @@ export interface BarCommentCreateWithoutUserInput {
 }
 
 export interface BarCommentScalarWhereInput {
-  AND?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput
-  OR?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput
-  NOT?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  comment?: String
-  comment_not?: String
-  comment_in?: String[] | String
-  comment_not_in?: String[] | String
-  comment_lt?: String
-  comment_lte?: String
-  comment_gt?: String
-  comment_gte?: String
-  comment_contains?: String
-  comment_not_contains?: String
-  comment_starts_with?: String
-  comment_not_starts_with?: String
-  comment_ends_with?: String
-  comment_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
+  AND?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput | null
+  OR?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput | null
+  NOT?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  comment?: String | null
+  comment_not?: String | null
+  comment_in?: String[] | String | null
+  comment_not_in?: String[] | String | null
+  comment_lt?: String | null
+  comment_lte?: String | null
+  comment_gt?: String | null
+  comment_gte?: String | null
+  comment_contains?: String | null
+  comment_not_contains?: String | null
+  comment_starts_with?: String | null
+  comment_not_starts_with?: String | null
+  comment_ends_with?: String | null
+  comment_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
 }
 
 export interface BarCommentSubscriptionWhereInput {
-  AND?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput
-  OR?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput
-  NOT?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BarCommentWhereInput
+  AND?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput | null
+  OR?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput | null
+  NOT?: BarCommentSubscriptionWhereInput[] | BarCommentSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BarCommentWhereInput | null
 }
 
 export interface BarCommentUpdateInput {
-  comment?: String
-  bar?: BarUpdateOneRequiredWithoutBarCommentsInput
-  user?: UserUpdateOneRequiredWithoutBarCommentsInput
+  comment?: String | null
+  bar?: BarUpdateOneRequiredWithoutBarCommentsInput | null
+  user?: UserUpdateOneRequiredWithoutBarCommentsInput | null
 }
 
 export interface BarCommentUpdateManyDataInput {
-  comment?: String
+  comment?: String | null
 }
 
 export interface BarCommentUpdateManyMutationInput {
-  comment?: String
+  comment?: String | null
 }
 
 export interface BarCommentUpdateManyWithoutBarInput {
-  create?: BarCommentCreateWithoutBarInput[] | BarCommentCreateWithoutBarInput
-  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  set?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  disconnect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  delete?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  update?: BarCommentUpdateWithWhereUniqueWithoutBarInput[] | BarCommentUpdateWithWhereUniqueWithoutBarInput
-  updateMany?: BarCommentUpdateManyWithWhereNestedInput[] | BarCommentUpdateManyWithWhereNestedInput
-  deleteMany?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput
-  upsert?: BarCommentUpsertWithWhereUniqueWithoutBarInput[] | BarCommentUpsertWithWhereUniqueWithoutBarInput
+  create?: BarCommentCreateWithoutBarInput[] | BarCommentCreateWithoutBarInput | null
+  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  set?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  disconnect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  delete?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  update?: BarCommentUpdateWithWhereUniqueWithoutBarInput[] | BarCommentUpdateWithWhereUniqueWithoutBarInput | null
+  updateMany?: BarCommentUpdateManyWithWhereNestedInput[] | BarCommentUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput | null
+  upsert?: BarCommentUpsertWithWhereUniqueWithoutBarInput[] | BarCommentUpsertWithWhereUniqueWithoutBarInput | null
 }
 
 export interface BarCommentUpdateManyWithoutUserInput {
-  create?: BarCommentCreateWithoutUserInput[] | BarCommentCreateWithoutUserInput
-  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  set?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  disconnect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  delete?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput
-  update?: BarCommentUpdateWithWhereUniqueWithoutUserInput[] | BarCommentUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BarCommentUpdateManyWithWhereNestedInput[] | BarCommentUpdateManyWithWhereNestedInput
-  deleteMany?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput
-  upsert?: BarCommentUpsertWithWhereUniqueWithoutUserInput[] | BarCommentUpsertWithWhereUniqueWithoutUserInput
+  create?: BarCommentCreateWithoutUserInput[] | BarCommentCreateWithoutUserInput | null
+  connect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  set?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  disconnect?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  delete?: BarCommentWhereUniqueInput[] | BarCommentWhereUniqueInput | null
+  update?: BarCommentUpdateWithWhereUniqueWithoutUserInput[] | BarCommentUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BarCommentUpdateManyWithWhereNestedInput[] | BarCommentUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarCommentScalarWhereInput[] | BarCommentScalarWhereInput | null
+  upsert?: BarCommentUpsertWithWhereUniqueWithoutUserInput[] | BarCommentUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BarCommentUpdateManyWithWhereNestedInput {
@@ -9045,13 +9045,13 @@ export interface BarCommentUpdateManyWithWhereNestedInput {
 }
 
 export interface BarCommentUpdateWithoutBarDataInput {
-  comment?: String
-  user?: UserUpdateOneRequiredWithoutBarCommentsInput
+  comment?: String | null
+  user?: UserUpdateOneRequiredWithoutBarCommentsInput | null
 }
 
 export interface BarCommentUpdateWithoutUserDataInput {
-  comment?: String
-  bar?: BarUpdateOneRequiredWithoutBarCommentsInput
+  comment?: String | null
+  bar?: BarUpdateOneRequiredWithoutBarCommentsInput | null
 }
 
 export interface BarCommentUpdateWithWhereUniqueWithoutBarInput {
@@ -9077,51 +9077,51 @@ export interface BarCommentUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BarCommentWhereInput {
-  AND?: BarCommentWhereInput[] | BarCommentWhereInput
-  OR?: BarCommentWhereInput[] | BarCommentWhereInput
-  NOT?: BarCommentWhereInput[] | BarCommentWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  comment?: String
-  comment_not?: String
-  comment_in?: String[] | String
-  comment_not_in?: String[] | String
-  comment_lt?: String
-  comment_lte?: String
-  comment_gt?: String
-  comment_gte?: String
-  comment_contains?: String
-  comment_not_contains?: String
-  comment_starts_with?: String
-  comment_not_starts_with?: String
-  comment_ends_with?: String
-  comment_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  bar?: BarWhereInput
-  user?: UserWhereInput
+  AND?: BarCommentWhereInput[] | BarCommentWhereInput | null
+  OR?: BarCommentWhereInput[] | BarCommentWhereInput | null
+  NOT?: BarCommentWhereInput[] | BarCommentWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  comment?: String | null
+  comment_not?: String | null
+  comment_in?: String[] | String | null
+  comment_not_in?: String[] | String | null
+  comment_lt?: String | null
+  comment_lte?: String | null
+  comment_gt?: String | null
+  comment_gte?: String | null
+  comment_contains?: String | null
+  comment_not_contains?: String | null
+  comment_starts_with?: String | null
+  comment_not_starts_with?: String | null
+  comment_ends_with?: String | null
+  comment_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  bar?: BarWhereInput | null
+  user?: UserWhereInput | null
 }
 
 export interface BarCommentWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BarCreateInput {
@@ -9129,56 +9129,56 @@ export interface BarCreateInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateManyWithoutBeersInput {
-  create?: BarCreateWithoutBeersInput[] | BarCreateWithoutBeersInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
+  create?: BarCreateWithoutBeersInput[] | BarCreateWithoutBeersInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
 }
 
 export interface BarCreateManyWithoutCreatedByInput {
-  create?: BarCreateWithoutCreatedByInput[] | BarCreateWithoutCreatedByInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
+  create?: BarCreateWithoutCreatedByInput[] | BarCreateWithoutCreatedByInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
 }
 
 export interface BarCreateManyWithoutLikedByInput {
-  create?: BarCreateWithoutLikedByInput[] | BarCreateWithoutLikedByInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
+  create?: BarCreateWithoutLikedByInput[] | BarCreateWithoutLikedByInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
 }
 
 export interface BarCreateOneWithoutBarChangesInput {
-  create?: BarCreateWithoutBarChangesInput
-  connect?: BarWhereUniqueInput
+  create?: BarCreateWithoutBarChangesInput | null
+  connect?: BarWhereUniqueInput | null
 }
 
 export interface BarCreateOneWithoutBarCommentsInput {
-  create?: BarCreateWithoutBarCommentsInput
-  connect?: BarWhereUniqueInput
+  create?: BarCreateWithoutBarCommentsInput | null
+  connect?: BarWhereUniqueInput | null
 }
 
 export interface BarCreateOneWithoutBarRatingInput {
-  create?: BarCreateWithoutBarRatingInput
-  connect?: BarWhereUniqueInput
+  create?: BarCreateWithoutBarRatingInput | null
+  connect?: BarWhereUniqueInput | null
 }
 
 export interface BarCreateOneWithoutBeerPricesInput {
-  create?: BarCreateWithoutBeerPricesInput
-  connect?: BarWhereUniqueInput
+  create?: BarCreateWithoutBeerPricesInput | null
+  connect?: BarWhereUniqueInput | null
 }
 
 export interface BarCreatephotosInput {
-  set?: String[] | String
+  set?: String[] | String | null
 }
 
 export interface BarCreateWithoutBarChangesInput {
@@ -9186,16 +9186,16 @@ export interface BarCreateWithoutBarChangesInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutBarCommentsInput {
@@ -9203,16 +9203,16 @@ export interface BarCreateWithoutBarCommentsInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutBarRatingInput {
@@ -9220,16 +9220,16 @@ export interface BarCreateWithoutBarRatingInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutBeerPricesInput {
@@ -9237,16 +9237,16 @@ export interface BarCreateWithoutBeerPricesInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutBeersInput {
@@ -9254,16 +9254,16 @@ export interface BarCreateWithoutBeersInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutCreatedByInput {
@@ -9271,16 +9271,16 @@ export interface BarCreateWithoutCreatedByInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
-  likedBy?: UserCreateManyWithoutLikedBarsInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
 export interface BarCreateWithoutLikedByInput {
@@ -9288,15 +9288,15 @@ export interface BarCreateWithoutLikedByInput {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarCreatephotosInput
-  beers?: BeerCreateManyWithoutBarsInput
-  barRating?: BarRatingCreateManyWithoutBarInput
-  beerPrices?: BeerPriceCreateManyWithoutBarInput
-  barComments?: BarCommentCreateManyWithoutBarInput
-  barChanges?: BarChangeCreateManyWithoutBarInput
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
   createdBy: UserCreateOneWithoutCreatedBarsInput
 }
 
@@ -9307,13 +9307,13 @@ export interface BarRatingCreateInput {
 }
 
 export interface BarRatingCreateManyWithoutBarInput {
-  create?: BarRatingCreateWithoutBarInput[] | BarRatingCreateWithoutBarInput
-  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
+  create?: BarRatingCreateWithoutBarInput[] | BarRatingCreateWithoutBarInput | null
+  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
 }
 
 export interface BarRatingCreateManyWithoutUserInput {
-  create?: BarRatingCreateWithoutUserInput[] | BarRatingCreateWithoutUserInput
-  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
+  create?: BarRatingCreateWithoutUserInput[] | BarRatingCreateWithoutUserInput | null
+  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
 }
 
 export interface BarRatingCreateWithoutBarInput {
@@ -9327,80 +9327,80 @@ export interface BarRatingCreateWithoutUserInput {
 }
 
 export interface BarRatingScalarWhereInput {
-  AND?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput
-  OR?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput
-  NOT?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
+  AND?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput | null
+  OR?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput | null
+  NOT?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  rating?: Float | null
+  rating_not?: Float | null
+  rating_in?: Float[] | Float | null
+  rating_not_in?: Float[] | Float | null
+  rating_lt?: Float | null
+  rating_lte?: Float | null
+  rating_gt?: Float | null
+  rating_gte?: Float | null
 }
 
 export interface BarRatingSubscriptionWhereInput {
-  AND?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput
-  OR?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput
-  NOT?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BarRatingWhereInput
+  AND?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput | null
+  OR?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput | null
+  NOT?: BarRatingSubscriptionWhereInput[] | BarRatingSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BarRatingWhereInput | null
 }
 
 export interface BarRatingUpdateInput {
-  rating?: Float
-  user?: UserUpdateOneRequiredWithoutBarRatingsInput
-  bar?: BarUpdateOneRequiredWithoutBarRatingInput
+  rating?: Float | null
+  user?: UserUpdateOneRequiredWithoutBarRatingsInput | null
+  bar?: BarUpdateOneRequiredWithoutBarRatingInput | null
 }
 
 export interface BarRatingUpdateManyDataInput {
-  rating?: Float
+  rating?: Float | null
 }
 
 export interface BarRatingUpdateManyMutationInput {
-  rating?: Float
+  rating?: Float | null
 }
 
 export interface BarRatingUpdateManyWithoutBarInput {
-  create?: BarRatingCreateWithoutBarInput[] | BarRatingCreateWithoutBarInput
-  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  set?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  disconnect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  delete?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  update?: BarRatingUpdateWithWhereUniqueWithoutBarInput[] | BarRatingUpdateWithWhereUniqueWithoutBarInput
-  updateMany?: BarRatingUpdateManyWithWhereNestedInput[] | BarRatingUpdateManyWithWhereNestedInput
-  deleteMany?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput
-  upsert?: BarRatingUpsertWithWhereUniqueWithoutBarInput[] | BarRatingUpsertWithWhereUniqueWithoutBarInput
+  create?: BarRatingCreateWithoutBarInput[] | BarRatingCreateWithoutBarInput | null
+  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  set?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  disconnect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  delete?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  update?: BarRatingUpdateWithWhereUniqueWithoutBarInput[] | BarRatingUpdateWithWhereUniqueWithoutBarInput | null
+  updateMany?: BarRatingUpdateManyWithWhereNestedInput[] | BarRatingUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput | null
+  upsert?: BarRatingUpsertWithWhereUniqueWithoutBarInput[] | BarRatingUpsertWithWhereUniqueWithoutBarInput | null
 }
 
 export interface BarRatingUpdateManyWithoutUserInput {
-  create?: BarRatingCreateWithoutUserInput[] | BarRatingCreateWithoutUserInput
-  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  set?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  disconnect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  delete?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput
-  update?: BarRatingUpdateWithWhereUniqueWithoutUserInput[] | BarRatingUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BarRatingUpdateManyWithWhereNestedInput[] | BarRatingUpdateManyWithWhereNestedInput
-  deleteMany?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput
-  upsert?: BarRatingUpsertWithWhereUniqueWithoutUserInput[] | BarRatingUpsertWithWhereUniqueWithoutUserInput
+  create?: BarRatingCreateWithoutUserInput[] | BarRatingCreateWithoutUserInput | null
+  connect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  set?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  disconnect?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  delete?: BarRatingWhereUniqueInput[] | BarRatingWhereUniqueInput | null
+  update?: BarRatingUpdateWithWhereUniqueWithoutUserInput[] | BarRatingUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BarRatingUpdateManyWithWhereNestedInput[] | BarRatingUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarRatingScalarWhereInput[] | BarRatingScalarWhereInput | null
+  upsert?: BarRatingUpsertWithWhereUniqueWithoutUserInput[] | BarRatingUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BarRatingUpdateManyWithWhereNestedInput {
@@ -9409,13 +9409,13 @@ export interface BarRatingUpdateManyWithWhereNestedInput {
 }
 
 export interface BarRatingUpdateWithoutBarDataInput {
-  rating?: Float
-  user?: UserUpdateOneRequiredWithoutBarRatingsInput
+  rating?: Float | null
+  user?: UserUpdateOneRequiredWithoutBarRatingsInput | null
 }
 
 export interface BarRatingUpdateWithoutUserDataInput {
-  rating?: Float
-  bar?: BarUpdateOneRequiredWithoutBarRatingInput
+  rating?: Float | null
+  bar?: BarUpdateOneRequiredWithoutBarRatingInput | null
 }
 
 export interface BarRatingUpdateWithWhereUniqueWithoutBarInput {
@@ -9441,230 +9441,230 @@ export interface BarRatingUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BarRatingWhereInput {
-  AND?: BarRatingWhereInput[] | BarRatingWhereInput
-  OR?: BarRatingWhereInput[] | BarRatingWhereInput
-  NOT?: BarRatingWhereInput[] | BarRatingWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
-  user?: UserWhereInput
-  bar?: BarWhereInput
+  AND?: BarRatingWhereInput[] | BarRatingWhereInput | null
+  OR?: BarRatingWhereInput[] | BarRatingWhereInput | null
+  NOT?: BarRatingWhereInput[] | BarRatingWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  rating?: Float | null
+  rating_not?: Float | null
+  rating_in?: Float[] | Float | null
+  rating_not_in?: Float[] | Float | null
+  rating_lt?: Float | null
+  rating_lte?: Float | null
+  rating_gt?: Float | null
+  rating_gte?: Float | null
+  user?: UserWhereInput | null
+  bar?: BarWhereInput | null
 }
 
 export interface BarRatingWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BarScalarWhereInput {
-  AND?: BarScalarWhereInput[] | BarScalarWhereInput
-  OR?: BarScalarWhereInput[] | BarScalarWhereInput
-  NOT?: BarScalarWhereInput[] | BarScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  address?: String
-  address_not?: String
-  address_in?: String[] | String
-  address_not_in?: String[] | String
-  address_lt?: String
-  address_lte?: String
-  address_gt?: String
-  address_gte?: String
-  address_contains?: String
-  address_not_contains?: String
-  address_starts_with?: String
-  address_not_starts_with?: String
-  address_ends_with?: String
-  address_not_ends_with?: String
-  lat?: String
-  lat_not?: String
-  lat_in?: String[] | String
-  lat_not_in?: String[] | String
-  lat_lt?: String
-  lat_lte?: String
-  lat_gt?: String
-  lat_gte?: String
-  lat_contains?: String
-  lat_not_contains?: String
-  lat_starts_with?: String
-  lat_not_starts_with?: String
-  lat_ends_with?: String
-  lat_not_ends_with?: String
-  long?: String
-  long_not?: String
-  long_in?: String[] | String
-  long_not_in?: String[] | String
-  long_lt?: String
-  long_lte?: String
-  long_gt?: String
-  long_gte?: String
-  long_contains?: String
-  long_not_contains?: String
-  long_starts_with?: String
-  long_not_starts_with?: String
-  long_ends_with?: String
-  long_not_ends_with?: String
-  phone?: String
-  phone_not?: String
-  phone_in?: String[] | String
-  phone_not_in?: String[] | String
-  phone_lt?: String
-  phone_lte?: String
-  phone_gt?: String
-  phone_gte?: String
-  phone_contains?: String
-  phone_not_contains?: String
-  phone_starts_with?: String
-  phone_not_starts_with?: String
-  phone_ends_with?: String
-  phone_not_ends_with?: String
-  openTime?: DateTime
-  openTime_not?: DateTime
-  openTime_in?: DateTime[] | DateTime
-  openTime_not_in?: DateTime[] | DateTime
-  openTime_lt?: DateTime
-  openTime_lte?: DateTime
-  openTime_gt?: DateTime
-  openTime_gte?: DateTime
-  closeTime?: DateTime
-  closeTime_not?: DateTime
-  closeTime_in?: DateTime[] | DateTime
-  closeTime_not_in?: DateTime[] | DateTime
-  closeTime_lt?: DateTime
-  closeTime_lte?: DateTime
-  closeTime_gt?: DateTime
-  closeTime_gte?: DateTime
+  AND?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  OR?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  NOT?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  address?: String | null
+  address_not?: String | null
+  address_in?: String[] | String | null
+  address_not_in?: String[] | String | null
+  address_lt?: String | null
+  address_lte?: String | null
+  address_gt?: String | null
+  address_gte?: String | null
+  address_contains?: String | null
+  address_not_contains?: String | null
+  address_starts_with?: String | null
+  address_not_starts_with?: String | null
+  address_ends_with?: String | null
+  address_not_ends_with?: String | null
+  lat?: String | null
+  lat_not?: String | null
+  lat_in?: String[] | String | null
+  lat_not_in?: String[] | String | null
+  lat_lt?: String | null
+  lat_lte?: String | null
+  lat_gt?: String | null
+  lat_gte?: String | null
+  lat_contains?: String | null
+  lat_not_contains?: String | null
+  lat_starts_with?: String | null
+  lat_not_starts_with?: String | null
+  lat_ends_with?: String | null
+  lat_not_ends_with?: String | null
+  long?: String | null
+  long_not?: String | null
+  long_in?: String[] | String | null
+  long_not_in?: String[] | String | null
+  long_lt?: String | null
+  long_lte?: String | null
+  long_gt?: String | null
+  long_gte?: String | null
+  long_contains?: String | null
+  long_not_contains?: String | null
+  long_starts_with?: String | null
+  long_not_starts_with?: String | null
+  long_ends_with?: String | null
+  long_not_ends_with?: String | null
+  phone?: String | null
+  phone_not?: String | null
+  phone_in?: String[] | String | null
+  phone_not_in?: String[] | String | null
+  phone_lt?: String | null
+  phone_lte?: String | null
+  phone_gt?: String | null
+  phone_gte?: String | null
+  phone_contains?: String | null
+  phone_not_contains?: String | null
+  phone_starts_with?: String | null
+  phone_not_starts_with?: String | null
+  phone_ends_with?: String | null
+  phone_not_ends_with?: String | null
+  openTime?: DateTime | null
+  openTime_not?: DateTime | null
+  openTime_in?: DateTime[] | DateTime | null
+  openTime_not_in?: DateTime[] | DateTime | null
+  openTime_lt?: DateTime | null
+  openTime_lte?: DateTime | null
+  openTime_gt?: DateTime | null
+  openTime_gte?: DateTime | null
+  closeTime?: DateTime | null
+  closeTime_not?: DateTime | null
+  closeTime_in?: DateTime[] | DateTime | null
+  closeTime_not_in?: DateTime[] | DateTime | null
+  closeTime_lt?: DateTime | null
+  closeTime_lte?: DateTime | null
+  closeTime_gt?: DateTime | null
+  closeTime_gte?: DateTime | null
 }
 
 export interface BarSubscriptionWhereInput {
-  AND?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput
-  OR?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput
-  NOT?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BarWhereInput
+  AND?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput | null
+  OR?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput | null
+  NOT?: BarSubscriptionWhereInput[] | BarSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BarWhereInput | null
 }
 
 export interface BarUpdateInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateManyDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
 }
 
 export interface BarUpdateManyMutationInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
 }
 
 export interface BarUpdateManyWithoutBeersInput {
-  create?: BarCreateWithoutBeersInput[] | BarCreateWithoutBeersInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  set?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  update?: BarUpdateWithWhereUniqueWithoutBeersInput[] | BarUpdateWithWhereUniqueWithoutBeersInput
-  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput
-  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput
-  upsert?: BarUpsertWithWhereUniqueWithoutBeersInput[] | BarUpsertWithWhereUniqueWithoutBeersInput
+  create?: BarCreateWithoutBeersInput[] | BarCreateWithoutBeersInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  set?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  update?: BarUpdateWithWhereUniqueWithoutBeersInput[] | BarUpdateWithWhereUniqueWithoutBeersInput | null
+  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  upsert?: BarUpsertWithWhereUniqueWithoutBeersInput[] | BarUpsertWithWhereUniqueWithoutBeersInput | null
 }
 
 export interface BarUpdateManyWithoutCreatedByInput {
-  create?: BarCreateWithoutCreatedByInput[] | BarCreateWithoutCreatedByInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  set?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  update?: BarUpdateWithWhereUniqueWithoutCreatedByInput[] | BarUpdateWithWhereUniqueWithoutCreatedByInput
-  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput
-  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput
-  upsert?: BarUpsertWithWhereUniqueWithoutCreatedByInput[] | BarUpsertWithWhereUniqueWithoutCreatedByInput
+  create?: BarCreateWithoutCreatedByInput[] | BarCreateWithoutCreatedByInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  set?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  update?: BarUpdateWithWhereUniqueWithoutCreatedByInput[] | BarUpdateWithWhereUniqueWithoutCreatedByInput | null
+  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  upsert?: BarUpsertWithWhereUniqueWithoutCreatedByInput[] | BarUpsertWithWhereUniqueWithoutCreatedByInput | null
 }
 
 export interface BarUpdateManyWithoutLikedByInput {
-  create?: BarCreateWithoutLikedByInput[] | BarCreateWithoutLikedByInput
-  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  set?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput
-  update?: BarUpdateWithWhereUniqueWithoutLikedByInput[] | BarUpdateWithWhereUniqueWithoutLikedByInput
-  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput
-  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput
-  upsert?: BarUpsertWithWhereUniqueWithoutLikedByInput[] | BarUpsertWithWhereUniqueWithoutLikedByInput
+  create?: BarCreateWithoutLikedByInput[] | BarCreateWithoutLikedByInput | null
+  connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  set?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  disconnect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  delete?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
+  update?: BarUpdateWithWhereUniqueWithoutLikedByInput[] | BarUpdateWithWhereUniqueWithoutLikedByInput | null
+  updateMany?: BarUpdateManyWithWhereNestedInput[] | BarUpdateManyWithWhereNestedInput | null
+  deleteMany?: BarScalarWhereInput[] | BarScalarWhereInput | null
+  upsert?: BarUpsertWithWhereUniqueWithoutLikedByInput[] | BarUpsertWithWhereUniqueWithoutLikedByInput | null
 }
 
 export interface BarUpdateManyWithWhereNestedInput {
@@ -9673,154 +9673,154 @@ export interface BarUpdateManyWithWhereNestedInput {
 }
 
 export interface BarUpdateOneRequiredWithoutBarChangesInput {
-  create?: BarCreateWithoutBarChangesInput
-  connect?: BarWhereUniqueInput
-  update?: BarUpdateWithoutBarChangesDataInput
-  upsert?: BarUpsertWithoutBarChangesInput
+  create?: BarCreateWithoutBarChangesInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateWithoutBarChangesDataInput | null
+  upsert?: BarUpsertWithoutBarChangesInput | null
 }
 
 export interface BarUpdateOneRequiredWithoutBarCommentsInput {
-  create?: BarCreateWithoutBarCommentsInput
-  connect?: BarWhereUniqueInput
-  update?: BarUpdateWithoutBarCommentsDataInput
-  upsert?: BarUpsertWithoutBarCommentsInput
+  create?: BarCreateWithoutBarCommentsInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateWithoutBarCommentsDataInput | null
+  upsert?: BarUpsertWithoutBarCommentsInput | null
 }
 
 export interface BarUpdateOneRequiredWithoutBarRatingInput {
-  create?: BarCreateWithoutBarRatingInput
-  connect?: BarWhereUniqueInput
-  update?: BarUpdateWithoutBarRatingDataInput
-  upsert?: BarUpsertWithoutBarRatingInput
+  create?: BarCreateWithoutBarRatingInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateWithoutBarRatingDataInput | null
+  upsert?: BarUpsertWithoutBarRatingInput | null
 }
 
 export interface BarUpdateOneRequiredWithoutBeerPricesInput {
-  create?: BarCreateWithoutBeerPricesInput
-  connect?: BarWhereUniqueInput
-  update?: BarUpdateWithoutBeerPricesDataInput
-  upsert?: BarUpsertWithoutBeerPricesInput
+  create?: BarCreateWithoutBeerPricesInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateWithoutBeerPricesDataInput | null
+  upsert?: BarUpsertWithoutBeerPricesInput | null
 }
 
 export interface BarUpdatephotosInput {
-  set?: String[] | String
+  set?: String[] | String | null
 }
 
 export interface BarUpdateWithoutBarChangesDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutBarCommentsDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutBarRatingDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutBeerPricesDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutBeersDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutCreatedByDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  likedBy?: UserUpdateManyWithoutLikedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
 export interface BarUpdateWithoutLikedByDataInput {
-  name?: String
-  address?: String
-  lat?: String
-  long?: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos?: BarUpdatephotosInput
-  beers?: BeerUpdateManyWithoutBarsInput
-  barRating?: BarRatingUpdateManyWithoutBarInput
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput
-  barComments?: BarCommentUpdateManyWithoutBarInput
-  barChanges?: BarChangeUpdateManyWithoutBarInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBarsInput | null
 }
 
 export interface BarUpdateWithWhereUniqueWithoutBeersInput {
@@ -9877,132 +9877,132 @@ export interface BarUpsertWithWhereUniqueWithoutLikedByInput {
 }
 
 export interface BarWhereInput {
-  AND?: BarWhereInput[] | BarWhereInput
-  OR?: BarWhereInput[] | BarWhereInput
-  NOT?: BarWhereInput[] | BarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  address?: String
-  address_not?: String
-  address_in?: String[] | String
-  address_not_in?: String[] | String
-  address_lt?: String
-  address_lte?: String
-  address_gt?: String
-  address_gte?: String
-  address_contains?: String
-  address_not_contains?: String
-  address_starts_with?: String
-  address_not_starts_with?: String
-  address_ends_with?: String
-  address_not_ends_with?: String
-  lat?: String
-  lat_not?: String
-  lat_in?: String[] | String
-  lat_not_in?: String[] | String
-  lat_lt?: String
-  lat_lte?: String
-  lat_gt?: String
-  lat_gte?: String
-  lat_contains?: String
-  lat_not_contains?: String
-  lat_starts_with?: String
-  lat_not_starts_with?: String
-  lat_ends_with?: String
-  lat_not_ends_with?: String
-  long?: String
-  long_not?: String
-  long_in?: String[] | String
-  long_not_in?: String[] | String
-  long_lt?: String
-  long_lte?: String
-  long_gt?: String
-  long_gte?: String
-  long_contains?: String
-  long_not_contains?: String
-  long_starts_with?: String
-  long_not_starts_with?: String
-  long_ends_with?: String
-  long_not_ends_with?: String
-  phone?: String
-  phone_not?: String
-  phone_in?: String[] | String
-  phone_not_in?: String[] | String
-  phone_lt?: String
-  phone_lte?: String
-  phone_gt?: String
-  phone_gte?: String
-  phone_contains?: String
-  phone_not_contains?: String
-  phone_starts_with?: String
-  phone_not_starts_with?: String
-  phone_ends_with?: String
-  phone_not_ends_with?: String
-  openTime?: DateTime
-  openTime_not?: DateTime
-  openTime_in?: DateTime[] | DateTime
-  openTime_not_in?: DateTime[] | DateTime
-  openTime_lt?: DateTime
-  openTime_lte?: DateTime
-  openTime_gt?: DateTime
-  openTime_gte?: DateTime
-  closeTime?: DateTime
-  closeTime_not?: DateTime
-  closeTime_in?: DateTime[] | DateTime
-  closeTime_not_in?: DateTime[] | DateTime
-  closeTime_lt?: DateTime
-  closeTime_lte?: DateTime
-  closeTime_gt?: DateTime
-  closeTime_gte?: DateTime
-  beers_every?: BeerWhereInput
-  beers_some?: BeerWhereInput
-  beers_none?: BeerWhereInput
-  barRating_every?: BarRatingWhereInput
-  barRating_some?: BarRatingWhereInput
-  barRating_none?: BarRatingWhereInput
-  beerPrices_every?: BeerPriceWhereInput
-  beerPrices_some?: BeerPriceWhereInput
-  beerPrices_none?: BeerPriceWhereInput
-  barComments_every?: BarCommentWhereInput
-  barComments_some?: BarCommentWhereInput
-  barComments_none?: BarCommentWhereInput
-  barChanges_every?: BarChangeWhereInput
-  barChanges_some?: BarChangeWhereInput
-  barChanges_none?: BarChangeWhereInput
-  createdBy?: UserWhereInput
-  likedBy_every?: UserWhereInput
-  likedBy_some?: UserWhereInput
-  likedBy_none?: UserWhereInput
+  AND?: BarWhereInput[] | BarWhereInput | null
+  OR?: BarWhereInput[] | BarWhereInput | null
+  NOT?: BarWhereInput[] | BarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  address?: String | null
+  address_not?: String | null
+  address_in?: String[] | String | null
+  address_not_in?: String[] | String | null
+  address_lt?: String | null
+  address_lte?: String | null
+  address_gt?: String | null
+  address_gte?: String | null
+  address_contains?: String | null
+  address_not_contains?: String | null
+  address_starts_with?: String | null
+  address_not_starts_with?: String | null
+  address_ends_with?: String | null
+  address_not_ends_with?: String | null
+  lat?: String | null
+  lat_not?: String | null
+  lat_in?: String[] | String | null
+  lat_not_in?: String[] | String | null
+  lat_lt?: String | null
+  lat_lte?: String | null
+  lat_gt?: String | null
+  lat_gte?: String | null
+  lat_contains?: String | null
+  lat_not_contains?: String | null
+  lat_starts_with?: String | null
+  lat_not_starts_with?: String | null
+  lat_ends_with?: String | null
+  lat_not_ends_with?: String | null
+  long?: String | null
+  long_not?: String | null
+  long_in?: String[] | String | null
+  long_not_in?: String[] | String | null
+  long_lt?: String | null
+  long_lte?: String | null
+  long_gt?: String | null
+  long_gte?: String | null
+  long_contains?: String | null
+  long_not_contains?: String | null
+  long_starts_with?: String | null
+  long_not_starts_with?: String | null
+  long_ends_with?: String | null
+  long_not_ends_with?: String | null
+  phone?: String | null
+  phone_not?: String | null
+  phone_in?: String[] | String | null
+  phone_not_in?: String[] | String | null
+  phone_lt?: String | null
+  phone_lte?: String | null
+  phone_gt?: String | null
+  phone_gte?: String | null
+  phone_contains?: String | null
+  phone_not_contains?: String | null
+  phone_starts_with?: String | null
+  phone_not_starts_with?: String | null
+  phone_ends_with?: String | null
+  phone_not_ends_with?: String | null
+  openTime?: DateTime | null
+  openTime_not?: DateTime | null
+  openTime_in?: DateTime[] | DateTime | null
+  openTime_not_in?: DateTime[] | DateTime | null
+  openTime_lt?: DateTime | null
+  openTime_lte?: DateTime | null
+  openTime_gt?: DateTime | null
+  openTime_gte?: DateTime | null
+  closeTime?: DateTime | null
+  closeTime_not?: DateTime | null
+  closeTime_in?: DateTime[] | DateTime | null
+  closeTime_not_in?: DateTime[] | DateTime | null
+  closeTime_lt?: DateTime | null
+  closeTime_lte?: DateTime | null
+  closeTime_gt?: DateTime | null
+  closeTime_gte?: DateTime | null
+  beers_every?: BeerWhereInput | null
+  beers_some?: BeerWhereInput | null
+  beers_none?: BeerWhereInput | null
+  barRating_every?: BarRatingWhereInput | null
+  barRating_some?: BarRatingWhereInput | null
+  barRating_none?: BarRatingWhereInput | null
+  beerPrices_every?: BeerPriceWhereInput | null
+  beerPrices_some?: BeerPriceWhereInput | null
+  beerPrices_none?: BeerPriceWhereInput | null
+  barComments_every?: BarCommentWhereInput | null
+  barComments_some?: BarCommentWhereInput | null
+  barComments_none?: BarCommentWhereInput | null
+  barChanges_every?: BarChangeWhereInput | null
+  barChanges_some?: BarChangeWhereInput | null
+  barChanges_none?: BarChangeWhereInput | null
+  createdBy?: UserWhereInput | null
+  likedBy_every?: UserWhereInput | null
+  likedBy_some?: UserWhereInput | null
+  likedBy_none?: UserWhereInput | null
 }
 
 export interface BarWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerChangeCreateInput {
@@ -10011,22 +10011,22 @@ export interface BeerChangeCreateInput {
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
   beer: BeerCreateOneWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
+  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeCreateManyWithoutBeerInput {
-  create?: BeerChangeCreateWithoutBeerInput[] | BeerChangeCreateWithoutBeerInput
-  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
+  create?: BeerChangeCreateWithoutBeerInput[] | BeerChangeCreateWithoutBeerInput | null
+  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
 }
 
 export interface BeerChangeCreateManyWithoutUserInput {
-  create?: BeerChangeCreateWithoutUserInput[] | BeerChangeCreateWithoutUserInput
-  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
+  create?: BeerChangeCreateWithoutUserInput[] | BeerChangeCreateWithoutUserInput | null
+  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
 }
 
 export interface BeerChangeCreateOneWithoutUpvotesInput {
-  create?: BeerChangeCreateWithoutUpvotesInput
-  connect?: BeerChangeWhereUniqueInput
+  create?: BeerChangeCreateWithoutUpvotesInput | null
+  connect?: BeerChangeWhereUniqueInput | null
 }
 
 export interface BeerChangeCreateWithoutBeerInput {
@@ -10034,7 +10034,7 @@ export interface BeerChangeCreateWithoutBeerInput {
   field: String
   newValue: String
   user: UserCreateOneWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
+  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeCreateWithoutUpvotesInput {
@@ -10050,127 +10050,127 @@ export interface BeerChangeCreateWithoutUserInput {
   field: String
   newValue: String
   beer: BeerCreateOneWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput
+  upvotes?: BeerChangeUpvoteCreateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeScalarWhereInput {
-  AND?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput
-  OR?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput
-  NOT?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
-  field?: String
-  field_not?: String
-  field_in?: String[] | String
-  field_not_in?: String[] | String
-  field_lt?: String
-  field_lte?: String
-  field_gt?: String
-  field_gte?: String
-  field_contains?: String
-  field_not_contains?: String
-  field_starts_with?: String
-  field_not_starts_with?: String
-  field_ends_with?: String
-  field_not_ends_with?: String
-  newValue?: String
-  newValue_not?: String
-  newValue_in?: String[] | String
-  newValue_not_in?: String[] | String
-  newValue_lt?: String
-  newValue_lte?: String
-  newValue_gt?: String
-  newValue_gte?: String
-  newValue_contains?: String
-  newValue_not_contains?: String
-  newValue_starts_with?: String
-  newValue_not_starts_with?: String
-  newValue_ends_with?: String
-  newValue_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
+  AND?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput | null
+  OR?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput | null
+  NOT?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
+  field?: String | null
+  field_not?: String | null
+  field_in?: String[] | String | null
+  field_not_in?: String[] | String | null
+  field_lt?: String | null
+  field_lte?: String | null
+  field_gt?: String | null
+  field_gte?: String | null
+  field_contains?: String | null
+  field_not_contains?: String | null
+  field_starts_with?: String | null
+  field_not_starts_with?: String | null
+  field_ends_with?: String | null
+  field_not_ends_with?: String | null
+  newValue?: String | null
+  newValue_not?: String | null
+  newValue_in?: String[] | String | null
+  newValue_not_in?: String[] | String | null
+  newValue_lt?: String | null
+  newValue_lte?: String | null
+  newValue_gt?: String | null
+  newValue_gte?: String | null
+  newValue_contains?: String | null
+  newValue_not_contains?: String | null
+  newValue_starts_with?: String | null
+  newValue_not_starts_with?: String | null
+  newValue_ends_with?: String | null
+  newValue_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
 }
 
 export interface BeerChangeSubscriptionWhereInput {
-  AND?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput
-  OR?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput
-  NOT?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerChangeWhereInput
+  AND?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput | null
+  OR?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput | null
+  NOT?: BeerChangeSubscriptionWhereInput[] | BeerChangeSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerChangeWhereInput | null
 }
 
 export interface BeerChangeUpdateInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBeerChangesInput
-  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
+  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeUpdateManyDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
 }
 
 export interface BeerChangeUpdateManyMutationInput {
-  price?: Float
-  field?: String
-  newValue?: String
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
 }
 
 export interface BeerChangeUpdateManyWithoutBeerInput {
-  create?: BeerChangeCreateWithoutBeerInput[] | BeerChangeCreateWithoutBeerInput
-  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  set?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  disconnect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  delete?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  update?: BeerChangeUpdateWithWhereUniqueWithoutBeerInput[] | BeerChangeUpdateWithWhereUniqueWithoutBeerInput
-  updateMany?: BeerChangeUpdateManyWithWhereNestedInput[] | BeerChangeUpdateManyWithWhereNestedInput
-  deleteMany?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput
-  upsert?: BeerChangeUpsertWithWhereUniqueWithoutBeerInput[] | BeerChangeUpsertWithWhereUniqueWithoutBeerInput
+  create?: BeerChangeCreateWithoutBeerInput[] | BeerChangeCreateWithoutBeerInput | null
+  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  set?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  disconnect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  delete?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  update?: BeerChangeUpdateWithWhereUniqueWithoutBeerInput[] | BeerChangeUpdateWithWhereUniqueWithoutBeerInput | null
+  updateMany?: BeerChangeUpdateManyWithWhereNestedInput[] | BeerChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput | null
+  upsert?: BeerChangeUpsertWithWhereUniqueWithoutBeerInput[] | BeerChangeUpsertWithWhereUniqueWithoutBeerInput | null
 }
 
 export interface BeerChangeUpdateManyWithoutUserInput {
-  create?: BeerChangeCreateWithoutUserInput[] | BeerChangeCreateWithoutUserInput
-  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  set?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  disconnect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  delete?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput
-  update?: BeerChangeUpdateWithWhereUniqueWithoutUserInput[] | BeerChangeUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BeerChangeUpdateManyWithWhereNestedInput[] | BeerChangeUpdateManyWithWhereNestedInput
-  deleteMany?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput
-  upsert?: BeerChangeUpsertWithWhereUniqueWithoutUserInput[] | BeerChangeUpsertWithWhereUniqueWithoutUserInput
+  create?: BeerChangeCreateWithoutUserInput[] | BeerChangeCreateWithoutUserInput | null
+  connect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  set?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  disconnect?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  delete?: BeerChangeWhereUniqueInput[] | BeerChangeWhereUniqueInput | null
+  update?: BeerChangeUpdateWithWhereUniqueWithoutUserInput[] | BeerChangeUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BeerChangeUpdateManyWithWhereNestedInput[] | BeerChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerChangeScalarWhereInput[] | BeerChangeScalarWhereInput | null
+  upsert?: BeerChangeUpsertWithWhereUniqueWithoutUserInput[] | BeerChangeUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BeerChangeUpdateManyWithWhereNestedInput {
@@ -10179,34 +10179,34 @@ export interface BeerChangeUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerChangeUpdateOneRequiredWithoutUpvotesInput {
-  create?: BeerChangeCreateWithoutUpvotesInput
-  connect?: BeerChangeWhereUniqueInput
-  update?: BeerChangeUpdateWithoutUpvotesDataInput
-  upsert?: BeerChangeUpsertWithoutUpvotesInput
+  create?: BeerChangeCreateWithoutUpvotesInput | null
+  connect?: BeerChangeWhereUniqueInput | null
+  update?: BeerChangeUpdateWithoutUpvotesDataInput | null
+  upsert?: BeerChangeUpsertWithoutUpvotesInput | null
 }
 
 export interface BeerChangeUpdateWithoutBeerDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
+  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeUpdateWithoutUpvotesDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  user?: UserUpdateOneRequiredWithoutBeerChangesInput
-  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  user?: UserUpdateOneRequiredWithoutBeerChangesInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
 }
 
 export interface BeerChangeUpdateWithoutUserDataInput {
-  price?: Float
-  field?: String
-  newValue?: String
-  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput
-  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput
+  price?: Float | null
+  field?: String | null
+  newValue?: String | null
+  beer?: BeerUpdateOneRequiredWithoutBeerChangesInput | null
+  upvotes?: BeerChangeUpvoteUpdateManyWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeUpdateWithWhereUniqueWithoutBeerInput {
@@ -10242,13 +10242,13 @@ export interface BeerChangeUpvoteCreateInput {
 }
 
 export interface BeerChangeUpvoteCreateManyWithoutBeerChangeInput {
-  create?: BeerChangeUpvoteCreateWithoutBeerChangeInput[] | BeerChangeUpvoteCreateWithoutBeerChangeInput
-  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
+  create?: BeerChangeUpvoteCreateWithoutBeerChangeInput[] | BeerChangeUpvoteCreateWithoutBeerChangeInput | null
+  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
 }
 
 export interface BeerChangeUpvoteCreateManyWithoutUserInput {
-  create?: BeerChangeUpvoteCreateWithoutUserInput[] | BeerChangeUpvoteCreateWithoutUserInput
-  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
+  create?: BeerChangeUpvoteCreateWithoutUserInput[] | BeerChangeUpvoteCreateWithoutUserInput | null
+  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
 }
 
 export interface BeerChangeUpvoteCreateWithoutBeerChangeInput {
@@ -10260,69 +10260,69 @@ export interface BeerChangeUpvoteCreateWithoutUserInput {
 }
 
 export interface BeerChangeUpvoteScalarWhereInput {
-  AND?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput
-  OR?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput
-  NOT?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
+  AND?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput | null
+  OR?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput | null
+  NOT?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
 }
 
 export interface BeerChangeUpvoteSubscriptionWhereInput {
-  AND?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput
-  OR?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput
-  NOT?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerChangeUpvoteWhereInput
+  AND?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput | null
+  OR?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput | null
+  NOT?: BeerChangeUpvoteSubscriptionWhereInput[] | BeerChangeUpvoteSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerChangeUpvoteWhereInput | null
 }
 
 export interface BeerChangeUpvoteUpdateInput {
-  user?: UserUpdateOneRequiredWithoutBeerChangeUpvotesInput
-  beerChange?: BeerChangeUpdateOneRequiredWithoutUpvotesInput
+  user?: UserUpdateOneRequiredWithoutBeerChangeUpvotesInput | null
+  beerChange?: BeerChangeUpdateOneRequiredWithoutUpvotesInput | null
 }
 
 export interface BeerChangeUpvoteUpdateManyWithoutBeerChangeInput {
-  create?: BeerChangeUpvoteCreateWithoutBeerChangeInput[] | BeerChangeUpvoteCreateWithoutBeerChangeInput
-  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  set?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  disconnect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  delete?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  update?: BeerChangeUpvoteUpdateWithWhereUniqueWithoutBeerChangeInput[] | BeerChangeUpvoteUpdateWithWhereUniqueWithoutBeerChangeInput
-  deleteMany?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput
-  upsert?: BeerChangeUpvoteUpsertWithWhereUniqueWithoutBeerChangeInput[] | BeerChangeUpvoteUpsertWithWhereUniqueWithoutBeerChangeInput
+  create?: BeerChangeUpvoteCreateWithoutBeerChangeInput[] | BeerChangeUpvoteCreateWithoutBeerChangeInput | null
+  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  set?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  disconnect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  delete?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  update?: BeerChangeUpvoteUpdateWithWhereUniqueWithoutBeerChangeInput[] | BeerChangeUpvoteUpdateWithWhereUniqueWithoutBeerChangeInput | null
+  deleteMany?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput | null
+  upsert?: BeerChangeUpvoteUpsertWithWhereUniqueWithoutBeerChangeInput[] | BeerChangeUpvoteUpsertWithWhereUniqueWithoutBeerChangeInput | null
 }
 
 export interface BeerChangeUpvoteUpdateManyWithoutUserInput {
-  create?: BeerChangeUpvoteCreateWithoutUserInput[] | BeerChangeUpvoteCreateWithoutUserInput
-  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  set?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  disconnect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  delete?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput
-  update?: BeerChangeUpvoteUpdateWithWhereUniqueWithoutUserInput[] | BeerChangeUpvoteUpdateWithWhereUniqueWithoutUserInput
-  deleteMany?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput
-  upsert?: BeerChangeUpvoteUpsertWithWhereUniqueWithoutUserInput[] | BeerChangeUpvoteUpsertWithWhereUniqueWithoutUserInput
+  create?: BeerChangeUpvoteCreateWithoutUserInput[] | BeerChangeUpvoteCreateWithoutUserInput | null
+  connect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  set?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  disconnect?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  delete?: BeerChangeUpvoteWhereUniqueInput[] | BeerChangeUpvoteWhereUniqueInput | null
+  update?: BeerChangeUpvoteUpdateWithWhereUniqueWithoutUserInput[] | BeerChangeUpvoteUpdateWithWhereUniqueWithoutUserInput | null
+  deleteMany?: BeerChangeUpvoteScalarWhereInput[] | BeerChangeUpvoteScalarWhereInput | null
+  upsert?: BeerChangeUpvoteUpsertWithWhereUniqueWithoutUserInput[] | BeerChangeUpvoteUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BeerChangeUpvoteUpdateWithoutBeerChangeDataInput {
-  user?: UserUpdateOneRequiredWithoutBeerChangeUpvotesInput
+  user?: UserUpdateOneRequiredWithoutBeerChangeUpvotesInput | null
 }
 
 export interface BeerChangeUpvoteUpdateWithoutUserDataInput {
-  beerChange?: BeerChangeUpdateOneRequiredWithoutUpvotesInput
+  beerChange?: BeerChangeUpdateOneRequiredWithoutUpvotesInput | null
 }
 
 export interface BeerChangeUpvoteUpdateWithWhereUniqueWithoutBeerChangeInput {
@@ -10348,102 +10348,102 @@ export interface BeerChangeUpvoteUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BeerChangeUpvoteWhereInput {
-  AND?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput
-  OR?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput
-  NOT?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  user?: UserWhereInput
-  beerChange?: BeerChangeWhereInput
+  AND?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput | null
+  OR?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput | null
+  NOT?: BeerChangeUpvoteWhereInput[] | BeerChangeUpvoteWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  user?: UserWhereInput | null
+  beerChange?: BeerChangeWhereInput | null
 }
 
 export interface BeerChangeUpvoteWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerChangeWhereInput {
-  AND?: BeerChangeWhereInput[] | BeerChangeWhereInput
-  OR?: BeerChangeWhereInput[] | BeerChangeWhereInput
-  NOT?: BeerChangeWhereInput[] | BeerChangeWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
-  field?: String
-  field_not?: String
-  field_in?: String[] | String
-  field_not_in?: String[] | String
-  field_lt?: String
-  field_lte?: String
-  field_gt?: String
-  field_gte?: String
-  field_contains?: String
-  field_not_contains?: String
-  field_starts_with?: String
-  field_not_starts_with?: String
-  field_ends_with?: String
-  field_not_ends_with?: String
-  newValue?: String
-  newValue_not?: String
-  newValue_in?: String[] | String
-  newValue_not_in?: String[] | String
-  newValue_lt?: String
-  newValue_lte?: String
-  newValue_gt?: String
-  newValue_gte?: String
-  newValue_contains?: String
-  newValue_not_contains?: String
-  newValue_starts_with?: String
-  newValue_not_starts_with?: String
-  newValue_ends_with?: String
-  newValue_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  user?: UserWhereInput
-  beer?: BeerWhereInput
-  upvotes_every?: BeerChangeUpvoteWhereInput
-  upvotes_some?: BeerChangeUpvoteWhereInput
-  upvotes_none?: BeerChangeUpvoteWhereInput
+  AND?: BeerChangeWhereInput[] | BeerChangeWhereInput | null
+  OR?: BeerChangeWhereInput[] | BeerChangeWhereInput | null
+  NOT?: BeerChangeWhereInput[] | BeerChangeWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
+  field?: String | null
+  field_not?: String | null
+  field_in?: String[] | String | null
+  field_not_in?: String[] | String | null
+  field_lt?: String | null
+  field_lte?: String | null
+  field_gt?: String | null
+  field_gte?: String | null
+  field_contains?: String | null
+  field_not_contains?: String | null
+  field_starts_with?: String | null
+  field_not_starts_with?: String | null
+  field_ends_with?: String | null
+  field_not_ends_with?: String | null
+  newValue?: String | null
+  newValue_not?: String | null
+  newValue_in?: String[] | String | null
+  newValue_not_in?: String[] | String | null
+  newValue_lt?: String | null
+  newValue_lte?: String | null
+  newValue_gt?: String | null
+  newValue_gte?: String | null
+  newValue_contains?: String | null
+  newValue_not_contains?: String | null
+  newValue_starts_with?: String | null
+  newValue_not_starts_with?: String | null
+  newValue_ends_with?: String | null
+  newValue_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  user?: UserWhereInput | null
+  beer?: BeerWhereInput | null
+  upvotes_every?: BeerChangeUpvoteWhereInput | null
+  upvotes_some?: BeerChangeUpvoteWhereInput | null
+  upvotes_none?: BeerChangeUpvoteWhereInput | null
 }
 
 export interface BeerChangeWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerCommentCreateInput {
@@ -10453,13 +10453,13 @@ export interface BeerCommentCreateInput {
 }
 
 export interface BeerCommentCreateManyWithoutBeerInput {
-  create?: BeerCommentCreateWithoutBeerInput[] | BeerCommentCreateWithoutBeerInput
-  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
+  create?: BeerCommentCreateWithoutBeerInput[] | BeerCommentCreateWithoutBeerInput | null
+  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
 }
 
 export interface BeerCommentCreateManyWithoutUserInput {
-  create?: BeerCommentCreateWithoutUserInput[] | BeerCommentCreateWithoutUserInput
-  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
+  create?: BeerCommentCreateWithoutUserInput[] | BeerCommentCreateWithoutUserInput | null
+  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
 }
 
 export interface BeerCommentCreateWithoutBeerInput {
@@ -10473,94 +10473,94 @@ export interface BeerCommentCreateWithoutUserInput {
 }
 
 export interface BeerCommentScalarWhereInput {
-  AND?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput
-  OR?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput
-  NOT?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  comment?: String
-  comment_not?: String
-  comment_in?: String[] | String
-  comment_not_in?: String[] | String
-  comment_lt?: String
-  comment_lte?: String
-  comment_gt?: String
-  comment_gte?: String
-  comment_contains?: String
-  comment_not_contains?: String
-  comment_starts_with?: String
-  comment_not_starts_with?: String
-  comment_ends_with?: String
-  comment_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
+  AND?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput | null
+  OR?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput | null
+  NOT?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  comment?: String | null
+  comment_not?: String | null
+  comment_in?: String[] | String | null
+  comment_not_in?: String[] | String | null
+  comment_lt?: String | null
+  comment_lte?: String | null
+  comment_gt?: String | null
+  comment_gte?: String | null
+  comment_contains?: String | null
+  comment_not_contains?: String | null
+  comment_starts_with?: String | null
+  comment_not_starts_with?: String | null
+  comment_ends_with?: String | null
+  comment_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
 }
 
 export interface BeerCommentSubscriptionWhereInput {
-  AND?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput
-  OR?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput
-  NOT?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerCommentWhereInput
+  AND?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput | null
+  OR?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput | null
+  NOT?: BeerCommentSubscriptionWhereInput[] | BeerCommentSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerCommentWhereInput | null
 }
 
 export interface BeerCommentUpdateInput {
-  comment?: String
-  beer?: BeerUpdateOneRequiredWithoutBeerCommentsInput
-  user?: UserUpdateOneRequiredWithoutBeerCommentsInput
+  comment?: String | null
+  beer?: BeerUpdateOneRequiredWithoutBeerCommentsInput | null
+  user?: UserUpdateOneRequiredWithoutBeerCommentsInput | null
 }
 
 export interface BeerCommentUpdateManyDataInput {
-  comment?: String
+  comment?: String | null
 }
 
 export interface BeerCommentUpdateManyMutationInput {
-  comment?: String
+  comment?: String | null
 }
 
 export interface BeerCommentUpdateManyWithoutBeerInput {
-  create?: BeerCommentCreateWithoutBeerInput[] | BeerCommentCreateWithoutBeerInput
-  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  set?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  disconnect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  delete?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  update?: BeerCommentUpdateWithWhereUniqueWithoutBeerInput[] | BeerCommentUpdateWithWhereUniqueWithoutBeerInput
-  updateMany?: BeerCommentUpdateManyWithWhereNestedInput[] | BeerCommentUpdateManyWithWhereNestedInput
-  deleteMany?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput
-  upsert?: BeerCommentUpsertWithWhereUniqueWithoutBeerInput[] | BeerCommentUpsertWithWhereUniqueWithoutBeerInput
+  create?: BeerCommentCreateWithoutBeerInput[] | BeerCommentCreateWithoutBeerInput | null
+  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  set?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  disconnect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  delete?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  update?: BeerCommentUpdateWithWhereUniqueWithoutBeerInput[] | BeerCommentUpdateWithWhereUniqueWithoutBeerInput | null
+  updateMany?: BeerCommentUpdateManyWithWhereNestedInput[] | BeerCommentUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput | null
+  upsert?: BeerCommentUpsertWithWhereUniqueWithoutBeerInput[] | BeerCommentUpsertWithWhereUniqueWithoutBeerInput | null
 }
 
 export interface BeerCommentUpdateManyWithoutUserInput {
-  create?: BeerCommentCreateWithoutUserInput[] | BeerCommentCreateWithoutUserInput
-  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  set?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  disconnect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  delete?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput
-  update?: BeerCommentUpdateWithWhereUniqueWithoutUserInput[] | BeerCommentUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BeerCommentUpdateManyWithWhereNestedInput[] | BeerCommentUpdateManyWithWhereNestedInput
-  deleteMany?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput
-  upsert?: BeerCommentUpsertWithWhereUniqueWithoutUserInput[] | BeerCommentUpsertWithWhereUniqueWithoutUserInput
+  create?: BeerCommentCreateWithoutUserInput[] | BeerCommentCreateWithoutUserInput | null
+  connect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  set?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  disconnect?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  delete?: BeerCommentWhereUniqueInput[] | BeerCommentWhereUniqueInput | null
+  update?: BeerCommentUpdateWithWhereUniqueWithoutUserInput[] | BeerCommentUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BeerCommentUpdateManyWithWhereNestedInput[] | BeerCommentUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerCommentScalarWhereInput[] | BeerCommentScalarWhereInput | null
+  upsert?: BeerCommentUpsertWithWhereUniqueWithoutUserInput[] | BeerCommentUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BeerCommentUpdateManyWithWhereNestedInput {
@@ -10569,13 +10569,13 @@ export interface BeerCommentUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerCommentUpdateWithoutBeerDataInput {
-  comment?: String
-  user?: UserUpdateOneRequiredWithoutBeerCommentsInput
+  comment?: String | null
+  user?: UserUpdateOneRequiredWithoutBeerCommentsInput | null
 }
 
 export interface BeerCommentUpdateWithoutUserDataInput {
-  comment?: String
-  beer?: BeerUpdateOneRequiredWithoutBeerCommentsInput
+  comment?: String | null
+  beer?: BeerUpdateOneRequiredWithoutBeerCommentsInput | null
 }
 
 export interface BeerCommentUpdateWithWhereUniqueWithoutBeerInput {
@@ -10601,217 +10601,217 @@ export interface BeerCommentUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BeerCommentWhereInput {
-  AND?: BeerCommentWhereInput[] | BeerCommentWhereInput
-  OR?: BeerCommentWhereInput[] | BeerCommentWhereInput
-  NOT?: BeerCommentWhereInput[] | BeerCommentWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  comment?: String
-  comment_not?: String
-  comment_in?: String[] | String
-  comment_not_in?: String[] | String
-  comment_lt?: String
-  comment_lte?: String
-  comment_gt?: String
-  comment_gte?: String
-  comment_contains?: String
-  comment_not_contains?: String
-  comment_starts_with?: String
-  comment_not_starts_with?: String
-  comment_ends_with?: String
-  comment_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  beer?: BeerWhereInput
-  user?: UserWhereInput
+  AND?: BeerCommentWhereInput[] | BeerCommentWhereInput | null
+  OR?: BeerCommentWhereInput[] | BeerCommentWhereInput | null
+  NOT?: BeerCommentWhereInput[] | BeerCommentWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  comment?: String | null
+  comment_not?: String | null
+  comment_in?: String[] | String | null
+  comment_not_in?: String[] | String | null
+  comment_lt?: String | null
+  comment_lte?: String | null
+  comment_gt?: String | null
+  comment_gte?: String | null
+  comment_contains?: String | null
+  comment_not_contains?: String | null
+  comment_starts_with?: String | null
+  comment_not_starts_with?: String | null
+  comment_ends_with?: String | null
+  comment_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  beer?: BeerWhereInput | null
+  user?: UserWhereInput | null
 }
 
 export interface BeerCommentWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerCreateInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateManyWithoutBarsInput {
-  create?: BeerCreateWithoutBarsInput[] | BeerCreateWithoutBarsInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
+  create?: BeerCreateWithoutBarsInput[] | BeerCreateWithoutBarsInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateManyWithoutBreweryInput {
-  create?: BeerCreateWithoutBreweryInput[] | BeerCreateWithoutBreweryInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
+  create?: BeerCreateWithoutBreweryInput[] | BeerCreateWithoutBreweryInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateManyWithoutCreatedByInput {
-  create?: BeerCreateWithoutCreatedByInput[] | BeerCreateWithoutCreatedByInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
+  create?: BeerCreateWithoutCreatedByInput[] | BeerCreateWithoutCreatedByInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateManyWithoutLikedByInput {
-  create?: BeerCreateWithoutLikedByInput[] | BeerCreateWithoutLikedByInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
+  create?: BeerCreateWithoutLikedByInput[] | BeerCreateWithoutLikedByInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateOneWithoutBeerChangesInput {
-  create?: BeerCreateWithoutBeerChangesInput
-  connect?: BeerWhereUniqueInput
+  create?: BeerCreateWithoutBeerChangesInput | null
+  connect?: BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateOneWithoutBeerCommentsInput {
-  create?: BeerCreateWithoutBeerCommentsInput
-  connect?: BeerWhereUniqueInput
+  create?: BeerCreateWithoutBeerCommentsInput | null
+  connect?: BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateOneWithoutBeerPricesInput {
-  create?: BeerCreateWithoutBeerPricesInput
-  connect?: BeerWhereUniqueInput
+  create?: BeerCreateWithoutBeerPricesInput | null
+  connect?: BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateOneWithoutBeerRatingInput {
-  create?: BeerCreateWithoutBeerRatingInput
-  connect?: BeerWhereUniqueInput
+  create?: BeerCreateWithoutBeerRatingInput | null
+  connect?: BeerWhereUniqueInput | null
 }
 
 export interface BeerCreateWithoutBarsInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutBeerChangesInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutBeerCommentsInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutBeerPricesInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutBeerRatingInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutBreweryInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutCreatedByInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
-  likedBy?: UserCreateManyWithoutLikedBeersInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerCreateWithoutLikedByInput {
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryCreateOneWithoutBeersInput
-  bars?: BarCreateManyWithoutBeersInput
-  beerRating?: BeerRatingCreateManyWithoutBeerInput
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput
-  beerComments?: BeerCommentCreateManyWithoutBeerInput
-  beerChanges?: BeerChangeCreateManyWithoutBeerInput
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
   createdBy: UserCreateOneWithoutCreatedBeersInput
 }
 
@@ -10823,18 +10823,18 @@ export interface BeerPriceCreateInput {
 }
 
 export interface BeerPriceCreateManyWithoutBarInput {
-  create?: BeerPriceCreateWithoutBarInput[] | BeerPriceCreateWithoutBarInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
+  create?: BeerPriceCreateWithoutBarInput[] | BeerPriceCreateWithoutBarInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
 }
 
 export interface BeerPriceCreateManyWithoutBeerInput {
-  create?: BeerPriceCreateWithoutBeerInput[] | BeerPriceCreateWithoutBeerInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
+  create?: BeerPriceCreateWithoutBeerInput[] | BeerPriceCreateWithoutBeerInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
 }
 
 export interface BeerPriceCreateManyWithoutUserInput {
-  create?: BeerPriceCreateWithoutUserInput[] | BeerPriceCreateWithoutUserInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
+  create?: BeerPriceCreateWithoutUserInput[] | BeerPriceCreateWithoutUserInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
 }
 
 export interface BeerPriceCreateWithoutBarInput {
@@ -10856,93 +10856,93 @@ export interface BeerPriceCreateWithoutUserInput {
 }
 
 export interface BeerPriceScalarWhereInput {
-  AND?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  OR?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  NOT?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
+  AND?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  OR?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  NOT?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
 }
 
 export interface BeerPriceSubscriptionWhereInput {
-  AND?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput
-  OR?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput
-  NOT?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerPriceWhereInput
+  AND?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput | null
+  OR?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput | null
+  NOT?: BeerPriceSubscriptionWhereInput[] | BeerPriceSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerPriceWhereInput | null
 }
 
 export interface BeerPriceUpdateInput {
-  price?: Float
-  user?: UserUpdateOneRequiredWithoutPricedBeersInput
-  bar?: BarUpdateOneRequiredWithoutBeerPricesInput
-  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput
+  price?: Float | null
+  user?: UserUpdateOneRequiredWithoutPricedBeersInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerPricesInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput | null
 }
 
 export interface BeerPriceUpdateManyDataInput {
-  price?: Float
+  price?: Float | null
 }
 
 export interface BeerPriceUpdateManyMutationInput {
-  price?: Float
+  price?: Float | null
 }
 
 export interface BeerPriceUpdateManyWithoutBarInput {
-  create?: BeerPriceCreateWithoutBarInput[] | BeerPriceCreateWithoutBarInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  update?: BeerPriceUpdateWithWhereUniqueWithoutBarInput[] | BeerPriceUpdateWithWhereUniqueWithoutBarInput
-  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput
-  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  upsert?: BeerPriceUpsertWithWhereUniqueWithoutBarInput[] | BeerPriceUpsertWithWhereUniqueWithoutBarInput
+  create?: BeerPriceCreateWithoutBarInput[] | BeerPriceCreateWithoutBarInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  update?: BeerPriceUpdateWithWhereUniqueWithoutBarInput[] | BeerPriceUpdateWithWhereUniqueWithoutBarInput | null
+  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  upsert?: BeerPriceUpsertWithWhereUniqueWithoutBarInput[] | BeerPriceUpsertWithWhereUniqueWithoutBarInput | null
 }
 
 export interface BeerPriceUpdateManyWithoutBeerInput {
-  create?: BeerPriceCreateWithoutBeerInput[] | BeerPriceCreateWithoutBeerInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  update?: BeerPriceUpdateWithWhereUniqueWithoutBeerInput[] | BeerPriceUpdateWithWhereUniqueWithoutBeerInput
-  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput
-  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  upsert?: BeerPriceUpsertWithWhereUniqueWithoutBeerInput[] | BeerPriceUpsertWithWhereUniqueWithoutBeerInput
+  create?: BeerPriceCreateWithoutBeerInput[] | BeerPriceCreateWithoutBeerInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  update?: BeerPriceUpdateWithWhereUniqueWithoutBeerInput[] | BeerPriceUpdateWithWhereUniqueWithoutBeerInput | null
+  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  upsert?: BeerPriceUpsertWithWhereUniqueWithoutBeerInput[] | BeerPriceUpsertWithWhereUniqueWithoutBeerInput | null
 }
 
 export interface BeerPriceUpdateManyWithoutUserInput {
-  create?: BeerPriceCreateWithoutUserInput[] | BeerPriceCreateWithoutUserInput
-  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput
-  update?: BeerPriceUpdateWithWhereUniqueWithoutUserInput[] | BeerPriceUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput
-  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput
-  upsert?: BeerPriceUpsertWithWhereUniqueWithoutUserInput[] | BeerPriceUpsertWithWhereUniqueWithoutUserInput
+  create?: BeerPriceCreateWithoutUserInput[] | BeerPriceCreateWithoutUserInput | null
+  connect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  set?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  disconnect?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  delete?: BeerPriceWhereUniqueInput[] | BeerPriceWhereUniqueInput | null
+  update?: BeerPriceUpdateWithWhereUniqueWithoutUserInput[] | BeerPriceUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BeerPriceUpdateManyWithWhereNestedInput[] | BeerPriceUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerPriceScalarWhereInput[] | BeerPriceScalarWhereInput | null
+  upsert?: BeerPriceUpsertWithWhereUniqueWithoutUserInput[] | BeerPriceUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BeerPriceUpdateManyWithWhereNestedInput {
@@ -10951,21 +10951,21 @@ export interface BeerPriceUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerPriceUpdateWithoutBarDataInput {
-  price?: Float
-  user?: UserUpdateOneRequiredWithoutPricedBeersInput
-  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput
+  price?: Float | null
+  user?: UserUpdateOneRequiredWithoutPricedBeersInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput | null
 }
 
 export interface BeerPriceUpdateWithoutBeerDataInput {
-  price?: Float
-  user?: UserUpdateOneRequiredWithoutPricedBeersInput
-  bar?: BarUpdateOneRequiredWithoutBeerPricesInput
+  price?: Float | null
+  user?: UserUpdateOneRequiredWithoutPricedBeersInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerPricesInput | null
 }
 
 export interface BeerPriceUpdateWithoutUserDataInput {
-  price?: Float
-  bar?: BarUpdateOneRequiredWithoutBeerPricesInput
-  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput
+  price?: Float | null
+  bar?: BarUpdateOneRequiredWithoutBeerPricesInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerPricesInput | null
 }
 
 export interface BeerPriceUpdateWithWhereUniqueWithoutBarInput {
@@ -11002,141 +11002,141 @@ export interface BeerPriceUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BeerPriceWhereInput {
-  AND?: BeerPriceWhereInput[] | BeerPriceWhereInput
-  OR?: BeerPriceWhereInput[] | BeerPriceWhereInput
-  NOT?: BeerPriceWhereInput[] | BeerPriceWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  price?: Float
-  price_not?: Float
-  price_in?: Float[] | Float
-  price_not_in?: Float[] | Float
-  price_lt?: Float
-  price_lte?: Float
-  price_gt?: Float
-  price_gte?: Float
-  user?: UserWhereInput
-  bar?: BarWhereInput
-  beer?: BeerWhereInput
+  AND?: BeerPriceWhereInput[] | BeerPriceWhereInput | null
+  OR?: BeerPriceWhereInput[] | BeerPriceWhereInput | null
+  NOT?: BeerPriceWhereInput[] | BeerPriceWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  price?: Float | null
+  price_not?: Float | null
+  price_in?: Float[] | Float | null
+  price_not_in?: Float[] | Float | null
+  price_lt?: Float | null
+  price_lte?: Float | null
+  price_gt?: Float | null
+  price_gte?: Float | null
+  user?: UserWhereInput | null
+  bar?: BarWhereInput | null
+  beer?: BeerWhereInput | null
 }
 
 export interface BeerPriceWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerRatingCreateInput {
-  rating: Float
+  rating: Int
   user: UserCreateOneWithoutBeerRatingsInput
   beer: BeerCreateOneWithoutBeerRatingInput
 }
 
 export interface BeerRatingCreateManyWithoutBeerInput {
-  create?: BeerRatingCreateWithoutBeerInput[] | BeerRatingCreateWithoutBeerInput
-  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
+  create?: BeerRatingCreateWithoutBeerInput[] | BeerRatingCreateWithoutBeerInput | null
+  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
 }
 
 export interface BeerRatingCreateManyWithoutUserInput {
-  create?: BeerRatingCreateWithoutUserInput[] | BeerRatingCreateWithoutUserInput
-  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
+  create?: BeerRatingCreateWithoutUserInput[] | BeerRatingCreateWithoutUserInput | null
+  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
 }
 
 export interface BeerRatingCreateWithoutBeerInput {
-  rating: Float
+  rating: Int
   user: UserCreateOneWithoutBeerRatingsInput
 }
 
 export interface BeerRatingCreateWithoutUserInput {
-  rating: Float
+  rating: Int
   beer: BeerCreateOneWithoutBeerRatingInput
 }
 
 export interface BeerRatingScalarWhereInput {
-  AND?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput
-  OR?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput
-  NOT?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
+  AND?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput | null
+  OR?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput | null
+  NOT?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  rating?: Int | null
+  rating_not?: Int | null
+  rating_in?: Int[] | Int | null
+  rating_not_in?: Int[] | Int | null
+  rating_lt?: Int | null
+  rating_lte?: Int | null
+  rating_gt?: Int | null
+  rating_gte?: Int | null
 }
 
 export interface BeerRatingSubscriptionWhereInput {
-  AND?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput
-  OR?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput
-  NOT?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerRatingWhereInput
+  AND?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput | null
+  OR?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput | null
+  NOT?: BeerRatingSubscriptionWhereInput[] | BeerRatingSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerRatingWhereInput | null
 }
 
 export interface BeerRatingUpdateInput {
-  rating?: Float
-  user?: UserUpdateOneRequiredWithoutBeerRatingsInput
-  beer?: BeerUpdateOneRequiredWithoutBeerRatingInput
+  rating?: Int | null
+  user?: UserUpdateOneRequiredWithoutBeerRatingsInput | null
+  beer?: BeerUpdateOneRequiredWithoutBeerRatingInput | null
 }
 
 export interface BeerRatingUpdateManyDataInput {
-  rating?: Float
+  rating?: Int | null
 }
 
 export interface BeerRatingUpdateManyMutationInput {
-  rating?: Float
+  rating?: Int | null
 }
 
 export interface BeerRatingUpdateManyWithoutBeerInput {
-  create?: BeerRatingCreateWithoutBeerInput[] | BeerRatingCreateWithoutBeerInput
-  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  set?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  disconnect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  delete?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  update?: BeerRatingUpdateWithWhereUniqueWithoutBeerInput[] | BeerRatingUpdateWithWhereUniqueWithoutBeerInput
-  updateMany?: BeerRatingUpdateManyWithWhereNestedInput[] | BeerRatingUpdateManyWithWhereNestedInput
-  deleteMany?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput
-  upsert?: BeerRatingUpsertWithWhereUniqueWithoutBeerInput[] | BeerRatingUpsertWithWhereUniqueWithoutBeerInput
+  create?: BeerRatingCreateWithoutBeerInput[] | BeerRatingCreateWithoutBeerInput | null
+  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  set?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  disconnect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  delete?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  update?: BeerRatingUpdateWithWhereUniqueWithoutBeerInput[] | BeerRatingUpdateWithWhereUniqueWithoutBeerInput | null
+  updateMany?: BeerRatingUpdateManyWithWhereNestedInput[] | BeerRatingUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput | null
+  upsert?: BeerRatingUpsertWithWhereUniqueWithoutBeerInput[] | BeerRatingUpsertWithWhereUniqueWithoutBeerInput | null
 }
 
 export interface BeerRatingUpdateManyWithoutUserInput {
-  create?: BeerRatingCreateWithoutUserInput[] | BeerRatingCreateWithoutUserInput
-  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  set?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  disconnect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  delete?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput
-  update?: BeerRatingUpdateWithWhereUniqueWithoutUserInput[] | BeerRatingUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: BeerRatingUpdateManyWithWhereNestedInput[] | BeerRatingUpdateManyWithWhereNestedInput
-  deleteMany?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput
-  upsert?: BeerRatingUpsertWithWhereUniqueWithoutUserInput[] | BeerRatingUpsertWithWhereUniqueWithoutUserInput
+  create?: BeerRatingCreateWithoutUserInput[] | BeerRatingCreateWithoutUserInput | null
+  connect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  set?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  disconnect?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  delete?: BeerRatingWhereUniqueInput[] | BeerRatingWhereUniqueInput | null
+  update?: BeerRatingUpdateWithWhereUniqueWithoutUserInput[] | BeerRatingUpdateWithWhereUniqueWithoutUserInput | null
+  updateMany?: BeerRatingUpdateManyWithWhereNestedInput[] | BeerRatingUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerRatingScalarWhereInput[] | BeerRatingScalarWhereInput | null
+  upsert?: BeerRatingUpsertWithWhereUniqueWithoutUserInput[] | BeerRatingUpsertWithWhereUniqueWithoutUserInput | null
 }
 
 export interface BeerRatingUpdateManyWithWhereNestedInput {
@@ -11145,13 +11145,13 @@ export interface BeerRatingUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerRatingUpdateWithoutBeerDataInput {
-  rating?: Float
-  user?: UserUpdateOneRequiredWithoutBeerRatingsInput
+  rating?: Int | null
+  user?: UserUpdateOneRequiredWithoutBeerRatingsInput | null
 }
 
 export interface BeerRatingUpdateWithoutUserDataInput {
-  rating?: Float
-  beer?: BeerUpdateOneRequiredWithoutBeerRatingInput
+  rating?: Int | null
+  beer?: BeerUpdateOneRequiredWithoutBeerRatingInput | null
 }
 
 export interface BeerRatingUpdateWithWhereUniqueWithoutBeerInput {
@@ -11177,201 +11177,201 @@ export interface BeerRatingUpsertWithWhereUniqueWithoutUserInput {
 }
 
 export interface BeerRatingWhereInput {
-  AND?: BeerRatingWhereInput[] | BeerRatingWhereInput
-  OR?: BeerRatingWhereInput[] | BeerRatingWhereInput
-  NOT?: BeerRatingWhereInput[] | BeerRatingWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  rating?: Float
-  rating_not?: Float
-  rating_in?: Float[] | Float
-  rating_not_in?: Float[] | Float
-  rating_lt?: Float
-  rating_lte?: Float
-  rating_gt?: Float
-  rating_gte?: Float
-  user?: UserWhereInput
-  beer?: BeerWhereInput
+  AND?: BeerRatingWhereInput[] | BeerRatingWhereInput | null
+  OR?: BeerRatingWhereInput[] | BeerRatingWhereInput | null
+  NOT?: BeerRatingWhereInput[] | BeerRatingWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  rating?: Int | null
+  rating_not?: Int | null
+  rating_in?: Int[] | Int | null
+  rating_not_in?: Int[] | Int | null
+  rating_lt?: Int | null
+  rating_lte?: Int | null
+  rating_gt?: Int | null
+  rating_gte?: Int | null
+  user?: UserWhereInput | null
+  beer?: BeerWhereInput | null
 }
 
 export interface BeerRatingWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BeerScalarWhereInput {
-  AND?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  OR?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  NOT?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  type?: String
-  type_not?: String
-  type_in?: String[] | String
-  type_not_in?: String[] | String
-  type_lt?: String
-  type_lte?: String
-  type_gt?: String
-  type_gte?: String
-  type_contains?: String
-  type_not_contains?: String
-  type_starts_with?: String
-  type_not_starts_with?: String
-  type_ends_with?: String
-  type_not_ends_with?: String
-  strong?: String
-  strong_not?: String
-  strong_in?: String[] | String
-  strong_not_in?: String[] | String
-  strong_lt?: String
-  strong_lte?: String
-  strong_gt?: String
-  strong_gte?: String
-  strong_contains?: String
-  strong_not_contains?: String
-  strong_starts_with?: String
-  strong_not_starts_with?: String
-  strong_ends_with?: String
-  strong_not_ends_with?: String
-  photo?: String
-  photo_not?: String
-  photo_in?: String[] | String
-  photo_not_in?: String[] | String
-  photo_lt?: String
-  photo_lte?: String
-  photo_gt?: String
-  photo_gte?: String
-  photo_contains?: String
-  photo_not_contains?: String
-  photo_starts_with?: String
-  photo_not_starts_with?: String
-  photo_ends_with?: String
-  photo_not_ends_with?: String
+  AND?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  OR?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  NOT?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  type?: String | null
+  type_not?: String | null
+  type_in?: String[] | String | null
+  type_not_in?: String[] | String | null
+  type_lt?: String | null
+  type_lte?: String | null
+  type_gt?: String | null
+  type_gte?: String | null
+  type_contains?: String | null
+  type_not_contains?: String | null
+  type_starts_with?: String | null
+  type_not_starts_with?: String | null
+  type_ends_with?: String | null
+  type_not_ends_with?: String | null
+  strong?: String | null
+  strong_not?: String | null
+  strong_in?: String[] | String | null
+  strong_not_in?: String[] | String | null
+  strong_lt?: String | null
+  strong_lte?: String | null
+  strong_gt?: String | null
+  strong_gte?: String | null
+  strong_contains?: String | null
+  strong_not_contains?: String | null
+  strong_starts_with?: String | null
+  strong_not_starts_with?: String | null
+  strong_ends_with?: String | null
+  strong_not_ends_with?: String | null
+  photo?: String | null
+  photo_not?: String | null
+  photo_in?: String[] | String | null
+  photo_not_in?: String[] | String | null
+  photo_lt?: String | null
+  photo_lte?: String | null
+  photo_gt?: String | null
+  photo_gte?: String | null
+  photo_contains?: String | null
+  photo_not_contains?: String | null
+  photo_starts_with?: String | null
+  photo_not_starts_with?: String | null
+  photo_ends_with?: String | null
+  photo_not_ends_with?: String | null
 }
 
 export interface BeerSubscriptionWhereInput {
-  AND?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput
-  OR?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput
-  NOT?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BeerWhereInput
+  AND?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput | null
+  OR?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput | null
+  NOT?: BeerSubscriptionWhereInput[] | BeerSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BeerWhereInput | null
 }
 
 export interface BeerUpdateInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateManyDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
 }
 
 export interface BeerUpdateManyMutationInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
 }
 
 export interface BeerUpdateManyWithoutBarsInput {
-  create?: BeerCreateWithoutBarsInput[] | BeerCreateWithoutBarsInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  update?: BeerUpdateWithWhereUniqueWithoutBarsInput[] | BeerUpdateWithWhereUniqueWithoutBarsInput
-  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput
-  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  upsert?: BeerUpsertWithWhereUniqueWithoutBarsInput[] | BeerUpsertWithWhereUniqueWithoutBarsInput
+  create?: BeerCreateWithoutBarsInput[] | BeerCreateWithoutBarsInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  update?: BeerUpdateWithWhereUniqueWithoutBarsInput[] | BeerUpdateWithWhereUniqueWithoutBarsInput | null
+  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  upsert?: BeerUpsertWithWhereUniqueWithoutBarsInput[] | BeerUpsertWithWhereUniqueWithoutBarsInput | null
 }
 
 export interface BeerUpdateManyWithoutBreweryInput {
-  create?: BeerCreateWithoutBreweryInput[] | BeerCreateWithoutBreweryInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  update?: BeerUpdateWithWhereUniqueWithoutBreweryInput[] | BeerUpdateWithWhereUniqueWithoutBreweryInput
-  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput
-  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  upsert?: BeerUpsertWithWhereUniqueWithoutBreweryInput[] | BeerUpsertWithWhereUniqueWithoutBreweryInput
+  create?: BeerCreateWithoutBreweryInput[] | BeerCreateWithoutBreweryInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  update?: BeerUpdateWithWhereUniqueWithoutBreweryInput[] | BeerUpdateWithWhereUniqueWithoutBreweryInput | null
+  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  upsert?: BeerUpsertWithWhereUniqueWithoutBreweryInput[] | BeerUpsertWithWhereUniqueWithoutBreweryInput | null
 }
 
 export interface BeerUpdateManyWithoutCreatedByInput {
-  create?: BeerCreateWithoutCreatedByInput[] | BeerCreateWithoutCreatedByInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  update?: BeerUpdateWithWhereUniqueWithoutCreatedByInput[] | BeerUpdateWithWhereUniqueWithoutCreatedByInput
-  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput
-  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  upsert?: BeerUpsertWithWhereUniqueWithoutCreatedByInput[] | BeerUpsertWithWhereUniqueWithoutCreatedByInput
+  create?: BeerCreateWithoutCreatedByInput[] | BeerCreateWithoutCreatedByInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  update?: BeerUpdateWithWhereUniqueWithoutCreatedByInput[] | BeerUpdateWithWhereUniqueWithoutCreatedByInput | null
+  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  upsert?: BeerUpsertWithWhereUniqueWithoutCreatedByInput[] | BeerUpsertWithWhereUniqueWithoutCreatedByInput | null
 }
 
 export interface BeerUpdateManyWithoutLikedByInput {
-  create?: BeerCreateWithoutLikedByInput[] | BeerCreateWithoutLikedByInput
-  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput
-  update?: BeerUpdateWithWhereUniqueWithoutLikedByInput[] | BeerUpdateWithWhereUniqueWithoutLikedByInput
-  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput
-  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput
-  upsert?: BeerUpsertWithWhereUniqueWithoutLikedByInput[] | BeerUpsertWithWhereUniqueWithoutLikedByInput
+  create?: BeerCreateWithoutLikedByInput[] | BeerCreateWithoutLikedByInput | null
+  connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  set?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  disconnect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  delete?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
+  update?: BeerUpdateWithWhereUniqueWithoutLikedByInput[] | BeerUpdateWithWhereUniqueWithoutLikedByInput | null
+  updateMany?: BeerUpdateManyWithWhereNestedInput[] | BeerUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerScalarWhereInput[] | BeerScalarWhereInput | null
+  upsert?: BeerUpsertWithWhereUniqueWithoutLikedByInput[] | BeerUpsertWithWhereUniqueWithoutLikedByInput | null
 }
 
 export interface BeerUpdateManyWithWhereNestedInput {
@@ -11380,143 +11380,143 @@ export interface BeerUpdateManyWithWhereNestedInput {
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerChangesInput {
-  create?: BeerCreateWithoutBeerChangesInput
-  connect?: BeerWhereUniqueInput
-  update?: BeerUpdateWithoutBeerChangesDataInput
-  upsert?: BeerUpsertWithoutBeerChangesInput
+  create?: BeerCreateWithoutBeerChangesInput | null
+  connect?: BeerWhereUniqueInput | null
+  update?: BeerUpdateWithoutBeerChangesDataInput | null
+  upsert?: BeerUpsertWithoutBeerChangesInput | null
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerCommentsInput {
-  create?: BeerCreateWithoutBeerCommentsInput
-  connect?: BeerWhereUniqueInput
-  update?: BeerUpdateWithoutBeerCommentsDataInput
-  upsert?: BeerUpsertWithoutBeerCommentsInput
+  create?: BeerCreateWithoutBeerCommentsInput | null
+  connect?: BeerWhereUniqueInput | null
+  update?: BeerUpdateWithoutBeerCommentsDataInput | null
+  upsert?: BeerUpsertWithoutBeerCommentsInput | null
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerPricesInput {
-  create?: BeerCreateWithoutBeerPricesInput
-  connect?: BeerWhereUniqueInput
-  update?: BeerUpdateWithoutBeerPricesDataInput
-  upsert?: BeerUpsertWithoutBeerPricesInput
+  create?: BeerCreateWithoutBeerPricesInput | null
+  connect?: BeerWhereUniqueInput | null
+  update?: BeerUpdateWithoutBeerPricesDataInput | null
+  upsert?: BeerUpsertWithoutBeerPricesInput | null
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerRatingInput {
-  create?: BeerCreateWithoutBeerRatingInput
-  connect?: BeerWhereUniqueInput
-  update?: BeerUpdateWithoutBeerRatingDataInput
-  upsert?: BeerUpsertWithoutBeerRatingInput
+  create?: BeerCreateWithoutBeerRatingInput | null
+  connect?: BeerWhereUniqueInput | null
+  update?: BeerUpdateWithoutBeerRatingDataInput | null
+  upsert?: BeerUpsertWithoutBeerRatingInput | null
 }
 
 export interface BeerUpdateWithoutBarsDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutBeerChangesDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutBeerCommentsDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutBeerPricesDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutBeerRatingDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutBreweryDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutCreatedByDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  likedBy?: UserUpdateManyWithoutLikedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
 export interface BeerUpdateWithoutLikedByDataInput {
-  name?: String
-  type?: String
-  strong?: String
-  photo?: String
-  brewery?: BreweryUpdateOneWithoutBeersInput
-  bars?: BarUpdateManyWithoutBeersInput
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput
-  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneRequiredWithoutCreatedBeersInput | null
 }
 
 export interface BeerUpdateWithWhereUniqueWithoutBarsInput {
@@ -11584,160 +11584,160 @@ export interface BeerUpsertWithWhereUniqueWithoutLikedByInput {
 }
 
 export interface BeerWhereInput {
-  AND?: BeerWhereInput[] | BeerWhereInput
-  OR?: BeerWhereInput[] | BeerWhereInput
-  NOT?: BeerWhereInput[] | BeerWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  type?: String
-  type_not?: String
-  type_in?: String[] | String
-  type_not_in?: String[] | String
-  type_lt?: String
-  type_lte?: String
-  type_gt?: String
-  type_gte?: String
-  type_contains?: String
-  type_not_contains?: String
-  type_starts_with?: String
-  type_not_starts_with?: String
-  type_ends_with?: String
-  type_not_ends_with?: String
-  strong?: String
-  strong_not?: String
-  strong_in?: String[] | String
-  strong_not_in?: String[] | String
-  strong_lt?: String
-  strong_lte?: String
-  strong_gt?: String
-  strong_gte?: String
-  strong_contains?: String
-  strong_not_contains?: String
-  strong_starts_with?: String
-  strong_not_starts_with?: String
-  strong_ends_with?: String
-  strong_not_ends_with?: String
-  photo?: String
-  photo_not?: String
-  photo_in?: String[] | String
-  photo_not_in?: String[] | String
-  photo_lt?: String
-  photo_lte?: String
-  photo_gt?: String
-  photo_gte?: String
-  photo_contains?: String
-  photo_not_contains?: String
-  photo_starts_with?: String
-  photo_not_starts_with?: String
-  photo_ends_with?: String
-  photo_not_ends_with?: String
-  brewery?: BreweryWhereInput
-  bars_every?: BarWhereInput
-  bars_some?: BarWhereInput
-  bars_none?: BarWhereInput
-  beerRating_every?: BeerRatingWhereInput
-  beerRating_some?: BeerRatingWhereInput
-  beerRating_none?: BeerRatingWhereInput
-  beerPrices_every?: BeerPriceWhereInput
-  beerPrices_some?: BeerPriceWhereInput
-  beerPrices_none?: BeerPriceWhereInput
-  beerComments_every?: BeerCommentWhereInput
-  beerComments_some?: BeerCommentWhereInput
-  beerComments_none?: BeerCommentWhereInput
-  beerChanges_every?: BeerChangeWhereInput
-  beerChanges_some?: BeerChangeWhereInput
-  beerChanges_none?: BeerChangeWhereInput
-  createdBy?: UserWhereInput
-  likedBy_every?: UserWhereInput
-  likedBy_some?: UserWhereInput
-  likedBy_none?: UserWhereInput
+  AND?: BeerWhereInput[] | BeerWhereInput | null
+  OR?: BeerWhereInput[] | BeerWhereInput | null
+  NOT?: BeerWhereInput[] | BeerWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  type?: String | null
+  type_not?: String | null
+  type_in?: String[] | String | null
+  type_not_in?: String[] | String | null
+  type_lt?: String | null
+  type_lte?: String | null
+  type_gt?: String | null
+  type_gte?: String | null
+  type_contains?: String | null
+  type_not_contains?: String | null
+  type_starts_with?: String | null
+  type_not_starts_with?: String | null
+  type_ends_with?: String | null
+  type_not_ends_with?: String | null
+  strong?: String | null
+  strong_not?: String | null
+  strong_in?: String[] | String | null
+  strong_not_in?: String[] | String | null
+  strong_lt?: String | null
+  strong_lte?: String | null
+  strong_gt?: String | null
+  strong_gte?: String | null
+  strong_contains?: String | null
+  strong_not_contains?: String | null
+  strong_starts_with?: String | null
+  strong_not_starts_with?: String | null
+  strong_ends_with?: String | null
+  strong_not_ends_with?: String | null
+  photo?: String | null
+  photo_not?: String | null
+  photo_in?: String[] | String | null
+  photo_not_in?: String[] | String | null
+  photo_lt?: String | null
+  photo_lte?: String | null
+  photo_gt?: String | null
+  photo_gte?: String | null
+  photo_contains?: String | null
+  photo_not_contains?: String | null
+  photo_starts_with?: String | null
+  photo_not_starts_with?: String | null
+  photo_ends_with?: String | null
+  photo_not_ends_with?: String | null
+  brewery?: BreweryWhereInput | null
+  bars_every?: BarWhereInput | null
+  bars_some?: BarWhereInput | null
+  bars_none?: BarWhereInput | null
+  beerRating_every?: BeerRatingWhereInput | null
+  beerRating_some?: BeerRatingWhereInput | null
+  beerRating_none?: BeerRatingWhereInput | null
+  beerPrices_every?: BeerPriceWhereInput | null
+  beerPrices_some?: BeerPriceWhereInput | null
+  beerPrices_none?: BeerPriceWhereInput | null
+  beerComments_every?: BeerCommentWhereInput | null
+  beerComments_some?: BeerCommentWhereInput | null
+  beerComments_none?: BeerCommentWhereInput | null
+  beerChanges_every?: BeerChangeWhereInput | null
+  beerChanges_some?: BeerChangeWhereInput | null
+  beerChanges_none?: BeerChangeWhereInput | null
+  createdBy?: UserWhereInput | null
+  likedBy_every?: UserWhereInput | null
+  likedBy_some?: UserWhereInput | null
+  likedBy_none?: UserWhereInput | null
 }
 
 export interface BeerWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface BreweryCreateInput {
   name: String
   country: String
-  logo?: String
-  beers?: BeerCreateManyWithoutBreweryInput
+  logo?: String | null
+  beers?: BeerCreateManyWithoutBreweryInput | null
 }
 
 export interface BreweryCreateOneWithoutBeersInput {
-  create?: BreweryCreateWithoutBeersInput
-  connect?: BreweryWhereUniqueInput
+  create?: BreweryCreateWithoutBeersInput | null
+  connect?: BreweryWhereUniqueInput | null
 }
 
 export interface BreweryCreateWithoutBeersInput {
   name: String
   country: String
-  logo?: String
+  logo?: String | null
 }
 
 export interface BrewerySubscriptionWhereInput {
-  AND?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput
-  OR?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput
-  NOT?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: BreweryWhereInput
+  AND?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput | null
+  OR?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput | null
+  NOT?: BrewerySubscriptionWhereInput[] | BrewerySubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: BreweryWhereInput | null
 }
 
 export interface BreweryUpdateInput {
-  name?: String
-  country?: String
-  logo?: String
-  beers?: BeerUpdateManyWithoutBreweryInput
+  name?: String | null
+  country?: String | null
+  logo?: String | null
+  beers?: BeerUpdateManyWithoutBreweryInput | null
 }
 
 export interface BreweryUpdateManyMutationInput {
-  name?: String
-  country?: String
-  logo?: String
+  name?: String | null
+  country?: String | null
+  logo?: String | null
 }
 
 export interface BreweryUpdateOneWithoutBeersInput {
-  create?: BreweryCreateWithoutBeersInput
-  connect?: BreweryWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: BreweryUpdateWithoutBeersDataInput
-  upsert?: BreweryUpsertWithoutBeersInput
+  create?: BreweryCreateWithoutBeersInput | null
+  connect?: BreweryWhereUniqueInput | null
+  disconnect?: Boolean | null
+  delete?: Boolean | null
+  update?: BreweryUpdateWithoutBeersDataInput | null
+  upsert?: BreweryUpsertWithoutBeersInput | null
 }
 
 export interface BreweryUpdateWithoutBeersDataInput {
-  name?: String
-  country?: String
-  logo?: String
+  name?: String | null
+  country?: String | null
+  logo?: String | null
 }
 
 export interface BreweryUpsertWithoutBeersInput {
@@ -11746,674 +11746,674 @@ export interface BreweryUpsertWithoutBeersInput {
 }
 
 export interface BreweryWhereInput {
-  AND?: BreweryWhereInput[] | BreweryWhereInput
-  OR?: BreweryWhereInput[] | BreweryWhereInput
-  NOT?: BreweryWhereInput[] | BreweryWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  country?: String
-  country_not?: String
-  country_in?: String[] | String
-  country_not_in?: String[] | String
-  country_lt?: String
-  country_lte?: String
-  country_gt?: String
-  country_gte?: String
-  country_contains?: String
-  country_not_contains?: String
-  country_starts_with?: String
-  country_not_starts_with?: String
-  country_ends_with?: String
-  country_not_ends_with?: String
-  logo?: String
-  logo_not?: String
-  logo_in?: String[] | String
-  logo_not_in?: String[] | String
-  logo_lt?: String
-  logo_lte?: String
-  logo_gt?: String
-  logo_gte?: String
-  logo_contains?: String
-  logo_not_contains?: String
-  logo_starts_with?: String
-  logo_not_starts_with?: String
-  logo_ends_with?: String
-  logo_not_ends_with?: String
-  beers_every?: BeerWhereInput
-  beers_some?: BeerWhereInput
-  beers_none?: BeerWhereInput
+  AND?: BreweryWhereInput[] | BreweryWhereInput | null
+  OR?: BreweryWhereInput[] | BreweryWhereInput | null
+  NOT?: BreweryWhereInput[] | BreweryWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  country?: String | null
+  country_not?: String | null
+  country_in?: String[] | String | null
+  country_not_in?: String[] | String | null
+  country_lt?: String | null
+  country_lte?: String | null
+  country_gt?: String | null
+  country_gte?: String | null
+  country_contains?: String | null
+  country_not_contains?: String | null
+  country_starts_with?: String | null
+  country_not_starts_with?: String | null
+  country_ends_with?: String | null
+  country_not_ends_with?: String | null
+  logo?: String | null
+  logo_not?: String | null
+  logo_in?: String[] | String | null
+  logo_not_in?: String[] | String | null
+  logo_lt?: String | null
+  logo_lte?: String | null
+  logo_gt?: String | null
+  logo_gte?: String | null
+  logo_contains?: String | null
+  logo_not_contains?: String | null
+  logo_starts_with?: String | null
+  logo_not_starts_with?: String | null
+  logo_ends_with?: String | null
+  logo_not_ends_with?: String | null
+  beers_every?: BeerWhereInput | null
+  beers_some?: BeerWhereInput | null
+  beers_none?: BeerWhereInput | null
 }
 
 export interface BreweryWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface UserCreateInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateManyWithoutLikedBarsInput {
-  create?: UserCreateWithoutLikedBarsInput[] | UserCreateWithoutLikedBarsInput
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  create?: UserCreateWithoutLikedBarsInput[] | UserCreateWithoutLikedBarsInput | null
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
 }
 
 export interface UserCreateManyWithoutLikedBeersInput {
-  create?: UserCreateWithoutLikedBeersInput[] | UserCreateWithoutLikedBeersInput
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  create?: UserCreateWithoutLikedBeersInput[] | UserCreateWithoutLikedBeersInput | null
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBarChangesInput {
-  create?: UserCreateWithoutBarChangesInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBarChangesInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBarChangeUpvotesInput {
-  create?: UserCreateWithoutBarChangeUpvotesInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBarChangeUpvotesInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBarCommentsInput {
-  create?: UserCreateWithoutBarCommentsInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBarCommentsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBarRatingsInput {
-  create?: UserCreateWithoutBarRatingsInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBarRatingsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBeerChangesInput {
-  create?: UserCreateWithoutBeerChangesInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBeerChangesInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBeerChangeUpvotesInput {
-  create?: UserCreateWithoutBeerChangeUpvotesInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBeerChangeUpvotesInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBeerCommentsInput {
-  create?: UserCreateWithoutBeerCommentsInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBeerCommentsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutBeerRatingsInput {
-  create?: UserCreateWithoutBeerRatingsInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutBeerRatingsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutCreatedBarsInput {
-  create?: UserCreateWithoutCreatedBarsInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutCreatedBarsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutCreatedBeersInput {
-  create?: UserCreateWithoutCreatedBeersInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutCreatedBeersInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateOneWithoutPricedBeersInput {
-  create?: UserCreateWithoutPricedBeersInput
-  connect?: UserWhereUniqueInput
+  create?: UserCreateWithoutPricedBeersInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
 export interface UserCreateWithoutBarChangesInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBarChangeUpvotesInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBarCommentsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBarRatingsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBeerChangesInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBeerChangeUpvotesInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBeerCommentsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutBeerRatingsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutCreatedBarsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutCreatedBeersInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutLikedBarsInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutLikedBeersInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  pricedBeers?: BeerPriceCreateManyWithoutUserInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceCreateManyWithoutUserInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserCreateWithoutPricedBeersInput {
   email: String
   password: String
-  role?: Role
-  active?: Boolean
+  role?: Role | null
+  active?: Boolean | null
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentCreateManyWithoutUserInput
-  barComments?: BarCommentCreateManyWithoutUserInput
-  beerRatings?: BeerRatingCreateManyWithoutUserInput
-  barRatings?: BarRatingCreateManyWithoutUserInput
-  beerChanges?: BeerChangeCreateManyWithoutUserInput
-  barChanges?: BarChangeCreateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput
-  likedBeers?: BeerCreateManyWithoutLikedByInput
-  likedBars?: BarCreateManyWithoutLikedByInput
-  createdBeers?: BeerCreateManyWithoutCreatedByInput
-  createdBars?: BarCreateManyWithoutCreatedByInput
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentCreateManyWithoutUserInput | null
+  barComments?: BarCommentCreateManyWithoutUserInput | null
+  beerRatings?: BeerRatingCreateManyWithoutUserInput | null
+  barRatings?: BarRatingCreateManyWithoutUserInput | null
+  beerChanges?: BeerChangeCreateManyWithoutUserInput | null
+  barChanges?: BarChangeCreateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteCreateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteCreateManyWithoutUserInput | null
+  likedBeers?: BeerCreateManyWithoutLikedByInput | null
+  likedBars?: BarCreateManyWithoutLikedByInput | null
+  createdBeers?: BeerCreateManyWithoutCreatedByInput | null
+  createdBars?: BarCreateManyWithoutCreatedByInput | null
 }
 
 export interface UserScalarWhereInput {
-  AND?: UserScalarWhereInput[] | UserScalarWhereInput
-  OR?: UserScalarWhereInput[] | UserScalarWhereInput
-  NOT?: UserScalarWhereInput[] | UserScalarWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  email?: String
-  email_not?: String
-  email_in?: String[] | String
-  email_not_in?: String[] | String
-  email_lt?: String
-  email_lte?: String
-  email_gt?: String
-  email_gte?: String
-  email_contains?: String
-  email_not_contains?: String
-  email_starts_with?: String
-  email_not_starts_with?: String
-  email_ends_with?: String
-  email_not_ends_with?: String
-  password?: String
-  password_not?: String
-  password_in?: String[] | String
-  password_not_in?: String[] | String
-  password_lt?: String
-  password_lte?: String
-  password_gt?: String
-  password_gte?: String
-  password_contains?: String
-  password_not_contains?: String
-  password_starts_with?: String
-  password_not_starts_with?: String
-  password_ends_with?: String
-  password_not_ends_with?: String
-  role?: Role
-  role_not?: Role
-  role_in?: Role[] | Role
-  role_not_in?: Role[] | Role
-  active?: Boolean
-  active_not?: Boolean
-  nickname?: String
-  nickname_not?: String
-  nickname_in?: String[] | String
-  nickname_not_in?: String[] | String
-  nickname_lt?: String
-  nickname_lte?: String
-  nickname_gt?: String
-  nickname_gte?: String
-  nickname_contains?: String
-  nickname_not_contains?: String
-  nickname_starts_with?: String
-  nickname_not_starts_with?: String
-  nickname_ends_with?: String
-  nickname_not_ends_with?: String
-  birthdate?: DateTime
-  birthdate_not?: DateTime
-  birthdate_in?: DateTime[] | DateTime
-  birthdate_not_in?: DateTime[] | DateTime
-  birthdate_lt?: DateTime
-  birthdate_lte?: DateTime
-  birthdate_gt?: DateTime
-  birthdate_gte?: DateTime
-  sex?: Sex
-  sex_not?: Sex
-  sex_in?: Sex[] | Sex
-  sex_not_in?: Sex[] | Sex
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  surname?: String
-  surname_not?: String
-  surname_in?: String[] | String
-  surname_not_in?: String[] | String
-  surname_lt?: String
-  surname_lte?: String
-  surname_gt?: String
-  surname_gte?: String
-  surname_contains?: String
-  surname_not_contains?: String
-  surname_starts_with?: String
-  surname_not_starts_with?: String
-  surname_ends_with?: String
-  surname_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
+  AND?: UserScalarWhereInput[] | UserScalarWhereInput | null
+  OR?: UserScalarWhereInput[] | UserScalarWhereInput | null
+  NOT?: UserScalarWhereInput[] | UserScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  email?: String | null
+  email_not?: String | null
+  email_in?: String[] | String | null
+  email_not_in?: String[] | String | null
+  email_lt?: String | null
+  email_lte?: String | null
+  email_gt?: String | null
+  email_gte?: String | null
+  email_contains?: String | null
+  email_not_contains?: String | null
+  email_starts_with?: String | null
+  email_not_starts_with?: String | null
+  email_ends_with?: String | null
+  email_not_ends_with?: String | null
+  password?: String | null
+  password_not?: String | null
+  password_in?: String[] | String | null
+  password_not_in?: String[] | String | null
+  password_lt?: String | null
+  password_lte?: String | null
+  password_gt?: String | null
+  password_gte?: String | null
+  password_contains?: String | null
+  password_not_contains?: String | null
+  password_starts_with?: String | null
+  password_not_starts_with?: String | null
+  password_ends_with?: String | null
+  password_not_ends_with?: String | null
+  role?: Role | null
+  role_not?: Role | null
+  role_in?: Role[] | Role | null
+  role_not_in?: Role[] | Role | null
+  active?: Boolean | null
+  active_not?: Boolean | null
+  nickname?: String | null
+  nickname_not?: String | null
+  nickname_in?: String[] | String | null
+  nickname_not_in?: String[] | String | null
+  nickname_lt?: String | null
+  nickname_lte?: String | null
+  nickname_gt?: String | null
+  nickname_gte?: String | null
+  nickname_contains?: String | null
+  nickname_not_contains?: String | null
+  nickname_starts_with?: String | null
+  nickname_not_starts_with?: String | null
+  nickname_ends_with?: String | null
+  nickname_not_ends_with?: String | null
+  birthdate?: DateTime | null
+  birthdate_not?: DateTime | null
+  birthdate_in?: DateTime[] | DateTime | null
+  birthdate_not_in?: DateTime[] | DateTime | null
+  birthdate_lt?: DateTime | null
+  birthdate_lte?: DateTime | null
+  birthdate_gt?: DateTime | null
+  birthdate_gte?: DateTime | null
+  sex?: Sex | null
+  sex_not?: Sex | null
+  sex_in?: Sex[] | Sex | null
+  sex_not_in?: Sex[] | Sex | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  surname?: String | null
+  surname_not?: String | null
+  surname_in?: String[] | String | null
+  surname_not_in?: String[] | String | null
+  surname_lt?: String | null
+  surname_lte?: String | null
+  surname_gt?: String | null
+  surname_gte?: String | null
+  surname_contains?: String | null
+  surname_not_contains?: String | null
+  surname_starts_with?: String | null
+  surname_not_starts_with?: String | null
+  surname_ends_with?: String | null
+  surname_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
 }
 
 export interface UserSubscriptionWhereInput {
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: UserWhereInput
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: UserWhereInput | null
 }
 
 export interface UserUpdateInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateManyDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
 }
 
 export interface UserUpdateManyMutationInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
 }
 
 export interface UserUpdateManyWithoutLikedBarsInput {
-  create?: UserCreateWithoutLikedBarsInput[] | UserCreateWithoutLikedBarsInput
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  set?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  update?: UserUpdateWithWhereUniqueWithoutLikedBarsInput[] | UserUpdateWithWhereUniqueWithoutLikedBarsInput
-  updateMany?: UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput
-  upsert?: UserUpsertWithWhereUniqueWithoutLikedBarsInput[] | UserUpsertWithWhereUniqueWithoutLikedBarsInput
+  create?: UserCreateWithoutLikedBarsInput[] | UserCreateWithoutLikedBarsInput | null
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  set?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  update?: UserUpdateWithWhereUniqueWithoutLikedBarsInput[] | UserUpdateWithWhereUniqueWithoutLikedBarsInput | null
+  updateMany?: UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput | null
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput | null
+  upsert?: UserUpsertWithWhereUniqueWithoutLikedBarsInput[] | UserUpsertWithWhereUniqueWithoutLikedBarsInput | null
 }
 
 export interface UserUpdateManyWithoutLikedBeersInput {
-  create?: UserCreateWithoutLikedBeersInput[] | UserCreateWithoutLikedBeersInput
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  set?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput
-  update?: UserUpdateWithWhereUniqueWithoutLikedBeersInput[] | UserUpdateWithWhereUniqueWithoutLikedBeersInput
-  updateMany?: UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput
-  upsert?: UserUpsertWithWhereUniqueWithoutLikedBeersInput[] | UserUpsertWithWhereUniqueWithoutLikedBeersInput
+  create?: UserCreateWithoutLikedBeersInput[] | UserCreateWithoutLikedBeersInput | null
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  set?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput | null
+  update?: UserUpdateWithWhereUniqueWithoutLikedBeersInput[] | UserUpdateWithWhereUniqueWithoutLikedBeersInput | null
+  updateMany?: UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput | null
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput | null
+  upsert?: UserUpsertWithWhereUniqueWithoutLikedBeersInput[] | UserUpsertWithWhereUniqueWithoutLikedBeersInput | null
 }
 
 export interface UserUpdateManyWithWhereNestedInput {
@@ -12422,392 +12422,392 @@ export interface UserUpdateManyWithWhereNestedInput {
 }
 
 export interface UserUpdateOneRequiredWithoutBarChangesInput {
-  create?: UserCreateWithoutBarChangesInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBarChangesDataInput
-  upsert?: UserUpsertWithoutBarChangesInput
+  create?: UserCreateWithoutBarChangesInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBarChangesDataInput | null
+  upsert?: UserUpsertWithoutBarChangesInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBarChangeUpvotesInput {
-  create?: UserCreateWithoutBarChangeUpvotesInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBarChangeUpvotesDataInput
-  upsert?: UserUpsertWithoutBarChangeUpvotesInput
+  create?: UserCreateWithoutBarChangeUpvotesInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBarChangeUpvotesDataInput | null
+  upsert?: UserUpsertWithoutBarChangeUpvotesInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBarCommentsInput {
-  create?: UserCreateWithoutBarCommentsInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBarCommentsDataInput
-  upsert?: UserUpsertWithoutBarCommentsInput
+  create?: UserCreateWithoutBarCommentsInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBarCommentsDataInput | null
+  upsert?: UserUpsertWithoutBarCommentsInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBarRatingsInput {
-  create?: UserCreateWithoutBarRatingsInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBarRatingsDataInput
-  upsert?: UserUpsertWithoutBarRatingsInput
+  create?: UserCreateWithoutBarRatingsInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBarRatingsDataInput | null
+  upsert?: UserUpsertWithoutBarRatingsInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBeerChangesInput {
-  create?: UserCreateWithoutBeerChangesInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBeerChangesDataInput
-  upsert?: UserUpsertWithoutBeerChangesInput
+  create?: UserCreateWithoutBeerChangesInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBeerChangesDataInput | null
+  upsert?: UserUpsertWithoutBeerChangesInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBeerChangeUpvotesInput {
-  create?: UserCreateWithoutBeerChangeUpvotesInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBeerChangeUpvotesDataInput
-  upsert?: UserUpsertWithoutBeerChangeUpvotesInput
+  create?: UserCreateWithoutBeerChangeUpvotesInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBeerChangeUpvotesDataInput | null
+  upsert?: UserUpsertWithoutBeerChangeUpvotesInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBeerCommentsInput {
-  create?: UserCreateWithoutBeerCommentsInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBeerCommentsDataInput
-  upsert?: UserUpsertWithoutBeerCommentsInput
+  create?: UserCreateWithoutBeerCommentsInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBeerCommentsDataInput | null
+  upsert?: UserUpsertWithoutBeerCommentsInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutBeerRatingsInput {
-  create?: UserCreateWithoutBeerRatingsInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutBeerRatingsDataInput
-  upsert?: UserUpsertWithoutBeerRatingsInput
+  create?: UserCreateWithoutBeerRatingsInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutBeerRatingsDataInput | null
+  upsert?: UserUpsertWithoutBeerRatingsInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutCreatedBarsInput {
-  create?: UserCreateWithoutCreatedBarsInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutCreatedBarsDataInput
-  upsert?: UserUpsertWithoutCreatedBarsInput
+  create?: UserCreateWithoutCreatedBarsInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutCreatedBarsDataInput | null
+  upsert?: UserUpsertWithoutCreatedBarsInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutCreatedBeersInput {
-  create?: UserCreateWithoutCreatedBeersInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutCreatedBeersDataInput
-  upsert?: UserUpsertWithoutCreatedBeersInput
+  create?: UserCreateWithoutCreatedBeersInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutCreatedBeersDataInput | null
+  upsert?: UserUpsertWithoutCreatedBeersInput | null
 }
 
 export interface UserUpdateOneRequiredWithoutPricedBeersInput {
-  create?: UserCreateWithoutPricedBeersInput
-  connect?: UserWhereUniqueInput
-  update?: UserUpdateWithoutPricedBeersDataInput
-  upsert?: UserUpsertWithoutPricedBeersInput
+  create?: UserCreateWithoutPricedBeersInput | null
+  connect?: UserWhereUniqueInput | null
+  update?: UserUpdateWithoutPricedBeersDataInput | null
+  upsert?: UserUpsertWithoutPricedBeersInput | null
 }
 
 export interface UserUpdateWithoutBarChangesDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBarChangeUpvotesDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBarCommentsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBarRatingsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBeerChangesDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBeerChangeUpvotesDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBeerCommentsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutBeerRatingsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutCreatedBarsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutCreatedBeersDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutLikedBarsDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutLikedBeersDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  pricedBeers?: BeerPriceUpdateManyWithoutUserInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  pricedBeers?: BeerPriceUpdateManyWithoutUserInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithoutPricedBeersDataInput {
-  email?: String
-  password?: String
-  role?: Role
-  active?: Boolean
-  nickname?: String
-  birthdate?: DateTime
-  sex?: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerCommentUpdateManyWithoutUserInput
-  barComments?: BarCommentUpdateManyWithoutUserInput
-  beerRatings?: BeerRatingUpdateManyWithoutUserInput
-  barRatings?: BarRatingUpdateManyWithoutUserInput
-  beerChanges?: BeerChangeUpdateManyWithoutUserInput
-  barChanges?: BarChangeUpdateManyWithoutUserInput
-  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput
-  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput
-  likedBeers?: BeerUpdateManyWithoutLikedByInput
-  likedBars?: BarUpdateManyWithoutLikedByInput
-  createdBeers?: BeerUpdateManyWithoutCreatedByInput
-  createdBars?: BarUpdateManyWithoutCreatedByInput
+  email?: String | null
+  password?: String | null
+  role?: Role | null
+  active?: Boolean | null
+  nickname?: String | null
+  birthdate?: DateTime | null
+  sex?: Sex | null
+  name?: String | null
+  surname?: String | null
+  beerComments?: BeerCommentUpdateManyWithoutUserInput | null
+  barComments?: BarCommentUpdateManyWithoutUserInput | null
+  beerRatings?: BeerRatingUpdateManyWithoutUserInput | null
+  barRatings?: BarRatingUpdateManyWithoutUserInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutUserInput | null
+  barChanges?: BarChangeUpdateManyWithoutUserInput | null
+  beerChangeUpvotes?: BeerChangeUpvoteUpdateManyWithoutUserInput | null
+  barChangeUpvotes?: BarChangeUpvoteUpdateManyWithoutUserInput | null
+  likedBeers?: BeerUpdateManyWithoutLikedByInput | null
+  likedBars?: BarUpdateManyWithoutLikedByInput | null
+  createdBeers?: BeerUpdateManyWithoutCreatedByInput | null
+  createdBars?: BarUpdateManyWithoutCreatedByInput | null
 }
 
 export interface UserUpdateWithWhereUniqueWithoutLikedBarsInput {
@@ -12888,163 +12888,163 @@ export interface UserUpsertWithWhereUniqueWithoutLikedBeersInput {
 }
 
 export interface UserWhereInput {
-  AND?: UserWhereInput[] | UserWhereInput
-  OR?: UserWhereInput[] | UserWhereInput
-  NOT?: UserWhereInput[] | UserWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  email?: String
-  email_not?: String
-  email_in?: String[] | String
-  email_not_in?: String[] | String
-  email_lt?: String
-  email_lte?: String
-  email_gt?: String
-  email_gte?: String
-  email_contains?: String
-  email_not_contains?: String
-  email_starts_with?: String
-  email_not_starts_with?: String
-  email_ends_with?: String
-  email_not_ends_with?: String
-  password?: String
-  password_not?: String
-  password_in?: String[] | String
-  password_not_in?: String[] | String
-  password_lt?: String
-  password_lte?: String
-  password_gt?: String
-  password_gte?: String
-  password_contains?: String
-  password_not_contains?: String
-  password_starts_with?: String
-  password_not_starts_with?: String
-  password_ends_with?: String
-  password_not_ends_with?: String
-  role?: Role
-  role_not?: Role
-  role_in?: Role[] | Role
-  role_not_in?: Role[] | Role
-  active?: Boolean
-  active_not?: Boolean
-  nickname?: String
-  nickname_not?: String
-  nickname_in?: String[] | String
-  nickname_not_in?: String[] | String
-  nickname_lt?: String
-  nickname_lte?: String
-  nickname_gt?: String
-  nickname_gte?: String
-  nickname_contains?: String
-  nickname_not_contains?: String
-  nickname_starts_with?: String
-  nickname_not_starts_with?: String
-  nickname_ends_with?: String
-  nickname_not_ends_with?: String
-  birthdate?: DateTime
-  birthdate_not?: DateTime
-  birthdate_in?: DateTime[] | DateTime
-  birthdate_not_in?: DateTime[] | DateTime
-  birthdate_lt?: DateTime
-  birthdate_lte?: DateTime
-  birthdate_gt?: DateTime
-  birthdate_gte?: DateTime
-  sex?: Sex
-  sex_not?: Sex
-  sex_in?: Sex[] | Sex
-  sex_not_in?: Sex[] | Sex
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  surname?: String
-  surname_not?: String
-  surname_in?: String[] | String
-  surname_not_in?: String[] | String
-  surname_lt?: String
-  surname_lte?: String
-  surname_gt?: String
-  surname_gte?: String
-  surname_contains?: String
-  surname_not_contains?: String
-  surname_starts_with?: String
-  surname_not_starts_with?: String
-  surname_ends_with?: String
-  surname_not_ends_with?: String
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  beerComments_every?: BeerCommentWhereInput
-  beerComments_some?: BeerCommentWhereInput
-  beerComments_none?: BeerCommentWhereInput
-  barComments_every?: BarCommentWhereInput
-  barComments_some?: BarCommentWhereInput
-  barComments_none?: BarCommentWhereInput
-  beerRatings_every?: BeerRatingWhereInput
-  beerRatings_some?: BeerRatingWhereInput
-  beerRatings_none?: BeerRatingWhereInput
-  barRatings_every?: BarRatingWhereInput
-  barRatings_some?: BarRatingWhereInput
-  barRatings_none?: BarRatingWhereInput
-  beerChanges_every?: BeerChangeWhereInput
-  beerChanges_some?: BeerChangeWhereInput
-  beerChanges_none?: BeerChangeWhereInput
-  barChanges_every?: BarChangeWhereInput
-  barChanges_some?: BarChangeWhereInput
-  barChanges_none?: BarChangeWhereInput
-  beerChangeUpvotes_every?: BeerChangeUpvoteWhereInput
-  beerChangeUpvotes_some?: BeerChangeUpvoteWhereInput
-  beerChangeUpvotes_none?: BeerChangeUpvoteWhereInput
-  barChangeUpvotes_every?: BarChangeUpvoteWhereInput
-  barChangeUpvotes_some?: BarChangeUpvoteWhereInput
-  barChangeUpvotes_none?: BarChangeUpvoteWhereInput
-  pricedBeers_every?: BeerPriceWhereInput
-  pricedBeers_some?: BeerPriceWhereInput
-  pricedBeers_none?: BeerPriceWhereInput
-  likedBeers_every?: BeerWhereInput
-  likedBeers_some?: BeerWhereInput
-  likedBeers_none?: BeerWhereInput
-  likedBars_every?: BarWhereInput
-  likedBars_some?: BarWhereInput
-  likedBars_none?: BarWhereInput
-  createdBeers_every?: BeerWhereInput
-  createdBeers_some?: BeerWhereInput
-  createdBeers_none?: BeerWhereInput
-  createdBars_every?: BarWhereInput
-  createdBars_some?: BarWhereInput
-  createdBars_none?: BarWhereInput
+  AND?: UserWhereInput[] | UserWhereInput | null
+  OR?: UserWhereInput[] | UserWhereInput | null
+  NOT?: UserWhereInput[] | UserWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  email?: String | null
+  email_not?: String | null
+  email_in?: String[] | String | null
+  email_not_in?: String[] | String | null
+  email_lt?: String | null
+  email_lte?: String | null
+  email_gt?: String | null
+  email_gte?: String | null
+  email_contains?: String | null
+  email_not_contains?: String | null
+  email_starts_with?: String | null
+  email_not_starts_with?: String | null
+  email_ends_with?: String | null
+  email_not_ends_with?: String | null
+  password?: String | null
+  password_not?: String | null
+  password_in?: String[] | String | null
+  password_not_in?: String[] | String | null
+  password_lt?: String | null
+  password_lte?: String | null
+  password_gt?: String | null
+  password_gte?: String | null
+  password_contains?: String | null
+  password_not_contains?: String | null
+  password_starts_with?: String | null
+  password_not_starts_with?: String | null
+  password_ends_with?: String | null
+  password_not_ends_with?: String | null
+  role?: Role | null
+  role_not?: Role | null
+  role_in?: Role[] | Role | null
+  role_not_in?: Role[] | Role | null
+  active?: Boolean | null
+  active_not?: Boolean | null
+  nickname?: String | null
+  nickname_not?: String | null
+  nickname_in?: String[] | String | null
+  nickname_not_in?: String[] | String | null
+  nickname_lt?: String | null
+  nickname_lte?: String | null
+  nickname_gt?: String | null
+  nickname_gte?: String | null
+  nickname_contains?: String | null
+  nickname_not_contains?: String | null
+  nickname_starts_with?: String | null
+  nickname_not_starts_with?: String | null
+  nickname_ends_with?: String | null
+  nickname_not_ends_with?: String | null
+  birthdate?: DateTime | null
+  birthdate_not?: DateTime | null
+  birthdate_in?: DateTime[] | DateTime | null
+  birthdate_not_in?: DateTime[] | DateTime | null
+  birthdate_lt?: DateTime | null
+  birthdate_lte?: DateTime | null
+  birthdate_gt?: DateTime | null
+  birthdate_gte?: DateTime | null
+  sex?: Sex | null
+  sex_not?: Sex | null
+  sex_in?: Sex[] | Sex | null
+  sex_not_in?: Sex[] | Sex | null
+  name?: String | null
+  name_not?: String | null
+  name_in?: String[] | String | null
+  name_not_in?: String[] | String | null
+  name_lt?: String | null
+  name_lte?: String | null
+  name_gt?: String | null
+  name_gte?: String | null
+  name_contains?: String | null
+  name_not_contains?: String | null
+  name_starts_with?: String | null
+  name_not_starts_with?: String | null
+  name_ends_with?: String | null
+  name_not_ends_with?: String | null
+  surname?: String | null
+  surname_not?: String | null
+  surname_in?: String[] | String | null
+  surname_not_in?: String[] | String | null
+  surname_lt?: String | null
+  surname_lte?: String | null
+  surname_gt?: String | null
+  surname_gte?: String | null
+  surname_contains?: String | null
+  surname_not_contains?: String | null
+  surname_starts_with?: String | null
+  surname_not_starts_with?: String | null
+  surname_ends_with?: String | null
+  surname_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  beerComments_every?: BeerCommentWhereInput | null
+  beerComments_some?: BeerCommentWhereInput | null
+  beerComments_none?: BeerCommentWhereInput | null
+  barComments_every?: BarCommentWhereInput | null
+  barComments_some?: BarCommentWhereInput | null
+  barComments_none?: BarCommentWhereInput | null
+  beerRatings_every?: BeerRatingWhereInput | null
+  beerRatings_some?: BeerRatingWhereInput | null
+  beerRatings_none?: BeerRatingWhereInput | null
+  barRatings_every?: BarRatingWhereInput | null
+  barRatings_some?: BarRatingWhereInput | null
+  barRatings_none?: BarRatingWhereInput | null
+  beerChanges_every?: BeerChangeWhereInput | null
+  beerChanges_some?: BeerChangeWhereInput | null
+  beerChanges_none?: BeerChangeWhereInput | null
+  barChanges_every?: BarChangeWhereInput | null
+  barChanges_some?: BarChangeWhereInput | null
+  barChanges_none?: BarChangeWhereInput | null
+  beerChangeUpvotes_every?: BeerChangeUpvoteWhereInput | null
+  beerChangeUpvotes_some?: BeerChangeUpvoteWhereInput | null
+  beerChangeUpvotes_none?: BeerChangeUpvoteWhereInput | null
+  barChangeUpvotes_every?: BarChangeUpvoteWhereInput | null
+  barChangeUpvotes_some?: BarChangeUpvoteWhereInput | null
+  barChangeUpvotes_none?: BarChangeUpvoteWhereInput | null
+  pricedBeers_every?: BeerPriceWhereInput | null
+  pricedBeers_some?: BeerPriceWhereInput | null
+  pricedBeers_none?: BeerPriceWhereInput | null
+  likedBeers_every?: BeerWhereInput | null
+  likedBeers_some?: BeerWhereInput | null
+  likedBeers_none?: BeerWhereInput | null
+  likedBars_every?: BarWhereInput | null
+  likedBars_some?: BarWhereInput | null
+  likedBars_none?: BarWhereInput | null
+  createdBeers_every?: BeerWhereInput | null
+  createdBeers_some?: BeerWhereInput | null
+  createdBeers_none?: BeerWhereInput | null
+  createdBars_every?: BarWhereInput | null
+  createdBars_some?: BarWhereInput | null
+  createdBars_none?: BarWhereInput | null
 }
 
 export interface UserWhereUniqueInput {
-  id?: ID_Input
-  email?: String
+  id?: ID_Input | null
+  email?: String | null
 }
 
 /*
@@ -13113,17 +13113,17 @@ export interface Bar extends Node {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos: String[]
-  beers?: Beer[]
-  barRating?: BarRating[]
-  beerPrices?: BeerPrice[]
-  barComments?: BarComment[]
-  barChanges?: BarChange[]
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos: Array<String>
+  beers?: Array<Beer> | null
+  barRating?: Array<BarRating> | null
+  beerPrices?: Array<BeerPrice> | null
+  barComments?: Array<BarComment> | null
+  barChanges?: Array<BarChange> | null
   createdBy: User
-  likedBy?: User[]
+  likedBy?: Array<User> | null
 }
 
 export interface BarChange extends Node {
@@ -13133,7 +13133,7 @@ export interface BarChange extends Node {
   newValue: String
   user: User
   bar: Bar
-  upvotes?: BarChangeUpvote[]
+  upvotes?: Array<BarChangeUpvote> | null
   createdAt: DateTime
 }
 
@@ -13143,7 +13143,7 @@ export interface BarChange extends Node {
  */
 export interface BarChangeConnection {
   pageInfo: PageInfo
-  edges: BarChangeEdge[]
+  edges: Array<BarChangeEdge | null>
   aggregate: AggregateBarChange
 }
 
@@ -13166,9 +13166,9 @@ export interface BarChangePreviousValues {
 
 export interface BarChangeSubscriptionPayload {
   mutation: MutationType
-  node?: BarChange
-  updatedFields?: String[]
-  previousValues?: BarChangePreviousValues
+  node?: BarChange | null
+  updatedFields?: Array<String> | null
+  previousValues?: BarChangePreviousValues | null
 }
 
 export interface BarChangeUpvote extends Node {
@@ -13183,7 +13183,7 @@ export interface BarChangeUpvote extends Node {
  */
 export interface BarChangeUpvoteConnection {
   pageInfo: PageInfo
-  edges: BarChangeUpvoteEdge[]
+  edges: Array<BarChangeUpvoteEdge | null>
   aggregate: AggregateBarChangeUpvote
 }
 
@@ -13202,9 +13202,9 @@ export interface BarChangeUpvotePreviousValues {
 
 export interface BarChangeUpvoteSubscriptionPayload {
   mutation: MutationType
-  node?: BarChangeUpvote
-  updatedFields?: String[]
-  previousValues?: BarChangeUpvotePreviousValues
+  node?: BarChangeUpvote | null
+  updatedFields?: Array<String> | null
+  previousValues?: BarChangeUpvotePreviousValues | null
 }
 
 export interface BarComment extends Node {
@@ -13221,7 +13221,7 @@ export interface BarComment extends Node {
  */
 export interface BarCommentConnection {
   pageInfo: PageInfo
-  edges: BarCommentEdge[]
+  edges: Array<BarCommentEdge | null>
   aggregate: AggregateBarComment
 }
 
@@ -13242,9 +13242,9 @@ export interface BarCommentPreviousValues {
 
 export interface BarCommentSubscriptionPayload {
   mutation: MutationType
-  node?: BarComment
-  updatedFields?: String[]
-  previousValues?: BarCommentPreviousValues
+  node?: BarComment | null
+  updatedFields?: Array<String> | null
+  previousValues?: BarCommentPreviousValues | null
 }
 
 /*
@@ -13253,7 +13253,7 @@ export interface BarCommentSubscriptionPayload {
  */
 export interface BarConnection {
   pageInfo: PageInfo
-  edges: BarEdge[]
+  edges: Array<BarEdge | null>
   aggregate: AggregateBar
 }
 
@@ -13272,10 +13272,10 @@ export interface BarPreviousValues {
   address: String
   lat: String
   long: String
-  phone?: String
-  openTime?: DateTime
-  closeTime?: DateTime
-  photos: String[]
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos: Array<String>
 }
 
 export interface BarRating extends Node {
@@ -13291,7 +13291,7 @@ export interface BarRating extends Node {
  */
 export interface BarRatingConnection {
   pageInfo: PageInfo
-  edges: BarRatingEdge[]
+  edges: Array<BarRatingEdge | null>
   aggregate: AggregateBarRating
 }
 
@@ -13311,16 +13311,16 @@ export interface BarRatingPreviousValues {
 
 export interface BarRatingSubscriptionPayload {
   mutation: MutationType
-  node?: BarRating
-  updatedFields?: String[]
-  previousValues?: BarRatingPreviousValues
+  node?: BarRating | null
+  updatedFields?: Array<String> | null
+  previousValues?: BarRatingPreviousValues | null
 }
 
 export interface BarSubscriptionPayload {
   mutation: MutationType
-  node?: Bar
-  updatedFields?: String[]
-  previousValues?: BarPreviousValues
+  node?: Bar | null
+  updatedFields?: Array<String> | null
+  previousValues?: BarPreviousValues | null
 }
 
 export interface BatchPayload {
@@ -13331,16 +13331,16 @@ export interface Beer extends Node {
   id: ID_Output
   name: String
   type: String
-  strong?: String
-  photo?: String
-  brewery?: Brewery
-  bars?: Bar[]
-  beerRating?: BeerRating[]
-  beerPrices?: BeerPrice[]
-  beerComments?: BeerComment[]
-  beerChanges?: BeerChange[]
+  strong?: String | null
+  photo?: String | null
+  brewery?: Brewery | null
+  bars?: Array<Bar> | null
+  beerRating?: Array<BeerRating> | null
+  beerPrices?: Array<BeerPrice> | null
+  beerComments?: Array<BeerComment> | null
+  beerChanges?: Array<BeerChange> | null
   createdBy: User
-  likedBy?: User[]
+  likedBy?: Array<User> | null
 }
 
 export interface BeerChange extends Node {
@@ -13350,7 +13350,7 @@ export interface BeerChange extends Node {
   newValue: String
   user: User
   beer: Beer
-  upvotes?: BeerChangeUpvote[]
+  upvotes?: Array<BeerChangeUpvote> | null
   createdAt: DateTime
 }
 
@@ -13360,7 +13360,7 @@ export interface BeerChange extends Node {
  */
 export interface BeerChangeConnection {
   pageInfo: PageInfo
-  edges: BeerChangeEdge[]
+  edges: Array<BeerChangeEdge | null>
   aggregate: AggregateBeerChange
 }
 
@@ -13383,9 +13383,9 @@ export interface BeerChangePreviousValues {
 
 export interface BeerChangeSubscriptionPayload {
   mutation: MutationType
-  node?: BeerChange
-  updatedFields?: String[]
-  previousValues?: BeerChangePreviousValues
+  node?: BeerChange | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerChangePreviousValues | null
 }
 
 export interface BeerChangeUpvote extends Node {
@@ -13400,7 +13400,7 @@ export interface BeerChangeUpvote extends Node {
  */
 export interface BeerChangeUpvoteConnection {
   pageInfo: PageInfo
-  edges: BeerChangeUpvoteEdge[]
+  edges: Array<BeerChangeUpvoteEdge | null>
   aggregate: AggregateBeerChangeUpvote
 }
 
@@ -13419,9 +13419,9 @@ export interface BeerChangeUpvotePreviousValues {
 
 export interface BeerChangeUpvoteSubscriptionPayload {
   mutation: MutationType
-  node?: BeerChangeUpvote
-  updatedFields?: String[]
-  previousValues?: BeerChangeUpvotePreviousValues
+  node?: BeerChangeUpvote | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerChangeUpvotePreviousValues | null
 }
 
 export interface BeerComment extends Node {
@@ -13438,7 +13438,7 @@ export interface BeerComment extends Node {
  */
 export interface BeerCommentConnection {
   pageInfo: PageInfo
-  edges: BeerCommentEdge[]
+  edges: Array<BeerCommentEdge | null>
   aggregate: AggregateBeerComment
 }
 
@@ -13459,9 +13459,9 @@ export interface BeerCommentPreviousValues {
 
 export interface BeerCommentSubscriptionPayload {
   mutation: MutationType
-  node?: BeerComment
-  updatedFields?: String[]
-  previousValues?: BeerCommentPreviousValues
+  node?: BeerComment | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerCommentPreviousValues | null
 }
 
 /*
@@ -13470,7 +13470,7 @@ export interface BeerCommentSubscriptionPayload {
  */
 export interface BeerConnection {
   pageInfo: PageInfo
-  edges: BeerEdge[]
+  edges: Array<BeerEdge | null>
   aggregate: AggregateBeer
 }
 
@@ -13487,8 +13487,8 @@ export interface BeerPreviousValues {
   id: ID_Output
   name: String
   type: String
-  strong?: String
-  photo?: String
+  strong?: String | null
+  photo?: String | null
 }
 
 export interface BeerPrice extends Node {
@@ -13505,7 +13505,7 @@ export interface BeerPrice extends Node {
  */
 export interface BeerPriceConnection {
   pageInfo: PageInfo
-  edges: BeerPriceEdge[]
+  edges: Array<BeerPriceEdge | null>
   aggregate: AggregateBeerPrice
 }
 
@@ -13525,14 +13525,14 @@ export interface BeerPricePreviousValues {
 
 export interface BeerPriceSubscriptionPayload {
   mutation: MutationType
-  node?: BeerPrice
-  updatedFields?: String[]
-  previousValues?: BeerPricePreviousValues
+  node?: BeerPrice | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerPricePreviousValues | null
 }
 
 export interface BeerRating extends Node {
   id: ID_Output
-  rating: Float
+  rating: Int
   user: User
   beer: Beer
 }
@@ -13543,7 +13543,7 @@ export interface BeerRating extends Node {
  */
 export interface BeerRatingConnection {
   pageInfo: PageInfo
-  edges: BeerRatingEdge[]
+  edges: Array<BeerRatingEdge | null>
   aggregate: AggregateBeerRating
 }
 
@@ -13558,29 +13558,29 @@ export interface BeerRatingEdge {
 
 export interface BeerRatingPreviousValues {
   id: ID_Output
-  rating: Float
+  rating: Int
 }
 
 export interface BeerRatingSubscriptionPayload {
   mutation: MutationType
-  node?: BeerRating
-  updatedFields?: String[]
-  previousValues?: BeerRatingPreviousValues
+  node?: BeerRating | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerRatingPreviousValues | null
 }
 
 export interface BeerSubscriptionPayload {
   mutation: MutationType
-  node?: Beer
-  updatedFields?: String[]
-  previousValues?: BeerPreviousValues
+  node?: Beer | null
+  updatedFields?: Array<String> | null
+  previousValues?: BeerPreviousValues | null
 }
 
 export interface Brewery extends Node {
   id: ID_Output
   name: String
   country: String
-  logo?: String
-  beers?: Beer[]
+  logo?: String | null
+  beers?: Array<Beer> | null
 }
 
 /*
@@ -13589,7 +13589,7 @@ export interface Brewery extends Node {
  */
 export interface BreweryConnection {
   pageInfo: PageInfo
-  edges: BreweryEdge[]
+  edges: Array<BreweryEdge | null>
   aggregate: AggregateBrewery
 }
 
@@ -13606,14 +13606,14 @@ export interface BreweryPreviousValues {
   id: ID_Output
   name: String
   country: String
-  logo?: String
+  logo?: String | null
 }
 
 export interface BrewerySubscriptionPayload {
   mutation: MutationType
-  node?: Brewery
-  updatedFields?: String[]
-  previousValues?: BreweryPreviousValues
+  node?: Brewery | null
+  updatedFields?: Array<String> | null
+  previousValues?: BreweryPreviousValues | null
 }
 
 /*
@@ -13623,8 +13623,8 @@ export interface BrewerySubscriptionPayload {
 export interface PageInfo {
   hasNextPage: Boolean
   hasPreviousPage: Boolean
-  startCursor?: String
-  endCursor?: String
+  startCursor?: String | null
+  endCursor?: String | null
 }
 
 export interface User extends Node {
@@ -13636,21 +13636,21 @@ export interface User extends Node {
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
-  beerComments?: BeerComment[]
-  barComments?: BarComment[]
-  beerRatings?: BeerRating[]
-  barRatings?: BarRating[]
-  beerChanges?: BeerChange[]
-  barChanges?: BarChange[]
-  beerChangeUpvotes?: BeerChangeUpvote[]
-  barChangeUpvotes?: BarChangeUpvote[]
-  pricedBeers?: BeerPrice[]
-  likedBeers?: Beer[]
-  likedBars?: Bar[]
-  createdBeers?: Beer[]
-  createdBars?: Bar[]
+  name?: String | null
+  surname?: String | null
+  beerComments?: Array<BeerComment> | null
+  barComments?: Array<BarComment> | null
+  beerRatings?: Array<BeerRating> | null
+  barRatings?: Array<BarRating> | null
+  beerChanges?: Array<BeerChange> | null
+  barChanges?: Array<BarChange> | null
+  beerChangeUpvotes?: Array<BeerChangeUpvote> | null
+  barChangeUpvotes?: Array<BarChangeUpvote> | null
+  pricedBeers?: Array<BeerPrice> | null
+  likedBeers?: Array<Beer> | null
+  likedBars?: Array<Bar> | null
+  createdBeers?: Array<Beer> | null
+  createdBars?: Array<Bar> | null
   createdAt: DateTime
 }
 
@@ -13660,7 +13660,7 @@ export interface User extends Node {
  */
 export interface UserConnection {
   pageInfo: PageInfo
-  edges: UserEdge[]
+  edges: Array<UserEdge | null>
   aggregate: AggregateUser
 }
 
@@ -13682,16 +13682,16 @@ export interface UserPreviousValues {
   nickname: String
   birthdate: DateTime
   sex: Sex
-  name?: String
-  surname?: String
+  name?: String | null
+  surname?: String | null
   createdAt: DateTime
 }
 
 export interface UserSubscriptionPayload {
   mutation: MutationType
-  node?: User
-  updatedFields?: String[]
-  previousValues?: UserPreviousValues
+  node?: User | null
+  updatedFields?: Array<String> | null
+  previousValues?: UserPreviousValues | null
 }
 
 /*

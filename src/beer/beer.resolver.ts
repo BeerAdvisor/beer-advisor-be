@@ -33,7 +33,8 @@ export class BeerResolvers {
   }
 
   @Mutation()
-  rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo) {
-    return this.beerService.rateBeer(args, info);
+  @UseGuards(GqlAuthGuard)
+  rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
+    return this.beerService.rateBeer(args, user, info);
   }
 }

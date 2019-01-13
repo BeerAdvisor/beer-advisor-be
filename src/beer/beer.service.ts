@@ -3,7 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
 import { CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
-import { Beer, BeerRating, BeerComment, User } from '../prisma/prisma.bindings.generated';
+import { Beer, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
 
 @Injectable()
 export class BeerService {
@@ -46,13 +46,21 @@ export class BeerService {
     );
   }
 
-  rateBeer(rating: RateBeerInput, info: GraphQLResolveInfo): Promise<BeerRating> {
-    return this.prisma.mutation.createBeerRating(
+  async rateBeer(rating: RateBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerRating> {
+    const ratings = await this.prisma.query.beerRatings({
+      where: { AND: { beer: { id: rating.beerId }, user: { id: user.id } } },
+    });
+
+    return this.prisma.mutation.upsertBeerRating(
       {
-        data: {
+        where: { id: ratings && ratings.length && ratings[0].id },
+        create: {
           rating: rating.rating,
-          user: { connect: { id: 'user_id_here' } }, // TODO
           beer: { connect: { id: rating.beerId } },
+          user: { connect: { id: user.id } },
+        },
+        update: {
+          rating: rating.rating,
         },
       },
       info,
