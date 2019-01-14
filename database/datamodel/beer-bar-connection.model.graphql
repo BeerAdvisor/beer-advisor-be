@@ -6,12 +6,14 @@ type BeerBarConnectionChange {
     bar: Bar!
     upvotes: [BeerBarConnectionChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerBarConnectionChangeUpvote {
     id: ID! @unique
     user: User!
     beerBarConnectionChange: BeerBarConnectionChange!
+    createdAt: DateTime!
 }
 
 enum ConnectionChangeType {

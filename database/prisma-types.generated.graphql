@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Sun Jan 13 2019 23:05:05 GMT+0100 (CET)
+# timestamp: Mon Jan 14 2019 22:53:49 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -86,6 +86,8 @@ type Bar implements Node {
   barChanges(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChange!]
   createdBy: User!
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BarChange implements Node {
@@ -96,6 +98,7 @@ type BarChange implements Node {
   bar: Bar!
   upvotes(where: BarChangeUpvoteWhereInput, orderBy: BarChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChangeUpvote!]
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -179,6 +182,7 @@ type BarChangePreviousValues {
   field: String!
   newValue: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BarChangeScalarWhereInput {
@@ -332,6 +336,28 @@ input BarChangeScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BarChangeSubscriptionPayload {
@@ -479,6 +505,7 @@ type BarChangeUpvote implements Node {
   id: ID!
   user: User!
   barChange: BarChange!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -526,14 +553,15 @@ type BarChangeUpvoteEdge {
 enum BarChangeUpvoteOrderByInput {
   id_ASC
   id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BarChangeUpvotePreviousValues {
   id: ID!
+  createdAt: DateTime!
 }
 
 input BarChangeUpvoteScalarWhereInput {
@@ -585,6 +613,28 @@ input BarChangeUpvoteScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 type BarChangeUpvoteSubscriptionPayload {
@@ -732,6 +782,28 @@ input BarChangeUpvoteWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   user: UserWhereInput
   barChange: BarChangeWhereInput
 }
@@ -891,6 +963,28 @@ input BarChangeWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   bar: BarWhereInput
   upvotes_every: BarChangeUpvoteWhereInput
@@ -908,6 +1002,7 @@ type BarComment implements Node {
   bar: Bar!
   user: User!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -970,6 +1065,7 @@ type BarCommentPreviousValues {
   id: ID!
   comment: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BarCommentScalarWhereInput {
@@ -1083,6 +1179,28 @@ input BarCommentScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BarCommentSubscriptionPayload {
@@ -1310,6 +1428,28 @@ input BarCommentWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   bar: BarWhereInput
   user: UserWhereInput
 }
@@ -1535,10 +1675,10 @@ enum BarOrderByInput {
   openTime_DESC
   closeTime_ASC
   closeTime_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BarPreviousValues {
@@ -1551,6 +1691,8 @@ type BarPreviousValues {
   openTime: DateTime
   closeTime: DateTime
   photos: [String!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BarRating implements Node {
@@ -1558,6 +1700,8 @@ type BarRating implements Node {
   rating: Float!
   user: User!
   bar: Bar!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -1610,15 +1754,17 @@ enum BarRatingOrderByInput {
   id_DESC
   rating_ASC
   rating_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BarRatingPreviousValues {
   id: ID!
   rating: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BarRatingScalarWhereInput {
@@ -1692,6 +1838,50 @@ input BarRatingScalarWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BarRatingSubscriptionPayload {
@@ -1879,6 +2069,50 @@ input BarRatingWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   bar: BarWhereInput
 }
@@ -2180,6 +2414,50 @@ input BarScalarWhereInput {
 
   """All values greater than or equal the given value."""
   closeTime_gte: DateTime
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BarSubscriptionPayload {
@@ -2829,6 +3107,50 @@ input BarWhereInput {
 
   """All values greater than or equal the given value."""
   closeTime_gte: DateTime
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   beers_every: BeerWhereInput
   beers_some: BeerWhereInput
   beers_none: BeerWhereInput
@@ -2873,6 +3195,8 @@ type Beer implements Node {
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange!]
   createdBy: User!
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BeerBarConnectionChange implements Node {
@@ -2883,6 +3207,7 @@ type BeerBarConnectionChange implements Node {
   bar: Bar!
   upvotes(where: BeerBarConnectionChangeUpvoteWhereInput, orderBy: BeerBarConnectionChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerBarConnectionChangeUpvote!]
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -2939,6 +3264,7 @@ type BeerBarConnectionChangePreviousValues {
   id: ID!
   type: ConnectionChangeType!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BeerBarConnectionChangeSubscriptionPayload {
@@ -3015,6 +3341,7 @@ type BeerBarConnectionChangeUpvote implements Node {
   id: ID!
   user: User!
   beerBarConnectionChange: BeerBarConnectionChange!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -3053,14 +3380,15 @@ type BeerBarConnectionChangeUpvoteEdge {
 enum BeerBarConnectionChangeUpvoteOrderByInput {
   id_ASC
   id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerBarConnectionChangeUpvotePreviousValues {
   id: ID!
+  createdAt: DateTime!
 }
 
 input BeerBarConnectionChangeUpvoteScalarWhereInput {
@@ -3112,6 +3440,28 @@ input BeerBarConnectionChangeUpvoteScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 type BeerBarConnectionChangeUpvoteSubscriptionPayload {
@@ -3233,6 +3583,28 @@ input BeerBarConnectionChangeUpvoteWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   user: UserWhereInput
   beerBarConnectionChange: BeerBarConnectionChangeWhereInput
 }
@@ -3322,6 +3694,28 @@ input BeerBarConnectionChangeWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   beer: BeerWhereInput
   bar: BarWhereInput
@@ -3342,6 +3736,7 @@ type BeerChange implements Node {
   beer: Beer!
   upvotes(where: BeerChangeUpvoteWhereInput, orderBy: BeerChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChangeUpvote!]
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -3425,6 +3820,7 @@ type BeerChangePreviousValues {
   field: BeerField!
   newValue: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BeerChangeScalarWhereInput {
@@ -3548,6 +3944,28 @@ input BeerChangeScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerChangeSubscriptionPayload {
@@ -3695,6 +4113,7 @@ type BeerChangeUpvote implements Node {
   id: ID!
   user: User!
   beerChange: BeerChange!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -3742,14 +4161,15 @@ type BeerChangeUpvoteEdge {
 enum BeerChangeUpvoteOrderByInput {
   id_ASC
   id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerChangeUpvotePreviousValues {
   id: ID!
+  createdAt: DateTime!
 }
 
 input BeerChangeUpvoteScalarWhereInput {
@@ -3801,6 +4221,28 @@ input BeerChangeUpvoteScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 type BeerChangeUpvoteSubscriptionPayload {
@@ -3948,6 +4390,28 @@ input BeerChangeUpvoteWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   user: UserWhereInput
   beerChange: BeerChangeWhereInput
 }
@@ -4077,6 +4541,28 @@ input BeerChangeWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   beer: BeerWhereInput
   upvotes_every: BeerChangeUpvoteWhereInput
@@ -4094,6 +4580,7 @@ type BeerComment implements Node {
   beer: Beer!
   user: User!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -4156,6 +4643,7 @@ type BeerCommentPreviousValues {
   id: ID!
   comment: String!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BeerCommentScalarWhereInput {
@@ -4269,6 +4757,28 @@ input BeerCommentScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerCommentSubscriptionPayload {
@@ -4496,6 +5006,28 @@ input BeerCommentWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   beer: BeerWhereInput
   user: UserWhereInput
 }
@@ -4714,10 +5246,10 @@ enum BeerOrderByInput {
   strong_DESC
   photo_ASC
   photo_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerPreviousValues {
@@ -4726,6 +5258,8 @@ type BeerPreviousValues {
   type: String!
   strong: String
   photo: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BeerPrice implements Node {
@@ -4735,6 +5269,8 @@ type BeerPrice implements Node {
   bar: Bar!
   beer: Beer!
   changes(where: BeerPriceChangeWhereInput, orderBy: BeerPriceChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPriceChange!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BeerPriceChange implements Node {
@@ -4744,6 +5280,7 @@ type BeerPriceChange implements Node {
   user: User!
   upvotes(where: BeerPriceChangeUpvoteWhereInput, orderBy: BeerPriceChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPriceChangeUpvote!]
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -4809,6 +5346,7 @@ type BeerPriceChangePreviousValues {
   id: ID!
   newPrice: Float!
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BeerPriceChangeScalarWhereInput {
@@ -4904,6 +5442,28 @@ input BeerPriceChangeScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerPriceChangeSubscriptionPayload {
@@ -5016,6 +5576,7 @@ type BeerPriceChangeUpvote implements Node {
   id: ID!
   user: User!
   beerPriceChange: BeerPriceChange!
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -5054,14 +5615,15 @@ type BeerPriceChangeUpvoteEdge {
 enum BeerPriceChangeUpvoteOrderByInput {
   id_ASC
   id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerPriceChangeUpvotePreviousValues {
   id: ID!
+  createdAt: DateTime!
 }
 
 input BeerPriceChangeUpvoteScalarWhereInput {
@@ -5113,6 +5675,28 @@ input BeerPriceChangeUpvoteScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 type BeerPriceChangeUpvoteSubscriptionPayload {
@@ -5234,6 +5818,28 @@ input BeerPriceChangeUpvoteWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
   user: UserWhereInput
   beerPriceChange: BeerPriceChangeWhereInput
 }
@@ -5335,6 +5941,28 @@ input BeerPriceChangeWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   beerPrice: BeerPriceWhereInput
   user: UserWhereInput
   upvotes_every: BeerPriceChangeUpvoteWhereInput
@@ -5426,15 +6054,17 @@ enum BeerPriceOrderByInput {
   id_DESC
   price_ASC
   price_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerPricePreviousValues {
   id: ID!
   price: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BeerPriceScalarWhereInput {
@@ -5508,6 +6138,50 @@ input BeerPriceScalarWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerPriceSubscriptionPayload {
@@ -5750,6 +6424,50 @@ input BeerPriceWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   bar: BarWhereInput
   beer: BeerWhereInput
@@ -5767,6 +6485,8 @@ type BeerRating implements Node {
   rating: Int!
   user: User!
   beer: Beer!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -5819,15 +6539,17 @@ enum BeerRatingOrderByInput {
   id_DESC
   rating_ASC
   rating_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BeerRatingPreviousValues {
   id: ID!
   rating: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input BeerRatingScalarWhereInput {
@@ -5901,6 +6623,50 @@ input BeerRatingScalarWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Int
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerRatingSubscriptionPayload {
@@ -6088,6 +6854,50 @@ input BeerRatingWhereInput {
 
   """All values greater than or equal the given value."""
   rating_gte: Int
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   user: UserWhereInput
   beer: BeerWhereInput
 }
@@ -6305,6 +7115,50 @@ input BeerScalarWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerSubscriptionPayload {
@@ -6868,6 +7722,50 @@ input BeerWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   brewery: BreweryWhereInput
   bars_every: BarWhereInput
   bars_some: BarWhereInput
@@ -6900,6 +7798,8 @@ type Brewery implements Node {
   country: String!
   logo: String
   beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -6948,10 +7848,10 @@ enum BreweryOrderByInput {
   country_DESC
   logo_ASC
   logo_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type BreweryPreviousValues {
@@ -6959,6 +7859,8 @@ type BreweryPreviousValues {
   name: String!
   country: String!
   logo: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BrewerySubscriptionPayload {
@@ -7202,6 +8104,50 @@ input BreweryWhereInput {
 
   """All values not ending with the given string."""
   logo_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   beers_every: BeerWhereInput
   beers_some: BeerWhereInput
   beers_none: BeerWhereInput
@@ -7467,6 +8413,7 @@ type User implements Node {
   createdBeers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer!]
   createdBars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -7934,6 +8881,7 @@ type UserPreviousValues {
   name: String
   surname: String
   createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input UserScalarWhereInput {
@@ -8253,6 +9201,28 @@ input UserScalarWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type UserSubscriptionPayload {
@@ -9192,6 +10162,28 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   beerComments_every: BeerCommentWhereInput
   beerComments_some: BeerCommentWhereInput
   beerComments_none: BeerCommentWhereInput

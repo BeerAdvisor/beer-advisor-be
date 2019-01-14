@@ -16,6 +16,8 @@ type Bar {
     barChanges: [BarChange!]
     createdBy: User! @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarRating {
@@ -23,6 +25,8 @@ type BarRating {
     rating: Float!
     user: User!
     bar: Bar!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarComment {
@@ -31,6 +35,7 @@ type BarComment {
     bar: Bar!
     user: User!
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarChange {
@@ -41,10 +46,12 @@ type BarChange {
     bar: Bar!
     upvotes: [BarChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarChangeUpvote {
     id: ID! @unique
     user: User!
     barChange: BarChange!
+    createdAt: DateTime!
 }

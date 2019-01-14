@@ -4,4 +4,6 @@ type Brewery {
     country: String!
     logo: String
     beers: [Beer!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }

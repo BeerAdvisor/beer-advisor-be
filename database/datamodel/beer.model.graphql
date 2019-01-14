@@ -12,6 +12,8 @@ type Beer {
     beerChanges: [BeerChange!]
     createdBy: User! @relation(name: "BeerCreatedRelation")
     likedBy: [User!] @relation(name: "BeerLikedRelation")
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerRating {
@@ -19,6 +21,8 @@ type BeerRating {
     rating: Int!
     user: User!
     beer: Beer!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerComment {
@@ -27,6 +31,7 @@ type BeerComment {
     beer: Beer!
     user: User!
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerChange {
@@ -37,12 +42,14 @@ type BeerChange {
     beer: Beer!
     upvotes: [BeerChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerChangeUpvote {
     id: ID! @unique
     user: User!
     beerChange: BeerChange!
+    createdAt: DateTime!
 }
 
 type BeerPrice {
@@ -52,6 +59,8 @@ type BeerPrice {
     bar: Bar!
     beer: Beer!
     changes: [BeerPriceChange!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerPriceChange {
@@ -61,12 +70,14 @@ type BeerPriceChange {
     user: User!
     upvotes: [BeerPriceChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerPriceChangeUpvote {
     id: ID! @unique
     user: User!
     beerPriceChange: BeerPriceChange!
+    createdAt: DateTime!
 }
 
 enum BeerField {

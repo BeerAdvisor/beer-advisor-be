@@ -23,6 +23,7 @@ type User {
     createdBeers: [Beer!] @relation(name: "BeerCreatedRelation")
     createdBars: [Bar!] @relation(name: "BarCreatedRelation")
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 enum Role {

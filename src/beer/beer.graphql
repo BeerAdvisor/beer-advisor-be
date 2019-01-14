@@ -49,12 +49,14 @@ type BeerChange {
     beer: Beer!
     upvotes: [BeerChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerChangeUpvote {
     id: ID!
     user: User!
     beerChange: BeerChange!
+    createdAt: DateTime!
 }
 
 type BeerPrice {
