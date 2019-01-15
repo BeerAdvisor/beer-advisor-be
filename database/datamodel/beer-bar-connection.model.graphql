@@ -2,9 +2,9 @@ type BeerBarConnectionChange {
     id: ID! @unique
     type: ConnectionChangeType!
     user: User
-    beer: Beer!
-    bar: Bar!
-    upvotes: [BeerBarConnectionChangeUpvote!]
+    beer: Beer! @relation(name: "BeerBarConnections")
+    bar: Bar! @relation(name: "BarBeerConnections")
+    upvotes: [BeerBarConnectionChangeUpvote!] @relation(name: "BeerBarConnectionChangeUpvotes" onDelete: CASCADE)
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -12,7 +12,7 @@ type BeerBarConnectionChange {
 type BeerBarConnectionChangeUpvote {
     id: ID! @unique
     user: User
-    beerBarConnectionChange: BeerBarConnectionChange!
+    beerBarConnectionChange: BeerBarConnectionChange! @relation(name: "BeerBarConnectionChangeUpvotes")
     createdAt: DateTime!
 }
 

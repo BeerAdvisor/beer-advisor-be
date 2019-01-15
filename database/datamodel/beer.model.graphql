@@ -7,9 +7,10 @@ type Beer {
     brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
-    beerPrices: [BeerPrice!] @relation(name: "BeerPrices" onDelete: CASCADE)
     beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)
     beerChanges: [BeerChange!] @relation(name: "BeerChanges" onDelete: CASCADE)
+    beerPrices: [BeerPrice!] @relation(name: "BeerPrices" onDelete: CASCADE)
+    barConnections: [BeerBarConnectionChange!] @relation(name: "BeerBarConnections" onDelete: CASCADE)
     createdBy: User @relation(name: "BeerCreatedRelation")
     likedBy: [User!] @relation(name: "BeerLikedRelation")
     createdAt: DateTime!

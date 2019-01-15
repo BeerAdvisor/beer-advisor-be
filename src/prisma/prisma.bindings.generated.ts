@@ -4,10 +4,12 @@ import { Options } from 'graphql-binding'
 import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
+    bars: <T = Array<Bar | null>>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barRatings: <T = Array<BarRating | null>>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barComments: <T = Array<BarComment | null>>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChanges: <T = Array<BarChange | null>>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangeUpvotes: <T = Array<BarChangeUpvote | null>>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beers: <T = Array<Beer | null>>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerRatings: <T = Array<BeerRating | null>>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerComments: <T = Array<BeerComment | null>>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChanges: <T = Array<BeerChange | null>>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -18,13 +20,13 @@ export interface Query {
     beerPrices: <T = Array<BeerPrice | null>>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPriceChanges: <T = Array<BeerPriceChange | null>>(args: { where?: BeerPriceChangeWhereInput | null, orderBy?: BeerPriceChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPriceChangeUpvotes: <T = Array<BeerPriceChangeUpvote | null>>(args: { where?: BeerPriceChangeUpvoteWhereInput | null, orderBy?: BeerPriceChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    bars: <T = Array<Bar | null>>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beers: <T = Array<Beer | null>>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     users: <T = Array<User | null>>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    bar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     barChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    beer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
@@ -35,13 +37,13 @@ export interface Query {
     beerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerPriceChange: <T = BeerPriceChange | null>(args: { where: BeerPriceChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     beerPriceChangeUpvote: <T = BeerPriceChangeUpvote | null>(args: { where: BeerPriceChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    bar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    beer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barRatingsConnection: <T = BarRatingConnection>(args: { where?: BarRatingWhereInput | null, orderBy?: BarRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barCommentsConnection: <T = BarCommentConnection>(args: { where?: BarCommentWhereInput | null, orderBy?: BarCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangesConnection: <T = BarChangeConnection>(args: { where?: BarChangeWhereInput | null, orderBy?: BarChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     barChangeUpvotesConnection: <T = BarChangeUpvoteConnection>(args: { where?: BarChangeUpvoteWhereInput | null, orderBy?: BarChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerRatingsConnection: <T = BeerRatingConnection>(args: { where?: BeerRatingWhereInput | null, orderBy?: BeerRatingOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerCommentsConnection: <T = BeerCommentConnection>(args: { where?: BeerCommentWhereInput | null, orderBy?: BeerCommentOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerChangesConnection: <T = BeerChangeConnection>(args: { where?: BeerChangeWhereInput | null, orderBy?: BeerChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -52,17 +54,17 @@ export interface Query {
     beerPricesConnection: <T = BeerPriceConnection>(args: { where?: BeerPriceWhereInput | null, orderBy?: BeerPriceOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPriceChangesConnection: <T = BeerPriceChangeConnection>(args: { where?: BeerPriceChangeWhereInput | null, orderBy?: BeerPriceChangeOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     beerPriceChangeUpvotesConnection: <T = BeerPriceChangeUpvoteConnection>(args: { where?: BeerPriceChangeUpvoteWhereInput | null, orderBy?: BeerPriceChangeUpvoteOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    barsConnection: <T = BarConnection>(args: { where?: BarWhereInput | null, orderBy?: BarOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    beersConnection: <T = BeerConnection>(args: { where?: BeerWhereInput | null, orderBy?: BeerOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     usersConnection: <T = UserConnection>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
   }
 
 export interface Mutation {
+    createBar: <T = Bar>(args: { data: BarCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarRating: <T = BarRating>(args: { data: BarRatingCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarComment: <T = BarComment>(args: { data: BarCommentCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarChange: <T = BarChange>(args: { data: BarChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBarChangeUpvote: <T = BarChangeUpvote>(args: { data: BarChangeUpvoteCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createBeer: <T = Beer>(args: { data: BeerCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerRating: <T = BeerRating>(args: { data: BeerRatingCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerComment: <T = BeerComment>(args: { data: BeerCommentCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerChange: <T = BeerChange>(args: { data: BeerChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -73,13 +75,13 @@ export interface Mutation {
     createBeerPrice: <T = BeerPrice>(args: { data: BeerPriceCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerPriceChange: <T = BeerPriceChange>(args: { data: BeerPriceChangeCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createBeerPriceChangeUpvote: <T = BeerPriceChangeUpvote>(args: { data: BeerPriceChangeUpvoteCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createBar: <T = Bar>(args: { data: BarCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createBeer: <T = Beer>(args: { data: BeerCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateBar: <T = Bar | null>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarRating: <T = BarRating | null>(args: { data: BarRatingUpdateInput, where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarComment: <T = BarComment | null>(args: { data: BarCommentUpdateInput, where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarChange: <T = BarChange | null>(args: { data: BarChangeUpdateInput, where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBarChangeUpvote: <T = BarChangeUpvote | null>(args: { data: BarChangeUpvoteUpdateInput, where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateBeer: <T = Beer | null>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerRating: <T = BeerRating | null>(args: { data: BeerRatingUpdateInput, where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerComment: <T = BeerComment | null>(args: { data: BeerCommentUpdateInput, where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerChange: <T = BeerChange | null>(args: { data: BeerChangeUpdateInput, where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
@@ -90,13 +92,13 @@ export interface Mutation {
     updateBeerPrice: <T = BeerPrice | null>(args: { data: BeerPriceUpdateInput, where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerPriceChange: <T = BeerPriceChange | null>(args: { data: BeerPriceChangeUpdateInput, where: BeerPriceChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateBeerPriceChangeUpvote: <T = BeerPriceChangeUpvote | null>(args: { data: BeerPriceChangeUpvoteUpdateInput, where: BeerPriceChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBar: <T = Bar | null>(args: { data: BarUpdateInput, where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateBeer: <T = Beer | null>(args: { data: BeerUpdateInput, where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarRating: <T = BarRating | null>(args: { where: BarRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarComment: <T = BarComment | null>(args: { where: BarCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarChange: <T = BarChange | null>(args: { where: BarChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBarChangeUpvote: <T = BarChangeUpvote | null>(args: { where: BarChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteBeer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerRating: <T = BeerRating | null>(args: { where: BeerRatingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerComment: <T = BeerComment | null>(args: { where: BeerCommentWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerChange: <T = BeerChange | null>(args: { where: BeerChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
@@ -107,13 +109,13 @@ export interface Mutation {
     deleteBeerPrice: <T = BeerPrice | null>(args: { where: BeerPriceWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerPriceChange: <T = BeerPriceChange | null>(args: { where: BeerPriceChangeWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteBeerPriceChangeUpvote: <T = BeerPriceChangeUpvote | null>(args: { where: BeerPriceChangeUpvoteWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBar: <T = Bar | null>(args: { where: BarWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteBeer: <T = Beer | null>(args: { where: BeerWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
     deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    upsertBar: <T = Bar>(args: { where: BarWhereUniqueInput, create: BarCreateInput, update: BarUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarRating: <T = BarRating>(args: { where: BarRatingWhereUniqueInput, create: BarRatingCreateInput, update: BarRatingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarComment: <T = BarComment>(args: { where: BarCommentWhereUniqueInput, create: BarCommentCreateInput, update: BarCommentUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarChange: <T = BarChange>(args: { where: BarChangeWhereUniqueInput, create: BarChangeCreateInput, update: BarChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBarChangeUpvote: <T = BarChangeUpvote>(args: { where: BarChangeUpvoteWhereUniqueInput, create: BarChangeUpvoteCreateInput, update: BarChangeUpvoteUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertBeer: <T = Beer>(args: { where: BeerWhereUniqueInput, create: BeerCreateInput, update: BeerUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerRating: <T = BeerRating>(args: { where: BeerRatingWhereUniqueInput, create: BeerRatingCreateInput, update: BeerRatingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerComment: <T = BeerComment>(args: { where: BeerCommentWhereUniqueInput, create: BeerCommentCreateInput, update: BeerCommentUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerChange: <T = BeerChange>(args: { where: BeerChangeWhereUniqueInput, create: BeerChangeCreateInput, update: BeerChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -124,12 +126,12 @@ export interface Mutation {
     upsertBeerPrice: <T = BeerPrice>(args: { where: BeerPriceWhereUniqueInput, create: BeerPriceCreateInput, update: BeerPriceUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerPriceChange: <T = BeerPriceChange>(args: { where: BeerPriceChangeWhereUniqueInput, create: BeerPriceChangeCreateInput, update: BeerPriceChangeUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertBeerPriceChangeUpvote: <T = BeerPriceChangeUpvote>(args: { where: BeerPriceChangeUpvoteWhereUniqueInput, create: BeerPriceChangeUpvoteCreateInput, update: BeerPriceChangeUpvoteUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertBar: <T = Bar>(args: { where: BarWhereUniqueInput, create: BarCreateInput, update: BarUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertBeer: <T = Beer>(args: { where: BeerWhereUniqueInput, create: BeerCreateInput, update: BeerUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarRatings: <T = BatchPayload>(args: { data: BarRatingUpdateManyMutationInput, where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarComments: <T = BatchPayload>(args: { data: BarCommentUpdateManyMutationInput, where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBarChanges: <T = BatchPayload>(args: { data: BarChangeUpdateManyMutationInput, where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerRatings: <T = BatchPayload>(args: { data: BeerRatingUpdateManyMutationInput, where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerComments: <T = BatchPayload>(args: { data: BeerCommentUpdateManyMutationInput, where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerChanges: <T = BatchPayload>(args: { data: BeerChangeUpdateManyMutationInput, where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -137,13 +139,13 @@ export interface Mutation {
     updateManyBeerBarConnectionChanges: <T = BatchPayload>(args: { data: BeerBarConnectionChangeUpdateManyMutationInput, where?: BeerBarConnectionChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerPrices: <T = BatchPayload>(args: { data: BeerPriceUpdateManyMutationInput, where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyBeerPriceChanges: <T = BatchPayload>(args: { data: BeerPriceChangeUpdateManyMutationInput, where?: BeerPriceChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBars: <T = BatchPayload>(args: { data: BarUpdateManyMutationInput, where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyBeers: <T = BatchPayload>(args: { data: BeerUpdateManyMutationInput, where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarRatings: <T = BatchPayload>(args: { where?: BarRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarComments: <T = BatchPayload>(args: { where?: BarCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarChanges: <T = BatchPayload>(args: { where?: BarChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBarChangeUpvotes: <T = BatchPayload>(args: { where?: BarChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerRatings: <T = BatchPayload>(args: { where?: BeerRatingWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerComments: <T = BatchPayload>(args: { where?: BeerCommentWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerChanges: <T = BatchPayload>(args: { where?: BeerChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -154,16 +156,16 @@ export interface Mutation {
     deleteManyBeerPrices: <T = BatchPayload>(args: { where?: BeerPriceWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerPriceChanges: <T = BatchPayload>(args: { where?: BeerPriceChangeWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyBeerPriceChangeUpvotes: <T = BatchPayload>(args: { where?: BeerPriceChangeUpvoteWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBars: <T = BatchPayload>(args: { where?: BarWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyBeers: <T = BatchPayload>(args: { where?: BeerWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
+    bar: <T = BarSubscriptionPayload | null>(args: { where?: BarSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barRating: <T = BarRatingSubscriptionPayload | null>(args: { where?: BarRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barComment: <T = BarCommentSubscriptionPayload | null>(args: { where?: BarCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barChange: <T = BarChangeSubscriptionPayload | null>(args: { where?: BarChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     barChangeUpvote: <T = BarChangeUpvoteSubscriptionPayload | null>(args: { where?: BarChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    beer: <T = BeerSubscriptionPayload | null>(args: { where?: BeerSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerRating: <T = BeerRatingSubscriptionPayload | null>(args: { where?: BeerRatingSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerComment: <T = BeerCommentSubscriptionPayload | null>(args: { where?: BeerCommentSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerChange: <T = BeerChangeSubscriptionPayload | null>(args: { where?: BeerChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
@@ -174,16 +176,16 @@ export interface Subscription {
     beerPrice: <T = BeerPriceSubscriptionPayload | null>(args: { where?: BeerPriceSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerPriceChange: <T = BeerPriceChangeSubscriptionPayload | null>(args: { where?: BeerPriceChangeSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     beerPriceChangeUpvote: <T = BeerPriceChangeUpvoteSubscriptionPayload | null>(args: { where?: BeerPriceChangeUpvoteSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    bar: <T = BarSubscriptionPayload | null>(args: { where?: BarSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    beer: <T = BeerSubscriptionPayload | null>(args: { where?: BeerSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
     user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
   }
 
 export interface Exists {
+  Bar: (where?: BarWhereInput) => Promise<boolean>
   BarRating: (where?: BarRatingWhereInput) => Promise<boolean>
   BarComment: (where?: BarCommentWhereInput) => Promise<boolean>
   BarChange: (where?: BarChangeWhereInput) => Promise<boolean>
   BarChangeUpvote: (where?: BarChangeUpvoteWhereInput) => Promise<boolean>
+  Beer: (where?: BeerWhereInput) => Promise<boolean>
   BeerRating: (where?: BeerRatingWhereInput) => Promise<boolean>
   BeerComment: (where?: BeerCommentWhereInput) => Promise<boolean>
   BeerChange: (where?: BeerChangeWhereInput) => Promise<boolean>
@@ -194,8 +196,6 @@ export interface Exists {
   BeerPrice: (where?: BeerPriceWhereInput) => Promise<boolean>
   BeerPriceChange: (where?: BeerPriceChangeWhereInput) => Promise<boolean>
   BeerPriceChangeUpvote: (where?: BeerPriceChangeUpvoteWhereInput) => Promise<boolean>
-  Bar: (where?: BarWhereInput) => Promise<boolean>
-  Beer: (where?: BeerWhereInput) => Promise<boolean>
   User: (where?: UserWhereInput) => Promise<boolean>
 }
 
@@ -301,9 +301,10 @@ type Bar implements Node {
   photos: [String!]!
   beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer!]
   barRating(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarRating!]
-  beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice!]
   barComments(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarComment!]
   barChanges(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChange!]
+  beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice!]
+  beerConnections(where: BeerBarConnectionChangeWhereInput, orderBy: BeerBarConnectionChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerBarConnectionChange!]
   createdBy: User
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   createdAt: DateTime!
@@ -1699,9 +1700,10 @@ input BarCreateInput {
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1721,11 +1723,6 @@ input BarCreateManyWithoutLikedByInput {
   connect: [BarWhereUniqueInput!]
 }
 
-input BarCreateOneInput {
-  create: BarCreateInput
-  connect: BarWhereUniqueInput
-}
-
 input BarCreateOneWithoutBarChangesInput {
   create: BarCreateWithoutBarChangesInput
   connect: BarWhereUniqueInput
@@ -1738,6 +1735,11 @@ input BarCreateOneWithoutBarCommentsInput {
 
 input BarCreateOneWithoutBarRatingInput {
   create: BarCreateWithoutBarRatingInput
+  connect: BarWhereUniqueInput
+}
+
+input BarCreateOneWithoutBeerConnectionsInput {
+  create: BarCreateWithoutBeerConnectionsInput
   connect: BarWhereUniqueInput
 }
 
@@ -1761,8 +1763,9 @@ input BarCreateWithoutBarChangesInput {
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1778,8 +1781,9 @@ input BarCreateWithoutBarCommentsInput {
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1794,9 +1798,28 @@ input BarCreateWithoutBarRatingInput {
   closeTime: DateTime
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
+  createdBy: UserCreateOneWithoutCreatedBarsInput
+  likedBy: UserCreateManyWithoutLikedBarsInput
+}
+
+input BarCreateWithoutBeerConnectionsInput {
+  name: String!
+  address: String!
+  lat: String!
+  long: String!
+  phone: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarCreatephotosInput
+  beers: BeerCreateManyWithoutBarsInput
+  barRating: BarRatingCreateManyWithoutBarInput
+  barComments: BarCommentCreateManyWithoutBarInput
+  barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1814,6 +1837,7 @@ input BarCreateWithoutBeerPricesInput {
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1828,9 +1852,10 @@ input BarCreateWithoutBeersInput {
   closeTime: DateTime
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
@@ -1846,9 +1871,10 @@ input BarCreateWithoutCreatedByInput {
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   likedBy: UserCreateManyWithoutLikedBarsInput
 }
 
@@ -1863,9 +1889,10 @@ input BarCreateWithoutLikedByInput {
   photos: BarCreatephotosInput
   beers: BeerCreateManyWithoutBarsInput
   barRating: BarRatingCreateManyWithoutBarInput
-  beerPrices: BeerPriceCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
+  beerPrices: BeerPriceCreateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeCreateManyWithoutBarInput
   createdBy: UserCreateOneWithoutCreatedBarsInput
 }
 
@@ -2719,24 +2746,6 @@ input BarSubscriptionWhereInput {
   node: BarWhereInput
 }
 
-input BarUpdateDataInput {
-  name: String
-  address: String
-  lat: String
-  long: String
-  phone: String
-  openTime: DateTime
-  closeTime: DateTime
-  photos: BarUpdatephotosInput
-  beers: BeerUpdateManyWithoutBarsInput
-  barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
-  barComments: BarCommentUpdateManyWithoutBarInput
-  barChanges: BarChangeUpdateManyWithoutBarInput
-  createdBy: UserUpdateOneWithoutCreatedBarsInput
-  likedBy: UserUpdateManyWithoutLikedBarsInput
-}
-
 input BarUpdateInput {
   name: String
   address: String
@@ -2748,9 +2757,10 @@ input BarUpdateInput {
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2818,13 +2828,6 @@ input BarUpdateManyWithWhereNestedInput {
   data: BarUpdateManyDataInput!
 }
 
-input BarUpdateOneRequiredInput {
-  create: BarCreateInput
-  connect: BarWhereUniqueInput
-  update: BarUpdateDataInput
-  upsert: BarUpsertNestedInput
-}
-
 input BarUpdateOneRequiredWithoutBarChangesInput {
   create: BarCreateWithoutBarChangesInput
   connect: BarWhereUniqueInput
@@ -2844,6 +2847,13 @@ input BarUpdateOneRequiredWithoutBarRatingInput {
   connect: BarWhereUniqueInput
   update: BarUpdateWithoutBarRatingDataInput
   upsert: BarUpsertWithoutBarRatingInput
+}
+
+input BarUpdateOneRequiredWithoutBeerConnectionsInput {
+  create: BarCreateWithoutBeerConnectionsInput
+  connect: BarWhereUniqueInput
+  update: BarUpdateWithoutBeerConnectionsDataInput
+  upsert: BarUpsertWithoutBeerConnectionsInput
 }
 
 input BarUpdateOneRequiredWithoutBeerPricesInput {
@@ -2868,8 +2878,9 @@ input BarUpdateWithoutBarChangesDataInput {
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2885,8 +2896,9 @@ input BarUpdateWithoutBarCommentsDataInput {
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2901,9 +2913,28 @@ input BarUpdateWithoutBarRatingDataInput {
   closeTime: DateTime
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
+  createdBy: UserUpdateOneWithoutCreatedBarsInput
+  likedBy: UserUpdateManyWithoutLikedBarsInput
+}
+
+input BarUpdateWithoutBeerConnectionsDataInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  phone: String
+  openTime: DateTime
+  closeTime: DateTime
+  photos: BarUpdatephotosInput
+  beers: BeerUpdateManyWithoutBarsInput
+  barRating: BarRatingUpdateManyWithoutBarInput
+  barComments: BarCommentUpdateManyWithoutBarInput
+  barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2921,6 +2952,7 @@ input BarUpdateWithoutBeerPricesDataInput {
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2935,9 +2967,10 @@ input BarUpdateWithoutBeersDataInput {
   closeTime: DateTime
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
@@ -2953,9 +2986,10 @@ input BarUpdateWithoutCreatedByDataInput {
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   likedBy: UserUpdateManyWithoutLikedBarsInput
 }
 
@@ -2970,9 +3004,10 @@ input BarUpdateWithoutLikedByDataInput {
   photos: BarUpdatephotosInput
   beers: BeerUpdateManyWithoutBarsInput
   barRating: BarRatingUpdateManyWithoutBarInput
-  beerPrices: BeerPriceUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
+  beerPrices: BeerPriceUpdateManyWithoutBarInput
+  beerConnections: BeerBarConnectionChangeUpdateManyWithoutBarInput
   createdBy: UserUpdateOneWithoutCreatedBarsInput
 }
 
@@ -2991,11 +3026,6 @@ input BarUpdateWithWhereUniqueWithoutLikedByInput {
   data: BarUpdateWithoutLikedByDataInput!
 }
 
-input BarUpsertNestedInput {
-  update: BarUpdateDataInput!
-  create: BarCreateInput!
-}
-
 input BarUpsertWithoutBarChangesInput {
   update: BarUpdateWithoutBarChangesDataInput!
   create: BarCreateWithoutBarChangesInput!
@@ -3009,6 +3039,11 @@ input BarUpsertWithoutBarCommentsInput {
 input BarUpsertWithoutBarRatingInput {
   update: BarUpdateWithoutBarRatingDataInput!
   create: BarCreateWithoutBarRatingInput!
+}
+
+input BarUpsertWithoutBeerConnectionsInput {
+  update: BarUpdateWithoutBeerConnectionsDataInput!
+  create: BarCreateWithoutBeerConnectionsInput!
 }
 
 input BarUpsertWithoutBeerPricesInput {
@@ -3377,15 +3412,18 @@ input BarWhereInput {
   barRating_every: BarRatingWhereInput
   barRating_some: BarRatingWhereInput
   barRating_none: BarRatingWhereInput
-  beerPrices_every: BeerPriceWhereInput
-  beerPrices_some: BeerPriceWhereInput
-  beerPrices_none: BeerPriceWhereInput
   barComments_every: BarCommentWhereInput
   barComments_some: BarCommentWhereInput
   barComments_none: BarCommentWhereInput
   barChanges_every: BarChangeWhereInput
   barChanges_some: BarChangeWhereInput
   barChanges_none: BarChangeWhereInput
+  beerPrices_every: BeerPriceWhereInput
+  beerPrices_some: BeerPriceWhereInput
+  beerPrices_none: BeerPriceWhereInput
+  beerConnections_every: BeerBarConnectionChangeWhereInput
+  beerConnections_some: BeerBarConnectionChangeWhereInput
+  beerConnections_none: BeerBarConnectionChangeWhereInput
   createdBy: UserWhereInput
   likedBy_every: UserWhereInput
   likedBy_some: UserWhereInput
@@ -3410,9 +3448,10 @@ type Beer implements Node {
   brewery: Brewery
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
   beerRating(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
-  beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice!]
   beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment!]
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange!]
+  beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice!]
+  barConnections(where: BeerBarConnectionChangeWhereInput, orderBy: BeerBarConnectionChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerBarConnectionChange!]
   createdBy: User
   likedBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   createdAt: DateTime!
@@ -3443,9 +3482,19 @@ type BeerBarConnectionChangeConnection {
 input BeerBarConnectionChangeCreateInput {
   type: ConnectionChangeType!
   user: UserCreateOneInput
-  beer: BeerCreateOneInput!
-  bar: BarCreateOneInput!
+  beer: BeerCreateOneWithoutBarConnectionsInput!
+  bar: BarCreateOneWithoutBeerConnectionsInput!
   upvotes: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput
+}
+
+input BeerBarConnectionChangeCreateManyWithoutBarInput {
+  create: [BeerBarConnectionChangeCreateWithoutBarInput!]
+  connect: [BeerBarConnectionChangeWhereUniqueInput!]
+}
+
+input BeerBarConnectionChangeCreateManyWithoutBeerInput {
+  create: [BeerBarConnectionChangeCreateWithoutBeerInput!]
+  connect: [BeerBarConnectionChangeWhereUniqueInput!]
 }
 
 input BeerBarConnectionChangeCreateOneWithoutUpvotesInput {
@@ -3453,11 +3502,25 @@ input BeerBarConnectionChangeCreateOneWithoutUpvotesInput {
   connect: BeerBarConnectionChangeWhereUniqueInput
 }
 
+input BeerBarConnectionChangeCreateWithoutBarInput {
+  type: ConnectionChangeType!
+  user: UserCreateOneInput
+  beer: BeerCreateOneWithoutBarConnectionsInput!
+  upvotes: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput
+}
+
+input BeerBarConnectionChangeCreateWithoutBeerInput {
+  type: ConnectionChangeType!
+  user: UserCreateOneInput
+  bar: BarCreateOneWithoutBeerConnectionsInput!
+  upvotes: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput
+}
+
 input BeerBarConnectionChangeCreateWithoutUpvotesInput {
   type: ConnectionChangeType!
   user: UserCreateOneInput
-  beer: BeerCreateOneInput!
-  bar: BarCreateOneInput!
+  beer: BeerCreateOneWithoutBarConnectionsInput!
+  bar: BarCreateOneWithoutBeerConnectionsInput!
 }
 
 """An edge in a connection."""
@@ -3485,6 +3548,111 @@ type BeerBarConnectionChangePreviousValues {
   type: ConnectionChangeType!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+input BeerBarConnectionChangeScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerBarConnectionChangeScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerBarConnectionChangeScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerBarConnectionChangeScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  type: ConnectionChangeType
+
+  """All values that are not equal to given value."""
+  type_not: ConnectionChangeType
+
+  """All values that are contained in given list."""
+  type_in: [ConnectionChangeType!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [ConnectionChangeType!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type BeerBarConnectionChangeSubscriptionPayload {
@@ -3529,13 +3697,46 @@ input BeerBarConnectionChangeSubscriptionWhereInput {
 input BeerBarConnectionChangeUpdateInput {
   type: ConnectionChangeType
   user: UserUpdateOneInput
-  beer: BeerUpdateOneRequiredInput
-  bar: BarUpdateOneRequiredInput
+  beer: BeerUpdateOneRequiredWithoutBarConnectionsInput
+  bar: BarUpdateOneRequiredWithoutBeerConnectionsInput
   upvotes: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput
+}
+
+input BeerBarConnectionChangeUpdateManyDataInput {
+  type: ConnectionChangeType
 }
 
 input BeerBarConnectionChangeUpdateManyMutationInput {
   type: ConnectionChangeType
+}
+
+input BeerBarConnectionChangeUpdateManyWithoutBarInput {
+  create: [BeerBarConnectionChangeCreateWithoutBarInput!]
+  connect: [BeerBarConnectionChangeWhereUniqueInput!]
+  set: [BeerBarConnectionChangeWhereUniqueInput!]
+  disconnect: [BeerBarConnectionChangeWhereUniqueInput!]
+  delete: [BeerBarConnectionChangeWhereUniqueInput!]
+  update: [BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBarInput!]
+  updateMany: [BeerBarConnectionChangeUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerBarConnectionChangeScalarWhereInput!]
+  upsert: [BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBarInput!]
+}
+
+input BeerBarConnectionChangeUpdateManyWithoutBeerInput {
+  create: [BeerBarConnectionChangeCreateWithoutBeerInput!]
+  connect: [BeerBarConnectionChangeWhereUniqueInput!]
+  set: [BeerBarConnectionChangeWhereUniqueInput!]
+  disconnect: [BeerBarConnectionChangeWhereUniqueInput!]
+  delete: [BeerBarConnectionChangeWhereUniqueInput!]
+  update: [BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBeerInput!]
+  updateMany: [BeerBarConnectionChangeUpdateManyWithWhereNestedInput!]
+  deleteMany: [BeerBarConnectionChangeScalarWhereInput!]
+  upsert: [BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBeerInput!]
+}
+
+input BeerBarConnectionChangeUpdateManyWithWhereNestedInput {
+  where: BeerBarConnectionChangeScalarWhereInput!
+  data: BeerBarConnectionChangeUpdateManyDataInput!
 }
 
 input BeerBarConnectionChangeUpdateOneRequiredWithoutUpvotesInput {
@@ -3545,16 +3746,52 @@ input BeerBarConnectionChangeUpdateOneRequiredWithoutUpvotesInput {
   upsert: BeerBarConnectionChangeUpsertWithoutUpvotesInput
 }
 
+input BeerBarConnectionChangeUpdateWithoutBarDataInput {
+  type: ConnectionChangeType
+  user: UserUpdateOneInput
+  beer: BeerUpdateOneRequiredWithoutBarConnectionsInput
+  upvotes: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput
+}
+
+input BeerBarConnectionChangeUpdateWithoutBeerDataInput {
+  type: ConnectionChangeType
+  user: UserUpdateOneInput
+  bar: BarUpdateOneRequiredWithoutBeerConnectionsInput
+  upvotes: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput
+}
+
 input BeerBarConnectionChangeUpdateWithoutUpvotesDataInput {
   type: ConnectionChangeType
   user: UserUpdateOneInput
-  beer: BeerUpdateOneRequiredInput
-  bar: BarUpdateOneRequiredInput
+  beer: BeerUpdateOneRequiredWithoutBarConnectionsInput
+  bar: BarUpdateOneRequiredWithoutBeerConnectionsInput
+}
+
+input BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBarInput {
+  where: BeerBarConnectionChangeWhereUniqueInput!
+  data: BeerBarConnectionChangeUpdateWithoutBarDataInput!
+}
+
+input BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBeerInput {
+  where: BeerBarConnectionChangeWhereUniqueInput!
+  data: BeerBarConnectionChangeUpdateWithoutBeerDataInput!
 }
 
 input BeerBarConnectionChangeUpsertWithoutUpvotesInput {
   update: BeerBarConnectionChangeUpdateWithoutUpvotesDataInput!
   create: BeerBarConnectionChangeCreateWithoutUpvotesInput!
+}
+
+input BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBarInput {
+  where: BeerBarConnectionChangeWhereUniqueInput!
+  update: BeerBarConnectionChangeUpdateWithoutBarDataInput!
+  create: BeerBarConnectionChangeCreateWithoutBarInput!
+}
+
+input BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBeerInput {
+  where: BeerBarConnectionChangeWhereUniqueInput!
+  update: BeerBarConnectionChangeUpdateWithoutBeerDataInput!
+  create: BeerBarConnectionChangeCreateWithoutBeerInput!
 }
 
 type BeerBarConnectionChangeUpvote implements Node {
@@ -5274,9 +5511,10 @@ input BeerCreateInput {
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5301,8 +5539,8 @@ input BeerCreateManyWithoutLikedByInput {
   connect: [BeerWhereUniqueInput!]
 }
 
-input BeerCreateOneInput {
-  create: BeerCreateInput
+input BeerCreateOneWithoutBarConnectionsInput {
+  create: BeerCreateWithoutBarConnectionsInput
   connect: BeerWhereUniqueInput
 }
 
@@ -5326,6 +5564,21 @@ input BeerCreateOneWithoutBeerRatingInput {
   connect: BeerWhereUniqueInput
 }
 
+input BeerCreateWithoutBarConnectionsInput {
+  name: String!
+  type: String!
+  strong: String
+  photo: String
+  brewery: BreweryCreateOneWithoutBeersInput
+  bars: BarCreateManyWithoutBeersInput
+  beerRating: BeerRatingCreateManyWithoutBeerInput
+  beerComments: BeerCommentCreateManyWithoutBeerInput
+  beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  createdBy: UserCreateOneWithoutCreatedBeersInput
+  likedBy: UserCreateManyWithoutLikedBeersInput
+}
+
 input BeerCreateWithoutBarsInput {
   name: String!
   type: String!
@@ -5333,9 +5586,10 @@ input BeerCreateWithoutBarsInput {
   photo: String
   brewery: BreweryCreateOneWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5348,8 +5602,9 @@ input BeerCreateWithoutBeerChangesInput {
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5362,8 +5617,9 @@ input BeerCreateWithoutBeerCommentsInput {
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5378,6 +5634,7 @@ input BeerCreateWithoutBeerPricesInput {
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5389,9 +5646,10 @@ input BeerCreateWithoutBeerRatingInput {
   photo: String
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5403,9 +5661,10 @@ input BeerCreateWithoutBreweryInput {
   photo: String
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
@@ -5418,9 +5677,10 @@ input BeerCreateWithoutCreatedByInput {
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   likedBy: UserCreateManyWithoutLikedBeersInput
 }
 
@@ -5432,9 +5692,10 @@ input BeerCreateWithoutLikedByInput {
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
-  beerPrices: BeerPriceCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
+  beerPrices: BeerPriceCreateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeCreateManyWithoutBeerInput
   createdBy: UserCreateOneWithoutCreatedBeersInput
 }
 
@@ -7420,21 +7681,6 @@ input BeerSubscriptionWhereInput {
   node: BeerWhereInput
 }
 
-input BeerUpdateDataInput {
-  name: String
-  type: String
-  strong: String
-  photo: String
-  brewery: BreweryUpdateOneWithoutBeersInput
-  bars: BarUpdateManyWithoutBeersInput
-  beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
-  beerComments: BeerCommentUpdateManyWithoutBeerInput
-  beerChanges: BeerChangeUpdateManyWithoutBeerInput
-  createdBy: UserUpdateOneWithoutCreatedBeersInput
-  likedBy: UserUpdateManyWithoutLikedBeersInput
-}
-
 input BeerUpdateInput {
   name: String
   type: String
@@ -7443,9 +7689,10 @@ input BeerUpdateInput {
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7517,11 +7764,11 @@ input BeerUpdateManyWithWhereNestedInput {
   data: BeerUpdateManyDataInput!
 }
 
-input BeerUpdateOneRequiredInput {
-  create: BeerCreateInput
+input BeerUpdateOneRequiredWithoutBarConnectionsInput {
+  create: BeerCreateWithoutBarConnectionsInput
   connect: BeerWhereUniqueInput
-  update: BeerUpdateDataInput
-  upsert: BeerUpsertNestedInput
+  update: BeerUpdateWithoutBarConnectionsDataInput
+  upsert: BeerUpsertWithoutBarConnectionsInput
 }
 
 input BeerUpdateOneRequiredWithoutBeerChangesInput {
@@ -7552,6 +7799,21 @@ input BeerUpdateOneRequiredWithoutBeerRatingInput {
   upsert: BeerUpsertWithoutBeerRatingInput
 }
 
+input BeerUpdateWithoutBarConnectionsDataInput {
+  name: String
+  type: String
+  strong: String
+  photo: String
+  brewery: BreweryUpdateOneWithoutBeersInput
+  bars: BarUpdateManyWithoutBeersInput
+  beerRating: BeerRatingUpdateManyWithoutBeerInput
+  beerComments: BeerCommentUpdateManyWithoutBeerInput
+  beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  createdBy: UserUpdateOneWithoutCreatedBeersInput
+  likedBy: UserUpdateManyWithoutLikedBeersInput
+}
+
 input BeerUpdateWithoutBarsDataInput {
   name: String
   type: String
@@ -7559,9 +7821,10 @@ input BeerUpdateWithoutBarsDataInput {
   photo: String
   brewery: BreweryUpdateOneWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7574,8 +7837,9 @@ input BeerUpdateWithoutBeerChangesDataInput {
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7588,8 +7852,9 @@ input BeerUpdateWithoutBeerCommentsDataInput {
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7604,6 +7869,7 @@ input BeerUpdateWithoutBeerPricesDataInput {
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7615,9 +7881,10 @@ input BeerUpdateWithoutBeerRatingDataInput {
   photo: String
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7629,9 +7896,10 @@ input BeerUpdateWithoutBreweryDataInput {
   photo: String
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
@@ -7644,9 +7912,10 @@ input BeerUpdateWithoutCreatedByDataInput {
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   likedBy: UserUpdateManyWithoutLikedBeersInput
 }
 
@@ -7658,9 +7927,10 @@ input BeerUpdateWithoutLikedByDataInput {
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
-  beerPrices: BeerPriceUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
+  beerPrices: BeerPriceUpdateManyWithoutBeerInput
+  barConnections: BeerBarConnectionChangeUpdateManyWithoutBeerInput
   createdBy: UserUpdateOneWithoutCreatedBeersInput
 }
 
@@ -7684,9 +7954,9 @@ input BeerUpdateWithWhereUniqueWithoutLikedByInput {
   data: BeerUpdateWithoutLikedByDataInput!
 }
 
-input BeerUpsertNestedInput {
-  update: BeerUpdateDataInput!
-  create: BeerCreateInput!
+input BeerUpsertWithoutBarConnectionsInput {
+  update: BeerUpdateWithoutBarConnectionsDataInput!
+  create: BeerCreateWithoutBarConnectionsInput!
 }
 
 input BeerUpsertWithoutBeerChangesInput {
@@ -7993,15 +8263,18 @@ input BeerWhereInput {
   beerRating_every: BeerRatingWhereInput
   beerRating_some: BeerRatingWhereInput
   beerRating_none: BeerRatingWhereInput
-  beerPrices_every: BeerPriceWhereInput
-  beerPrices_some: BeerPriceWhereInput
-  beerPrices_none: BeerPriceWhereInput
   beerComments_every: BeerCommentWhereInput
   beerComments_some: BeerCommentWhereInput
   beerComments_none: BeerCommentWhereInput
   beerChanges_every: BeerChangeWhereInput
   beerChanges_some: BeerChangeWhereInput
   beerChanges_none: BeerChangeWhereInput
+  beerPrices_every: BeerPriceWhereInput
+  beerPrices_some: BeerPriceWhereInput
+  beerPrices_none: BeerPriceWhereInput
+  barConnections_every: BeerBarConnectionChangeWhereInput
+  barConnections_some: BeerBarConnectionChangeWhereInput
+  barConnections_none: BeerBarConnectionChangeWhereInput
   createdBy: UserWhereInput
   likedBy_every: UserWhereInput
   likedBy_some: UserWhereInput
@@ -8391,10 +8664,12 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
+  createBar(data: BarCreateInput!): Bar!
   createBarRating(data: BarRatingCreateInput!): BarRating!
   createBarComment(data: BarCommentCreateInput!): BarComment!
   createBarChange(data: BarChangeCreateInput!): BarChange!
   createBarChangeUpvote(data: BarChangeUpvoteCreateInput!): BarChangeUpvote!
+  createBeer(data: BeerCreateInput!): Beer!
   createBeerRating(data: BeerRatingCreateInput!): BeerRating!
   createBeerComment(data: BeerCommentCreateInput!): BeerComment!
   createBeerChange(data: BeerChangeCreateInput!): BeerChange!
@@ -8405,13 +8680,13 @@ type Mutation {
   createBeerPrice(data: BeerPriceCreateInput!): BeerPrice!
   createBeerPriceChange(data: BeerPriceChangeCreateInput!): BeerPriceChange!
   createBeerPriceChangeUpvote(data: BeerPriceChangeUpvoteCreateInput!): BeerPriceChangeUpvote!
-  createBar(data: BarCreateInput!): Bar!
-  createBeer(data: BeerCreateInput!): Beer!
   createUser(data: UserCreateInput!): User!
+  updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
   updateBarRating(data: BarRatingUpdateInput!, where: BarRatingWhereUniqueInput!): BarRating
   updateBarComment(data: BarCommentUpdateInput!, where: BarCommentWhereUniqueInput!): BarComment
   updateBarChange(data: BarChangeUpdateInput!, where: BarChangeWhereUniqueInput!): BarChange
   updateBarChangeUpvote(data: BarChangeUpvoteUpdateInput!, where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
   updateBeerRating(data: BeerRatingUpdateInput!, where: BeerRatingWhereUniqueInput!): BeerRating
   updateBeerComment(data: BeerCommentUpdateInput!, where: BeerCommentWhereUniqueInput!): BeerComment
   updateBeerChange(data: BeerChangeUpdateInput!, where: BeerChangeWhereUniqueInput!): BeerChange
@@ -8422,13 +8697,13 @@ type Mutation {
   updateBeerPrice(data: BeerPriceUpdateInput!, where: BeerPriceWhereUniqueInput!): BeerPrice
   updateBeerPriceChange(data: BeerPriceChangeUpdateInput!, where: BeerPriceChangeWhereUniqueInput!): BeerPriceChange
   updateBeerPriceChangeUpvote(data: BeerPriceChangeUpvoteUpdateInput!, where: BeerPriceChangeUpvoteWhereUniqueInput!): BeerPriceChangeUpvote
-  updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
-  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  deleteBar(where: BarWhereUniqueInput!): Bar
   deleteBarRating(where: BarRatingWhereUniqueInput!): BarRating
   deleteBarComment(where: BarCommentWhereUniqueInput!): BarComment
   deleteBarChange(where: BarChangeWhereUniqueInput!): BarChange
   deleteBarChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
   deleteBeerRating(where: BeerRatingWhereUniqueInput!): BeerRating
   deleteBeerComment(where: BeerCommentWhereUniqueInput!): BeerComment
   deleteBeerChange(where: BeerChangeWhereUniqueInput!): BeerChange
@@ -8439,13 +8714,13 @@ type Mutation {
   deleteBeerPrice(where: BeerPriceWhereUniqueInput!): BeerPrice
   deleteBeerPriceChange(where: BeerPriceChangeWhereUniqueInput!): BeerPriceChange
   deleteBeerPriceChangeUpvote(where: BeerPriceChangeUpvoteWhereUniqueInput!): BeerPriceChangeUpvote
-  deleteBar(where: BarWhereUniqueInput!): Bar
-  deleteBeer(where: BeerWhereUniqueInput!): Beer
   deleteUser(where: UserWhereUniqueInput!): User
+  upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
   upsertBarRating(where: BarRatingWhereUniqueInput!, create: BarRatingCreateInput!, update: BarRatingUpdateInput!): BarRating!
   upsertBarComment(where: BarCommentWhereUniqueInput!, create: BarCommentCreateInput!, update: BarCommentUpdateInput!): BarComment!
   upsertBarChange(where: BarChangeWhereUniqueInput!, create: BarChangeCreateInput!, update: BarChangeUpdateInput!): BarChange!
   upsertBarChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!, create: BarChangeUpvoteCreateInput!, update: BarChangeUpvoteUpdateInput!): BarChangeUpvote!
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
   upsertBeerRating(where: BeerRatingWhereUniqueInput!, create: BeerRatingCreateInput!, update: BeerRatingUpdateInput!): BeerRating!
   upsertBeerComment(where: BeerCommentWhereUniqueInput!, create: BeerCommentCreateInput!, update: BeerCommentUpdateInput!): BeerComment!
   upsertBeerChange(where: BeerChangeWhereUniqueInput!, create: BeerChangeCreateInput!, update: BeerChangeUpdateInput!): BeerChange!
@@ -8456,12 +8731,12 @@ type Mutation {
   upsertBeerPrice(where: BeerPriceWhereUniqueInput!, create: BeerPriceCreateInput!, update: BeerPriceUpdateInput!): BeerPrice!
   upsertBeerPriceChange(where: BeerPriceChangeWhereUniqueInput!, create: BeerPriceChangeCreateInput!, update: BeerPriceChangeUpdateInput!): BeerPriceChange!
   upsertBeerPriceChangeUpvote(where: BeerPriceChangeUpvoteWhereUniqueInput!, create: BeerPriceChangeUpvoteCreateInput!, update: BeerPriceChangeUpvoteUpdateInput!): BeerPriceChangeUpvote!
-  upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
-  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
   updateManyBarRatings(data: BarRatingUpdateManyMutationInput!, where: BarRatingWhereInput): BatchPayload!
   updateManyBarComments(data: BarCommentUpdateManyMutationInput!, where: BarCommentWhereInput): BatchPayload!
   updateManyBarChanges(data: BarChangeUpdateManyMutationInput!, where: BarChangeWhereInput): BatchPayload!
+  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
   updateManyBeerRatings(data: BeerRatingUpdateManyMutationInput!, where: BeerRatingWhereInput): BatchPayload!
   updateManyBeerComments(data: BeerCommentUpdateManyMutationInput!, where: BeerCommentWhereInput): BatchPayload!
   updateManyBeerChanges(data: BeerChangeUpdateManyMutationInput!, where: BeerChangeWhereInput): BatchPayload!
@@ -8469,13 +8744,13 @@ type Mutation {
   updateManyBeerBarConnectionChanges(data: BeerBarConnectionChangeUpdateManyMutationInput!, where: BeerBarConnectionChangeWhereInput): BatchPayload!
   updateManyBeerPrices(data: BeerPriceUpdateManyMutationInput!, where: BeerPriceWhereInput): BatchPayload!
   updateManyBeerPriceChanges(data: BeerPriceChangeUpdateManyMutationInput!, where: BeerPriceChangeWhereInput): BatchPayload!
-  updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
-  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  deleteManyBars(where: BarWhereInput): BatchPayload!
   deleteManyBarRatings(where: BarRatingWhereInput): BatchPayload!
   deleteManyBarComments(where: BarCommentWhereInput): BatchPayload!
   deleteManyBarChanges(where: BarChangeWhereInput): BatchPayload!
   deleteManyBarChangeUpvotes(where: BarChangeUpvoteWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
   deleteManyBeerRatings(where: BeerRatingWhereInput): BatchPayload!
   deleteManyBeerComments(where: BeerCommentWhereInput): BatchPayload!
   deleteManyBeerChanges(where: BeerChangeWhereInput): BatchPayload!
@@ -8486,8 +8761,6 @@ type Mutation {
   deleteManyBeerPrices(where: BeerPriceWhereInput): BatchPayload!
   deleteManyBeerPriceChanges(where: BeerPriceChangeWhereInput): BatchPayload!
   deleteManyBeerPriceChangeUpvotes(where: BeerPriceChangeUpvoteWhereInput): BatchPayload!
-  deleteManyBars(where: BarWhereInput): BatchPayload!
-  deleteManyBeers(where: BeerWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
 
@@ -8519,10 +8792,12 @@ type PageInfo {
 }
 
 type Query {
+  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
   barRatings(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarRating]!
   barComments(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarComment]!
   barChanges(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChange]!
   barChangeUpvotes(where: BarChangeUpvoteWhereInput, orderBy: BarChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChangeUpvote]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
   beerRatings(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating]!
   beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment]!
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange]!
@@ -8533,13 +8808,13 @@ type Query {
   beerPrices(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPrice]!
   beerPriceChanges(where: BeerPriceChangeWhereInput, orderBy: BeerPriceChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPriceChange]!
   beerPriceChangeUpvotes(where: BeerPriceChangeUpvoteWhereInput, orderBy: BeerPriceChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerPriceChangeUpvote]!
-  bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar]!
-  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  bar(where: BarWhereUniqueInput!): Bar
   barRating(where: BarRatingWhereUniqueInput!): BarRating
   barComment(where: BarCommentWhereUniqueInput!): BarComment
   barChange(where: BarChangeWhereUniqueInput!): BarChange
   barChangeUpvote(where: BarChangeUpvoteWhereUniqueInput!): BarChangeUpvote
+  beer(where: BeerWhereUniqueInput!): Beer
   beerRating(where: BeerRatingWhereUniqueInput!): BeerRating
   beerComment(where: BeerCommentWhereUniqueInput!): BeerComment
   beerChange(where: BeerChangeWhereUniqueInput!): BeerChange
@@ -8550,13 +8825,13 @@ type Query {
   beerPrice(where: BeerPriceWhereUniqueInput!): BeerPrice
   beerPriceChange(where: BeerPriceChangeWhereUniqueInput!): BeerPriceChange
   beerPriceChangeUpvote(where: BeerPriceChangeUpvoteWhereUniqueInput!): BeerPriceChangeUpvote
-  bar(where: BarWhereUniqueInput!): Bar
-  beer(where: BeerWhereUniqueInput!): Beer
   user(where: UserWhereUniqueInput!): User
+  barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
   barRatingsConnection(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarRatingConnection!
   barCommentsConnection(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarCommentConnection!
   barChangesConnection(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarChangeConnection!
   barChangeUpvotesConnection(where: BarChangeUpvoteWhereInput, orderBy: BarChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarChangeUpvoteConnection!
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
   beerRatingsConnection(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerRatingConnection!
   beerCommentsConnection(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerCommentConnection!
   beerChangesConnection(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerChangeConnection!
@@ -8567,8 +8842,6 @@ type Query {
   beerPricesConnection(where: BeerPriceWhereInput, orderBy: BeerPriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerPriceConnection!
   beerPriceChangesConnection(where: BeerPriceChangeWhereInput, orderBy: BeerPriceChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerPriceChangeConnection!
   beerPriceChangeUpvotesConnection(where: BeerPriceChangeUpvoteWhereInput, orderBy: BeerPriceChangeUpvoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerPriceChangeUpvoteConnection!
-  barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
-  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
 
   """Fetches an object given its ID"""
@@ -8589,10 +8862,12 @@ enum Sex {
 }
 
 type Subscription {
+  bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
   barRating(where: BarRatingSubscriptionWhereInput): BarRatingSubscriptionPayload
   barComment(where: BarCommentSubscriptionWhereInput): BarCommentSubscriptionPayload
   barChange(where: BarChangeSubscriptionWhereInput): BarChangeSubscriptionPayload
   barChangeUpvote(where: BarChangeUpvoteSubscriptionWhereInput): BarChangeUpvoteSubscriptionPayload
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
   beerRating(where: BeerRatingSubscriptionWhereInput): BeerRatingSubscriptionPayload
   beerComment(where: BeerCommentSubscriptionWhereInput): BeerCommentSubscriptionPayload
   beerChange(where: BeerChangeSubscriptionWhereInput): BeerChangeSubscriptionPayload
@@ -8603,8 +8878,6 @@ type Subscription {
   beerPrice(where: BeerPriceSubscriptionWhereInput): BeerPriceSubscriptionPayload
   beerPriceChange(where: BeerPriceChangeSubscriptionWhereInput): BeerPriceChangeSubscriptionPayload
   beerPriceChangeUpvote(where: BeerPriceChangeUpvoteSubscriptionWhereInput): BeerPriceChangeUpvoteSubscriptionPayload
-  bar(where: BarSubscriptionWhereInput): BarSubscriptionPayload
-  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
@@ -11363,9 +11636,10 @@ export interface BarCreateInput {
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11385,11 +11659,6 @@ export interface BarCreateManyWithoutLikedByInput {
   connect?: BarWhereUniqueInput[] | BarWhereUniqueInput | null
 }
 
-export interface BarCreateOneInput {
-  create?: BarCreateInput | null
-  connect?: BarWhereUniqueInput | null
-}
-
 export interface BarCreateOneWithoutBarChangesInput {
   create?: BarCreateWithoutBarChangesInput | null
   connect?: BarWhereUniqueInput | null
@@ -11402,6 +11671,11 @@ export interface BarCreateOneWithoutBarCommentsInput {
 
 export interface BarCreateOneWithoutBarRatingInput {
   create?: BarCreateWithoutBarRatingInput | null
+  connect?: BarWhereUniqueInput | null
+}
+
+export interface BarCreateOneWithoutBeerConnectionsInput {
+  create?: BarCreateWithoutBeerConnectionsInput | null
   connect?: BarWhereUniqueInput | null
 }
 
@@ -11425,8 +11699,9 @@ export interface BarCreateWithoutBarChangesInput {
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11442,8 +11717,9 @@ export interface BarCreateWithoutBarCommentsInput {
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11458,9 +11734,28 @@ export interface BarCreateWithoutBarRatingInput {
   closeTime?: DateTime | null
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
+  createdBy?: UserCreateOneWithoutCreatedBarsInput | null
+  likedBy?: UserCreateManyWithoutLikedBarsInput | null
+}
+
+export interface BarCreateWithoutBeerConnectionsInput {
+  name: String
+  address: String
+  lat: String
+  long: String
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarCreatephotosInput | null
+  beers?: BeerCreateManyWithoutBarsInput | null
+  barRating?: BarRatingCreateManyWithoutBarInput | null
+  barComments?: BarCommentCreateManyWithoutBarInput | null
+  barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11478,6 +11773,7 @@ export interface BarCreateWithoutBeerPricesInput {
   barRating?: BarRatingCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11492,9 +11788,10 @@ export interface BarCreateWithoutBeersInput {
   closeTime?: DateTime | null
   photos?: BarCreatephotosInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
@@ -11510,9 +11807,10 @@ export interface BarCreateWithoutCreatedByInput {
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   likedBy?: UserCreateManyWithoutLikedBarsInput | null
 }
 
@@ -11527,9 +11825,10 @@ export interface BarCreateWithoutLikedByInput {
   photos?: BarCreatephotosInput | null
   beers?: BeerCreateManyWithoutBarsInput | null
   barRating?: BarRatingCreateManyWithoutBarInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
   barComments?: BarCommentCreateManyWithoutBarInput | null
   barChanges?: BarChangeCreateManyWithoutBarInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeCreateManyWithoutBarInput | null
   createdBy?: UserCreateOneWithoutCreatedBarsInput | null
 }
 
@@ -11872,24 +12171,6 @@ export interface BarSubscriptionWhereInput {
   node?: BarWhereInput | null
 }
 
-export interface BarUpdateDataInput {
-  name?: String | null
-  address?: String | null
-  lat?: String | null
-  long?: String | null
-  phone?: String | null
-  openTime?: DateTime | null
-  closeTime?: DateTime | null
-  photos?: BarUpdatephotosInput | null
-  beers?: BeerUpdateManyWithoutBarsInput | null
-  barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
-  barComments?: BarCommentUpdateManyWithoutBarInput | null
-  barChanges?: BarChangeUpdateManyWithoutBarInput | null
-  createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
-  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
-}
-
 export interface BarUpdateInput {
   name?: String | null
   address?: String | null
@@ -11901,9 +12182,10 @@ export interface BarUpdateInput {
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -11971,13 +12253,6 @@ export interface BarUpdateManyWithWhereNestedInput {
   data: BarUpdateManyDataInput
 }
 
-export interface BarUpdateOneRequiredInput {
-  create?: BarCreateInput | null
-  connect?: BarWhereUniqueInput | null
-  update?: BarUpdateDataInput | null
-  upsert?: BarUpsertNestedInput | null
-}
-
 export interface BarUpdateOneRequiredWithoutBarChangesInput {
   create?: BarCreateWithoutBarChangesInput | null
   connect?: BarWhereUniqueInput | null
@@ -11997,6 +12272,13 @@ export interface BarUpdateOneRequiredWithoutBarRatingInput {
   connect?: BarWhereUniqueInput | null
   update?: BarUpdateWithoutBarRatingDataInput | null
   upsert?: BarUpsertWithoutBarRatingInput | null
+}
+
+export interface BarUpdateOneRequiredWithoutBeerConnectionsInput {
+  create?: BarCreateWithoutBeerConnectionsInput | null
+  connect?: BarWhereUniqueInput | null
+  update?: BarUpdateWithoutBeerConnectionsDataInput | null
+  upsert?: BarUpsertWithoutBeerConnectionsInput | null
 }
 
 export interface BarUpdateOneRequiredWithoutBeerPricesInput {
@@ -12021,8 +12303,9 @@ export interface BarUpdateWithoutBarChangesDataInput {
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -12038,8 +12321,9 @@ export interface BarUpdateWithoutBarCommentsDataInput {
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -12054,9 +12338,28 @@ export interface BarUpdateWithoutBarRatingDataInput {
   closeTime?: DateTime | null
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
+  createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
+  likedBy?: UserUpdateManyWithoutLikedBarsInput | null
+}
+
+export interface BarUpdateWithoutBeerConnectionsDataInput {
+  name?: String | null
+  address?: String | null
+  lat?: String | null
+  long?: String | null
+  phone?: String | null
+  openTime?: DateTime | null
+  closeTime?: DateTime | null
+  photos?: BarUpdatephotosInput | null
+  beers?: BeerUpdateManyWithoutBarsInput | null
+  barRating?: BarRatingUpdateManyWithoutBarInput | null
+  barComments?: BarCommentUpdateManyWithoutBarInput | null
+  barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -12074,6 +12377,7 @@ export interface BarUpdateWithoutBeerPricesDataInput {
   barRating?: BarRatingUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -12088,9 +12392,10 @@ export interface BarUpdateWithoutBeersDataInput {
   closeTime?: DateTime | null
   photos?: BarUpdatephotosInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
@@ -12106,9 +12411,10 @@ export interface BarUpdateWithoutCreatedByDataInput {
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   likedBy?: UserUpdateManyWithoutLikedBarsInput | null
 }
 
@@ -12123,9 +12429,10 @@ export interface BarUpdateWithoutLikedByDataInput {
   photos?: BarUpdatephotosInput | null
   beers?: BeerUpdateManyWithoutBarsInput | null
   barRating?: BarRatingUpdateManyWithoutBarInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
   barComments?: BarCommentUpdateManyWithoutBarInput | null
   barChanges?: BarChangeUpdateManyWithoutBarInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBarInput | null
+  beerConnections?: BeerBarConnectionChangeUpdateManyWithoutBarInput | null
   createdBy?: UserUpdateOneWithoutCreatedBarsInput | null
 }
 
@@ -12144,11 +12451,6 @@ export interface BarUpdateWithWhereUniqueWithoutLikedByInput {
   data: BarUpdateWithoutLikedByDataInput
 }
 
-export interface BarUpsertNestedInput {
-  update: BarUpdateDataInput
-  create: BarCreateInput
-}
-
 export interface BarUpsertWithoutBarChangesInput {
   update: BarUpdateWithoutBarChangesDataInput
   create: BarCreateWithoutBarChangesInput
@@ -12162,6 +12464,11 @@ export interface BarUpsertWithoutBarCommentsInput {
 export interface BarUpsertWithoutBarRatingInput {
   update: BarUpdateWithoutBarRatingDataInput
   create: BarCreateWithoutBarRatingInput
+}
+
+export interface BarUpsertWithoutBeerConnectionsInput {
+  update: BarUpdateWithoutBeerConnectionsDataInput
+  create: BarCreateWithoutBeerConnectionsInput
 }
 
 export interface BarUpsertWithoutBeerPricesInput {
@@ -12313,15 +12620,18 @@ export interface BarWhereInput {
   barRating_every?: BarRatingWhereInput | null
   barRating_some?: BarRatingWhereInput | null
   barRating_none?: BarRatingWhereInput | null
-  beerPrices_every?: BeerPriceWhereInput | null
-  beerPrices_some?: BeerPriceWhereInput | null
-  beerPrices_none?: BeerPriceWhereInput | null
   barComments_every?: BarCommentWhereInput | null
   barComments_some?: BarCommentWhereInput | null
   barComments_none?: BarCommentWhereInput | null
   barChanges_every?: BarChangeWhereInput | null
   barChanges_some?: BarChangeWhereInput | null
   barChanges_none?: BarChangeWhereInput | null
+  beerPrices_every?: BeerPriceWhereInput | null
+  beerPrices_some?: BeerPriceWhereInput | null
+  beerPrices_none?: BeerPriceWhereInput | null
+  beerConnections_every?: BeerBarConnectionChangeWhereInput | null
+  beerConnections_some?: BeerBarConnectionChangeWhereInput | null
+  beerConnections_none?: BeerBarConnectionChangeWhereInput | null
   createdBy?: UserWhereInput | null
   likedBy_every?: UserWhereInput | null
   likedBy_some?: UserWhereInput | null
@@ -12335,9 +12645,19 @@ export interface BarWhereUniqueInput {
 export interface BeerBarConnectionChangeCreateInput {
   type: ConnectionChangeType
   user?: UserCreateOneInput | null
-  beer: BeerCreateOneInput
-  bar: BarCreateOneInput
+  beer: BeerCreateOneWithoutBarConnectionsInput
+  bar: BarCreateOneWithoutBeerConnectionsInput
   upvotes?: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput | null
+}
+
+export interface BeerBarConnectionChangeCreateManyWithoutBarInput {
+  create?: BeerBarConnectionChangeCreateWithoutBarInput[] | BeerBarConnectionChangeCreateWithoutBarInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+}
+
+export interface BeerBarConnectionChangeCreateManyWithoutBeerInput {
+  create?: BeerBarConnectionChangeCreateWithoutBeerInput[] | BeerBarConnectionChangeCreateWithoutBeerInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
 }
 
 export interface BeerBarConnectionChangeCreateOneWithoutUpvotesInput {
@@ -12345,11 +12665,65 @@ export interface BeerBarConnectionChangeCreateOneWithoutUpvotesInput {
   connect?: BeerBarConnectionChangeWhereUniqueInput | null
 }
 
+export interface BeerBarConnectionChangeCreateWithoutBarInput {
+  type: ConnectionChangeType
+  user?: UserCreateOneInput | null
+  beer: BeerCreateOneWithoutBarConnectionsInput
+  upvotes?: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput | null
+}
+
+export interface BeerBarConnectionChangeCreateWithoutBeerInput {
+  type: ConnectionChangeType
+  user?: UserCreateOneInput | null
+  bar: BarCreateOneWithoutBeerConnectionsInput
+  upvotes?: BeerBarConnectionChangeUpvoteCreateManyWithoutBeerBarConnectionChangeInput | null
+}
+
 export interface BeerBarConnectionChangeCreateWithoutUpvotesInput {
   type: ConnectionChangeType
   user?: UserCreateOneInput | null
-  beer: BeerCreateOneInput
-  bar: BarCreateOneInput
+  beer: BeerCreateOneWithoutBarConnectionsInput
+  bar: BarCreateOneWithoutBeerConnectionsInput
+}
+
+export interface BeerBarConnectionChangeScalarWhereInput {
+  AND?: BeerBarConnectionChangeScalarWhereInput[] | BeerBarConnectionChangeScalarWhereInput | null
+  OR?: BeerBarConnectionChangeScalarWhereInput[] | BeerBarConnectionChangeScalarWhereInput | null
+  NOT?: BeerBarConnectionChangeScalarWhereInput[] | BeerBarConnectionChangeScalarWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  type?: ConnectionChangeType | null
+  type_not?: ConnectionChangeType | null
+  type_in?: ConnectionChangeType[] | ConnectionChangeType | null
+  type_not_in?: ConnectionChangeType[] | ConnectionChangeType | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  updatedAt?: DateTime | null
+  updatedAt_not?: DateTime | null
+  updatedAt_in?: DateTime[] | DateTime | null
+  updatedAt_not_in?: DateTime[] | DateTime | null
+  updatedAt_lt?: DateTime | null
+  updatedAt_lte?: DateTime | null
+  updatedAt_gt?: DateTime | null
+  updatedAt_gte?: DateTime | null
 }
 
 export interface BeerBarConnectionChangeSubscriptionWhereInput {
@@ -12366,13 +12740,46 @@ export interface BeerBarConnectionChangeSubscriptionWhereInput {
 export interface BeerBarConnectionChangeUpdateInput {
   type?: ConnectionChangeType | null
   user?: UserUpdateOneInput | null
-  beer?: BeerUpdateOneRequiredInput | null
-  bar?: BarUpdateOneRequiredInput | null
+  beer?: BeerUpdateOneRequiredWithoutBarConnectionsInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerConnectionsInput | null
   upvotes?: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateManyDataInput {
+  type?: ConnectionChangeType | null
 }
 
 export interface BeerBarConnectionChangeUpdateManyMutationInput {
   type?: ConnectionChangeType | null
+}
+
+export interface BeerBarConnectionChangeUpdateManyWithoutBarInput {
+  create?: BeerBarConnectionChangeCreateWithoutBarInput[] | BeerBarConnectionChangeCreateWithoutBarInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  set?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  disconnect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  delete?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  update?: BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBarInput[] | BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBarInput | null
+  updateMany?: BeerBarConnectionChangeUpdateManyWithWhereNestedInput[] | BeerBarConnectionChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerBarConnectionChangeScalarWhereInput[] | BeerBarConnectionChangeScalarWhereInput | null
+  upsert?: BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBarInput[] | BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBarInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateManyWithoutBeerInput {
+  create?: BeerBarConnectionChangeCreateWithoutBeerInput[] | BeerBarConnectionChangeCreateWithoutBeerInput | null
+  connect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  set?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  disconnect?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  delete?: BeerBarConnectionChangeWhereUniqueInput[] | BeerBarConnectionChangeWhereUniqueInput | null
+  update?: BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBeerInput[] | BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBeerInput | null
+  updateMany?: BeerBarConnectionChangeUpdateManyWithWhereNestedInput[] | BeerBarConnectionChangeUpdateManyWithWhereNestedInput | null
+  deleteMany?: BeerBarConnectionChangeScalarWhereInput[] | BeerBarConnectionChangeScalarWhereInput | null
+  upsert?: BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBeerInput[] | BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBeerInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateManyWithWhereNestedInput {
+  where: BeerBarConnectionChangeScalarWhereInput
+  data: BeerBarConnectionChangeUpdateManyDataInput
 }
 
 export interface BeerBarConnectionChangeUpdateOneRequiredWithoutUpvotesInput {
@@ -12382,16 +12789,52 @@ export interface BeerBarConnectionChangeUpdateOneRequiredWithoutUpvotesInput {
   upsert?: BeerBarConnectionChangeUpsertWithoutUpvotesInput | null
 }
 
+export interface BeerBarConnectionChangeUpdateWithoutBarDataInput {
+  type?: ConnectionChangeType | null
+  user?: UserUpdateOneInput | null
+  beer?: BeerUpdateOneRequiredWithoutBarConnectionsInput | null
+  upvotes?: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateWithoutBeerDataInput {
+  type?: ConnectionChangeType | null
+  user?: UserUpdateOneInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerConnectionsInput | null
+  upvotes?: BeerBarConnectionChangeUpvoteUpdateManyWithoutBeerBarConnectionChangeInput | null
+}
+
 export interface BeerBarConnectionChangeUpdateWithoutUpvotesDataInput {
   type?: ConnectionChangeType | null
   user?: UserUpdateOneInput | null
-  beer?: BeerUpdateOneRequiredInput | null
-  bar?: BarUpdateOneRequiredInput | null
+  beer?: BeerUpdateOneRequiredWithoutBarConnectionsInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerConnectionsInput | null
+}
+
+export interface BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBarInput {
+  where: BeerBarConnectionChangeWhereUniqueInput
+  data: BeerBarConnectionChangeUpdateWithoutBarDataInput
+}
+
+export interface BeerBarConnectionChangeUpdateWithWhereUniqueWithoutBeerInput {
+  where: BeerBarConnectionChangeWhereUniqueInput
+  data: BeerBarConnectionChangeUpdateWithoutBeerDataInput
 }
 
 export interface BeerBarConnectionChangeUpsertWithoutUpvotesInput {
   update: BeerBarConnectionChangeUpdateWithoutUpvotesDataInput
   create: BeerBarConnectionChangeCreateWithoutUpvotesInput
+}
+
+export interface BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBarInput {
+  where: BeerBarConnectionChangeWhereUniqueInput
+  update: BeerBarConnectionChangeUpdateWithoutBarDataInput
+  create: BeerBarConnectionChangeCreateWithoutBarInput
+}
+
+export interface BeerBarConnectionChangeUpsertWithWhereUniqueWithoutBeerInput {
+  where: BeerBarConnectionChangeWhereUniqueInput
+  update: BeerBarConnectionChangeUpdateWithoutBeerDataInput
+  create: BeerBarConnectionChangeCreateWithoutBeerInput
 }
 
 export interface BeerBarConnectionChangeUpvoteCreateInput {
@@ -13215,9 +13658,10 @@ export interface BeerCreateInput {
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13242,8 +13686,8 @@ export interface BeerCreateManyWithoutLikedByInput {
   connect?: BeerWhereUniqueInput[] | BeerWhereUniqueInput | null
 }
 
-export interface BeerCreateOneInput {
-  create?: BeerCreateInput | null
+export interface BeerCreateOneWithoutBarConnectionsInput {
+  create?: BeerCreateWithoutBarConnectionsInput | null
   connect?: BeerWhereUniqueInput | null
 }
 
@@ -13267,6 +13711,21 @@ export interface BeerCreateOneWithoutBeerRatingInput {
   connect?: BeerWhereUniqueInput | null
 }
 
+export interface BeerCreateWithoutBarConnectionsInput {
+  name: String
+  type: String
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryCreateOneWithoutBeersInput | null
+  bars?: BarCreateManyWithoutBeersInput | null
+  beerRating?: BeerRatingCreateManyWithoutBeerInput | null
+  beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  createdBy?: UserCreateOneWithoutCreatedBeersInput | null
+  likedBy?: UserCreateManyWithoutLikedBeersInput | null
+}
+
 export interface BeerCreateWithoutBarsInput {
   name: String
   type: String
@@ -13274,9 +13733,10 @@ export interface BeerCreateWithoutBarsInput {
   photo?: String | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13289,8 +13749,9 @@ export interface BeerCreateWithoutBeerChangesInput {
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13303,8 +13764,9 @@ export interface BeerCreateWithoutBeerCommentsInput {
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13319,6 +13781,7 @@ export interface BeerCreateWithoutBeerPricesInput {
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13330,9 +13793,10 @@ export interface BeerCreateWithoutBeerRatingInput {
   photo?: String | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13344,9 +13808,10 @@ export interface BeerCreateWithoutBreweryInput {
   photo?: String | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
@@ -13359,9 +13824,10 @@ export interface BeerCreateWithoutCreatedByInput {
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   likedBy?: UserCreateManyWithoutLikedBeersInput | null
 }
 
@@ -13373,9 +13839,10 @@ export interface BeerCreateWithoutLikedByInput {
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
   beerChanges?: BeerChangeCreateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceCreateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeCreateManyWithoutBeerInput | null
   createdBy?: UserCreateOneWithoutCreatedBeersInput | null
 }
 
@@ -14305,21 +14772,6 @@ export interface BeerSubscriptionWhereInput {
   node?: BeerWhereInput | null
 }
 
-export interface BeerUpdateDataInput {
-  name?: String | null
-  type?: String | null
-  strong?: String | null
-  photo?: String | null
-  brewery?: BreweryUpdateOneWithoutBeersInput | null
-  bars?: BarUpdateManyWithoutBeersInput | null
-  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
-  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
-  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
-  createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
-  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
-}
-
 export interface BeerUpdateInput {
   name?: String | null
   type?: String | null
@@ -14328,9 +14780,10 @@ export interface BeerUpdateInput {
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14402,11 +14855,11 @@ export interface BeerUpdateManyWithWhereNestedInput {
   data: BeerUpdateManyDataInput
 }
 
-export interface BeerUpdateOneRequiredInput {
-  create?: BeerCreateInput | null
+export interface BeerUpdateOneRequiredWithoutBarConnectionsInput {
+  create?: BeerCreateWithoutBarConnectionsInput | null
   connect?: BeerWhereUniqueInput | null
-  update?: BeerUpdateDataInput | null
-  upsert?: BeerUpsertNestedInput | null
+  update?: BeerUpdateWithoutBarConnectionsDataInput | null
+  upsert?: BeerUpsertWithoutBarConnectionsInput | null
 }
 
 export interface BeerUpdateOneRequiredWithoutBeerChangesInput {
@@ -14437,6 +14890,21 @@ export interface BeerUpdateOneRequiredWithoutBeerRatingInput {
   upsert?: BeerUpsertWithoutBeerRatingInput | null
 }
 
+export interface BeerUpdateWithoutBarConnectionsDataInput {
+  name?: String | null
+  type?: String | null
+  strong?: String | null
+  photo?: String | null
+  brewery?: BreweryUpdateOneWithoutBeersInput | null
+  bars?: BarUpdateManyWithoutBeersInput | null
+  beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
+  beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
+  likedBy?: UserUpdateManyWithoutLikedBeersInput | null
+}
+
 export interface BeerUpdateWithoutBarsDataInput {
   name?: String | null
   type?: String | null
@@ -14444,9 +14912,10 @@ export interface BeerUpdateWithoutBarsDataInput {
   photo?: String | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14459,8 +14928,9 @@ export interface BeerUpdateWithoutBeerChangesDataInput {
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14473,8 +14943,9 @@ export interface BeerUpdateWithoutBeerCommentsDataInput {
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14489,6 +14960,7 @@ export interface BeerUpdateWithoutBeerPricesDataInput {
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14500,9 +14972,10 @@ export interface BeerUpdateWithoutBeerRatingDataInput {
   photo?: String | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14514,9 +14987,10 @@ export interface BeerUpdateWithoutBreweryDataInput {
   photo?: String | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
@@ -14529,9 +15003,10 @@ export interface BeerUpdateWithoutCreatedByDataInput {
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   likedBy?: UserUpdateManyWithoutLikedBeersInput | null
 }
 
@@ -14543,9 +15018,10 @@ export interface BeerUpdateWithoutLikedByDataInput {
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
-  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
   beerChanges?: BeerChangeUpdateManyWithoutBeerInput | null
+  beerPrices?: BeerPriceUpdateManyWithoutBeerInput | null
+  barConnections?: BeerBarConnectionChangeUpdateManyWithoutBeerInput | null
   createdBy?: UserUpdateOneWithoutCreatedBeersInput | null
 }
 
@@ -14569,9 +15045,9 @@ export interface BeerUpdateWithWhereUniqueWithoutLikedByInput {
   data: BeerUpdateWithoutLikedByDataInput
 }
 
-export interface BeerUpsertNestedInput {
-  update: BeerUpdateDataInput
-  create: BeerCreateInput
+export interface BeerUpsertWithoutBarConnectionsInput {
+  update: BeerUpdateWithoutBarConnectionsDataInput
+  create: BeerCreateWithoutBarConnectionsInput
 }
 
 export interface BeerUpsertWithoutBeerChangesInput {
@@ -14715,15 +15191,18 @@ export interface BeerWhereInput {
   beerRating_every?: BeerRatingWhereInput | null
   beerRating_some?: BeerRatingWhereInput | null
   beerRating_none?: BeerRatingWhereInput | null
-  beerPrices_every?: BeerPriceWhereInput | null
-  beerPrices_some?: BeerPriceWhereInput | null
-  beerPrices_none?: BeerPriceWhereInput | null
   beerComments_every?: BeerCommentWhereInput | null
   beerComments_some?: BeerCommentWhereInput | null
   beerComments_none?: BeerCommentWhereInput | null
   beerChanges_every?: BeerChangeWhereInput | null
   beerChanges_some?: BeerChangeWhereInput | null
   beerChanges_none?: BeerChangeWhereInput | null
+  beerPrices_every?: BeerPriceWhereInput | null
+  beerPrices_some?: BeerPriceWhereInput | null
+  beerPrices_none?: BeerPriceWhereInput | null
+  barConnections_every?: BeerBarConnectionChangeWhereInput | null
+  barConnections_some?: BeerBarConnectionChangeWhereInput | null
+  barConnections_none?: BeerBarConnectionChangeWhereInput | null
   createdBy?: UserWhereInput | null
   likedBy_every?: UserWhereInput | null
   likedBy_some?: UserWhereInput | null
@@ -16284,9 +16763,10 @@ export interface Bar extends Node {
   photos: Array<String>
   beers?: Array<Beer> | null
   barRating?: Array<BarRating> | null
-  beerPrices?: Array<BeerPrice> | null
   barComments?: Array<BarComment> | null
   barChanges?: Array<BarChange> | null
+  beerPrices?: Array<BeerPrice> | null
+  beerConnections?: Array<BeerBarConnectionChange> | null
   createdBy?: User | null
   likedBy?: Array<User> | null
   createdAt: DateTime
@@ -16513,9 +16993,10 @@ export interface Beer extends Node {
   brewery?: Brewery | null
   bars?: Array<Bar> | null
   beerRating?: Array<BeerRating> | null
-  beerPrices?: Array<BeerPrice> | null
   beerComments?: Array<BeerComment> | null
   beerChanges?: Array<BeerChange> | null
+  beerPrices?: Array<BeerPrice> | null
+  barConnections?: Array<BeerBarConnectionChange> | null
   createdBy?: User | null
   likedBy?: Array<User> | null
   createdAt: DateTime

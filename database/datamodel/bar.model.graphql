@@ -11,9 +11,10 @@ type Bar {
     photos: [String!]
     beers: [Beer!]
     barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
-    beerPrices: [BeerPrice!] @relation(name: "BarBeerPrices" onDelete: CASCADE)
     barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
     barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
+    beerPrices: [BeerPrice!] @relation(name: "BarBeerPrices" onDelete: CASCADE)
+    beerConnections: [BeerBarConnectionChange!] @relation(name: "BarBeerConnections" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
     createdAt: DateTime!
