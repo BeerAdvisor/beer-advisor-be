@@ -6,10 +6,10 @@ type Beer {
     photo: String
     brewery: Brewery
     bars: [Bar!]
-    beerRating: [BeerRating!]
-    beerPrices: [BeerPrice!]
-    beerComments: [BeerComment!]
-    beerChanges: [BeerChange!]
+    beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
+    beerPrices: [BeerPrice!] @relation(name: "BeerPrices" onDelete: CASCADE)
+    beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)
+    beerChanges: [BeerChange!] @relation(name: "BeerChanges" onDelete: CASCADE)
     createdBy: User @relation(name: "BeerCreatedRelation")
     likedBy: [User!] @relation(name: "BeerLikedRelation")
     createdAt: DateTime!
@@ -20,7 +20,7 @@ type BeerRating {
     id: ID! @unique
     rating: Int!
     user: User
-    beer: Beer!
+    beer: Beer! @relation(name: "BeerRatings")
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -28,7 +28,7 @@ type BeerRating {
 type BeerComment {
     id: ID! @unique
     comment: String!
-    beer: Beer!
+    beer: Beer! @relation(name: "BeerComments")
     user: User
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -39,8 +39,8 @@ type BeerChange {
     field: BeerField!
     newValue: String!
     user: User
-    beer: Beer!
-    upvotes: [BeerChangeUpvote!]
+    beer: Beer! @relation(name: "BeerChanges")
+    upvotes: [BeerChangeUpvote!] @relation(name: "BeerChangeUpvotes" onDelete: CASCADE)
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -48,35 +48,7 @@ type BeerChange {
 type BeerChangeUpvote {
     id: ID! @unique
     user: User
-    beerChange: BeerChange!
-    createdAt: DateTime!
-}
-
-type BeerPrice {
-    id: ID! @unique
-    price: Float!
-    user: User
-    bar: Bar!
-    beer: Beer!
-    changes: [BeerPriceChange!]
-    createdAt: DateTime!
-    updatedAt: DateTime!
-}
-
-type BeerPriceChange {
-    id: ID! @unique
-    newPrice: Float!
-    beerPrice: BeerPrice!
-    user: User
-    upvotes: [BeerPriceChangeUpvote!]
-    createdAt: DateTime!
-    updatedAt: DateTime!
-}
-
-type BeerPriceChangeUpvote {
-    id: ID! @unique
-    user: User
-    beerPriceChange: BeerPriceChange!
+    beerChange: BeerChange! @relation(name: "BeerChangeUpvotes")
     createdAt: DateTime!
 }
 

@@ -10,10 +10,10 @@ type Bar {
     closeTime: DateTime
     photos: [String!]
     beers: [Beer!]
-    barRating: [BarRating!]
-    beerPrices: [BeerPrice!]
-    barComments: [BarComment!]
-    barChanges: [BarChange!]
+    barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
+    beerPrices: [BeerPrice!] @relation(name: "BarBeerPrices" onDelete: CASCADE)
+    barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
+    barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
     createdAt: DateTime!
@@ -24,7 +24,7 @@ type BarRating {
     id: ID! @unique
     rating: Float!
     user: User
-    bar: Bar!
+    bar: Bar! @relation(name: "BarRatings")
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -32,7 +32,7 @@ type BarRating {
 type BarComment {
     id: ID! @unique
     comment: String!
-    bar: Bar!
+    bar: Bar! @relation(name: "BarComments")
     user: User
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -43,8 +43,8 @@ type BarChange {
     field: String!
     newValue: String!
     user: User
-    bar: Bar!
-    upvotes: [BarChangeUpvote!]
+    bar: Bar! @relation(name: "BarChanges")
+    upvotes: [BarChangeUpvote!] @relation(name: "BarChangeUpvotes" onDelete: CASCADE)
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -52,6 +52,6 @@ type BarChange {
 type BarChangeUpvote {
     id: ID! @unique
     user: User
-    barChange: BarChange!
+    barChange: BarChange! @relation(name: "BarChangeUpvotes")
     createdAt: DateTime!
 }
