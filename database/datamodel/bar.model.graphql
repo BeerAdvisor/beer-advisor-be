@@ -14,7 +14,7 @@ type Bar {
     beerPrices: [BeerPrice!]
     barComments: [BarComment!]
     barChanges: [BarChange!]
-    createdBy: User! @relation(name: "BarCreatedRelation")
+    createdBy: User @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -23,7 +23,7 @@ type Bar {
 type BarRating {
     id: ID! @unique
     rating: Float!
-    user: User!
+    user: User
     bar: Bar!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -33,7 +33,7 @@ type BarComment {
     id: ID! @unique
     comment: String!
     bar: Bar!
-    user: User!
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -42,7 +42,7 @@ type BarChange {
     id: ID! @unique
     field: String!
     newValue: String!
-    user: User!
+    user: User
     bar: Bar!
     upvotes: [BarChangeUpvote!]
     createdAt: DateTime!
@@ -51,7 +51,7 @@ type BarChange {
 
 type BarChangeUpvote {
     id: ID! @unique
-    user: User!
+    user: User
     barChange: BarChange!
     createdAt: DateTime!
 }

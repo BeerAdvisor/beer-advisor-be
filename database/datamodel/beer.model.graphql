@@ -10,7 +10,7 @@ type Beer {
     beerPrices: [BeerPrice!]
     beerComments: [BeerComment!]
     beerChanges: [BeerChange!]
-    createdBy: User! @relation(name: "BeerCreatedRelation")
+    createdBy: User @relation(name: "BeerCreatedRelation")
     likedBy: [User!] @relation(name: "BeerLikedRelation")
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -19,7 +19,7 @@ type Beer {
 type BeerRating {
     id: ID! @unique
     rating: Int!
-    user: User!
+    user: User
     beer: Beer!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -29,7 +29,7 @@ type BeerComment {
     id: ID! @unique
     comment: String!
     beer: Beer!
-    user: User!
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
 }
@@ -38,7 +38,7 @@ type BeerChange {
     id: ID! @unique
     field: BeerField!
     newValue: String!
-    user: User!
+    user: User
     beer: Beer!
     upvotes: [BeerChangeUpvote!]
     createdAt: DateTime!
@@ -47,7 +47,7 @@ type BeerChange {
 
 type BeerChangeUpvote {
     id: ID! @unique
-    user: User!
+    user: User
     beerChange: BeerChange!
     createdAt: DateTime!
 }
@@ -55,7 +55,7 @@ type BeerChangeUpvote {
 type BeerPrice {
     id: ID! @unique
     price: Float!
-    user: User!
+    user: User
     bar: Bar!
     beer: Beer!
     changes: [BeerPriceChange!]
@@ -67,7 +67,7 @@ type BeerPriceChange {
     id: ID! @unique
     newPrice: Float!
     beerPrice: BeerPrice!
-    user: User!
+    user: User
     upvotes: [BeerPriceChangeUpvote!]
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -75,7 +75,7 @@ type BeerPriceChange {
 
 type BeerPriceChangeUpvote {
     id: ID! @unique
-    user: User!
+    user: User
     beerPriceChange: BeerPriceChange!
     createdAt: DateTime!
 }

@@ -1,7 +1,7 @@
 type BeerBarConnectionChange {
     id: ID! @unique
     type: ConnectionChangeType!
-    user: User!
+    user: User
     beer: Beer!
     bar: Bar!
     upvotes: [BeerBarConnectionChangeUpvote!]
@@ -11,7 +11,7 @@ type BeerBarConnectionChange {
 
 type BeerBarConnectionChangeUpvote {
     id: ID! @unique
-    user: User!
+    user: User
     beerBarConnectionChange: BeerBarConnectionChange!
     createdAt: DateTime!
 }
