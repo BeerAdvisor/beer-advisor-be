@@ -7,7 +7,6 @@ type Mutation {
     createBar(createBarInput: CreateBarInput): Bar!
 }
 
-
 type Bar {
     id: ID!
     name: String!
@@ -21,42 +20,50 @@ type Bar {
     photos: [String!]
     beers: [Beer!]
     barRating: [BarRating!]
-    beerPrices: [BeerPrice!]
     barComments: [BarComment!]
     barChanges: [BarChange!]
-    createdBy: User!
+    beerPrices: [BeerPrice!]
+    beerConnections: [BeerBarConnectionChange!]
+    createdBy: User
     likedBy: [User!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarRating {
     id: ID!
     rating: Float!
-    user: User!
+    user: User
     bar: Bar!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarComment {
     id: ID!
     comment: String!
     bar: Bar!
-    user: User!
+    user: User
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarChange {
     id: ID!
     field: String!
     newValue: String!
-    user: User!
+    user: User
     bar: Bar!
     upvotes: [BarChangeUpvote!]
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BarChangeUpvote {
     id: ID!
-    user: User!
+    user: User
     barChange: BarChange!
+    createdAt: DateTime!
 }
 
 input CreateBarInput {

@@ -1,0 +1,27 @@
+type BeerPrice {
+    id: ID!
+    price: Float!
+    user: User
+    bar: Bar!
+    beer: Beer!
+    changes: [BeerPriceChange!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type BeerPriceChange {
+    id: ID!
+    newPrice: Float!
+    beerPrice: BeerPrice!
+    user: User
+    upvotes: [BeerPriceChangeUpvote!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type BeerPriceChangeUpvote {
+    id: ID!
+    user: User
+    beerPriceChange: BeerPriceChange!
+    createdAt: DateTime!
+}

@@ -1,4 +1,4 @@
-import { GqlOptionsFactory, GqlModuleOptions } from '@nestjs/graphql';
+import { GqlModuleOptions, GqlOptionsFactory } from '@nestjs/graphql';
 import { Injectable } from '@nestjs/common';
 import { join } from 'path';
 
@@ -7,7 +7,7 @@ export class GraphqlOptions implements GqlOptionsFactory {
   createGqlOptions(): Promise<GqlModuleOptions> | GqlModuleOptions {
     return {
       context: ({ req, res }) => ({ req, res }),
-      typePaths: ['./src/*/*.graphql'],
+      typePaths: ['./src/*/*.graphql', './src/shared/graphql/*.graphql'],
       path: '/',
       installSubscriptionHandlers: true,
       resolverValidationOptions: {

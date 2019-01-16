@@ -24,6 +24,7 @@ export class BeerService {
           name: beer.name,
           photo: beer.photo,
           type: beer.type,
+          strong: beer.strong,
           createdBy: { connect: { id: user.id } },
           ...(beer.breweryId && { brewery: { connect: { id: beer.breweryId } } }), // TODO wtf not working without spread
           bars: { connect: mapConnectIds(beer.barIds) },

@@ -19,33 +19,39 @@ type Beer {
     brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!]
-    beerPrices: [BeerPrice!]
     beerComments: [BeerComment!]
     beerChanges: [BeerChange!]
-    createdBy: User!
+    beerPrices: [BeerPrice!]
+    barConnections: [BeerBarConnectionChange!]
+    createdBy: User
     likedBy: [User!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerRating {
     id: ID!
-    rating: Float!
-    user: User!
+    rating: Int!
+    user: User
     beer: Beer!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerComment {
     id: ID!
     comment: String!
     beer: Beer!
-    user: User!
+    user: User
     createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 type BeerChange {
     id: ID!
     field: BeerField!
     newValue: String!
-    user: User!
+    user: User
     beer: Beer!
     upvotes: [BeerChangeUpvote!]
     createdAt: DateTime!
@@ -54,17 +60,9 @@ type BeerChange {
 
 type BeerChangeUpvote {
     id: ID!
-    user: User!
+    user: User
     beerChange: BeerChange!
     createdAt: DateTime!
-}
-
-type BeerPrice {
-    id: ID!
-    price: Float!
-    user: User!
-    bar: Bar!
-    beer: Beer!
 }
 
 enum BeerField {

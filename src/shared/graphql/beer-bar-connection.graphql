@@ -1,0 +1,22 @@
+type BeerBarConnectionChange {
+    id: ID!
+    type: ConnectionChangeType!
+    user: User
+    beer: Beer!
+    bar: Bar!
+    upvotes: [BeerBarConnectionChangeUpvote!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type BeerBarConnectionChangeUpvote {
+    id: ID!
+    user: User
+    beerBarConnectionChange: BeerBarConnectionChange!
+    createdAt: DateTime!
+}
+
+enum ConnectionChangeType {
+    ADD
+    REMOVE
+}

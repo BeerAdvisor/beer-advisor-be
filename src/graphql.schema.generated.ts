@@ -7,6 +7,11 @@ export enum BeerField {
     BREWERY = "BREWERY"
 }
 
+export enum ConnectionChangeType {
+    ADD = "ADD",
+    REMOVE = "REMOVE"
+}
+
 export enum Role {
     USER = "USER",
     ADMIN = "ADMIN"
@@ -95,42 +100,50 @@ export class Bar {
     photos: string[];
     beers: Beer[];
     barRating: BarRating[];
-    beerPrices: BeerPrice[];
     barComments: BarComment[];
     barChanges: BarChange[];
-    createdBy: User;
+    beerPrices: BeerPrice[];
+    beerConnections: BeerBarConnectionChange[];
+    createdBy?: User;
     likedBy: User[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class BarChange {
     id: string;
     field: string;
     newValue: string;
-    user: User;
+    user?: User;
     bar: Bar;
     upvotes: BarChangeUpvote[];
     createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class BarChangeUpvote {
     id: string;
-    user: User;
+    user?: User;
     barChange: BarChange;
+    createdAt: DateTime;
 }
 
 export class BarComment {
     id: string;
     comment: string;
     bar: Bar;
-    user: User;
+    user?: User;
     createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class BarRating {
     id: string;
     rating: number;
-    user: User;
+    user?: User;
     bar: Bar;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class Beer {
@@ -142,68 +155,106 @@ export class Beer {
     brewery?: Brewery;
     bars: Bar[];
     beerRating: BeerRating[];
-    beerPrices: BeerPrice[];
     beerComments: BeerComment[];
     beerChanges: BeerChange[];
-    createdBy: User;
+    beerPrices: BeerPrice[];
+    barConnections: BeerBarConnectionChange[];
+    createdBy?: User;
     likedBy: User[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerBarConnectionChange {
+    id: string;
+    type: ConnectionChangeType;
+    user?: User;
+    beer: Beer;
+    bar: Bar;
+    upvotes: BeerBarConnectionChangeUpvote[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerBarConnectionChangeUpvote {
+    id: string;
+    user?: User;
+    beerBarConnectionChange: BeerBarConnectionChange;
+    createdAt: DateTime;
 }
 
 export class BeerChange {
     id: string;
     field: BeerField;
     newValue: string;
-    user: User;
+    user?: User;
     beer: Beer;
     upvotes: BeerChangeUpvote[];
     createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class BeerChangeUpvote {
     id: string;
-    user: User;
+    user?: User;
     beerChange: BeerChange;
+    createdAt: DateTime;
 }
 
 export class BeerComment {
     id: string;
     comment: string;
     beer: Beer;
-    user: User;
+    user?: User;
     createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class BeerPrice {
     id: string;
     price: number;
-    user: User;
+    user?: User;
     bar: Bar;
     beer: Beer;
+    changes: BeerPriceChange[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerPriceChange {
+    id: string;
+    newPrice: number;
+    beerPrice: BeerPrice;
+    user?: User;
+    upvotes: BeerPriceChangeUpvote[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerPriceChangeUpvote {
+    id: string;
+    user?: User;
+    beerPriceChange: BeerPriceChange;
+    createdAt: DateTime;
 }
 
 export class BeerRating {
     id: string;
     rating: number;
-    user: User;
+    user?: User;
     beer: Beer;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class Brewery {
     id: string;
     name: string;
+    country: string;
     logo?: string;
-    country?: string;
-    description?: string;
     beers: Beer[];
-    comments: BreweryComment[];
-}
-
-export class BreweryComment {
-    id: string;
-    brewery: Brewery;
-    user: User;
-    comment: string;
-    timestamp: DateTime;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export abstract class IMutation {
@@ -218,8 +269,6 @@ export abstract class IMutation {
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
-
-    abstract commentBrewery(commentBreweryInput?: CommentBreweryInput): BreweryComment | Promise<BreweryComment>;
 
     abstract signup(signUpInput?: SignUpInput): AuthPayload | Promise<AuthPayload>;
 
@@ -266,6 +315,7 @@ export class User {
     createdBeers: Beer[];
     createdBars: Bar[];
     createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export type DateTime = any;

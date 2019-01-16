@@ -5,25 +5,16 @@ type Query {
 
 type Mutation {
     createBrewery(createBreweryInput: CreateBreweryInput): Brewery!
-    commentBrewery(commentBreweryInput: CommentBreweryInput): BreweryComment!
 }
 
 type Brewery {
     id: ID!
     name: String!
+    country: String!
     logo: String
-    country: String
-    description: String
     beers: [Beer!]
-    comments: [BreweryComment!]
-}
-
-type BreweryComment {
-    id: ID!
-    brewery: Brewery!
-    user: User!
-    comment: String!
-    timestamp: DateTime!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
 
 input CreateBreweryInput{
