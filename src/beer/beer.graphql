@@ -8,7 +8,7 @@ type Mutation {
     commentBeer(commentBeerInput: CommentBeerInput): BeerComment!
     rateBeer(rateBeerInput: RateBeerInput): BeerRating!
     changeBeer(changeBeerInput: ChangeBeerInput): BeerChange!
-    upvoteBeerChange(upvoteBeerChangeInput: UpvoteBeerChangeInput): BeerChangeUpvote!
+    upvoteBeerChange(upvoteBeerChangeInput: UpvoteBeerChangeInput): UpvoteBeerChangeUnion
 }
 
 type Beer {
@@ -102,3 +102,5 @@ input ChangeBeerInput {
 input UpvoteBeerChangeInput {
     beerChangeId: ID!
 }
+
+union UpvoteBeerChangeUnion = BeerChangeUpvote | Beer

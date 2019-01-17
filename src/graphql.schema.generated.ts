@@ -272,7 +272,7 @@ export abstract class IMutation {
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
-    abstract upvoteBeerChange(upvoteBeerChangeInput?: UpvoteBeerChangeInput): BeerChangeUpvote | Promise<BeerChangeUpvote>;
+    abstract upvoteBeerChange(upvoteBeerChangeInput?: UpvoteBeerChangeInput): UpvoteBeerChangeUnion | Promise<UpvoteBeerChangeUnion>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
@@ -325,3 +325,4 @@ export class User {
 }
 
 export type DateTime = any;
+export type UpvoteBeerChangeUnion = BeerChangeUpvote | Beer;

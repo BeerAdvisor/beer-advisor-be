@@ -9,8 +9,7 @@ import { ErrorCodes } from '../shared/enums/error-codes.enum';
 
 @Injectable()
 export class BeerService {
-  constructor(private readonly prisma: PrismaService, private readonly errorService: ErrorService) {
-  }
+  constructor(private readonly prisma: PrismaService, private readonly errorService: ErrorService) {}
 
   getAllBeers(args, info: GraphQLResolveInfo): Promise<string> {
     return this.prisma.query.beers(args, info);
@@ -86,26 +85,21 @@ export class BeerService {
     );
   }
 
-  async upvoteBeerChange(upvote: UpvoteBeerChangeInput, user: User, info: GraphQLResolveInfo): Promise<BeerChangeUpvote> {
+  async upvoteBeerChange(upvote: UpvoteBeerChangeInput, user: User, info: GraphQLResolveInfo): Promise<BeerChangeUpvote | Beer> {
     // TODO how to make one transaction
-    const userAlreadyUpvoted = await this.prisma.exists.BeerChangeUpvote(
-      {
-        AND: { user: { id: user.id }, beerChange: { id: upvote.beerChangeId } },
-      },
-    );
+    const userAlreadyUpvoted = await this.prisma.exists.BeerChangeUpvote({
+      AND: { user: { id: user.id }, beerChange: { id: upvote.beerChangeId } },
+    });
 
     if (userAlreadyUpvoted) this.errorService.throwCustomError('User already upvoted the change', ErrorCodes.ALREADY_UPVOTED);
 
-    const totalUpvotes = await this.prisma.query.beerChangeUpvotes({
-        where: { beerChange: { id: upvote.beerChangeId } },
-      },
-    );
+    const totalUpvotes = await this.prisma.query.beerChangeUpvotes({ where: { beerChange: { id: upvote.beerChangeId } } });
 
-    if (totalUpvotes.length > 3) {
-      this.applyBeerChange();
-    }
+    // TODO move constatnt to config
+    if (totalUpvotes.length > 1) return this.applyBeerChange(upvote.beerChangeId, info);
 
-    return this.prisma.mutation.createBeerChangeUpvote({
+    return this.prisma.mutation.createBeerChangeUpvote(
+      {
         data: {
           user: { connect: { id: user.id } },
           beerChange: { connect: { id: upvote.beerChangeId } },
@@ -115,7 +109,23 @@ export class BeerService {
     );
   }
 
-  async applyBeerChange() {
+  async applyBeerChange(changeId: string, info: GraphQLResolveInfo): Promise<Beer> {
+    // TODO make one transaction
+    const change = await this.prisma.query.beerChange(
+      { where: { id: changeId } },
+      `{ id field newValue beer { id } }`, // TODO make smth better then fucking string
+    );
 
+    this.prisma.mutation.deleteBeerChange({ where: { id: changeId } });
+
+    return this.prisma.mutation.updateBeer(
+      {
+        where: { id: change.beer.id },
+        data: {
+          [change.field.toString().toLowerCase()]: change.newValue,
+        },
+      },
+      info,
+    );
   }
 }
