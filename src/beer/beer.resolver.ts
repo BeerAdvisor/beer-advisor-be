@@ -1,6 +1,6 @@
 import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BeerService } from './beer.service';
-import { Beer, ChangeBeerInput, CommentBeerInput, CreateBeerInput, RateBeerInput } from '../graphql.schema.generated';
+import { Beer, ChangeBeerInput, CommentBeerInput, CreateBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
 import { GraphQLResolveInfo } from 'graphql';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';
@@ -43,5 +43,11 @@ export class BeerResolvers {
   @UseGuards(GqlAuthGuard)
   rateBeer(@Args('rateBeerInput') args: RateBeerInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
     return this.beerService.rateBeer(args, user, info);
+  }
+
+  @Mutation()
+  @UseGuards(GqlAuthGuard)
+  upvoteBeerChange(@Args('upvoteBeerChangeInput') args: UpvoteBeerChangeInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
+    return this.beerService.upvoteBeerChange(args, user, info);
   }
 }

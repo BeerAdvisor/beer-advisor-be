@@ -84,6 +84,10 @@ export class SignUpInput {
     birthdate: DateTime;
 }
 
+export class UpvoteBeerChangeInput {
+    beerChangeId: string;
+}
+
 export class AuthPayload {
     user?: User;
 }
@@ -267,6 +271,8 @@ export abstract class IMutation {
     abstract rateBeer(rateBeerInput?: RateBeerInput): BeerRating | Promise<BeerRating>;
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
+
+    abstract upvoteBeerChange(upvoteBeerChangeInput?: UpvoteBeerChangeInput): BeerChangeUpvote | Promise<BeerChangeUpvote>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 

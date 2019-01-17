@@ -8,6 +8,7 @@ type Mutation {
     commentBeer(commentBeerInput: CommentBeerInput): BeerComment!
     rateBeer(rateBeerInput: RateBeerInput): BeerRating!
     changeBeer(changeBeerInput: ChangeBeerInput): BeerChange!
+    upvoteBeerChange(upvoteBeerChangeInput: UpvoteBeerChangeInput): BeerChangeUpvote!
 }
 
 type Beer {
@@ -96,4 +97,8 @@ input ChangeBeerInput {
     field: BeerField!
     newValue: String!
     beerId: String!
+}
+
+input UpvoteBeerChangeInput {
+    beerChangeId: ID!
 }
