@@ -1,6 +1,7 @@
 type Query {
     getBeers: [Beer!]
     beer(id: ID!): Beer!
+    findBeers(findBeerInput: FindBeerInput): [Beer!]
 }
 
 type Mutation {
@@ -101,6 +102,12 @@ input ChangeBeerInput {
 
 input UpvoteBeerChangeInput {
     beerChangeId: ID!
+}
+
+input FindBeerInput {
+    name: String
+    type: String
+    strong: String
 }
 
 union UpvoteBeerChangeUnion = BeerChangeUpvote | Beer

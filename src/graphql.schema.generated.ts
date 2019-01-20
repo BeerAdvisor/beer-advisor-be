@@ -66,6 +66,12 @@ export class CreateBreweryInput {
     beerIds: string[];
 }
 
+export class FindBeerInput {
+    name?: string;
+    type?: string;
+    strong?: string;
+}
+
 export class LoginInput {
     email: string;
     password: string;
@@ -289,6 +295,8 @@ export abstract class IQuery {
     abstract getBeers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
+
+    abstract findBeers(findBeerInput?: FindBeerInput): Beer[] | Promise<Beer[]>;
 
     abstract getBreweries(): Brewery[] | Promise<Brewery[]>;
 

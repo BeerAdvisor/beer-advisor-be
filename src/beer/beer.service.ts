@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
+import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers';
 import { Beer, BeerChange, BeerChangeUpvote, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
@@ -17,6 +17,21 @@ export class BeerService {
 
   getBeer(id: string, info: GraphQLResolveInfo): Promise<Beer> {
     return this.prisma.query.beer({ where: { id } }, info);
+  }
+
+  findBeers({ name, type, strong }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
+    return this.prisma.query.beers(
+      {
+        where: {
+          AND: {
+            name_contains: name,
+            type_contains: type,
+            strong_contains: strong,
+          },
+        },
+      },
+      info,
+    );
   }
 
   createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
