@@ -2,16 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
 import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
-import { mapConnectIds } from '../shared/helpers';
+import { mapConnectIds } from '../shared/interfaces/map-connect-ids';
 import { Beer, BeerChange, BeerChangeUpvote, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { ErrorCodes } from '../shared/enums/error-codes.enum';
+import { calculateAverageWeight } from '../shared/helpers/pair-ratings';
 
 @Injectable()
 export class BeerService {
   constructor(private readonly prisma: PrismaService, private readonly errorService: ErrorService) {}
 
-  getAllBeers(args, info: GraphQLResolveInfo): Promise<string> {
+  getAllBeers(args, info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.prisma.query.beers(args, info);
   }
 
@@ -64,15 +65,15 @@ export class BeerService {
     );
   }
 
-  async rateBeer(rating: RateBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerRating> {
+  async rateBeer(rating: RateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
     // TODO how to make one transaction
-    const ratings = await this.prisma.query.beerRatings({
+    const userRating = await this.prisma.query.beerRatings({
       where: { AND: { beer: { id: rating.beerId }, user: { id: user.id } } },
     });
 
-    return this.prisma.mutation.upsertBeerRating(
+    await this.prisma.mutation.upsertBeerRating(
       {
-        where: { id: ratings && ratings.length && ratings[0].id },
+        where: { id: userRating && userRating.length && userRating[0].id },
         create: {
           rating: rating.rating,
           beer: { connect: { id: rating.beerId } },
@@ -82,8 +83,10 @@ export class BeerService {
           rating: rating.rating,
         },
       },
-      info,
     );
+
+    const avg = calculateAverageWeight(await this.prisma.query.beerRatings({ where: { beer: { id: rating.beerId } } }));
+    return this.prisma.mutation.updateBeer({ data: { avgRating: avg }, where: { id: rating.beerId } }, info);
   }
 
   changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {

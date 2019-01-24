@@ -17,5 +17,4 @@ hooks:
   - graphql get-schema --project database
   - graphql codegen --project database
 
-
 # Secret. TODO

@@ -4,6 +4,7 @@ type Beer {
     type: String!
     strong: String
     photo: String
+    avgRating: Float
     brewery: Brewery
     bars: [Bar!]
     beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)

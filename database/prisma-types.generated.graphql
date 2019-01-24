@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Tue Jan 15 2019 22:50:46 GMT+0100 (CET)
+# timestamp: Fri Jan 25 2019 00:22:41 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -3225,6 +3225,7 @@ type Beer implements Node {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: Brewery
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
   beerRating(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
@@ -5288,6 +5289,7 @@ input BeerCreateInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5349,6 +5351,7 @@ input BeerCreateWithoutBarConnectionsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5364,6 +5367,7 @@ input BeerCreateWithoutBarsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5379,6 +5383,7 @@ input BeerCreateWithoutBeerChangesInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5394,6 +5399,7 @@ input BeerCreateWithoutBeerCommentsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5409,6 +5415,7 @@ input BeerCreateWithoutBeerPricesInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5424,6 +5431,7 @@ input BeerCreateWithoutBeerRatingInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5439,6 +5447,7 @@ input BeerCreateWithoutBreweryInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5454,6 +5463,7 @@ input BeerCreateWithoutCreatedByInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5469,6 +5479,7 @@ input BeerCreateWithoutLikedByInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5507,6 +5518,8 @@ enum BeerOrderByInput {
   strong_DESC
   photo_ASC
   photo_DESC
+  avgRating_ASC
+  avgRating_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -5519,6 +5532,7 @@ type BeerPreviousValues {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -7376,6 +7390,28 @@ input BeerScalarWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -7466,6 +7502,7 @@ input BeerUpdateInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7482,6 +7519,7 @@ input BeerUpdateManyDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
 }
 
 input BeerUpdateManyMutationInput {
@@ -7489,6 +7527,7 @@ input BeerUpdateManyMutationInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
 }
 
 input BeerUpdateManyWithoutBarsInput {
@@ -7584,6 +7623,7 @@ input BeerUpdateWithoutBarConnectionsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7599,6 +7639,7 @@ input BeerUpdateWithoutBarsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7614,6 +7655,7 @@ input BeerUpdateWithoutBeerChangesDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7629,6 +7671,7 @@ input BeerUpdateWithoutBeerCommentsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7644,6 +7687,7 @@ input BeerUpdateWithoutBeerPricesDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7659,6 +7703,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7674,6 +7719,7 @@ input BeerUpdateWithoutBreweryDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7689,6 +7735,7 @@ input BeerUpdateWithoutCreatedByDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7704,6 +7751,7 @@ input BeerUpdateWithoutLikedByDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7992,6 +8040,28 @@ input BeerWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""

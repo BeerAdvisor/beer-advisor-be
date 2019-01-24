@@ -162,6 +162,7 @@ export class Beer {
     type: string;
     strong?: string;
     photo?: string;
+    avgRating?: number;
     brewery?: Brewery;
     bars: Bar[];
     beerRating: BeerRating[];
@@ -274,7 +275,7 @@ export abstract class IMutation {
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
 
-    abstract rateBeer(rateBeerInput?: RateBeerInput): BeerRating | Promise<BeerRating>;
+    abstract rateBeer(rateBeerInput?: RateBeerInput): Beer | Promise<Beer>;
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
@@ -292,7 +293,7 @@ export abstract class IQuery {
 
     abstract bar(id: string): Bar | Promise<Bar>;
 
-    abstract getBeers(): Beer[] | Promise<Beer[]>;
+    abstract beers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
 

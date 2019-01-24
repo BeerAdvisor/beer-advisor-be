@@ -20,7 +20,7 @@ export class BeerResolvers {
   constructor(private readonly beerService: BeerService) {}
 
   @Query()
-  getBeers(@Args() args, @Info() info: GraphQLResolveInfo) {
+  beers(@Args() args, @Info() info: GraphQLResolveInfo) {
     return this.beerService.getAllBeers(args, info);
   }
 

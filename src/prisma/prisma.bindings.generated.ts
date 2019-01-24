@@ -3445,6 +3445,7 @@ type Beer implements Node {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: Brewery
   bars(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bar!]
   beerRating(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
@@ -5508,6 +5509,7 @@ input BeerCreateInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5569,6 +5571,7 @@ input BeerCreateWithoutBarConnectionsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5584,6 +5587,7 @@ input BeerCreateWithoutBarsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5599,6 +5603,7 @@ input BeerCreateWithoutBeerChangesInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5614,6 +5619,7 @@ input BeerCreateWithoutBeerCommentsInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5629,6 +5635,7 @@ input BeerCreateWithoutBeerPricesInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5644,6 +5651,7 @@ input BeerCreateWithoutBeerRatingInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5659,6 +5667,7 @@ input BeerCreateWithoutBreweryInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
@@ -5674,6 +5683,7 @@ input BeerCreateWithoutCreatedByInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5689,6 +5699,7 @@ input BeerCreateWithoutLikedByInput {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
   bars: BarCreateManyWithoutBeersInput
   beerRating: BeerRatingCreateManyWithoutBeerInput
@@ -5727,6 +5738,8 @@ enum BeerOrderByInput {
   strong_DESC
   photo_ASC
   photo_DESC
+  avgRating_ASC
+  avgRating_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -5739,6 +5752,7 @@ type BeerPreviousValues {
   type: String!
   strong: String
   photo: String
+  avgRating: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -7596,6 +7610,28 @@ input BeerScalarWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -7686,6 +7722,7 @@ input BeerUpdateInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7702,6 +7739,7 @@ input BeerUpdateManyDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
 }
 
 input BeerUpdateManyMutationInput {
@@ -7709,6 +7747,7 @@ input BeerUpdateManyMutationInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
 }
 
 input BeerUpdateManyWithoutBarsInput {
@@ -7804,6 +7843,7 @@ input BeerUpdateWithoutBarConnectionsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7819,6 +7859,7 @@ input BeerUpdateWithoutBarsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7834,6 +7875,7 @@ input BeerUpdateWithoutBeerChangesDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7849,6 +7891,7 @@ input BeerUpdateWithoutBeerCommentsDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7864,6 +7907,7 @@ input BeerUpdateWithoutBeerPricesDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7879,6 +7923,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7894,6 +7939,7 @@ input BeerUpdateWithoutBreweryDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
@@ -7909,6 +7955,7 @@ input BeerUpdateWithoutCreatedByDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -7924,6 +7971,7 @@ input BeerUpdateWithoutLikedByDataInput {
   type: String
   strong: String
   photo: String
+  avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
   bars: BarUpdateManyWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
@@ -8212,6 +8260,28 @@ input BeerWhereInput {
 
   """All values not ending with the given string."""
   photo_not_ends_with: String
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -10870,6 +10940,8 @@ export type BeerOrderByInput =   'id_ASC' |
   'strong_DESC' |
   'photo_ASC' |
   'photo_DESC' |
+  'avgRating_ASC' |
+  'avgRating_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC' |
   'updatedAt_ASC' |
@@ -13655,6 +13727,7 @@ export interface BeerCreateInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13716,6 +13789,7 @@ export interface BeerCreateWithoutBarConnectionsInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13731,6 +13805,7 @@ export interface BeerCreateWithoutBarsInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
@@ -13746,6 +13821,7 @@ export interface BeerCreateWithoutBeerChangesInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13761,6 +13837,7 @@ export interface BeerCreateWithoutBeerCommentsInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13776,6 +13853,7 @@ export interface BeerCreateWithoutBeerPricesInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13791,6 +13869,7 @@ export interface BeerCreateWithoutBeerRatingInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
@@ -13806,6 +13885,7 @@ export interface BeerCreateWithoutBreweryInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
   beerComments?: BeerCommentCreateManyWithoutBeerInput | null
@@ -13821,6 +13901,7 @@ export interface BeerCreateWithoutCreatedByInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -13836,6 +13917,7 @@ export interface BeerCreateWithoutLikedByInput {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryCreateOneWithoutBeersInput | null
   bars?: BarCreateManyWithoutBeersInput | null
   beerRating?: BeerRatingCreateManyWithoutBeerInput | null
@@ -14743,6 +14825,14 @@ export interface BeerScalarWhereInput {
   photo_not_starts_with?: String | null
   photo_ends_with?: String | null
   photo_not_ends_with?: String | null
+  avgRating?: Float | null
+  avgRating_not?: Float | null
+  avgRating_in?: Float[] | Float | null
+  avgRating_not_in?: Float[] | Float | null
+  avgRating_lt?: Float | null
+  avgRating_lte?: Float | null
+  avgRating_gt?: Float | null
+  avgRating_gte?: Float | null
   createdAt?: DateTime | null
   createdAt_not?: DateTime | null
   createdAt_in?: DateTime[] | DateTime | null
@@ -14777,6 +14867,7 @@ export interface BeerUpdateInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -14793,6 +14884,7 @@ export interface BeerUpdateManyDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
 }
 
 export interface BeerUpdateManyMutationInput {
@@ -14800,6 +14892,7 @@ export interface BeerUpdateManyMutationInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
 }
 
 export interface BeerUpdateManyWithoutBarsInput {
@@ -14895,6 +14988,7 @@ export interface BeerUpdateWithoutBarConnectionsDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -14910,6 +15004,7 @@ export interface BeerUpdateWithoutBarsDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
@@ -14925,6 +15020,7 @@ export interface BeerUpdateWithoutBeerChangesDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -14940,6 +15036,7 @@ export interface BeerUpdateWithoutBeerCommentsDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -14955,6 +15052,7 @@ export interface BeerUpdateWithoutBeerPricesDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -14970,6 +15068,7 @@ export interface BeerUpdateWithoutBeerRatingDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
@@ -14985,6 +15084,7 @@ export interface BeerUpdateWithoutBreweryDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
   beerComments?: BeerCommentUpdateManyWithoutBeerInput | null
@@ -15000,6 +15100,7 @@ export interface BeerUpdateWithoutCreatedByDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -15015,6 +15116,7 @@ export interface BeerUpdateWithoutLikedByDataInput {
   type?: String | null
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: BreweryUpdateOneWithoutBeersInput | null
   bars?: BarUpdateManyWithoutBeersInput | null
   beerRating?: BeerRatingUpdateManyWithoutBeerInput | null
@@ -15168,6 +15270,14 @@ export interface BeerWhereInput {
   photo_not_starts_with?: String | null
   photo_ends_with?: String | null
   photo_not_ends_with?: String | null
+  avgRating?: Float | null
+  avgRating_not?: Float | null
+  avgRating_in?: Float[] | Float | null
+  avgRating_not_in?: Float[] | Float | null
+  avgRating_lt?: Float | null
+  avgRating_lte?: Float | null
+  avgRating_gt?: Float | null
+  avgRating_gte?: Float | null
   createdAt?: DateTime | null
   createdAt_not?: DateTime | null
   createdAt_in?: DateTime[] | DateTime | null
@@ -16990,6 +17100,7 @@ export interface Beer extends Node {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   brewery?: Brewery | null
   bars?: Array<Bar> | null
   beerRating?: Array<BeerRating> | null
@@ -17235,6 +17346,7 @@ export interface BeerPreviousValues {
   type: String
   strong?: String | null
   photo?: String | null
+  avgRating?: Float | null
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -17546,7 +17658,7 @@ export type Boolean = boolean
 export type DateTime = Date | string
 
 /*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
 */
 export type Float = number
 
