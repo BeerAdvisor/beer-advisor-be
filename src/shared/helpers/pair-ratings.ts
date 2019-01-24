@@ -1,5 +1,5 @@
 import { countBy, map } from 'ramda';
-import { IRating } from '../interfaces/IRating.interface';
+import { IRating } from '../interfaces/i-rating.interface';
 
 const pairRatings = <T extends IRating>(ratings: T[]) => countBy((r: number) => r)(map((rating: T) => rating.rating, ratings));
 
