@@ -6,7 +6,7 @@ import { mapConnectIds } from '../shared/helpers/map-connect-ids';
 import { Beer, BeerChange, BeerChangeUpvote, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { ErrorCodes } from '../shared/enums/error-codes.enum';
-import { calculateAverageWeight } from '../shared/helpers/pair-ratings';
+import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
 
 @Injectable()
 export class BeerService {
@@ -85,7 +85,7 @@ export class BeerService {
       },
     );
 
-    const avg = calculateAverageWeight(await this.prisma.query.beerRatings({ where: { beer: { id: rating.beerId } } }));
+    const avg = calculateAverageRating(await this.prisma.query.beerRatings({ where: { beer: { id: rating.beerId } } }));
     return this.prisma.mutation.updateBeer({ data: { avgRating: avg }, where: { id: rating.beerId } }, info);
   }
 
