@@ -1,5 +1,5 @@
 type Query {
-    getBreweries: [Brewery!]
+    breweries: [Brewery!]
     brewery(id: ID!): Brewery!
 }
 
@@ -19,13 +19,6 @@ type Brewery {
 
 input CreateBreweryInput{
     name: String!
+    country: String!
     logo: String
-    country: String
-    description: String
-    beerIds: [String!]
-}
-
-input CommentBreweryInput{
-    breweryId: ID!
-    comment: String!
 }

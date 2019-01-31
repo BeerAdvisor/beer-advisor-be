@@ -8,6 +8,7 @@ import { ErrorModule } from './error/error.module';
 import { APP_PIPE } from '@nestjs/core';
 import { GqlValidationPipe } from './shared/pipes/gql-validation.pipe';
 import { AuthModule } from './auth/auth.module';
+import { BreweryModule } from './brewery/brewery.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     ErrorModule,
     AuthModule,
+    BreweryModule,
   ],
   providers: [
     {

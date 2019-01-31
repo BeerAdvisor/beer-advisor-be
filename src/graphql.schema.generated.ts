@@ -33,11 +33,6 @@ export class CommentBeerInput {
     comment: string;
 }
 
-export class CommentBreweryInput {
-    breweryId: string;
-    comment: string;
-}
-
 export class CreateBarInput {
     name: string;
     address: string;
@@ -60,10 +55,8 @@ export class CreateBeerInput {
 
 export class CreateBreweryInput {
     name: string;
+    country: string;
     logo?: string;
-    country?: string;
-    description?: string;
-    beerIds: string[];
 }
 
 export class FindBeerInput {
@@ -299,7 +292,7 @@ export abstract class IQuery {
 
     abstract findBeers(findBeerInput?: FindBeerInput): Beer[] | Promise<Beer[]>;
 
-    abstract getBreweries(): Brewery[] | Promise<Brewery[]>;
+    abstract breweries(): Brewery[] | Promise<Brewery[]>;
 
     abstract brewery(id: string): Brewery | Promise<Brewery>;
 

@@ -4,10 +4,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { AuthService } from './auth.service';
 import { PrismaModule } from '../prisma/prisma.module';
+import { ErrorModule } from '../error/error.module';
 
 @Module({
   imports: [
     PrismaModule,
+    ErrorModule,
     PassportModule.register({
       defaultStrategy: 'jwt',
     }),
@@ -19,5 +21,6 @@ import { PrismaModule } from '../prisma/prisma.module';
     }),
   ],
   providers: [JwtStrategy, AuthService],
+  exports: [AuthService],
 })
 export class AuthModule {}
