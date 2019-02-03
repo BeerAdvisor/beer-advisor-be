@@ -19,6 +19,6 @@ export class BreweryService {
   }
 
   createBrewery(brewery: CreateBreweryInput, info: GraphQLResolveInfo): Promise<Brewery> {
-    return this.prisma.mutation.createBrewery({ data: { ...brewery } });
+    return this.prisma.mutation.createBrewery({ data: { ...brewery } }, info);
   }
 }

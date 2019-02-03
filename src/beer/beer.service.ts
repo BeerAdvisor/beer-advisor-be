@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
+import {
+  BeerField,
+  ChangeBeerInput,
+  CommentBeerInput,
+  CreateBeerInput,
+  FindBeerInput,
+  RateBeerInput,
+  UpvoteBeerChangeInput,
+} from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers/map-connect-ids';
-import { Beer, BeerChange, BeerChangeUpvote, BeerComment, BeerRating, User } from '../prisma/prisma.bindings.generated';
+import { Beer, BeerChange, BeerChangeUpvote, BeerComment, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { ErrorCodes } from '../shared/enums/error-codes.enum';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
@@ -71,25 +79,27 @@ export class BeerService {
       where: { AND: { beer: { id: rating.beerId }, user: { id: user.id } } },
     });
 
-    await this.prisma.mutation.upsertBeerRating(
-      {
-        where: { id: userRating && userRating.length && userRating[0].id },
-        create: {
-          rating: rating.rating,
-          beer: { connect: { id: rating.beerId } },
-          user: { connect: { id: user.id } },
-        },
-        update: {
-          rating: rating.rating,
-        },
+    await this.prisma.mutation.upsertBeerRating({
+      where: { id: userRating && userRating.length && userRating[0].id },
+      create: {
+        rating: rating.rating,
+        beer: { connect: { id: rating.beerId } },
+        user: { connect: { id: user.id } },
       },
-    );
+      update: {
+        rating: rating.rating,
+      },
+    });
 
     const avg = calculateAverageRating(await this.prisma.query.beerRatings({ where: { beer: { id: rating.beerId } } }));
     return this.prisma.mutation.updateBeer({ data: { avgRating: avg }, where: { id: rating.beerId } }, info);
   }
 
-  changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {
+  async changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {
+    if (change.field === BeerField.BREWERY && !(await this.prisma.exists.Brewery({ id: change.newValue }))) {
+      this.errorService.throwCustomError(`Brewery ${change.newValue} does not exist`, ErrorCodes.NOT_FOUND);
+    }
+
     return this.prisma.mutation.createBeerChange(
       {
         data: {
@@ -135,6 +145,22 @@ export class BeerService {
     );
 
     this.prisma.mutation.deleteBeerChange({ where: { id: changeId } });
+
+    if (change.field === BeerField.BREWERY) {
+      return this.prisma.mutation.updateBeer(
+        {
+          where: { id: change.beer.id },
+          data: {
+            brewery: {
+              connect: {
+                id: change.newValue,
+              },
+            },
+          },
+        },
+        info,
+      );
+    }
 
     return this.prisma.mutation.updateBeer(
       {
