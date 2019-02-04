@@ -28,7 +28,7 @@ export class BeerService {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  findBeers({ name, type, strong }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
+  findBeers({ name, type, strong, brewery }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.prisma.query.beers(
       {
         where: {
@@ -36,6 +36,11 @@ export class BeerService {
             name_contains: name,
             type_contains: type,
             strong_contains: strong,
+            ...(brewery && {
+              brewery: {
+                name_contains: brewery,
+              },
+            }),
           },
         },
       },
@@ -97,7 +102,7 @@ export class BeerService {
 
   async changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {
     if (change.field === BeerField.BREWERY && !(await this.prisma.exists.Brewery({ id: change.newValue }))) {
-      this.errorService.throwCustomError(`Brewery ${change.newValue} does not exist`, ErrorCodes.NOT_FOUND);
+      this.errorService.throwCustomError(`Brewery "${change.newValue}" does not exist`, ErrorCodes.NOT_FOUND);
     }
 
     return this.prisma.mutation.createBeerChange(

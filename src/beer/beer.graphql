@@ -109,6 +109,7 @@ input FindBeerInput {
     name: String
     type: String
     strong: String
+    brewery: String
 }
 
 union UpvoteBeerChangeUnion = BeerChangeUpvote | Beer

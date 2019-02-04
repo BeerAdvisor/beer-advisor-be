@@ -63,6 +63,7 @@ export class FindBeerInput {
     name?: string;
     type?: string;
     strong?: string;
+    brewery?: string;
 }
 
 export class LoginInput {
