@@ -1,11 +1,11 @@
 type Beer {
     id: ID! @unique
     name: String!
-    type: String!
     strong: String
     photo: String
     avgRating: Float
     brewery: Brewery
+    type: BeerType
     bars: [Bar!]
     beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
     beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)

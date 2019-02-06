@@ -15,11 +15,11 @@ type Mutation {
 type Beer {
     id: ID!
     name: String!
-    type: String!
     strong: String
     photo: String
     avgRating: Float
     brewery: Brewery
+    type: BeerType
     bars: [Bar!]
     beerRating: [BeerRating!]
     beerComments: [BeerComment!]

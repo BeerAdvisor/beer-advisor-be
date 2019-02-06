@@ -9,6 +9,7 @@ datamodel:
   - datamodel/brewery.model.graphql
   - datamodel/beer-bar-connection.model.graphql
   - datamodel/beer-price.model.graphql
+  - datamodel/beer-type.model.graphql
 
 # Downloads the GraphQL schema of the Prisma API
 # `database/generated/prisma-types.generated` (as specfied in `.graphqlconfig.yml`).

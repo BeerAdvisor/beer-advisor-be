@@ -36,11 +36,7 @@ export class BeerService {
             name_contains: name,
             type_contains: type,
             strong_contains: strong,
-            ...(brewery && {
-              brewery: {
-                name_contains: brewery,
-              },
-            }),
+            ...(brewery && { brewery: { name_contains: brewery } }),
           },
         },
       },

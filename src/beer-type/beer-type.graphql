@@ -1,0 +1,8 @@
+type BeerType {
+    id: ID!
+    name: String!
+    description: String
+    beers: [Beer!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
