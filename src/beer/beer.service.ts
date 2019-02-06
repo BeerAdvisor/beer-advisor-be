@@ -1,15 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import {
-  BeerField,
-  ChangeBeerInput,
-  CommentBeerInput,
-  CreateBeerInput,
-  FindBeerInput,
-  RateBeerInput,
-  UpvoteBeerChangeInput,
-} from '../graphql.schema.generated';
+import { BeerField, ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers/map-connect-ids';
 import { Beer, BeerChange, BeerChangeUpvote, BeerComment, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
@@ -34,8 +26,8 @@ export class BeerService {
         where: {
           AND: {
             name_contains: name,
-            type_contains: type,
             strong_contains: strong,
+            ...(type && { type: { name_contains: type } }),
             ...(brewery && { brewery: { name_contains: brewery } }),
           },
         },
@@ -50,10 +42,10 @@ export class BeerService {
         data: {
           name: beer.name,
           photo: beer.photo,
-          type: beer.type,
           strong: beer.strong,
           createdBy: { connect: { id: user.id } },
-          ...(beer.breweryId && { brewery: { connect: { id: beer.breweryId } } }), // TODO wtf not working without spread
+          ...(beer.typeId && { type: { connect: { id: beer.typeId } } }),
+          ...(beer.breweryId && { brewery: { connect: { id: beer.breweryId } } }),
           bars: { connect: mapConnectIds(beer.barIds) },
         },
       },
@@ -97,8 +89,13 @@ export class BeerService {
   }
 
   async changeBeer(change: ChangeBeerInput, user: User, info: GraphQLResolveInfo): Promise<BeerChange> {
+    // TODO refactoring
     if (change.field === BeerField.BREWERY && !(await this.prisma.exists.Brewery({ id: change.newValue }))) {
       this.errorService.throwCustomError(`Brewery "${change.newValue}" does not exist`, ErrorCodes.NOT_FOUND);
+    }
+
+    if (change.field === BeerField.TYPE && !(await this.prisma.exists.BeerType({ id: change.newValue }))) {
+      this.errorService.throwCustomError(`BeerType "${change.newValue}" does not exist`, ErrorCodes.NOT_FOUND);
     }
 
     return this.prisma.mutation.createBeerChange(
@@ -147,12 +144,29 @@ export class BeerService {
 
     this.prisma.mutation.deleteBeerChange({ where: { id: changeId } });
 
+    // TODO refactoring
     if (change.field === BeerField.BREWERY) {
       return this.prisma.mutation.updateBeer(
         {
           where: { id: change.beer.id },
           data: {
             brewery: {
+              connect: {
+                id: change.newValue,
+              },
+            },
+          },
+        },
+        info,
+      );
+    }
+
+    if (change.field === BeerField.TYPE) {
+      return this.prisma.mutation.updateBeer(
+        {
+          where: { id: change.beer.id },
+          data: {
+            type: {
               connect: {
                 id: change.newValue,
               },

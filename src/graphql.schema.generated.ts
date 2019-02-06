@@ -46,10 +46,10 @@ export class CreateBarInput {
 
 export class CreateBeerInput {
     name: string;
-    type: string;
     photo?: string;
     strong?: string;
     breweryId?: string;
+    typeId?: string;
     barIds: string[];
 }
 
@@ -153,11 +153,11 @@ export class BarRating {
 export class Beer {
     id: string;
     name: string;
-    type: string;
     strong?: string;
     photo?: string;
     avgRating?: number;
     brewery?: Brewery;
+    type?: BeerType;
     bars: Bar[];
     beerRating: BeerRating[];
     beerComments: BeerComment[];
@@ -248,6 +248,15 @@ export class BeerRating {
     rating: number;
     user?: User;
     beer: Beer;
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerType {
+    id: string;
+    name: string;
+    description?: string;
+    beers: Beer[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }

@@ -83,10 +83,10 @@ input RateBeerInput {
 
 input CreateBeerInput {
     name: String!
-    type: String!
     photo: String
     strong: String
     breweryId: String
+    typeId: String
     barIds: [String!]
 }
 
