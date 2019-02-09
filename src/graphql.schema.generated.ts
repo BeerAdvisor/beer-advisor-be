@@ -28,6 +28,11 @@ export class ChangeBeerInput {
     beerId: string;
 }
 
+export class ChangeBeerTypeInput {
+    beerTypeId: string;
+    newDescription: string;
+}
+
 export class CommentBeerInput {
     beerId: string;
     comment: string;
@@ -51,6 +56,12 @@ export class CreateBeerInput {
     breweryId?: string;
     typeId?: string;
     barIds: string[];
+}
+
+export class CreateBeerTypeInput {
+    name: string;
+    description?: string;
+    beerIds: string[];
 }
 
 export class CreateBreweryInput {
@@ -274,6 +285,10 @@ export class Brewery {
 export abstract class IMutation {
     abstract createBar(createBarInput?: CreateBarInput): Bar | Promise<Bar>;
 
+    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
+
+    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
+
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
@@ -295,6 +310,10 @@ export abstract class IQuery {
     abstract getBars(): Bar[] | Promise<Bar[]>;
 
     abstract bar(id: string): Bar | Promise<Bar>;
+
+    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
+
+    abstract beerType(id: string): BeerType | Promise<BeerType>;
 
     abstract beers(): Beer[] | Promise<Beer[]>;
 

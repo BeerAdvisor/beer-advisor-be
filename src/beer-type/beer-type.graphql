@@ -1,3 +1,13 @@
+type Query {
+    beerTypes: [BeerType!]
+    beerType(id: ID!): BeerType!
+}
+
+type Mutation {
+    createBeerType(createBeerTypeInput: CreateBeerTypeInput): BeerType!
+    changeBeerType(changeBeerTypeInput: ChangeBeerTypeInput): BeerType!
+}
+
 type BeerType {
     id: ID!
     name: String!
@@ -5,4 +15,15 @@ type BeerType {
     beers: [Beer!]
     createdAt: DateTime!
     updatedAt: DateTime!
+}
+
+input CreateBeerTypeInput {
+    name: String!
+    description: String
+    beerIds: [String!]
+}
+
+input ChangeBeerTypeInput {
+    beerTypeId: String!
+    newDescription: String!
 }
