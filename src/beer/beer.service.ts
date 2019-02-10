@@ -1,7 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { BeerField, ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput, UpvoteBeerChangeInput } from '../graphql.schema.generated';
+import {
+  BeerField,
+  ChangeBeerInput,
+  CommentBeerInput,
+  CreateBeerInput,
+  FindBeerInput,
+  RateBeerInput,
+  UpvoteBeerChangeInput,
+} from '../graphql.schema.generated';
 import { mapConnectIds } from '../shared/helpers/map-connect-ids';
 import { Beer, BeerChange, BeerChangeUpvote, BeerComment, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';

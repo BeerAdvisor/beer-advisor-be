@@ -10,6 +10,7 @@ import { GqlValidationPipe } from './shared/pipes/gql-validation.pipe';
 import { AuthModule } from './auth/auth.module';
 import { BreweryModule } from './brewery/brewery.module';
 import { BeerTypeModule } from './beer-type/beer-type.module';
+import { BarModule } from './bar/bar.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { BeerTypeModule } from './beer-type/beer-type.module';
     AuthModule,
     BreweryModule,
     BeerTypeModule,
+    BarModule,
   ],
   providers: [
     {

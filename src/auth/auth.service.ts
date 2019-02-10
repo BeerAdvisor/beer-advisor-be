@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   handleAdmin(user: User): void {
-    if (user.role !== Role.ADMIN) {
+    if (!user || user.role !== Role.ADMIN) {
       this.error.throwCustomError('Forbidden', ErrorCodes.FORBIDDEN);
     }
   }

@@ -6,6 +6,7 @@ import { GqlAuthGuard } from '../auth/graphql-auth.guard';
 import { GqlUser } from '../shared/decorators/user.decorator';
 import { User } from '../prisma/prisma.bindings.generated';
 import { BeerTypeService } from './beer-type.service';
+import { AdminGuard } from '../auth/admin.guard';
 
 @Resolver('BeerType')
 export class BeerTypeResolver {
@@ -23,13 +24,13 @@ export class BeerTypeResolver {
   }
 
   @Mutation()
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, AdminGuard)
   changeBeerType(@Args('changeBeerTypeInput') args: ChangeBeerTypeInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
     return this.beerTypeService.changeBeerType(args, user, info);
   }
 
   @Mutation()
-  @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard, AdminGuard)
   createBeerType(@Args('createBeerTypeInput') args: CreateBeerTypeInput, @Info() info: GraphQLResolveInfo, @GqlUser() user: User) {
     return this.beerTypeService.createBeerType(args, user, info);
   }
