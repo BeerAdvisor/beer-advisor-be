@@ -106,6 +106,7 @@ input UpvoteBeerChangeInput {
 }
 
 input FindBeerInput {
+    # TODO add bar search
     name: String
     type: String
     strong: String

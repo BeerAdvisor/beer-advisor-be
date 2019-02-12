@@ -1,10 +1,15 @@
 type Query {
     getBars: [Bar!]
     bar(id: ID!): Bar!
+    findBars(findBarInput: FindBarInput): [Bar!]
 }
 
 type Mutation {
     createBar(createBarInput: CreateBarInput): Bar!
+    commentBar(commentBarInput: CommentBarInput): BarComment!
+    rateBar(rateBarInput: RateBarInput): Bar!
+    changeBar(changeBarInput: ChangeBarInput): BarChange!
+    upvoteBarChange(upvoteBarChangeInput: UpvoteBarChangeInput): UpvoteBarChangeUnion
 }
 
 type Bar {
@@ -66,13 +71,64 @@ type BarChangeUpvote {
     createdAt: DateTime!
 }
 
+enum BarField {
+    NAME
+    ADDRESS_CHANGE
+    PHONE
+    OPEN_TIME
+    CLOSE_TIME
+}
+
 input CreateBarInput {
     name: String!
-    address: String!
     lat: String!
     long: String!
+    address: String
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]
     beerIds: [String!]
 }
+
+input CommentBarInput {
+    barId: ID!
+    comment: String!
+}
+
+input RateBarInput {
+    barId: ID!
+    rating: Int!
+}
+
+input ChangeBarInput {
+    field: BarField!
+    barId: String!
+    newValue: String
+    newAddressValue: AddressChange
+}
+
+input UpvoteBarChangeInput {
+    barChangeId: ID!
+}
+
+input FindBarInput {
+    # TODO Add beer search
+    name: String
+    openNow: Boolean
+    distance: DistanceSearch
+}
+
+input AddressChange {
+    # TODO limit lat long by prague
+    lat: String!
+    long: String!
+}
+
+input DistanceSearch {
+    # TODO limit lat long by prague
+    lat: String!
+    long: String!
+    distance: Int!
+}
+
+union UpvoteBarChangeUnion = BarChangeUpvote | Bar

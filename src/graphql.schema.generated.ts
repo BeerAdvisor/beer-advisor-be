@@ -1,4 +1,12 @@
 /* tslint:disable */
+export enum BarField {
+    NAME = "NAME",
+    ADDRESS_CHANGE = "ADDRESS_CHANGE",
+    PHONE = "PHONE",
+    OPEN_TIME = "OPEN_TIME",
+    CLOSE_TIME = "CLOSE_TIME"
+}
+
 export enum BeerField {
     NAME = "NAME",
     TYPE = "TYPE",
@@ -22,6 +30,18 @@ export enum Sex {
     FEMALE = "FEMALE"
 }
 
+export class AddressChange {
+    lat: string;
+    long: string;
+}
+
+export class ChangeBarInput {
+    field: BarField;
+    barId: string;
+    newValue?: string;
+    newAddressValue?: AddressChange;
+}
+
 export class ChangeBeerInput {
     field: BeerField;
     newValue: string;
@@ -33,6 +53,11 @@ export class ChangeBeerTypeInput {
     newDescription: string;
 }
 
+export class CommentBarInput {
+    barId: string;
+    comment: string;
+}
+
 export class CommentBeerInput {
     beerId: string;
     comment: string;
@@ -40,9 +65,9 @@ export class CommentBeerInput {
 
 export class CreateBarInput {
     name: string;
-    address: string;
     lat: string;
     long: string;
+    address?: string;
     openTime?: DateTime;
     closeTime?: DateTime;
     photos: string[];
@@ -70,6 +95,18 @@ export class CreateBreweryInput {
     logo?: string;
 }
 
+export class DistanceSearch {
+    lat: string;
+    long: string;
+    distance: number;
+}
+
+export class FindBarInput {
+    name?: string;
+    openNow?: boolean;
+    distance?: DistanceSearch;
+}
+
 export class FindBeerInput {
     name?: string;
     type?: string;
@@ -80,6 +117,11 @@ export class FindBeerInput {
 export class LoginInput {
     email: string;
     password: string;
+}
+
+export class RateBarInput {
+    barId: string;
+    rating: number;
 }
 
 export class RateBeerInput {
@@ -93,6 +135,10 @@ export class SignUpInput {
     nickname: string;
     sex: Sex;
     birthdate: DateTime;
+}
+
+export class UpvoteBarChangeInput {
+    barChangeId: string;
 }
 
 export class UpvoteBeerChangeInput {
@@ -285,6 +331,14 @@ export class Brewery {
 export abstract class IMutation {
     abstract createBar(createBarInput?: CreateBarInput): Bar | Promise<Bar>;
 
+    abstract commentBar(commentBarInput?: CommentBarInput): BarComment | Promise<BarComment>;
+
+    abstract rateBar(rateBarInput?: RateBarInput): Bar | Promise<Bar>;
+
+    abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
+
+    abstract upvoteBarChange(upvoteBarChangeInput?: UpvoteBarChangeInput): UpvoteBarChangeUnion | Promise<UpvoteBarChangeUnion>;
+
     abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
@@ -310,6 +364,8 @@ export abstract class IQuery {
     abstract getBars(): Bar[] | Promise<Bar[]>;
 
     abstract bar(id: string): Bar | Promise<Bar>;
+
+    abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
 
     abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
 
@@ -356,4 +412,5 @@ export class User {
 }
 
 export type DateTime = any;
+export type UpvoteBarChangeUnion = BarChangeUpvote | Bar;
 export type UpvoteBeerChangeUnion = BeerChangeUpvote | Beer;
