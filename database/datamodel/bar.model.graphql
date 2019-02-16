@@ -9,10 +9,10 @@ type Bar {
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]
-    beers: [Beer!]
     barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
     barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
     barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
+    # TODO change to beerList
     beerPrices: [BeerPrice!] @relation(name: "BarBeerPrices" onDelete: CASCADE)
     beerConnections: [BeerBarConnectionChange!] @relation(name: "BarBeerConnections" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
@@ -41,18 +41,21 @@ type BarComment {
 
 type BarChange {
     id: ID! @unique
-    field: String!
-    newValue: String!
-    user: User
+    name: String
+    address: String
+    # TODO limit lat long by prague
+    lat: String
+    long: String
+    phone: String
+    openTime: DateTime
+    closeTime: DateTime
+    checked: Boolean @default(value: "false")
+    accepted: Boolean @default(value: "false")
     bar: Bar! @relation(name: "BarChanges")
-    upvotes: [BarChangeUpvote!] @relation(name: "BarChangeUpvotes" onDelete: CASCADE)
+    # TODO change to beerList
+    beerPrices: [BeerPrice!]
+    beerConnections: [BeerBarConnectionChange!]
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
-}
-
-type BarChangeUpvote {
-    id: ID! @unique
-    user: User
-    barChange: BarChange! @relation(name: "BarChangeUpvotes")
-    createdAt: DateTime!
 }

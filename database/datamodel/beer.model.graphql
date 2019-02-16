@@ -6,10 +6,10 @@ type Beer {
     avgRating: Float
     brewery: Brewery
     type: BeerType
-    bars: [Bar!]
     beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
     beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)
     beerChanges: [BeerChange!] @relation(name: "BeerChanges" onDelete: CASCADE)
+    # TODO change to beerList
     beerPrices: [BeerPrice!] @relation(name: "BeerPrices" onDelete: CASCADE)
     barConnections: [BeerBarConnectionChange!] @relation(name: "BeerBarConnections" onDelete: CASCADE)
     createdBy: User @relation(name: "BeerCreatedRelation")
@@ -38,26 +38,19 @@ type BeerComment {
 
 type BeerChange {
     id: ID! @unique
-    field: BeerField!
-    newValue: String!
-    user: User
+    name: String
+    strong: String
+    photo: String
+    avgRating: Float
+    brewery: Brewery
+    type: BeerType
+    checked: Boolean @default(value: "false")
+    accepted: Boolean @default(value: "false")
     beer: Beer! @relation(name: "BeerChanges")
-    upvotes: [BeerChangeUpvote!] @relation(name: "BeerChangeUpvotes" onDelete: CASCADE)
+    # TODO change to beerList
+    beerPrices: [BeerPrice!]
+    barConnections: [BeerBarConnectionChange!]
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
-}
-
-type BeerChangeUpvote {
-    id: ID! @unique
-    user: User
-    beerChange: BeerChange! @relation(name: "BeerChangeUpvotes")
-    createdAt: DateTime!
-}
-
-enum BeerField {
-    NAME
-    TYPE
-    STRONG
-    PHOTO
-    BREWERY
 }
