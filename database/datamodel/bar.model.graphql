@@ -12,9 +12,7 @@ type Bar {
     barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
     barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
     barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
-    # TODO change to beerList
-    beerPrices: [BeerPrice!] @relation(name: "BarBeerPrices" onDelete: CASCADE)
-    beerConnections: [BeerBarConnectionChange!] @relation(name: "BarBeerConnections" onDelete: CASCADE)
+    beerList: BeerList! @relation(name: "BeerList" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
     createdAt: DateTime!
@@ -52,9 +50,7 @@ type BarChange {
     checked: Boolean @default(value: "false")
     accepted: Boolean @default(value: "false")
     bar: Bar! @relation(name: "BarChanges")
-    # TODO change to beerList
-    beerPrices: [BeerPrice!]
-    beerConnections: [BeerBarConnectionChange!]
+    beerList: BeerList!
     user: User
     createdAt: DateTime!
     updatedAt: DateTime!
