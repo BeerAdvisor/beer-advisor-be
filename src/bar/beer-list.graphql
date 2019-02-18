@@ -1,0 +1,16 @@
+type BeerList {
+    id: ID!
+    bar: Bar
+    items: [BeerListItem!]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type BeerListItem {
+    id: ID!
+    price: Float!
+    beer: Beer!
+    beerList: BeerList!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}

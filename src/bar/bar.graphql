@@ -78,10 +78,10 @@ input CreateBarInput {
     closeTime: DateTime
     phone: String
     photos: [String!]
-    beers: [BeerListItem!]
+    beers: [BeerListItemInput!]
 }
 
-input BeerListItem {
+input BeerListItemInput {
     beerId: String!
     price: Float
 }
@@ -105,7 +105,7 @@ input ChangeBarInput {
     closeTime: DateTime
     phone: String
     photos: [String!]
-    beers: [BeerListItem!]
+    beers: [BeerListItemInput!]
 }
 
 input FindBarInput {

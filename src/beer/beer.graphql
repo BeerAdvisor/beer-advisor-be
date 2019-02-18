@@ -9,7 +9,6 @@ type Mutation {
     commentBeer(commentBeerInput: CommentBeerInput): BeerComment!
     rateBeer(rateBeerInput: RateBeerInput): Beer!
     changeBeer(changeBeerInput: ChangeBeerInput): BeerChange!
-    upvoteBeerChange(upvoteBeerChangeInput: UpvoteBeerChangeInput): UpvoteBeerChangeUnion
 }
 
 type Beer {
@@ -20,12 +19,10 @@ type Beer {
     avgRating: Float
     brewery: Brewery
     type: BeerType
-    bars: [Bar!]
     beerRating: [BeerRating!]
     beerComments: [BeerComment!]
     beerChanges: [BeerChange!]
-    beerPrices: [BeerPrice!]
-    barConnections: [BeerBarConnectionChange!]
+    includedIn: [BeerListItem!]
     createdBy: User
     likedBy: [User!]
     createdAt: DateTime!
@@ -52,28 +49,17 @@ type BeerComment {
 
 type BeerChange {
     id: ID!
-    field: BeerField!
-    newValue: String!
-    user: User
+    name: String
+    strong: String
+    photo: String
+    brewery: Brewery
+    type: BeerType
+    checked: Boolean
+    accepted: Boolean
     beer: Beer!
-    upvotes: [BeerChangeUpvote!]
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
-}
-
-type BeerChangeUpvote {
-    id: ID!
-    user: User
-    beerChange: BeerChange!
-    createdAt: DateTime!
-}
-
-enum BeerField {
-    NAME
-    TYPE
-    STRONG
-    PHOTO
-    BREWERY
 }
 
 input RateBeerInput {
@@ -83,11 +69,16 @@ input RateBeerInput {
 
 input CreateBeerInput {
     name: String!
-    photo: String
     strong: String
+    photo: String
     breweryId: String
     typeId: String
-    barIds: [String!]
+    includeIn: [IncludeInInput!]
+}
+
+input IncludeInInput {
+    barId: String!
+    price: Float
 }
 
 input CommentBeerInput {
@@ -96,13 +87,12 @@ input CommentBeerInput {
 }
 
 input ChangeBeerInput {
-    field: BeerField!
-    newValue: String!
-    beerId: String!
-}
-
-input UpvoteBeerChangeInput {
-    beerChangeId: ID!
+    name: String
+    strong: String
+    photo: String
+    breweryId: String
+    typeId: String
+    includeIn: [IncludeInInput!]
 }
 
 input FindBeerInput {
@@ -112,5 +102,3 @@ input FindBeerInput {
     strong: String
     brewery: String
 }
-
-union UpvoteBeerChangeUnion = BeerChangeUpvote | Beer
