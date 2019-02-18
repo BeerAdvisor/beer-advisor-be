@@ -9,7 +9,6 @@ type Mutation {
     commentBar(commentBarInput: CommentBarInput): BarComment!
     rateBar(rateBarInput: RateBarInput): Bar!
     changeBar(changeBarInput: ChangeBarInput): BarChange!
-    upvoteBarChange(upvoteBarChangeInput: UpvoteBarChangeInput): UpvoteBarChangeUnion
 }
 
 type Bar {
@@ -23,12 +22,10 @@ type Bar {
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]
-    beers: [Beer!]
     barRating: [BarRating!]
     barComments: [BarComment!]
     barChanges: [BarChange!]
-    beerPrices: [BeerPrice!]
-    beerConnections: [BeerBarConnectionChange!]
+    beerList: BeerList!
     createdBy: User
     likedBy: [User!]
     createdAt: DateTime!
@@ -55,28 +52,21 @@ type BarComment {
 
 type BarChange {
     id: ID!
-    field: String!
-    newValue: String!
-    user: User
+    name: String
+    address: String
+    # TODO limit lat long by prague
+    lat: String
+    long: String
+    phone: String
+    openTime: DateTime
+    closeTime: DateTime
+    checked: Boolean
+    accepted: Boolean
     bar: Bar!
-    upvotes: [BarChangeUpvote!]
+    beerList: BeerList!
+    user: User
     createdAt: DateTime!
     updatedAt: DateTime!
-}
-
-type BarChangeUpvote {
-    id: ID!
-    user: User
-    barChange: BarChange!
-    createdAt: DateTime!
-}
-
-enum BarField {
-    NAME
-    ADDRESS_CHANGE
-    PHONE
-    OPEN_TIME
-    CLOSE_TIME
 }
 
 input CreateBarInput {
@@ -86,8 +76,14 @@ input CreateBarInput {
     address: String
     openTime: DateTime
     closeTime: DateTime
+    phone: String
     photos: [String!]
-    beerIds: [String!]
+    beers: [BeerListItem!]
+}
+
+input BeerListItem {
+    beerId: String!
+    price: Float
 }
 
 input CommentBarInput {
@@ -101,14 +97,15 @@ input RateBarInput {
 }
 
 input ChangeBarInput {
-    field: BarField!
-    barId: String!
-    newValue: String
-    newAddressValue: AddressChange
-}
-
-input UpvoteBarChangeInput {
-    barChangeId: ID!
+    name: String
+    lat: String
+    long: String
+    address: String
+    openTime: DateTime
+    closeTime: DateTime
+    phone: String
+    photos: [String!]
+    beers: [BeerListItem!]
 }
 
 input FindBarInput {
@@ -118,17 +115,9 @@ input FindBarInput {
     distance: DistanceSearch
 }
 
-input AddressChange {
-    # TODO limit lat long by prague
-    lat: String!
-    long: String!
-}
-
 input DistanceSearch {
     # TODO limit lat long by prague
     lat: String!
     long: String!
     distance: Int!
 }
-
-union UpvoteBarChangeUnion = BarChangeUpvote | Bar
