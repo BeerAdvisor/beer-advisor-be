@@ -1,25 +1,4 @@
 /* tslint:disable */
-export enum BarField {
-    NAME = "NAME",
-    ADDRESS_CHANGE = "ADDRESS_CHANGE",
-    PHONE = "PHONE",
-    OPEN_TIME = "OPEN_TIME",
-    CLOSE_TIME = "CLOSE_TIME"
-}
-
-export enum BeerField {
-    NAME = "NAME",
-    TYPE = "TYPE",
-    STRONG = "STRONG",
-    PHOTO = "PHOTO",
-    BREWERY = "BREWERY"
-}
-
-export enum ConnectionChangeType {
-    ADD = "ADD",
-    REMOVE = "REMOVE"
-}
-
 export enum Role {
     USER = "USER",
     ADMIN = "ADMIN"
@@ -30,22 +9,30 @@ export enum Sex {
     FEMALE = "FEMALE"
 }
 
-export class AddressChange {
-    lat: string;
-    long: string;
+export class BeerListItemInput {
+    beerId: string;
+    price?: number;
 }
 
 export class ChangeBarInput {
-    field: BarField;
-    barId: string;
-    newValue?: string;
-    newAddressValue?: AddressChange;
+    name?: string;
+    lat?: string;
+    long?: string;
+    address?: string;
+    openTime?: DateTime;
+    closeTime?: DateTime;
+    phone?: string;
+    photos: string[];
+    beers: BeerListItemInput[];
 }
 
 export class ChangeBeerInput {
-    field: BeerField;
-    newValue: string;
-    beerId: string;
+    name?: string;
+    strong?: string;
+    photo?: string;
+    breweryId?: string;
+    typeId?: string;
+    includeIn: IncludeInInput[];
 }
 
 export class ChangeBeerTypeInput {
@@ -70,17 +57,18 @@ export class CreateBarInput {
     address?: string;
     openTime?: DateTime;
     closeTime?: DateTime;
+    phone?: string;
     photos: string[];
-    beerIds: string[];
+    beers: BeerListItemInput[];
 }
 
 export class CreateBeerInput {
     name: string;
-    photo?: string;
     strong?: string;
+    photo?: string;
     breweryId?: string;
     typeId?: string;
-    barIds: string[];
+    includeIn: IncludeInInput[];
 }
 
 export class CreateBeerTypeInput {
@@ -114,6 +102,11 @@ export class FindBeerInput {
     brewery?: string;
 }
 
+export class IncludeInInput {
+    barId: string;
+    price?: number;
+}
+
 export class LoginInput {
     email: string;
     password: string;
@@ -137,14 +130,6 @@ export class SignUpInput {
     birthdate: DateTime;
 }
 
-export class UpvoteBarChangeInput {
-    barChangeId: string;
-}
-
-export class UpvoteBeerChangeInput {
-    beerChangeId: string;
-}
-
 export class AuthPayload {
     user?: User;
 }
@@ -159,12 +144,10 @@ export class Bar {
     openTime?: DateTime;
     closeTime?: DateTime;
     photos: string[];
-    beers: Beer[];
     barRating: BarRating[];
     barComments: BarComment[];
     barChanges: BarChange[];
-    beerPrices: BeerPrice[];
-    beerConnections: BeerBarConnectionChange[];
+    beerList: BeerList;
     createdBy?: User;
     likedBy: User[];
     createdAt: DateTime;
@@ -173,20 +156,20 @@ export class Bar {
 
 export class BarChange {
     id: string;
-    field: string;
-    newValue: string;
-    user?: User;
+    name?: string;
+    address?: string;
+    lat?: string;
+    long?: string;
+    phone?: string;
+    openTime?: DateTime;
+    closeTime?: DateTime;
+    checked?: boolean;
+    accepted?: boolean;
     bar: Bar;
-    upvotes: BarChangeUpvote[];
+    beerList: BeerList;
+    user?: User;
     createdAt: DateTime;
     updatedAt: DateTime;
-}
-
-export class BarChangeUpvote {
-    id: string;
-    user?: User;
-    barChange: BarChange;
-    createdAt: DateTime;
 }
 
 export class BarComment {
@@ -215,52 +198,29 @@ export class Beer {
     avgRating?: number;
     brewery?: Brewery;
     type?: BeerType;
-    bars: Bar[];
     beerRating: BeerRating[];
     beerComments: BeerComment[];
     beerChanges: BeerChange[];
-    beerPrices: BeerPrice[];
-    barConnections: BeerBarConnectionChange[];
+    includedIn: BeerListItem[];
     createdBy?: User;
     likedBy: User[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
 
-export class BeerBarConnectionChange {
-    id: string;
-    type: ConnectionChangeType;
-    user?: User;
-    beer: Beer;
-    bar: Bar;
-    upvotes: BeerBarConnectionChangeUpvote[];
-    createdAt: DateTime;
-    updatedAt: DateTime;
-}
-
-export class BeerBarConnectionChangeUpvote {
-    id: string;
-    user?: User;
-    beerBarConnectionChange: BeerBarConnectionChange;
-    createdAt: DateTime;
-}
-
 export class BeerChange {
     id: string;
-    field: BeerField;
-    newValue: string;
-    user?: User;
+    name?: string;
+    strong?: string;
+    photo?: string;
+    brewery?: Brewery;
+    type?: BeerType;
+    checked?: boolean;
+    accepted?: boolean;
     beer: Beer;
-    upvotes: BeerChangeUpvote[];
+    user?: User;
     createdAt: DateTime;
     updatedAt: DateTime;
-}
-
-export class BeerChangeUpvote {
-    id: string;
-    user?: User;
-    beerChange: BeerChange;
-    createdAt: DateTime;
 }
 
 export class BeerComment {
@@ -272,32 +232,21 @@ export class BeerComment {
     updatedAt: DateTime;
 }
 
-export class BeerPrice {
+export class BeerList {
+    id: string;
+    bar?: Bar;
+    items: BeerListItem[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
+}
+
+export class BeerListItem {
     id: string;
     price: number;
-    user?: User;
-    bar: Bar;
     beer: Beer;
-    changes: BeerPriceChange[];
+    beerList: BeerList;
     createdAt: DateTime;
     updatedAt: DateTime;
-}
-
-export class BeerPriceChange {
-    id: string;
-    newPrice: number;
-    beerPrice: BeerPrice;
-    user?: User;
-    upvotes: BeerPriceChangeUpvote[];
-    createdAt: DateTime;
-    updatedAt: DateTime;
-}
-
-export class BeerPriceChangeUpvote {
-    id: string;
-    user?: User;
-    beerPriceChange: BeerPriceChange;
-    createdAt: DateTime;
 }
 
 export class BeerRating {
@@ -337,8 +286,6 @@ export abstract class IMutation {
 
     abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
 
-    abstract upvoteBarChange(upvoteBarChangeInput?: UpvoteBarChangeInput): UpvoteBarChangeUnion | Promise<UpvoteBarChangeUnion>;
-
     abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
@@ -350,8 +297,6 @@ export abstract class IMutation {
     abstract rateBeer(rateBeerInput?: RateBeerInput): Beer | Promise<Beer>;
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
-
-    abstract upvoteBeerChange(upvoteBeerChangeInput?: UpvoteBeerChangeInput): UpvoteBeerChangeUnion | Promise<UpvoteBeerChangeUnion>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
@@ -400,9 +345,6 @@ export class User {
     barRatings: BarRating[];
     beerChanges: BeerChange[];
     barChanges: BarChange[];
-    beerChangeUpvotes: BeerChangeUpvote[];
-    barChangeUpvotes: BarChangeUpvote[];
-    pricedBeers: BeerPrice[];
     likedBeers: Beer[];
     likedBars: Bar[];
     createdBeers: Beer[];
@@ -412,5 +354,3 @@ export class User {
 }
 
 export type DateTime = any;
-export type UpvoteBarChangeUnion = BarChangeUpvote | Bar;
-export type UpvoteBeerChangeUnion = BeerChangeUpvote | Beer;
