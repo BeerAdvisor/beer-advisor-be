@@ -27,6 +27,7 @@ export class ChangeBarInput {
 }
 
 export class ChangeBeerInput {
+    beerId: string;
     name?: string;
     strong?: string;
     photo?: string;

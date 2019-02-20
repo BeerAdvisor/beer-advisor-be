@@ -50,7 +50,7 @@ type BarChange {
     checked: Boolean @default(value: "false")
     accepted: Boolean @default(value: "false")
     bar: Bar! @relation(name: "BarChanges")
-    beerList: BeerList!
+    beerList: BeerList
     user: User
     createdAt: DateTime!
     updatedAt: DateTime!

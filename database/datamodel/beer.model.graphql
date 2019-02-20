@@ -39,6 +39,7 @@ type BeerChange {
     name: String
     strong: String
     photo: String
+    # TODO remove avg rating from change
     avgRating: Float
     brewery: Brewery
     type: BeerType

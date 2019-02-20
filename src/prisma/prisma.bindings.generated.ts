@@ -264,7 +264,7 @@ type BarChange implements Node {
   checked: Boolean
   accepted: Boolean
   bar: Bar!
-  beerList: BeerList!
+  beerList: BeerList
   user: User
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -291,7 +291,7 @@ input BarChangeCreateInput {
   checked: Boolean
   accepted: Boolean
   bar: BarCreateOneWithoutBarChangesInput!
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
   user: UserCreateOneWithoutBarChangesInput
 }
 
@@ -315,7 +315,7 @@ input BarChangeCreateWithoutBarInput {
   closeTime: DateTime
   checked: Boolean
   accepted: Boolean
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
   user: UserCreateOneWithoutBarChangesInput
 }
 
@@ -330,7 +330,7 @@ input BarChangeCreateWithoutUserInput {
   checked: Boolean
   accepted: Boolean
   bar: BarCreateOneWithoutBarChangesInput!
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
 }
 
 """An edge in a connection."""
@@ -781,7 +781,7 @@ input BarChangeUpdateInput {
   checked: Boolean
   accepted: Boolean
   bar: BarUpdateOneRequiredWithoutBarChangesInput
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
   user: UserUpdateOneWithoutBarChangesInput
 }
 
@@ -848,7 +848,7 @@ input BarChangeUpdateWithoutBarDataInput {
   closeTime: DateTime
   checked: Boolean
   accepted: Boolean
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
   user: UserUpdateOneWithoutBarChangesInput
 }
 
@@ -863,7 +863,7 @@ input BarChangeUpdateWithoutUserDataInput {
   checked: Boolean
   accepted: Boolean
   bar: BarUpdateOneRequiredWithoutBarChangesInput
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
 }
 
 input BarChangeUpdateWithWhereUniqueWithoutBarInput {
@@ -5282,9 +5282,11 @@ input BeerListUpdateInput {
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
-input BeerListUpdateOneRequiredInput {
+input BeerListUpdateOneInput {
   create: BeerListCreateInput
   connect: BeerListWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
   update: BeerListUpdateDataInput
   upsert: BeerListUpsertNestedInput
 }
@@ -9376,7 +9378,7 @@ export interface BarChangeCreateInput {
   checked?: Boolean | null
   accepted?: Boolean | null
   bar: BarCreateOneWithoutBarChangesInput
-  beerList: BeerListCreateOneInput
+  beerList?: BeerListCreateOneInput | null
   user?: UserCreateOneWithoutBarChangesInput | null
 }
 
@@ -9400,7 +9402,7 @@ export interface BarChangeCreateWithoutBarInput {
   closeTime?: DateTime | null
   checked?: Boolean | null
   accepted?: Boolean | null
-  beerList: BeerListCreateOneInput
+  beerList?: BeerListCreateOneInput | null
   user?: UserCreateOneWithoutBarChangesInput | null
 }
 
@@ -9415,7 +9417,7 @@ export interface BarChangeCreateWithoutUserInput {
   checked?: Boolean | null
   accepted?: Boolean | null
   bar: BarCreateOneWithoutBarChangesInput
-  beerList: BeerListCreateOneInput
+  beerList?: BeerListCreateOneInput | null
 }
 
 export interface BarChangeScalarWhereInput {
@@ -9566,7 +9568,7 @@ export interface BarChangeUpdateInput {
   checked?: Boolean | null
   accepted?: Boolean | null
   bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
-  beerList?: BeerListUpdateOneRequiredInput | null
+  beerList?: BeerListUpdateOneInput | null
   user?: UserUpdateOneWithoutBarChangesInput | null
 }
 
@@ -9633,7 +9635,7 @@ export interface BarChangeUpdateWithoutBarDataInput {
   closeTime?: DateTime | null
   checked?: Boolean | null
   accepted?: Boolean | null
-  beerList?: BeerListUpdateOneRequiredInput | null
+  beerList?: BeerListUpdateOneInput | null
   user?: UserUpdateOneWithoutBarChangesInput | null
 }
 
@@ -9648,7 +9650,7 @@ export interface BarChangeUpdateWithoutUserDataInput {
   checked?: Boolean | null
   accepted?: Boolean | null
   bar?: BarUpdateOneRequiredWithoutBarChangesInput | null
-  beerList?: BeerListUpdateOneRequiredInput | null
+  beerList?: BeerListUpdateOneInput | null
 }
 
 export interface BarChangeUpdateWithWhereUniqueWithoutBarInput {
@@ -11882,9 +11884,11 @@ export interface BeerListUpdateInput {
   items?: BeerListItemUpdateManyWithoutBeerListInput | null
 }
 
-export interface BeerListUpdateOneRequiredInput {
+export interface BeerListUpdateOneInput {
   create?: BeerListCreateInput | null
   connect?: BeerListWhereUniqueInput | null
+  disconnect?: Boolean | null
+  delete?: Boolean | null
   update?: BeerListUpdateDataInput | null
   upsert?: BeerListUpsertNestedInput | null
 }
@@ -14080,7 +14084,7 @@ export interface BarChange extends Node {
   checked?: Boolean | null
   accepted?: Boolean | null
   bar: Bar
-  beerList: BeerList
+  beerList?: BeerList | null
   user?: User | null
   createdAt: DateTime
   updatedAt: DateTime

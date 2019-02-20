@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Sat Feb 16 2019 20:29:53 GMT+0100 (CET)
+# timestamp: Thu Feb 21 2019 00:14:27 GMT+0100 (CET)
 
 type AggregateBar {
   count: Int!
@@ -85,7 +85,7 @@ type BarChange implements Node {
   checked: Boolean
   accepted: Boolean
   bar: Bar!
-  beerList: BeerList!
+  beerList: BeerList
   user: User
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -112,7 +112,7 @@ input BarChangeCreateInput {
   checked: Boolean
   accepted: Boolean
   bar: BarCreateOneWithoutBarChangesInput!
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
   user: UserCreateOneWithoutBarChangesInput
 }
 
@@ -136,7 +136,7 @@ input BarChangeCreateWithoutBarInput {
   closeTime: DateTime
   checked: Boolean
   accepted: Boolean
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
   user: UserCreateOneWithoutBarChangesInput
 }
 
@@ -151,7 +151,7 @@ input BarChangeCreateWithoutUserInput {
   checked: Boolean
   accepted: Boolean
   bar: BarCreateOneWithoutBarChangesInput!
-  beerList: BeerListCreateOneInput!
+  beerList: BeerListCreateOneInput
 }
 
 """An edge in a connection."""
@@ -602,7 +602,7 @@ input BarChangeUpdateInput {
   checked: Boolean
   accepted: Boolean
   bar: BarUpdateOneRequiredWithoutBarChangesInput
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
   user: UserUpdateOneWithoutBarChangesInput
 }
 
@@ -669,7 +669,7 @@ input BarChangeUpdateWithoutBarDataInput {
   closeTime: DateTime
   checked: Boolean
   accepted: Boolean
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
   user: UserUpdateOneWithoutBarChangesInput
 }
 
@@ -684,7 +684,7 @@ input BarChangeUpdateWithoutUserDataInput {
   checked: Boolean
   accepted: Boolean
   bar: BarUpdateOneRequiredWithoutBarChangesInput
-  beerList: BeerListUpdateOneRequiredInput
+  beerList: BeerListUpdateOneInput
 }
 
 input BarChangeUpdateWithWhereUniqueWithoutBarInput {
@@ -5103,9 +5103,11 @@ input BeerListUpdateInput {
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
-input BeerListUpdateOneRequiredInput {
+input BeerListUpdateOneInput {
   create: BeerListCreateInput
   connect: BeerListWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
   update: BeerListUpdateDataInput
   upsert: BeerListUpsertNestedInput
 }

@@ -87,6 +87,7 @@ input CommentBeerInput {
 }
 
 input ChangeBeerInput {
+    beerId: String!
     name: String
     strong: String
     photo: String
