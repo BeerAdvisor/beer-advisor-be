@@ -20,6 +20,7 @@ export class GraphqlOptions implements GqlOptionsFactory {
       debug: true, // Toggle error stack trace in responses
       introspection: true,
       playground: true,
+      cors: false,
     };
   }
 }
