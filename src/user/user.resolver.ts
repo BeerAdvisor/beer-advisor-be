@@ -36,7 +36,7 @@ export class UserResolver {
     const user = await this.user.create(userDto);
 
     const jwt = this.jwt.sign({ id: user.id });
-    res.cookie('token', jwt, { httpOnly: true });
+    res.cookie('token', jwt, { httpOnly: true, secure: true, path: '/' });
 
     return { user };
   }
