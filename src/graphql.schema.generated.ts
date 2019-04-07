@@ -1,3 +1,9 @@
+
+/** ------------------------------------------------------
+ * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+ * -------------------------------------------------------
+ */
+
 /* tslint:disable */
 export enum Role {
     USER = "USER",
@@ -132,7 +138,7 @@ export class SignUpInput {
 }
 
 export class AuthPayload {
-    user?: User;
+    user: User;
 }
 
 export class Bar {
@@ -287,10 +293,6 @@ export abstract class IMutation {
 
     abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
 
-    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
-
-    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
-
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
@@ -298,6 +300,10 @@ export abstract class IMutation {
     abstract rateBeer(rateBeerInput?: RateBeerInput): Beer | Promise<Beer>;
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
+
+    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
+
+    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
@@ -307,21 +313,21 @@ export abstract class IMutation {
 }
 
 export abstract class IQuery {
-    abstract getBars(): Bar[] | Promise<Bar[]>;
+    abstract bars(): Bar[] | Promise<Bar[]>;
 
     abstract bar(id: string): Bar | Promise<Bar>;
 
     abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
-
-    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
-
-    abstract beerType(id: string): BeerType | Promise<BeerType>;
 
     abstract beers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
 
     abstract findBeers(findBeerInput?: FindBeerInput): Beer[] | Promise<Beer[]>;
+
+    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
+
+    abstract beerType(id: string): BeerType | Promise<BeerType>;
 
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 

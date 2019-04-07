@@ -1,6 +1,6 @@
-import { Resolver, Args, Info, Mutation } from '@nestjs/graphql';
+import { Query, Resolver, Args, Info, Mutation } from '@nestjs/graphql';
 import { BarService } from './bar.service';
-import { Query, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
 import { CreateBarInput, CreateBeerInput } from '../graphql.schema.generated';
 import { GqlUser } from '../shared/decorators/user.decorator';

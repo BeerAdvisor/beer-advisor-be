@@ -1,5 +1,5 @@
 type Query {
-    getBars: [Bar!]
+    bars: [Bar!]
     bar(id: ID!): Bar!
     findBars(findBarInput: FindBarInput): [Bar!]
 }
