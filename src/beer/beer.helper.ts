@@ -1,11 +1,15 @@
 import { IncludeInInput } from '../graphql.schema.generated';
 import { BeerListItemCreateManyWithoutBeerInput } from '../prisma/prisma.bindings.generated';
 
-export const mapIncludedIn = (arr: IncludeInInput[], change = false): BeerListItemCreateManyWithoutBeerInput =>
+export interface IncludedIn extends IncludeInInput{
+  beerListId: string;
+}
+
+export const mapIncludedIn = (arr: IncludedIn[]): BeerListItemCreateManyWithoutBeerInput =>
   arr &&
   arr.length && {
     create: arr.map(item => ({
       price: item.price,
-      beerList: change ? { create: null } : { connect: { id: item.barId } },
+      beerList: { connect: { id: item.beerListId } },
     })),
   };

@@ -16,7 +16,7 @@ export class BeerService {
     return this.prisma.query.beers(args, info);
   }
 
-  getBeer(id: string, info: GraphQLResolveInfo): Promise<Beer> {
+  getBeer(id: string, info?: GraphQLResolveInfo | string): Promise<Beer> {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
@@ -36,7 +36,16 @@ export class BeerService {
     );
   }
 
-  createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
+  async createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
+    const includedInArray =
+      beer.includeIn &&
+      (await Promise.all(
+        beer.includeIn.map(async value => {
+          const beerListId = (await this.prisma.query.bar({ where: { id: value.barId } }, `{ beerList { id } }`)).beerList.id;
+          return { ...value, beerListId };
+        }),
+      ));
+
     return this.prisma.mutation.createBeer(
       {
         data: {
@@ -46,7 +55,7 @@ export class BeerService {
           createdBy: connectId(user.id),
           type: connectId(beer.typeId),
           brewery: connectId(beer.breweryId),
-          includedIn: mapIncludedIn(beer.includeIn),
+          includedIn: mapIncludedIn(includedInArray),
         },
       },
       info,
