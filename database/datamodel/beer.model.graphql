@@ -5,7 +5,7 @@ type Beer {
     photo: String
     avgRating: Float
     brewery: Brewery
-    type: BeerType
+    type: BeerType!
     beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
     beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)
     beerChanges: [BeerChange!] @relation(name: "BeerChanges" onDelete: CASCADE)

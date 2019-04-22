@@ -5,7 +5,7 @@ import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, Rate
 import { Beer, BeerChange, BeerComment, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
-import { mapIncludedIn } from './beer.helper';
+import { IncludedIn, mapIncludedIn } from './beer.helper';
 import { connectId } from '../shared/helpers/map-connect-ids';
 
 @Injectable()
@@ -37,7 +37,7 @@ export class BeerService {
   }
 
   async createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
-    const includedInArray =
+    const includedInArray: IncludedIn[] =
       beer.includeIn &&
       (await Promise.all(
         beer.includeIn.map(async value => {
