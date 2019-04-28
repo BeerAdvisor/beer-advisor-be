@@ -2,7 +2,7 @@ import { Query, Resolver, Args, Info, Mutation } from '@nestjs/graphql';
 import { BarService } from './bar.service';
 import { UseGuards } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
-import { CreateBarInput, CreateBeerInput } from '../graphql.schema.generated';
+import { CreateBarInput, CreateBeerInput, FindBarInput } from '../graphql.schema.generated';
 import { GqlUser } from '../shared/decorators/user.decorator';
 import { User } from '../prisma/prisma.bindings.generated';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';
@@ -19,6 +19,11 @@ export class BarResolver {
   @Query()
   bar(@Args('id') id: string, @Info() info: GraphQLResolveInfo) {
     return this.barService.getBar(id, info);
+  }
+
+  @Query()
+  findBars(@Args('findBarInput') args: FindBarInput, @Info() info: GraphQLResolveInfo) {
+    return this.barService.findBeers(args, info);
   }
 
   @Mutation()

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
-import { CreateBarInput } from '../graphql.schema.generated';
+import { CreateBarInput, FindBarInput } from '../graphql.schema.generated';
 import { Bar, User } from '../prisma/prisma.bindings.generated';
 import { PrismaService } from '../prisma/prisma.service';
 import { ErrorService } from '../error/error.service';
@@ -38,5 +38,10 @@ export class BarService {
       },
       info,
     );
+  }
+
+  findBeers(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
+    // TODO add open-close time logic, add distance search logic,
+    return this.prisma.query.bars({ where: { name_contains: args.name } }, info);
   }
 }
