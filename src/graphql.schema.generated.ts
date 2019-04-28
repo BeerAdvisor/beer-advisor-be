@@ -293,6 +293,10 @@ export abstract class IMutation {
 
     abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
 
+    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
+
+    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
+
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
@@ -302,10 +306,6 @@ export abstract class IMutation {
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
-
-    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
-
-    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract signup(signUpInput?: SignUpInput): AuthPayload | Promise<AuthPayload>;
 
@@ -319,6 +319,10 @@ export abstract class IQuery {
 
     abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
 
+    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
+
+    abstract beerType(id: string): BeerType | Promise<BeerType>;
+
     abstract beers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
@@ -328,10 +332,6 @@ export abstract class IQuery {
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 
     abstract brewery(id: string): Brewery | Promise<Brewery>;
-
-    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
-
-    abstract beerType(id: string): BeerType | Promise<BeerType>;
 
     abstract temp__(): boolean | Promise<boolean>;
 }
