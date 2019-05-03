@@ -1,8 +1,8 @@
-import { Query, Resolver, Args, Info, Mutation } from '@nestjs/graphql';
+import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BarService } from './bar.service';
 import { UseGuards } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
-import { CreateBarInput, CreateBeerInput, FindBarInput } from '../graphql.schema.generated';
+import { CreateBarInput, FindBarInput } from '../graphql.schema.generated';
 import { GqlUser } from '../shared/decorators/user.decorator';
 import { User } from '../prisma/prisma.bindings.generated';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';

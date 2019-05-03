@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import * as bcryptjs from 'bcryptjs';
-import { User } from '../prisma/prisma.bindings.generated';
+import { User, UserWhereInput, UserWhereUniqueInput } from '../prisma/prisma.bindings.generated';
 import { SignUpInputDto } from './dto/sign-up-input.dto';
+import { GraphQLResolveInfo } from 'graphql';
 
 @Injectable()
 export class UserService {
@@ -12,11 +13,11 @@ export class UserService {
     return this.prisma.mutation.updateUser(args);
   }
 
-  public find(where): Promise<User> {
-    return this.prisma.query.user({ where });
+  public find(where: UserWhereUniqueInput, info?: GraphQLResolveInfo): Promise<User> {
+    return this.prisma.query.user({ where }, info);
   }
 
-  public exists(where): Promise<boolean> {
+  public exists(where: UserWhereInput): Promise<boolean> {
     return this.prisma.exists.User(where);
   }
 

@@ -138,7 +138,15 @@ export class SignUpInput {
 }
 
 export class AuthPayload {
-    user: User;
+    id: string;
+    email: string;
+    role: Role;
+    active: boolean;
+    nickname: string;
+    birthdate: DateTime;
+    sex: Sex;
+    name?: string;
+    surname?: string;
 }
 
 export class Bar {
@@ -332,6 +340,8 @@ export abstract class IQuery {
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 
     abstract brewery(id: string): Brewery | Promise<Brewery>;
+
+    abstract user(): User | Promise<User>;
 
     abstract temp__(): boolean | Promise<boolean>;
 }
