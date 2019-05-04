@@ -9,16 +9,16 @@ type User {
     sex: Sex!
     name: String
     surname: String
-    beerComments: [BeerComment!]
-    barComments: [BarComment!]
-    beerRatings: [BeerRating!]
-    barRatings: [BarRating!]
-    beerChanges: [BeerChange!]
-    barChanges: [BarChange!]
-    likedBeers: [Beer!] @relation(name: "BeerLikedRelation")
-    likedBars: [Bar!] @relation(name: "BarLikedRelation")
-    createdBeers: [Beer!] @relation(name: "BeerCreatedRelation")
-    createdBars: [Bar!] @relation(name: "BarCreatedRelation")
+    beerComments: [BeerComment!]!
+    barComments: [BarComment!]!
+    beerRatings: [BeerRating!]!
+    barRatings: [BarRating!]!
+    beerChanges: [BeerChange!]!
+    barChanges: [BarChange!]!
+    likedBeers: [Beer!]! @relation(name: "BeerLikedRelation")
+    likedBars: [Bar!]! @relation(name: "BarLikedRelation")
+    createdBeers: [Beer!]! @relation(name: "BeerCreatedRelation")
+    createdBars: [Bar!]! @relation(name: "BarCreatedRelation")
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }

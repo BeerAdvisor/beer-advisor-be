@@ -10,12 +10,12 @@ type Bar {
     closeTime: DateTime
     photos: [String!] @scalarList(strategy: RELATION)
     avgRating: Float
-    barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
-    barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
-    barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
+    barRating: [BarRating!]! @relation(name: "BarRatings" onDelete: CASCADE)
+    barComments: [BarComment!]! @relation(name: "BarComments" onDelete: CASCADE)
+    barChanges: [BarChange!]! @relation(name: "BarChanges" onDelete: CASCADE)
     beerList: BeerList! @relation(link: TABLE, name: "BeerList" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
-    likedBy: [User!] @relation(name: "BarLikedRelation")
+    likedBy: [User!]! @relation(name: "BarLikedRelation")
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }

@@ -3,7 +3,7 @@ type Brewery {
     name: String!
     country: String!
     logo: String
-    beers: [Beer!]
+    beers: [Beer!]!
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }

@@ -6,12 +6,12 @@ type Beer {
     avgRating: Float
     brewery: Brewery
     type: BeerType!
-    beerRating: [BeerRating!] @relation(name: "BeerRatings" onDelete: CASCADE)
-    beerComments: [BeerComment!] @relation(name: "BeerComments" onDelete: CASCADE)
-    beerChanges: [BeerChange!] @relation(name: "BeerChanges" onDelete: CASCADE)
-    includedIn: [BeerListItem!] @relation(name: "BeerAsBeerListItem" onDelete: CASCADE)
+    beerRating: [BeerRating!]! @relation(name: "BeerRatings" onDelete: CASCADE)
+    beerComments: [BeerComment!]! @relation(name: "BeerComments" onDelete: CASCADE)
+    beerChanges: [BeerChange!]! @relation(name: "BeerChanges" onDelete: CASCADE)
+    includedIn: [BeerListItem!]! @relation(name: "BeerAsBeerListItem" onDelete: CASCADE)
     createdBy: User @relation(name: "BeerCreatedRelation")
-    likedBy: [User!] @relation(name: "BeerLikedRelation")
+    likedBy: [User!]! @relation(name: "BeerLikedRelation")
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }

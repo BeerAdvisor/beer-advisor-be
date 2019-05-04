@@ -2,7 +2,7 @@ type BeerType {
     id: ID! @id
     name: String!
     description: String
-    beers: [Beer!]
+    beers: [Beer!]!
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }
