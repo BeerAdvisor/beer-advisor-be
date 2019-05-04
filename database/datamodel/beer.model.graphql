@@ -1,5 +1,5 @@
 type Beer {
-    id: ID! @unique
+    id: ID! @id
     name: String!
     strong: String
     photo: String
@@ -12,30 +12,30 @@ type Beer {
     includedIn: [BeerListItem!] @relation(name: "BeerAsBeerListItem" onDelete: CASCADE)
     createdBy: User @relation(name: "BeerCreatedRelation")
     likedBy: [User!] @relation(name: "BeerLikedRelation")
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BeerRating {
-    id: ID! @unique
+    id: ID! @id
     rating: Int!
     user: User
     beer: Beer! @relation(name: "BeerRatings")
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BeerComment {
-    id: ID! @unique
+    id: ID! @id
     comment: String!
     beer: Beer! @relation(name: "BeerComments")
     user: User
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BeerChange {
-    id: ID! @unique
+    id: ID! @id
     name: String
     strong: String
     photo: String
@@ -43,10 +43,10 @@ type BeerChange {
     avgRating: Float
     brewery: Brewery
     type: BeerType
-    checked: Boolean @default(value: "false")
-    accepted: Boolean @default(value: "false")
+    checked: Boolean @default(value: false)
+    accepted: Boolean @default(value: false)
     beer: Beer! @relation(name: "BeerChanges")
     user: User
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }

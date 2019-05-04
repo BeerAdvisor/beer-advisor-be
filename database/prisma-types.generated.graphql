@@ -1,5 +1,5 @@
-# source: https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev
-# timestamp: Thu Feb 21 2019 00:14:27 GMT+0100 (CET)
+# source: https://eu1.prisma.sh/kotn01/demo/dev
+# timestamp: Sat May 04 2019 17:45:29 GMT+0200 (CEST)
 
 type AggregateBar {
   count: Int!
@@ -63,6 +63,7 @@ type Bar implements Node {
   openTime: DateTime
   closeTime: DateTime
   photos: [String!]!
+  avgRating: Float
   barRating(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarRating!]
   barComments(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarComment!]
   barChanges(where: BarChangeWhereInput, orderBy: BarChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BarChange!]
@@ -102,6 +103,7 @@ type BarChangeConnection {
 }
 
 input BarChangeCreateInput {
+  id: ID
   name: String
   address: String
   lat: String
@@ -127,6 +129,7 @@ input BarChangeCreateManyWithoutUserInput {
 }
 
 input BarChangeCreateWithoutBarInput {
+  id: ID
   name: String
   address: String
   lat: String
@@ -141,6 +144,7 @@ input BarChangeCreateWithoutBarInput {
 }
 
 input BarChangeCreateWithoutUserInput {
+  id: ID
   name: String
   address: String
   lat: String
@@ -1083,6 +1087,7 @@ type BarCommentConnection {
 }
 
 input BarCommentCreateInput {
+  id: ID
   comment: String!
   bar: BarCreateOneWithoutBarCommentsInput!
   user: UserCreateOneWithoutBarCommentsInput
@@ -1099,11 +1104,13 @@ input BarCommentCreateManyWithoutUserInput {
 }
 
 input BarCommentCreateWithoutBarInput {
+  id: ID
   comment: String!
   user: UserCreateOneWithoutBarCommentsInput
 }
 
 input BarCommentCreateWithoutUserInput {
+  id: ID
   comment: String!
   bar: BarCreateOneWithoutBarCommentsInput!
 }
@@ -1536,6 +1543,7 @@ type BarConnection {
 }
 
 input BarCreateInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1543,6 +1551,7 @@ input BarCreateInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
@@ -1587,6 +1596,7 @@ input BarCreatephotosInput {
 }
 
 input BarCreateWithoutBarChangesInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1594,6 +1604,7 @@ input BarCreateWithoutBarChangesInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
@@ -1603,6 +1614,7 @@ input BarCreateWithoutBarChangesInput {
 }
 
 input BarCreateWithoutBarCommentsInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1610,6 +1622,7 @@ input BarCreateWithoutBarCommentsInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
@@ -1619,6 +1632,7 @@ input BarCreateWithoutBarCommentsInput {
 }
 
 input BarCreateWithoutBarRatingInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1626,6 +1640,7 @@ input BarCreateWithoutBarRatingInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barComments: BarCommentCreateManyWithoutBarInput
   barChanges: BarChangeCreateManyWithoutBarInput
@@ -1635,6 +1650,7 @@ input BarCreateWithoutBarRatingInput {
 }
 
 input BarCreateWithoutBeerListInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1642,6 +1658,7 @@ input BarCreateWithoutBeerListInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
@@ -1651,6 +1668,7 @@ input BarCreateWithoutBeerListInput {
 }
 
 input BarCreateWithoutCreatedByInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1658,6 +1676,7 @@ input BarCreateWithoutCreatedByInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
@@ -1667,6 +1686,7 @@ input BarCreateWithoutCreatedByInput {
 }
 
 input BarCreateWithoutLikedByInput {
+  id: ID
   name: String!
   address: String!
   lat: String!
@@ -1674,6 +1694,7 @@ input BarCreateWithoutLikedByInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarCreatephotosInput
   barRating: BarRatingCreateManyWithoutBarInput
   barComments: BarCommentCreateManyWithoutBarInput
@@ -1708,6 +1729,8 @@ enum BarOrderByInput {
   openTime_DESC
   closeTime_ASC
   closeTime_DESC
+  avgRating_ASC
+  avgRating_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1724,6 +1747,7 @@ type BarPreviousValues {
   openTime: DateTime
   closeTime: DateTime
   photos: [String!]!
+  avgRating: Float
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1748,6 +1772,7 @@ type BarRatingConnection {
 }
 
 input BarRatingCreateInput {
+  id: ID
   rating: Float!
   user: UserCreateOneWithoutBarRatingsInput
   bar: BarCreateOneWithoutBarRatingInput!
@@ -1764,11 +1789,13 @@ input BarRatingCreateManyWithoutUserInput {
 }
 
 input BarRatingCreateWithoutBarInput {
+  id: ID
   rating: Float!
   user: UserCreateOneWithoutBarRatingsInput
 }
 
 input BarRatingCreateWithoutUserInput {
+  id: ID
   rating: Float!
   bar: BarCreateOneWithoutBarRatingInput!
 }
@@ -2447,6 +2474,28 @@ input BarScalarWhereInput {
 
   """All values greater than or equal the given value."""
   closeTime_gte: DateTime
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -2540,6 +2589,7 @@ input BarUpdateInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
@@ -2557,6 +2607,7 @@ input BarUpdateManyDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
 }
 
@@ -2568,6 +2619,7 @@ input BarUpdateManyMutationInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
 }
 
@@ -2642,6 +2694,7 @@ input BarUpdateWithoutBarChangesDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
@@ -2658,6 +2711,7 @@ input BarUpdateWithoutBarCommentsDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
@@ -2674,6 +2728,7 @@ input BarUpdateWithoutBarRatingDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barComments: BarCommentUpdateManyWithoutBarInput
   barChanges: BarChangeUpdateManyWithoutBarInput
@@ -2690,6 +2745,7 @@ input BarUpdateWithoutBeerListDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
@@ -2706,6 +2762,7 @@ input BarUpdateWithoutCreatedByDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
@@ -2722,6 +2779,7 @@ input BarUpdateWithoutLikedByDataInput {
   phone: String
   openTime: DateTime
   closeTime: DateTime
+  avgRating: Float
   photos: BarUpdatephotosInput
   barRating: BarRatingUpdateManyWithoutBarInput
   barComments: BarCommentUpdateManyWithoutBarInput
@@ -3065,6 +3123,28 @@ input BarWhereInput {
 
   """All values greater than or equal the given value."""
   closeTime_gte: DateTime
+  avgRating: Float
+
+  """All values that are not equal to given value."""
+  avgRating_not: Float
+
+  """All values that are contained in given list."""
+  avgRating_in: [Float!]
+
+  """All values that are not contained in given list."""
+  avgRating_not_in: [Float!]
+
+  """All values less than the given value."""
+  avgRating_lt: Float
+
+  """All values less than or equal the given value."""
+  avgRating_lte: Float
+
+  """All values greater than the given value."""
+  avgRating_gt: Float
+
+  """All values greater than or equal the given value."""
+  avgRating_gte: Float
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -3141,7 +3221,7 @@ type Beer implements Node {
   photo: String
   avgRating: Float
   brewery: Brewery
-  type: BeerType
+  type: BeerType!
   beerRating(where: BeerRatingWhereInput, orderBy: BeerRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerRating!]
   beerComments(where: BeerCommentWhereInput, orderBy: BeerCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerComment!]
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange!]
@@ -3179,6 +3259,7 @@ type BeerChangeConnection {
 }
 
 input BeerChangeCreateInput {
+  id: ID
   name: String
   strong: String
   photo: String
@@ -3202,6 +3283,7 @@ input BeerChangeCreateManyWithoutUserInput {
 }
 
 input BeerChangeCreateWithoutBeerInput {
+  id: ID
   name: String
   strong: String
   photo: String
@@ -3214,6 +3296,7 @@ input BeerChangeCreateWithoutBeerInput {
 }
 
 input BeerChangeCreateWithoutUserInput {
+  id: ID
   name: String
   strong: String
   photo: String
@@ -3930,6 +4013,7 @@ type BeerCommentConnection {
 }
 
 input BeerCommentCreateInput {
+  id: ID
   comment: String!
   beer: BeerCreateOneWithoutBeerCommentsInput!
   user: UserCreateOneWithoutBeerCommentsInput
@@ -3946,11 +4030,13 @@ input BeerCommentCreateManyWithoutUserInput {
 }
 
 input BeerCommentCreateWithoutBeerInput {
+  id: ID
   comment: String!
   user: UserCreateOneWithoutBeerCommentsInput
 }
 
 input BeerCommentCreateWithoutUserInput {
+  id: ID
   comment: String!
   beer: BeerCreateOneWithoutBeerCommentsInput!
 }
@@ -4383,12 +4469,13 @@ type BeerConnection {
 }
 
 input BeerCreateInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
@@ -4438,12 +4525,13 @@ input BeerCreateOneWithoutIncludedInInput {
 }
 
 input BeerCreateWithoutBeerChangesInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   includedIn: BeerListItemCreateManyWithoutBeerInput
@@ -4452,12 +4540,13 @@ input BeerCreateWithoutBeerChangesInput {
 }
 
 input BeerCreateWithoutBeerCommentsInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
   includedIn: BeerListItemCreateManyWithoutBeerInput
@@ -4466,12 +4555,13 @@ input BeerCreateWithoutBeerCommentsInput {
 }
 
 input BeerCreateWithoutBeerRatingInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
   includedIn: BeerListItemCreateManyWithoutBeerInput
@@ -4480,11 +4570,12 @@ input BeerCreateWithoutBeerRatingInput {
 }
 
 input BeerCreateWithoutBreweryInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
@@ -4494,12 +4585,13 @@ input BeerCreateWithoutBreweryInput {
 }
 
 input BeerCreateWithoutCreatedByInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
@@ -4508,12 +4600,13 @@ input BeerCreateWithoutCreatedByInput {
 }
 
 input BeerCreateWithoutIncludedInInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
@@ -4522,12 +4615,13 @@ input BeerCreateWithoutIncludedInInput {
 }
 
 input BeerCreateWithoutLikedByInput {
+  id: ID
   name: String!
   strong: String
   photo: String
   avgRating: Float
   brewery: BreweryCreateOneWithoutBeersInput
-  type: BeerTypeCreateOneWithoutBeersInput
+  type: BeerTypeCreateOneWithoutBeersInput!
   beerRating: BeerRatingCreateManyWithoutBeerInput
   beerComments: BeerCommentCreateManyWithoutBeerInput
   beerChanges: BeerChangeCreateManyWithoutBeerInput
@@ -4536,6 +4630,7 @@ input BeerCreateWithoutLikedByInput {
 }
 
 input BeerCreateWithoutTypeInput {
+  id: ID
   name: String!
   strong: String
   photo: String
@@ -4577,6 +4672,7 @@ type BeerListConnection {
 }
 
 input BeerListCreateInput {
+  id: ID
   bar: BarCreateOneWithoutBeerListInput
   items: BeerListItemCreateManyWithoutBeerListInput
 }
@@ -4597,10 +4693,12 @@ input BeerListCreateOneWithoutItemsInput {
 }
 
 input BeerListCreateWithoutBarInput {
+  id: ID
   items: BeerListItemCreateManyWithoutBeerListInput
 }
 
 input BeerListCreateWithoutItemsInput {
+  id: ID
   bar: BarCreateOneWithoutBeerListInput
 }
 
@@ -4633,6 +4731,7 @@ type BeerListItemConnection {
 }
 
 input BeerListItemCreateInput {
+  id: ID
   price: Float!
   beer: BeerCreateOneWithoutIncludedInInput!
   beerList: BeerListCreateOneWithoutItemsInput!
@@ -4649,11 +4748,13 @@ input BeerListItemCreateManyWithoutBeerListInput {
 }
 
 input BeerListItemCreateWithoutBeerInput {
+  id: ID
   price: Float!
   beerList: BeerListCreateOneWithoutItemsInput!
 }
 
 input BeerListItemCreateWithoutBeerListInput {
+  id: ID
   price: Float!
   beer: BeerCreateOneWithoutIncludedInInput!
 }
@@ -5299,6 +5400,7 @@ type BeerRatingConnection {
 }
 
 input BeerRatingCreateInput {
+  id: ID
   rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput
   beer: BeerCreateOneWithoutBeerRatingInput!
@@ -5315,11 +5417,13 @@ input BeerRatingCreateManyWithoutUserInput {
 }
 
 input BeerRatingCreateWithoutBeerInput {
+  id: ID
   rating: Int!
   user: UserCreateOneWithoutBeerRatingsInput
 }
 
 input BeerRatingCreateWithoutUserInput {
+  id: ID
   rating: Int!
   beer: BeerCreateOneWithoutBeerRatingInput!
 }
@@ -6001,6 +6105,7 @@ type BeerTypeConnection {
 }
 
 input BeerTypeCreateInput {
+  id: ID
   name: String!
   description: String
   beers: BeerCreateManyWithoutTypeInput
@@ -6017,6 +6122,7 @@ input BeerTypeCreateOneWithoutBeersInput {
 }
 
 input BeerTypeCreateWithoutBeersInput {
+  id: ID
   name: String!
   description: String
 }
@@ -6116,11 +6222,9 @@ input BeerTypeUpdateOneInput {
   upsert: BeerTypeUpsertNestedInput
 }
 
-input BeerTypeUpdateOneWithoutBeersInput {
+input BeerTypeUpdateOneRequiredWithoutBeersInput {
   create: BeerTypeCreateWithoutBeersInput
   connect: BeerTypeWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
   update: BeerTypeUpdateWithoutBeersDataInput
   upsert: BeerTypeUpsertWithoutBeersInput
 }
@@ -6328,7 +6432,7 @@ input BeerUpdateInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
@@ -6438,7 +6542,7 @@ input BeerUpdateWithoutBeerChangesDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   includedIn: BeerListItemUpdateManyWithoutBeerInput
@@ -6452,7 +6556,7 @@ input BeerUpdateWithoutBeerCommentsDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
   includedIn: BeerListItemUpdateManyWithoutBeerInput
@@ -6466,7 +6570,7 @@ input BeerUpdateWithoutBeerRatingDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
   includedIn: BeerListItemUpdateManyWithoutBeerInput
@@ -6479,7 +6583,7 @@ input BeerUpdateWithoutBreweryDataInput {
   strong: String
   photo: String
   avgRating: Float
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
@@ -6494,7 +6598,7 @@ input BeerUpdateWithoutCreatedByDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
@@ -6508,7 +6612,7 @@ input BeerUpdateWithoutIncludedInDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
@@ -6522,7 +6626,7 @@ input BeerUpdateWithoutLikedByDataInput {
   photo: String
   avgRating: Float
   brewery: BreweryUpdateOneWithoutBeersInput
-  type: BeerTypeUpdateOneWithoutBeersInput
+  type: BeerTypeUpdateOneRequiredWithoutBeersInput
   beerRating: BeerRatingUpdateManyWithoutBeerInput
   beerComments: BeerCommentUpdateManyWithoutBeerInput
   beerChanges: BeerChangeUpdateManyWithoutBeerInput
@@ -6888,6 +6992,7 @@ type BreweryConnection {
 }
 
 input BreweryCreateInput {
+  id: ID
   name: String!
   country: String!
   logo: String
@@ -6905,6 +7010,7 @@ input BreweryCreateOneWithoutBeersInput {
 }
 
 input BreweryCreateWithoutBeersInput {
+  id: ID
   name: String!
   country: String!
   logo: String
@@ -7277,9 +7383,9 @@ type Mutation {
   createBeerChange(data: BeerChangeCreateInput!): BeerChange!
   createUser(data: UserCreateInput!): User!
   createBeerListItem(data: BeerListItemCreateInput!): BeerListItem!
-  createBeerList(data: BeerListCreateInput!): BeerList!
-  createBeerType(data: BeerTypeCreateInput!): BeerType!
   createBrewery(data: BreweryCreateInput!): Brewery!
+  createBeerType(data: BeerTypeCreateInput!): BeerType!
+  createBeerList(data: BeerListCreateInput!): BeerList!
   updateBar(data: BarUpdateInput!, where: BarWhereUniqueInput!): Bar
   updateBarRating(data: BarRatingUpdateInput!, where: BarRatingWhereUniqueInput!): BarRating
   updateBarComment(data: BarCommentUpdateInput!, where: BarCommentWhereUniqueInput!): BarComment
@@ -7290,9 +7396,9 @@ type Mutation {
   updateBeerChange(data: BeerChangeUpdateInput!, where: BeerChangeWhereUniqueInput!): BeerChange
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateBeerListItem(data: BeerListItemUpdateInput!, where: BeerListItemWhereUniqueInput!): BeerListItem
-  updateBeerList(data: BeerListUpdateInput!, where: BeerListWhereUniqueInput!): BeerList
-  updateBeerType(data: BeerTypeUpdateInput!, where: BeerTypeWhereUniqueInput!): BeerType
   updateBrewery(data: BreweryUpdateInput!, where: BreweryWhereUniqueInput!): Brewery
+  updateBeerType(data: BeerTypeUpdateInput!, where: BeerTypeWhereUniqueInput!): BeerType
+  updateBeerList(data: BeerListUpdateInput!, where: BeerListWhereUniqueInput!): BeerList
   deleteBar(where: BarWhereUniqueInput!): Bar
   deleteBarRating(where: BarRatingWhereUniqueInput!): BarRating
   deleteBarComment(where: BarCommentWhereUniqueInput!): BarComment
@@ -7303,9 +7409,9 @@ type Mutation {
   deleteBeerChange(where: BeerChangeWhereUniqueInput!): BeerChange
   deleteUser(where: UserWhereUniqueInput!): User
   deleteBeerListItem(where: BeerListItemWhereUniqueInput!): BeerListItem
-  deleteBeerList(where: BeerListWhereUniqueInput!): BeerList
-  deleteBeerType(where: BeerTypeWhereUniqueInput!): BeerType
   deleteBrewery(where: BreweryWhereUniqueInput!): Brewery
+  deleteBeerType(where: BeerTypeWhereUniqueInput!): BeerType
+  deleteBeerList(where: BeerListWhereUniqueInput!): BeerList
   upsertBar(where: BarWhereUniqueInput!, create: BarCreateInput!, update: BarUpdateInput!): Bar!
   upsertBarRating(where: BarRatingWhereUniqueInput!, create: BarRatingCreateInput!, update: BarRatingUpdateInput!): BarRating!
   upsertBarComment(where: BarCommentWhereUniqueInput!, create: BarCommentCreateInput!, update: BarCommentUpdateInput!): BarComment!
@@ -7316,9 +7422,9 @@ type Mutation {
   upsertBeerChange(where: BeerChangeWhereUniqueInput!, create: BeerChangeCreateInput!, update: BeerChangeUpdateInput!): BeerChange!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertBeerListItem(where: BeerListItemWhereUniqueInput!, create: BeerListItemCreateInput!, update: BeerListItemUpdateInput!): BeerListItem!
-  upsertBeerList(where: BeerListWhereUniqueInput!, create: BeerListCreateInput!, update: BeerListUpdateInput!): BeerList!
-  upsertBeerType(where: BeerTypeWhereUniqueInput!, create: BeerTypeCreateInput!, update: BeerTypeUpdateInput!): BeerType!
   upsertBrewery(where: BreweryWhereUniqueInput!, create: BreweryCreateInput!, update: BreweryUpdateInput!): Brewery!
+  upsertBeerType(where: BeerTypeWhereUniqueInput!, create: BeerTypeCreateInput!, update: BeerTypeUpdateInput!): BeerType!
+  upsertBeerList(where: BeerListWhereUniqueInput!, create: BeerListCreateInput!, update: BeerListUpdateInput!): BeerList!
   updateManyBars(data: BarUpdateManyMutationInput!, where: BarWhereInput): BatchPayload!
   updateManyBarRatings(data: BarRatingUpdateManyMutationInput!, where: BarRatingWhereInput): BatchPayload!
   updateManyBarComments(data: BarCommentUpdateManyMutationInput!, where: BarCommentWhereInput): BatchPayload!
@@ -7329,8 +7435,8 @@ type Mutation {
   updateManyBeerChanges(data: BeerChangeUpdateManyMutationInput!, where: BeerChangeWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyBeerListItems(data: BeerListItemUpdateManyMutationInput!, where: BeerListItemWhereInput): BatchPayload!
-  updateManyBeerTypes(data: BeerTypeUpdateManyMutationInput!, where: BeerTypeWhereInput): BatchPayload!
   updateManyBreweries(data: BreweryUpdateManyMutationInput!, where: BreweryWhereInput): BatchPayload!
+  updateManyBeerTypes(data: BeerTypeUpdateManyMutationInput!, where: BeerTypeWhereInput): BatchPayload!
   deleteManyBars(where: BarWhereInput): BatchPayload!
   deleteManyBarRatings(where: BarRatingWhereInput): BatchPayload!
   deleteManyBarComments(where: BarCommentWhereInput): BatchPayload!
@@ -7341,9 +7447,9 @@ type Mutation {
   deleteManyBeerChanges(where: BeerChangeWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyBeerListItems(where: BeerListItemWhereInput): BatchPayload!
-  deleteManyBeerLists(where: BeerListWhereInput): BatchPayload!
-  deleteManyBeerTypes(where: BeerTypeWhereInput): BatchPayload!
   deleteManyBreweries(where: BreweryWhereInput): BatchPayload!
+  deleteManyBeerTypes(where: BeerTypeWhereInput): BatchPayload!
+  deleteManyBeerLists(where: BeerListWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -7384,9 +7490,9 @@ type Query {
   beerChanges(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerChange]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   beerListItems(where: BeerListItemWhereInput, orderBy: BeerListItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerListItem]!
-  beerLists(where: BeerListWhereInput, orderBy: BeerListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerList]!
-  beerTypes(where: BeerTypeWhereInput, orderBy: BeerTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerType]!
   breweries(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brewery]!
+  beerTypes(where: BeerTypeWhereInput, orderBy: BeerTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerType]!
+  beerLists(where: BeerListWhereInput, orderBy: BeerListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerList]!
   bar(where: BarWhereUniqueInput!): Bar
   barRating(where: BarRatingWhereUniqueInput!): BarRating
   barComment(where: BarCommentWhereUniqueInput!): BarComment
@@ -7397,9 +7503,9 @@ type Query {
   beerChange(where: BeerChangeWhereUniqueInput!): BeerChange
   user(where: UserWhereUniqueInput!): User
   beerListItem(where: BeerListItemWhereUniqueInput!): BeerListItem
-  beerList(where: BeerListWhereUniqueInput!): BeerList
-  beerType(where: BeerTypeWhereUniqueInput!): BeerType
   brewery(where: BreweryWhereUniqueInput!): Brewery
+  beerType(where: BeerTypeWhereUniqueInput!): BeerType
+  beerList(where: BeerListWhereUniqueInput!): BeerList
   barsConnection(where: BarWhereInput, orderBy: BarOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarConnection!
   barRatingsConnection(where: BarRatingWhereInput, orderBy: BarRatingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarRatingConnection!
   barCommentsConnection(where: BarCommentWhereInput, orderBy: BarCommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BarCommentConnection!
@@ -7410,9 +7516,9 @@ type Query {
   beerChangesConnection(where: BeerChangeWhereInput, orderBy: BeerChangeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerChangeConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   beerListItemsConnection(where: BeerListItemWhereInput, orderBy: BeerListItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerListItemConnection!
-  beerListsConnection(where: BeerListWhereInput, orderBy: BeerListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerListConnection!
-  beerTypesConnection(where: BeerTypeWhereInput, orderBy: BeerTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerTypeConnection!
   breweriesConnection(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryConnection!
+  beerTypesConnection(where: BeerTypeWhereInput, orderBy: BeerTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerTypeConnection!
+  beerListsConnection(where: BeerListWhereInput, orderBy: BeerListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerListConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -7442,9 +7548,9 @@ type Subscription {
   beerChange(where: BeerChangeSubscriptionWhereInput): BeerChangeSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   beerListItem(where: BeerListItemSubscriptionWhereInput): BeerListItemSubscriptionPayload
-  beerList(where: BeerListSubscriptionWhereInput): BeerListSubscriptionPayload
-  beerType(where: BeerTypeSubscriptionWhereInput): BeerTypeSubscriptionPayload
   brewery(where: BrewerySubscriptionWhereInput): BrewerySubscriptionPayload
+  beerType(where: BeerTypeSubscriptionWhereInput): BeerTypeSubscriptionPayload
+  beerList(where: BeerListSubscriptionWhereInput): BeerListSubscriptionPayload
 }
 
 type User implements Node {
@@ -7483,6 +7589,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7555,6 +7662,7 @@ input UserCreateOneWithoutCreatedBeersInput {
 }
 
 input UserCreateWithoutBarChangesInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7576,6 +7684,7 @@ input UserCreateWithoutBarChangesInput {
 }
 
 input UserCreateWithoutBarCommentsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7597,6 +7706,7 @@ input UserCreateWithoutBarCommentsInput {
 }
 
 input UserCreateWithoutBarRatingsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7618,6 +7728,7 @@ input UserCreateWithoutBarRatingsInput {
 }
 
 input UserCreateWithoutBeerChangesInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7639,6 +7750,7 @@ input UserCreateWithoutBeerChangesInput {
 }
 
 input UserCreateWithoutBeerCommentsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7660,6 +7772,7 @@ input UserCreateWithoutBeerCommentsInput {
 }
 
 input UserCreateWithoutBeerRatingsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7681,6 +7794,7 @@ input UserCreateWithoutBeerRatingsInput {
 }
 
 input UserCreateWithoutCreatedBarsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7702,6 +7816,7 @@ input UserCreateWithoutCreatedBarsInput {
 }
 
 input UserCreateWithoutCreatedBeersInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7723,6 +7838,7 @@ input UserCreateWithoutCreatedBeersInput {
 }
 
 input UserCreateWithoutLikedBarsInput {
+  id: ID
   email: String!
   password: String!
   role: Role
@@ -7744,6 +7860,7 @@ input UserCreateWithoutLikedBarsInput {
 }
 
 input UserCreateWithoutLikedBeersInput {
+  id: ID
   email: String!
   password: String!
   role: Role

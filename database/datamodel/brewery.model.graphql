@@ -1,9 +1,9 @@
 type Brewery {
-    id: ID! @unique
+    id: ID! @id
     name: String!
     country: String!
     logo: String
     beers: [Beer!]
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }

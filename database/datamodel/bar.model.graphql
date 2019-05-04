@@ -1,5 +1,5 @@
 type Bar {
-    id: ID! @unique
+    id: ID! @id
     name: String!
     address: String!
     # TODO limit lat long by prague
@@ -8,37 +8,38 @@ type Bar {
     phone: String
     openTime: DateTime
     closeTime: DateTime
-    photos: [String!]
+    photos: [String!] @scalarList(strategy: RELATION)
+    avgRating: Float
     barRating: [BarRating!] @relation(name: "BarRatings" onDelete: CASCADE)
     barComments: [BarComment!] @relation(name: "BarComments" onDelete: CASCADE)
     barChanges: [BarChange!] @relation(name: "BarChanges" onDelete: CASCADE)
-    beerList: BeerList! @relation(name: "BeerList" onDelete: CASCADE)
+    beerList: BeerList! @relation(link: TABLE, name: "BeerList" onDelete: CASCADE)
     createdBy: User @relation(name: "BarCreatedRelation")
     likedBy: [User!] @relation(name: "BarLikedRelation")
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BarRating {
-    id: ID! @unique
+    id: ID! @id
     rating: Float!
     user: User
     bar: Bar! @relation(name: "BarRatings")
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BarComment {
-    id: ID! @unique
+    id: ID! @id
     comment: String!
     bar: Bar! @relation(name: "BarComments")
     user: User
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BarChange {
-    id: ID! @unique
+    id: ID! @id
     name: String
     address: String
     # TODO limit lat long by prague
@@ -47,11 +48,11 @@ type BarChange {
     phone: String
     openTime: DateTime
     closeTime: DateTime
-    checked: Boolean @default(value: "false")
-    accepted: Boolean @default(value: "false")
+    checked: Boolean @default(value: false)
+    accepted: Boolean @default(value: false)
     bar: Bar! @relation(name: "BarChanges")
     beerList: BeerList
     user: User
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }

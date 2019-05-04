@@ -1,16 +1,16 @@
 type BeerList {
-    id: ID! @unique
+    id: ID! @id
     bar: Bar @relation(name: "BeerList")
     items: [BeerListItem!] @relation(name: "BeerListItem" onDelete: CASCADE)
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 type BeerListItem {
-    id: ID! @unique
+    id: ID! @id
     price: Float!
     beer: Beer! @relation(name: "BeerAsBeerListItem")
     beerList: BeerList! @relation(name: "BeerListItem")
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
