@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { GraphQLResolveInfo } from 'graphql';
-import { ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput } from '../graphql.schema.generated';
-import { Beer, BeerChange, BeerComment, User } from '../prisma/prisma.bindings.generated';
+import { AttachBeerInput, ChangeBeerInput, CommentBeerInput, CreateBeerInput, FindBeerInput, RateBeerInput } from '../graphql.schema.generated';
+import { Bar, Beer, BeerChange, BeerComment, BeerList, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
 import { IncludedIn, mapIncludedIn } from './beer.helper';
@@ -109,6 +109,18 @@ export class BeerService {
           beer: connectId(change.beerId),
           type: connectId(change.typeId),
         },
+      },
+      info,
+    );
+  }
+
+  async attachBeer(change: AttachBeerInput, user: User, info: GraphQLResolveInfo): Promise<Bar> {
+    const { beerId, barId, price } = change;
+
+    return this.prisma.mutation.updateBar(
+      {
+        where: { id: barId },
+        data: { beerList: { update: { items: { create: { beer: { connect: { id: beerId } }, price } } } } },
       },
       info,
     );

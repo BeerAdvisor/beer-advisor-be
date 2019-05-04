@@ -15,6 +15,12 @@ export enum Sex {
     FEMALE = "FEMALE"
 }
 
+export class AttachBeerInput {
+    beerId: string;
+    barId: string;
+    price: number;
+}
+
 export class BeerListItemInput {
     beerId: string;
     price?: number;
@@ -308,6 +314,8 @@ export abstract class IMutation {
     abstract rateBeer(rateBeerInput?: RateBeerInput): Beer | Promise<Beer>;
 
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
+
+    abstract attachBeer(attachBeerInput?: AttachBeerInput): Bar | Promise<Bar>;
 
     abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
 

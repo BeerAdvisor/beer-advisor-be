@@ -2844,11 +2844,9 @@ input BarUpdateOneRequiredWithoutBarRatingInput {
   upsert: BarUpsertWithoutBarRatingInput
 }
 
-input BarUpdateOneWithoutBeerListInput {
+input BarUpdateOneRequiredWithoutBeerListInput {
   create: BarCreateWithoutBeerListInput
   connect: BarWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
   update: BarUpdateWithoutBeerListDataInput
   upsert: BarUpsertWithoutBeerListInput
 }
@@ -4822,7 +4820,7 @@ type BeerEdge {
 
 type BeerList implements Node {
   id: ID!
-  bar: Bar
+  bar: Bar!
   items(where: BeerListItemWhereInput, orderBy: BeerListItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerListItem!]
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -4840,7 +4838,7 @@ type BeerListConnection {
 
 input BeerListCreateInput {
   id: ID
-  bar: BarCreateOneWithoutBeerListInput
+  bar: BarCreateOneWithoutBeerListInput!
   items: BeerListItemCreateManyWithoutBeerListInput
 }
 
@@ -4866,7 +4864,7 @@ input BeerListCreateWithoutBarInput {
 
 input BeerListCreateWithoutItemsInput {
   id: ID
-  bar: BarCreateOneWithoutBeerListInput
+  bar: BarCreateOneWithoutBeerListInput!
 }
 
 """An edge in a connection."""
@@ -5358,12 +5356,12 @@ input BeerListSubscriptionWhereInput {
 }
 
 input BeerListUpdateDataInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
 input BeerListUpdateInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
@@ -5395,7 +5393,7 @@ input BeerListUpdateWithoutBarDataInput {
 }
 
 input BeerListUpdateWithoutItemsDataInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
 }
 
 input BeerListUpsertNestedInput {
@@ -10728,11 +10726,9 @@ export interface BarUpdateOneRequiredWithoutBarRatingInput {
   upsert?: BarUpsertWithoutBarRatingInput | null
 }
 
-export interface BarUpdateOneWithoutBeerListInput {
+export interface BarUpdateOneRequiredWithoutBeerListInput {
   create?: BarCreateWithoutBeerListInput | null
   connect?: BarWhereUniqueInput | null
-  disconnect?: Boolean | null
-  delete?: Boolean | null
   update?: BarUpdateWithoutBeerListDataInput | null
   upsert?: BarUpsertWithoutBeerListInput | null
 }
@@ -11787,7 +11783,7 @@ export interface BeerCreateWithoutTypeInput {
 
 export interface BeerListCreateInput {
   id?: ID_Input | null
-  bar?: BarCreateOneWithoutBeerListInput | null
+  bar: BarCreateOneWithoutBeerListInput
   items?: BeerListItemCreateManyWithoutBeerListInput | null
 }
 
@@ -11813,7 +11809,7 @@ export interface BeerListCreateWithoutBarInput {
 
 export interface BeerListCreateWithoutItemsInput {
   id?: ID_Input | null
-  bar?: BarCreateOneWithoutBeerListInput | null
+  bar: BarCreateOneWithoutBeerListInput
 }
 
 export interface BeerListItemCreateInput {
@@ -12037,12 +12033,12 @@ export interface BeerListSubscriptionWhereInput {
 }
 
 export interface BeerListUpdateDataInput {
-  bar?: BarUpdateOneWithoutBeerListInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerListInput | null
   items?: BeerListItemUpdateManyWithoutBeerListInput | null
 }
 
 export interface BeerListUpdateInput {
-  bar?: BarUpdateOneWithoutBeerListInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerListInput | null
   items?: BeerListItemUpdateManyWithoutBeerListInput | null
 }
 
@@ -12074,7 +12070,7 @@ export interface BeerListUpdateWithoutBarDataInput {
 }
 
 export interface BeerListUpdateWithoutItemsDataInput {
-  bar?: BarUpdateOneWithoutBeerListInput | null
+  bar?: BarUpdateOneRequiredWithoutBeerListInput | null
 }
 
 export interface BeerListUpsertNestedInput {
@@ -14574,7 +14570,7 @@ export interface BeerEdge {
 
 export interface BeerList extends Node {
   id: ID_Output
-  bar?: Bar | null
+  bar: Bar
   items?: Array<BeerListItem> | null
   createdAt: DateTime
   updatedAt: DateTime

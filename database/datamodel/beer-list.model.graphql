@@ -1,6 +1,6 @@
 type BeerList {
     id: ID! @id
-    bar: Bar @relation(name: "BeerList")
+    bar: Bar! @relation(name: "BeerList")
     items: [BeerListItem!]! @relation(name: "BeerListItem" onDelete: CASCADE)
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt

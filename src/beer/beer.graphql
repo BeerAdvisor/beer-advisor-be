@@ -9,6 +9,7 @@ type Mutation {
     commentBeer(commentBeerInput: CommentBeerInput): BeerComment!
     rateBeer(rateBeerInput: RateBeerInput): Beer!
     changeBeer(changeBeerInput: ChangeBeerInput): BeerChange!
+    attachBeer(attachBeerInput: AttachBeerInput): Bar!
 }
 
 type Beer {
@@ -102,4 +103,10 @@ input FindBeerInput {
     type: String
     strong: String
     brewery: String
+}
+
+input AttachBeerInput {
+    beerId: String!
+    barId: String!
+    price: Float!
 }

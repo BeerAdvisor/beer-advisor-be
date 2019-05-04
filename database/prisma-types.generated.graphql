@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/kotn01/demo/dev
-# timestamp: Sat May 04 2019 17:45:29 GMT+0200 (CEST)
+# timestamp: Sat May 04 2019 20:33:40 GMT+0200 (CEST)
 
 type AggregateBar {
   count: Int!
@@ -2673,11 +2673,9 @@ input BarUpdateOneRequiredWithoutBarRatingInput {
   upsert: BarUpsertWithoutBarRatingInput
 }
 
-input BarUpdateOneWithoutBeerListInput {
+input BarUpdateOneRequiredWithoutBeerListInput {
   create: BarCreateWithoutBeerListInput
   connect: BarWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
   update: BarUpdateWithoutBeerListDataInput
   upsert: BarUpsertWithoutBeerListInput
 }
@@ -4655,7 +4653,7 @@ type BeerEdge {
 
 type BeerList implements Node {
   id: ID!
-  bar: Bar
+  bar: Bar!
   items(where: BeerListItemWhereInput, orderBy: BeerListItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BeerListItem!]
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -4673,7 +4671,7 @@ type BeerListConnection {
 
 input BeerListCreateInput {
   id: ID
-  bar: BarCreateOneWithoutBeerListInput
+  bar: BarCreateOneWithoutBeerListInput!
   items: BeerListItemCreateManyWithoutBeerListInput
 }
 
@@ -4699,7 +4697,7 @@ input BeerListCreateWithoutBarInput {
 
 input BeerListCreateWithoutItemsInput {
   id: ID
-  bar: BarCreateOneWithoutBeerListInput
+  bar: BarCreateOneWithoutBeerListInput!
 }
 
 """An edge in a connection."""
@@ -5195,12 +5193,12 @@ input BeerListSubscriptionWhereInput {
 }
 
 input BeerListUpdateDataInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
 input BeerListUpdateInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
   items: BeerListItemUpdateManyWithoutBeerListInput
 }
 
@@ -5232,7 +5230,7 @@ input BeerListUpdateWithoutBarDataInput {
 }
 
 input BeerListUpdateWithoutItemsDataInput {
-  bar: BarUpdateOneWithoutBeerListInput
+  bar: BarUpdateOneRequiredWithoutBeerListInput
 }
 
 input BeerListUpsertNestedInput {
