@@ -25,8 +25,8 @@ export class BeerService {
       {
         where: {
           AND: {
-            name_contains: name,
-            strong_contains: strong,
+            ...(name && { name_contains: name }),
+            ...(strong && { strong_contains: strong }),
             ...(type && { type: { name_contains: type } }),
             ...(brewery && { brewery: { name_contains: brewery } }),
           },
