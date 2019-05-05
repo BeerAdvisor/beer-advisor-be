@@ -20,7 +20,7 @@ export class BeerService {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  findBeers({ name, type, strong, brewery }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
+  findBeers({ name, type, strong, brewery, maxPrice, minPrice }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
     return this.prisma.query.beers(
       {
         where: {
@@ -29,6 +29,8 @@ export class BeerService {
             ...(strong && { strong_contains: strong }),
             ...(type && { type: { name_contains: type } }),
             ...(brewery && { brewery: { name_contains: brewery } }),
+            ...(minPrice && { includedIn_some: { price_gte: minPrice } }),
+            ...(maxPrice && { includedIn_some: { price_lte: maxPrice } }),
           },
         },
       },

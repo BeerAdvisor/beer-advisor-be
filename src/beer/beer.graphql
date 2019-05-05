@@ -103,6 +103,8 @@ input FindBeerInput {
     type: String
     strong: String
     brewery: String
+    maxPrice: Float
+    minPrice: Float
 }
 
 input AttachBeerInput {
