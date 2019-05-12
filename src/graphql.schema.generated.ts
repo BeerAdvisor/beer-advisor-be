@@ -301,6 +301,14 @@ export class Brewery {
 }
 
 export abstract class IMutation {
+    abstract createBar(createBarInput?: CreateBarInput): Bar | Promise<Bar>;
+
+    abstract commentBar(commentBarInput?: CommentBarInput): BarComment | Promise<BarComment>;
+
+    abstract rateBar(rateBarInput?: RateBarInput): Bar | Promise<Bar>;
+
+    abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
+
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
@@ -315,14 +323,6 @@ export abstract class IMutation {
 
     abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
 
-    abstract createBar(createBarInput?: CreateBarInput): Bar | Promise<Bar>;
-
-    abstract commentBar(commentBarInput?: CommentBarInput): BarComment | Promise<BarComment>;
-
-    abstract rateBar(rateBarInput?: RateBarInput): Bar | Promise<Bar>;
-
-    abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
-
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
     abstract signup(signUpInput?: SignUpInput): AuthPayload | Promise<AuthPayload>;
@@ -331,6 +331,12 @@ export abstract class IMutation {
 }
 
 export abstract class IQuery {
+    abstract bars(): Bar[] | Promise<Bar[]>;
+
+    abstract bar(id: string): Bar | Promise<Bar>;
+
+    abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
+
     abstract beers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
@@ -340,12 +346,6 @@ export abstract class IQuery {
     abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
 
     abstract beerType(id: string): BeerType | Promise<BeerType>;
-
-    abstract bars(): Bar[] | Promise<Bar[]>;
-
-    abstract bar(id: string): Bar | Promise<Bar>;
-
-    abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
 
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 

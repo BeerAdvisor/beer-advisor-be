@@ -5,7 +5,7 @@ import { Prisma } from './prisma.bindings.generated';
 export class PrismaService extends Prisma {
   constructor() {
     super({
-      endpoint: 'https://eu1.prisma.sh/nikita-kot-5fc7f8/beer-advisor-be/dev',
+      endpoint: 'https://eu1.prisma.sh/kotn01/demo/dev',
       debug: true,
     });
   }

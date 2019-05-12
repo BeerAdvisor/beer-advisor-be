@@ -5,7 +5,7 @@ import { AttachBeerInput, ChangeBeerInput, CommentBeerInput, CreateBeerInput, Fi
 import { Bar, Beer, BeerChange, BeerComment, BeerList, User } from '../prisma/prisma.bindings.generated';
 import { ErrorService } from '../error/error.service';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
-import { IncludedIn, mapIncludedIn } from './beer.helper';
+import { addBarFragmentToInfo, IncludedIn, mapIncludedIn } from './beer.helper';
 import { connectId } from '../shared/helpers/map-connect-ids';
 
 @Injectable()
@@ -20,8 +20,8 @@ export class BeerService {
     return this.prisma.query.beer({ where: { id } }, info);
   }
 
-  findBeers({ name, type, strong, brewery, maxPrice, minPrice }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
-    return this.prisma.query.beers(
+  async findBeers({ name, type, strong, brewery, maxPrice, minPrice }: FindBeerInput, info: GraphQLResolveInfo): Promise<Beer[]> {
+    const beers = await this.prisma.query.beers(
       {
         where: {
           AND: {
@@ -34,8 +34,9 @@ export class BeerService {
           },
         },
       },
-      info,
+      addBarFragmentToInfo(info),
     );
+    return beers;
   }
 
   async createBeer(beer: CreateBeerInput, user: User, info: GraphQLResolveInfo): Promise<Beer> {
