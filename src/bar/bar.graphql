@@ -22,6 +22,7 @@ type Bar {
     openTime: DateTime
     closeTime: DateTime
     photos: [String!]
+    avgRating: Float
     barRating: [BarRating!]
     barComments: [BarComment!]
     barChanges: [BarChange!]
