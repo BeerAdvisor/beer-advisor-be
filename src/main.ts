@@ -9,6 +9,8 @@ async function bootstrap() {
     origin: true,
   });
   app.use(cookieParser());
-  await app.listen(process.env.PORT || 8080);
+  const port = process.env.PORT || 8080;
+  await app.listen(port);
+  console.log('Server started at port', port, '🚀');
 }
 bootstrap();
