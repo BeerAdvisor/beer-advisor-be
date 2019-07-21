@@ -167,6 +167,7 @@ export class Bar {
     openTime?: DateTime;
     closeTime?: DateTime;
     photos: string[];
+    avgRating?: number;
     barRating: BarRating[];
     barComments: BarComment[];
     barChanges: BarChange[];
@@ -319,11 +320,11 @@ export abstract class IMutation {
 
     abstract attachBeer(attachBeerInput?: AttachBeerInput): Bar | Promise<Bar>;
 
+    abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
+
     abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
-
-    abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
     abstract signup(signUpInput?: SignUpInput): AuthPayload | Promise<AuthPayload>;
 
@@ -343,13 +344,13 @@ export abstract class IQuery {
 
     abstract findBeers(findBeerInput?: FindBeerInput): Beer[] | Promise<Beer[]>;
 
-    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
-
-    abstract beerType(id: string): BeerType | Promise<BeerType>;
-
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 
     abstract brewery(id: string): Brewery | Promise<Brewery>;
+
+    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
+
+    abstract beerType(id: string): BeerType | Promise<BeerType>;
 
     abstract user(): User | Promise<User>;
 

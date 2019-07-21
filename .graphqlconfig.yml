@@ -2,7 +2,7 @@ projects:
   app:
     extensions:
       endpoints:
-        default: http://localhost:3000
+        default: http://localhost:8080
   database:
     schemaPath: database/prisma-types.generated.graphql
     extensions:
