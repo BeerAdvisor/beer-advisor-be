@@ -34,8 +34,8 @@ export class ChangeBarInput {
     openTime?: DateTime;
     closeTime?: DateTime;
     phone?: string;
-    photos: string[];
-    beers: BeerListItemInput[];
+    photos?: string[];
+    beers?: BeerListItemInput[];
 }
 
 export class ChangeBeerInput {
@@ -45,7 +45,7 @@ export class ChangeBeerInput {
     photo?: string;
     breweryId?: string;
     typeId?: string;
-    includeIn: IncludeInInput[];
+    includeIn?: IncludeInInput[];
 }
 
 export class ChangeBeerTypeInput {
@@ -71,8 +71,8 @@ export class CreateBarInput {
     openTime?: DateTime;
     closeTime?: DateTime;
     phone?: string;
-    photos: string[];
-    beers: BeerListItemInput[];
+    photos?: string[];
+    beers?: BeerListItemInput[];
 }
 
 export class CreateBeerInput {
@@ -81,13 +81,13 @@ export class CreateBeerInput {
     photo?: string;
     breweryId?: string;
     typeId?: string;
-    includeIn: IncludeInInput[];
+    includeIn?: IncludeInInput[];
 }
 
 export class CreateBeerTypeInput {
     name: string;
     description?: string;
-    beerIds: string[];
+    beerIds?: string[];
 }
 
 export class CreateBreweryInput {
@@ -166,14 +166,14 @@ export class Bar {
     phone?: string;
     openTime?: DateTime;
     closeTime?: DateTime;
-    photos: string[];
+    photos?: string[];
     avgRating?: number;
-    barRating: BarRating[];
-    barComments: BarComment[];
-    barChanges: BarChange[];
+    barRating?: BarRating[];
+    barComments?: BarComment[];
+    barChanges?: BarChange[];
     beerList: BeerList;
     createdBy?: User;
-    likedBy: User[];
+    likedBy?: User[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
@@ -222,12 +222,12 @@ export class Beer {
     avgRating?: number;
     brewery?: Brewery;
     type?: BeerType;
-    beerRating: BeerRating[];
-    beerComments: BeerComment[];
-    beerChanges: BeerChange[];
-    includedIn: BeerListItem[];
+    beerRating?: BeerRating[];
+    beerComments?: BeerComment[];
+    beerChanges?: BeerChange[];
+    includedIn?: BeerListItem[];
     createdBy?: User;
-    likedBy: User[];
+    likedBy?: User[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
@@ -259,7 +259,7 @@ export class BeerComment {
 export class BeerList {
     id: string;
     bar?: Bar;
-    items: BeerListItem[];
+    items?: BeerListItem[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
@@ -286,7 +286,7 @@ export class BeerType {
     id: string;
     name: string;
     description?: string;
-    beers: Beer[];
+    beers?: Beer[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
@@ -296,7 +296,7 @@ export class Brewery {
     name: string;
     country: string;
     logo?: string;
-    beers: Beer[];
+    beers?: Beer[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }
@@ -310,6 +310,10 @@ export abstract class IMutation {
 
     abstract changeBar(changeBarInput?: ChangeBarInput): BarChange | Promise<BarChange>;
 
+    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
+
+    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
+
     abstract createBeer(createBeerInput?: CreateBeerInput): Beer | Promise<Beer>;
 
     abstract commentBeer(commentBeerInput?: CommentBeerInput): BeerComment | Promise<BeerComment>;
@@ -319,10 +323,6 @@ export abstract class IMutation {
     abstract changeBeer(changeBeerInput?: ChangeBeerInput): BeerChange | Promise<BeerChange>;
 
     abstract attachBeer(attachBeerInput?: AttachBeerInput): Bar | Promise<Bar>;
-
-    abstract createBeerType(createBeerTypeInput?: CreateBeerTypeInput): BeerType | Promise<BeerType>;
-
-    abstract changeBeerType(changeBeerTypeInput?: ChangeBeerTypeInput): BeerType | Promise<BeerType>;
 
     abstract createBrewery(createBreweryInput?: CreateBreweryInput): Brewery | Promise<Brewery>;
 
@@ -338,23 +338,21 @@ export abstract class IQuery {
 
     abstract findBars(findBarInput?: FindBarInput): Bar[] | Promise<Bar[]>;
 
+    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
+
+    abstract beerType(id: string): BeerType | Promise<BeerType>;
+
     abstract beers(): Beer[] | Promise<Beer[]>;
 
     abstract beer(id: string): Beer | Promise<Beer>;
 
     abstract findBeers(findBeerInput?: FindBeerInput): Beer[] | Promise<Beer[]>;
 
-    abstract beerTypes(): BeerType[] | Promise<BeerType[]>;
-
-    abstract beerType(id: string): BeerType | Promise<BeerType>;
-
     abstract breweries(): Brewery[] | Promise<Brewery[]>;
 
     abstract brewery(id: string): Brewery | Promise<Brewery>;
 
     abstract user(): User | Promise<User>;
-
-    abstract temp__(): boolean | Promise<boolean>;
 }
 
 export class User {
@@ -367,16 +365,16 @@ export class User {
     sex: Sex;
     name?: string;
     surname?: string;
-    beerComments: BeerComment[];
-    barComments: BarComment[];
-    beerRatings: BeerRating[];
-    barRatings: BarRating[];
-    beerChanges: BeerChange[];
-    barChanges: BarChange[];
-    likedBeers: Beer[];
-    likedBars: Bar[];
-    createdBeers: Beer[];
-    createdBars: Bar[];
+    beerComments?: BeerComment[];
+    barComments?: BarComment[];
+    beerRatings?: BeerRating[];
+    barRatings?: BarRating[];
+    beerChanges?: BeerChange[];
+    barChanges?: BarChange[];
+    likedBeers?: Beer[];
+    likedBars?: Bar[];
+    createdBeers?: Beer[];
+    createdBars?: Bar[];
     createdAt: DateTime;
     updatedAt: DateTime;
 }

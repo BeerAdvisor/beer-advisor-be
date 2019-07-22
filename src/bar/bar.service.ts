@@ -1,8 +1,7 @@
-import { BarWhereInput } from './../../dist/prisma/prisma.bindings.generated.d';
 import { Injectable } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
 import { CommentBarInput, CreateBarInput, FindBarInput, RateBarInput } from '../graphql.schema.generated';
-import { Bar, Beer, BeerComment, User } from '../prisma/prisma.bindings.generated';
+import { Bar, Beer, BeerComment, User, BarWhereInput } from '../prisma/prisma.bindings.generated';
 import { PrismaService } from '../prisma/prisma.service';
 import { ErrorService } from '../error/error.service';
 import { connectId } from '../shared/helpers/map-connect-ids';
