@@ -1,3 +1,4 @@
+import { BarWhereInput } from './../../dist/prisma/prisma.bindings.generated.d';
 import { Injectable } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
 import { CommentBarInput, CreateBarInput, FindBarInput, RateBarInput } from '../graphql.schema.generated';
@@ -5,7 +6,7 @@ import { Bar, Beer, BeerComment, User } from '../prisma/prisma.bindings.generate
 import { PrismaService } from '../prisma/prisma.service';
 import { ErrorService } from '../error/error.service';
 import { connectId } from '../shared/helpers/map-connect-ids';
-import { createBeerList } from './bar.helper';
+import { createBeerList, normalizeTime } from './bar.helper';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
 
 @Injectable()
@@ -22,6 +23,7 @@ export class BarService {
 
   createBar(args: CreateBarInput, user: User, info: GraphQLResolveInfo): Promise<Bar> {
     const { name, lat, long, address, openTime, closeTime, phone, photos, beers } = args;
+
     return this.prisma.mutation.createBar(
       {
         data: {
@@ -29,8 +31,8 @@ export class BarService {
           lat,
           long,
           address: address || 'testaddress', // TODO get address from lat/long
-          openTime,
-          closeTime,
+          openTime: normalizeTime(openTime),
+          closeTime: normalizeTime(closeTime),
           phone,
           photos: { set: photos },
           beerList: { create: createBeerList(beers) },
@@ -43,7 +45,16 @@ export class BarService {
 
   findBars(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
     // TODO add open-close time logic, add distance search logic
-    return this.prisma.query.bars({ where: { name_contains: args.name } }, info);
+    let timeLimit: BarWhereInput;
+    if (args.openNow) {
+      const now = normalizeTime(new Date());
+      timeLimit = {
+        openTime_lt: now,
+        closeTime_gt: now,
+      };
+    }
+
+    return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
   }
 
   // TODO refactor with bar rateBeer

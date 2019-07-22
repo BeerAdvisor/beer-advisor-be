@@ -7,3 +7,11 @@ export const createBeerList = (beers: BeerListItemInput[]): BeerListCreateWithou
   }
   return { items: { create: beers.map(item => ({ price: item.price, beer: { connect: { id: item.beerId } } })) } };
 };
+
+export const normalizeTime = (date: Date) => {
+  const normalizedDateTime = new Date();
+  normalizedDateTime.setTime(0);
+  normalizedDateTime.setUTCHours(new Date(date).getUTCHours());
+  normalizedDateTime.setUTCMinutes(new Date(date).getUTCMinutes());
+  return normalizedDateTime;
+};
