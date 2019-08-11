@@ -7,6 +7,7 @@ import { ErrorService } from '../error/error.service';
 import { connectId } from '../shared/helpers/map-connect-ids';
 import { createBeerList, normalizeTime } from './bar.helper';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
+import { map } from 'ramda';
 
 @Injectable()
 export class BarService {
@@ -42,7 +43,7 @@ export class BarService {
     );
   }
 
-  findBars(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
+  async findBars(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
     // TODO add open-close time logic, add distance search logic
     let timeLimit: BarWhereInput;
     if (args.openNow) {
@@ -53,7 +54,31 @@ export class BarService {
       };
     }
 
-    return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
+    const clientId = 'client_id=S4WRAGGZW4C4L4IVOLTOTJSFRYBKDWVLLR4H1TJY223FAAZY';
+    const version = 'v=20190811';
+    const clientSecret = 'client_secret=RVGHYZHTIZUCI5AR3ZEMXDBW5L3G3KUCTASPABQ0W0SDX41Q';
+    const latLon = 'll=40.7484,-73.9857';
+
+    const result = await fetch(`https://api.foursquare.com/v2/venues/search?${latLon}&${clientId}&${clientSecret}&${version}`).then(res =>
+      res.json(),
+    );
+
+    return map(({ id, name, location: { address = '', lat, lng }}) => ({
+      id,
+      name,
+      address,
+      lat,
+      long: lng,
+      photos: [''],
+      beerList: {
+        id: '12',
+        bar: null,
+        items: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+     }), result.response.venues);
+    // return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
   }
 
   // TODO refactor with bar rateBeer
