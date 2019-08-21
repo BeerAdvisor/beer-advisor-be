@@ -3,15 +3,18 @@ import { GraphQLResolveInfo } from 'graphql';
 import { CommentBarInput, CreateBarInput, FindBarInput, RateBarInput } from '../graphql.schema.generated';
 import { Bar, Beer, BeerComment, User, BarWhereInput } from '../prisma/prisma.bindings.generated';
 import { PrismaService } from '../prisma/prisma.service';
+import { FourSquareService } from '../fourSquare/fourSquare.service';
 import { ErrorService } from '../error/error.service';
 import { connectId } from '../shared/helpers/map-connect-ids';
 import { createBeerList, normalizeTime } from './bar.helper';
 import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
-import { map } from 'ramda';
 
 @Injectable()
 export class BarService {
-  constructor(private readonly prisma: PrismaService, private readonly errorService: ErrorService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly fourSquare: FourSquareService,
+    private readonly errorService: ErrorService) {}
 
   getAllBars(args: any, info: GraphQLResolveInfo): Promise<Bar[]> {
     return this.prisma.query.bars(args, info);
@@ -54,31 +57,10 @@ export class BarService {
       };
     }
 
-    const clientId = 'client_id=S4WRAGGZW4C4L4IVOLTOTJSFRYBKDWVLLR4H1TJY223FAAZY';
-    const version = 'v=20190811';
-    const clientSecret = 'client_secret=RVGHYZHTIZUCI5AR3ZEMXDBW5L3G3KUCTASPABQ0W0SDX41Q';
-    const latLon = 'll=40.7484,-73.9857';
+    const fourSquareBars = this.fourSquare.findBars(args);
 
-    const result = await fetch(`https://api.foursquare.com/v2/venues/search?${latLon}&${clientId}&${clientSecret}&${version}`).then(res =>
-      res.json(),
-    );
-
-    return map(({ id, name, location: { address = '', lat, lng }}) => ({
-      id,
-      name,
-      address,
-      lat,
-      long: lng,
-      photos: [''],
-      beerList: {
-        id: '12',
-        bar: null,
-        items: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-     }), result.response.venues);
-    // return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
+    return fourSquareBars;
+    return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
   }
 
   // TODO refactor with bar rateBeer

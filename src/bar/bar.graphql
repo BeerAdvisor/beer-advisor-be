@@ -118,7 +118,6 @@ input FindBarInput {
 
 input DistanceSearch {
     # TODO limit lat long by prague
-    lat: String!
-    long: String!
-    distance: Int!
+    lat: Float!
+    long: Float!
 }

@@ -97,9 +97,8 @@ export class CreateBreweryInput {
 }
 
 export class DistanceSearch {
-    lat: string;
-    long: string;
-    distance: number;
+    lat: number;
+    long: number;
 }
 
 export class FindBarInput {
