@@ -57,9 +57,10 @@ export class BarService {
       };
     }
 
-    const fourSquareBars = this.fourSquare.findBars(args);
+    const fourSquareBars = await this.fourSquare.findBars(args);
+    // TODO: map fourSquareBars to our bars.
+    // this.createBar()
 
-    return fourSquareBars;
     return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
   }
 
