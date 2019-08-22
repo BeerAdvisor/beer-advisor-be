@@ -3,6 +3,7 @@ import { GraphQLResolveInfo } from 'graphql';
 import { CommentBarInput, CreateBarInput, FindBarInput, RateBarInput } from '../graphql.schema.generated';
 import { Bar, Beer, BeerComment, User, BarWhereInput } from '../prisma/prisma.bindings.generated';
 import { PrismaService } from '../prisma/prisma.service';
+import { FourSquareService } from '../fourSquare/fourSquare.service';
 import { ErrorService } from '../error/error.service';
 import { connectId } from '../shared/helpers/map-connect-ids';
 import { createBeerList, normalizeTime } from './bar.helper';
@@ -10,7 +11,10 @@ import { calculateAverageRating } from '../shared/helpers/calculate-avg-rating';
 
 @Injectable()
 export class BarService {
-  constructor(private readonly prisma: PrismaService, private readonly errorService: ErrorService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly fourSquare: FourSquareService,
+    private readonly errorService: ErrorService) {}
 
   getAllBars(args: any, info: GraphQLResolveInfo): Promise<Bar[]> {
     return this.prisma.query.bars(args, info);
@@ -42,7 +46,7 @@ export class BarService {
     );
   }
 
-  findBars(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
+  async findBars(args: FindBarInput, info: GraphQLResolveInfo): Promise<Bar[]> {
     // TODO add open-close time logic, add distance search logic
     let timeLimit: BarWhereInput;
     if (args.openNow) {
@@ -52,6 +56,10 @@ export class BarService {
         closeTime_gt: now,
       };
     }
+
+    const fourSquareBars = await this.fourSquare.findBars(args);
+    // TODO: map fourSquareBars to our bars.
+    // this.createBar()
 
     return this.prisma.query.bars({ where: { name_contains: args.name, ...timeLimit } }, info);
   }

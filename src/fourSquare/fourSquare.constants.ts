@@ -1,0 +1,9 @@
+export const FOURSQUARE_API_URL = 'https://api.foursquare.com/v2/venues';
+export const FOURSQUARE_CLIENT_ID = 'client_id=S4WRAGGZW4C4L4IVOLTOTJSFRYBKDWVLLR4H1TJY223FAAZY';
+export const FOURSQUARE_VERSION = 'v=20190811';
+export const FOURSQUARE_CLIENT_SECRET = 'client_secret=RVGHYZHTIZUCI5AR3ZEMXDBW5L3G3KUCTASPABQ0W0SDX41Q';
+export const FOURSQUARE_DEFAULT_LAT_LON = 'll=40.7484,-73.9857';
+export const FOURSQUARE_CATEGORIES_IDS = 'categoryId=4d4b7105d754a06376d81259';
+export const FOURSQUARE_LIMIT = `limit=50`;
+export const FOURSQUARE_RADIUS = `radius=250`;
+export const FOURSQUARE_INTENT = `intent=browse`;
