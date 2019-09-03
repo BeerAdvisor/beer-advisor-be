@@ -100,6 +100,7 @@ export class CreateBreweryInput {
 export class DistanceSearch {
     lat: number;
     long: number;
+    distance?: number;
 }
 
 export class FindBarInput {

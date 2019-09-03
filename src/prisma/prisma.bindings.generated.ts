@@ -14390,8 +14390,8 @@ export interface Bar extends Node {
   beerList: BeerList
   createdBy?: User | null
   likedBy?: Array<User> | null
-  createdAt: DateTime
-  updatedAt: DateTime
+  createdAt?: DateTime
+  updatedAt?: DateTime
 }
 
 export interface BarChange extends Node {

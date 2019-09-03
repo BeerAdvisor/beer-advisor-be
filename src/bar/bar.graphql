@@ -120,7 +120,7 @@ input FindBarInput {
 }
 
 input DistanceSearch {
-    # TODO limit lat long by prague
     lat: Float!
     long: Float!
+    distance: Int
 }
