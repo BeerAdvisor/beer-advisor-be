@@ -234,6 +234,7 @@ type AggregateUser {
 
 type Bar implements Node {
   id: ID!
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1719,6 +1720,7 @@ type BarConnection {
 
 input BarCreateInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1772,6 +1774,7 @@ input BarCreatephotosInput {
 
 input BarCreateWithoutBarChangesInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1790,6 +1793,7 @@ input BarCreateWithoutBarChangesInput {
 
 input BarCreateWithoutBarCommentsInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1808,6 +1812,7 @@ input BarCreateWithoutBarCommentsInput {
 
 input BarCreateWithoutBarRatingInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1826,6 +1831,7 @@ input BarCreateWithoutBarRatingInput {
 
 input BarCreateWithoutBeerListInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1844,6 +1850,7 @@ input BarCreateWithoutBeerListInput {
 
 input BarCreateWithoutCreatedByInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1862,6 +1869,7 @@ input BarCreateWithoutCreatedByInput {
 
 input BarCreateWithoutLikedByInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1890,6 +1898,8 @@ type BarEdge {
 enum BarOrderByInput {
   id_ASC
   id_DESC
+  foursquareId_ASC
+  foursquareId_DESC
   name_ASC
   name_DESC
   address_ASC
@@ -1914,6 +1924,7 @@ enum BarOrderByInput {
 
 type BarPreviousValues {
   id: ID!
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -2403,6 +2414,46 @@ input BarScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  foursquareId: String
+
+  """All values that are not equal to given value."""
+  foursquareId_not: String
+
+  """All values that are contained in given list."""
+  foursquareId_in: [String!]
+
+  """All values that are not contained in given list."""
+  foursquareId_not_in: [String!]
+
+  """All values less than the given value."""
+  foursquareId_lt: String
+
+  """All values less than or equal the given value."""
+  foursquareId_lte: String
+
+  """All values greater than the given value."""
+  foursquareId_gt: String
+
+  """All values greater than or equal the given value."""
+  foursquareId_gte: String
+
+  """All values containing the given string."""
+  foursquareId_contains: String
+
+  """All values not containing the given string."""
+  foursquareId_not_contains: String
+
+  """All values starting with the given string."""
+  foursquareId_starts_with: String
+
+  """All values not starting with the given string."""
+  foursquareId_not_starts_with: String
+
+  """All values ending with the given string."""
+  foursquareId_ends_with: String
+
+  """All values not ending with the given string."""
+  foursquareId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -2753,6 +2804,7 @@ input BarSubscriptionWhereInput {
 }
 
 input BarUpdateInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2771,6 +2823,7 @@ input BarUpdateInput {
 }
 
 input BarUpdateManyDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2783,6 +2836,7 @@ input BarUpdateManyDataInput {
 }
 
 input BarUpdateManyMutationInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2856,6 +2910,7 @@ input BarUpdatephotosInput {
 }
 
 input BarUpdateWithoutBarChangesDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2873,6 +2928,7 @@ input BarUpdateWithoutBarChangesDataInput {
 }
 
 input BarUpdateWithoutBarCommentsDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2890,6 +2946,7 @@ input BarUpdateWithoutBarCommentsDataInput {
 }
 
 input BarUpdateWithoutBarRatingDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2907,6 +2964,7 @@ input BarUpdateWithoutBarRatingDataInput {
 }
 
 input BarUpdateWithoutBeerListDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2924,6 +2982,7 @@ input BarUpdateWithoutBeerListDataInput {
 }
 
 input BarUpdateWithoutCreatedByDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2941,6 +3000,7 @@ input BarUpdateWithoutCreatedByDataInput {
 }
 
 input BarUpdateWithoutLikedByDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -3048,6 +3108,46 @@ input BarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  foursquareId: String
+
+  """All values that are not equal to given value."""
+  foursquareId_not: String
+
+  """All values that are contained in given list."""
+  foursquareId_in: [String!]
+
+  """All values that are not contained in given list."""
+  foursquareId_not_in: [String!]
+
+  """All values less than the given value."""
+  foursquareId_lt: String
+
+  """All values less than or equal the given value."""
+  foursquareId_lte: String
+
+  """All values greater than the given value."""
+  foursquareId_gt: String
+
+  """All values greater than or equal the given value."""
+  foursquareId_gte: String
+
+  """All values containing the given string."""
+  foursquareId_contains: String
+
+  """All values not containing the given string."""
+  foursquareId_not_contains: String
+
+  """All values starting with the given string."""
+  foursquareId_starts_with: String
+
+  """All values not starting with the given string."""
+  foursquareId_not_starts_with: String
+
+  """All values ending with the given string."""
+  foursquareId_ends_with: String
+
+  """All values not ending with the given string."""
+  foursquareId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -9301,6 +9401,8 @@ export type BarCommentOrderByInput =   'id_ASC' |
 
 export type BarOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'foursquareId_ASC' |
+  'foursquareId_DESC' |
   'name_ASC' |
   'name_DESC' |
   'address_ASC' |
@@ -10125,6 +10227,7 @@ export interface BarCommentWhereUniqueInput {
 
 export interface BarCreateInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10178,6 +10281,7 @@ export interface BarCreatephotosInput {
 
 export interface BarCreateWithoutBarChangesInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10196,6 +10300,7 @@ export interface BarCreateWithoutBarChangesInput {
 
 export interface BarCreateWithoutBarCommentsInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10214,6 +10319,7 @@ export interface BarCreateWithoutBarCommentsInput {
 
 export interface BarCreateWithoutBarRatingInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10232,6 +10338,7 @@ export interface BarCreateWithoutBarRatingInput {
 
 export interface BarCreateWithoutBeerListInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10250,6 +10357,7 @@ export interface BarCreateWithoutBeerListInput {
 
 export interface BarCreateWithoutCreatedByInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10268,6 +10376,7 @@ export interface BarCreateWithoutCreatedByInput {
 
 export interface BarCreateWithoutLikedByInput {
   id?: ID_Input | null
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -10511,6 +10620,20 @@ export interface BarScalarWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
+  foursquareId?: String | null
+  foursquareId_not?: String | null
+  foursquareId_in?: String[] | String | null
+  foursquareId_not_in?: String[] | String | null
+  foursquareId_lt?: String | null
+  foursquareId_lte?: String | null
+  foursquareId_gt?: String | null
+  foursquareId_gte?: String | null
+  foursquareId_contains?: String | null
+  foursquareId_not_contains?: String | null
+  foursquareId_starts_with?: String | null
+  foursquareId_not_starts_with?: String | null
+  foursquareId_ends_with?: String | null
+  foursquareId_not_ends_with?: String | null
   name?: String | null
   name_not?: String | null
   name_in?: String[] | String | null
@@ -10635,6 +10758,7 @@ export interface BarSubscriptionWhereInput {
 }
 
 export interface BarUpdateInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10653,6 +10777,7 @@ export interface BarUpdateInput {
 }
 
 export interface BarUpdateManyDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10665,6 +10790,7 @@ export interface BarUpdateManyDataInput {
 }
 
 export interface BarUpdateManyMutationInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10738,6 +10864,7 @@ export interface BarUpdatephotosInput {
 }
 
 export interface BarUpdateWithoutBarChangesDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10755,6 +10882,7 @@ export interface BarUpdateWithoutBarChangesDataInput {
 }
 
 export interface BarUpdateWithoutBarCommentsDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10772,6 +10900,7 @@ export interface BarUpdateWithoutBarCommentsDataInput {
 }
 
 export interface BarUpdateWithoutBarRatingDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10789,6 +10918,7 @@ export interface BarUpdateWithoutBarRatingDataInput {
 }
 
 export interface BarUpdateWithoutBeerListDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10806,6 +10936,7 @@ export interface BarUpdateWithoutBeerListDataInput {
 }
 
 export interface BarUpdateWithoutCreatedByDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10823,6 +10954,7 @@ export interface BarUpdateWithoutCreatedByDataInput {
 }
 
 export interface BarUpdateWithoutLikedByDataInput {
+  foursquareId?: String | null
   name?: String | null
   address?: String | null
   lat?: String | null
@@ -10899,6 +11031,20 @@ export interface BarWhereInput {
   id_not_starts_with?: ID_Input | null
   id_ends_with?: ID_Input | null
   id_not_ends_with?: ID_Input | null
+  foursquareId?: String | null
+  foursquareId_not?: String | null
+  foursquareId_in?: String[] | String | null
+  foursquareId_not_in?: String[] | String | null
+  foursquareId_lt?: String | null
+  foursquareId_lte?: String | null
+  foursquareId_gt?: String | null
+  foursquareId_gte?: String | null
+  foursquareId_contains?: String | null
+  foursquareId_not_contains?: String | null
+  foursquareId_starts_with?: String | null
+  foursquareId_not_starts_with?: String | null
+  foursquareId_ends_with?: String | null
+  foursquareId_not_ends_with?: String | null
   name?: String | null
   name_not?: String | null
   name_in?: String[] | String | null
@@ -14228,6 +14374,7 @@ export interface AggregateUser {
 
 export interface Bar extends Node {
   id: ID_Output
+  foursquareId?: String | null
   name: String
   address: String
   lat: String
@@ -14369,6 +14516,7 @@ export interface BarEdge {
 
 export interface BarPreviousValues {
   id: ID_Output
+  foursquareId?: String | null
   name: String
   address: String
   lat: String

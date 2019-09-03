@@ -15,3 +15,11 @@ export const normalizeTime = (date: Date) => {
   normalizedDateTime.setUTCMinutes(new Date(date).getUTCMinutes());
   return normalizedDateTime;
 };
+
+export const mapFoursquareVenue = ({ id, name, location: { address = '', lat, lng } }) => ({
+  name,
+  address,
+  foursquareId: id,
+  lat: lat.toString(),
+  long: lng.toString(),
+});

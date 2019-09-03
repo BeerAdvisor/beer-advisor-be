@@ -65,6 +65,7 @@ export class CommentBeerInput {
 
 export class CreateBarInput {
     name: string;
+    foursquareId?: string;
     lat: string;
     long: string;
     address?: string;
@@ -159,6 +160,7 @@ export class AuthPayload {
 
 export class Bar {
     id: string;
+    foursquareId?: string;
     name: string;
     address: string;
     lat: string;
@@ -180,6 +182,7 @@ export class Bar {
 
 export class BarChange {
     id: string;
+    foursquareId?: string;
     name?: string;
     address?: string;
     lat?: string;

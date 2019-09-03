@@ -13,6 +13,7 @@ type Mutation {
 
 type Bar {
     id: ID!
+    foursquareId: String
     name: String!
     address: String!
     # TODO limit lat long by prague
@@ -53,6 +54,7 @@ type BarComment {
 
 type BarChange {
     id: ID!
+    foursquareId: String
     name: String
     address: String
     # TODO limit lat long by prague
@@ -72,6 +74,7 @@ type BarChange {
 
 input CreateBarInput {
     name: String!
+    foursquareId: String
     lat: String!
     long: String!
     address: String

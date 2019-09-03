@@ -1,5 +1,6 @@
 type Bar {
     id: ID! @id
+    foursquareId: String
     name: String!
     address: String!
     # TODO limit lat long by prague

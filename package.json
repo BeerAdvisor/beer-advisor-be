@@ -2,7 +2,7 @@
   "name": "beer-advisor-be",
   "version": "0.0.0",
   "description": "BeerAdvisor BE App",
-  "author": "Nikita Kot",
+  "author": "Nikita Kot, Kirill Shamanin",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
