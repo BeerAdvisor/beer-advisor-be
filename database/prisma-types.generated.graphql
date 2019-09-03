@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/kotn01/demo/dev
-# timestamp: Sat May 04 2019 20:33:40 GMT+0200 (CEST)
+# timestamp: Wed Sep 04 2019 00:22:10 GMT+0200 (Central Europe Summer Time)
 
 type AggregateBar {
   count: Int!
@@ -55,6 +55,7 @@ type AggregateUser {
 
 type Bar implements Node {
   id: ID!
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -573,9 +574,7 @@ input BarChangeSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BarChangeSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -1294,9 +1293,7 @@ input BarCommentSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BarCommentSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -1544,6 +1541,7 @@ type BarConnection {
 
 input BarCreateInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1597,6 +1595,7 @@ input BarCreatephotosInput {
 
 input BarCreateWithoutBarChangesInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1615,6 +1614,7 @@ input BarCreateWithoutBarChangesInput {
 
 input BarCreateWithoutBarCommentsInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1633,6 +1633,7 @@ input BarCreateWithoutBarCommentsInput {
 
 input BarCreateWithoutBarRatingInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1651,6 +1652,7 @@ input BarCreateWithoutBarRatingInput {
 
 input BarCreateWithoutBeerListInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1669,6 +1671,7 @@ input BarCreateWithoutBeerListInput {
 
 input BarCreateWithoutCreatedByInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1687,6 +1690,7 @@ input BarCreateWithoutCreatedByInput {
 
 input BarCreateWithoutLikedByInput {
   id: ID
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1715,6 +1719,8 @@ type BarEdge {
 enum BarOrderByInput {
   id_ASC
   id_DESC
+  foursquareId_ASC
+  foursquareId_DESC
   name_ASC
   name_DESC
   address_ASC
@@ -1739,6 +1745,7 @@ enum BarOrderByInput {
 
 type BarPreviousValues {
   id: ID!
+  foursquareId: String
   name: String!
   address: String!
   lat: String!
@@ -1961,9 +1968,7 @@ input BarRatingSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BarRatingSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -2230,6 +2235,46 @@ input BarScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  foursquareId: String
+
+  """All values that are not equal to given value."""
+  foursquareId_not: String
+
+  """All values that are contained in given list."""
+  foursquareId_in: [String!]
+
+  """All values that are not contained in given list."""
+  foursquareId_not_in: [String!]
+
+  """All values less than the given value."""
+  foursquareId_lt: String
+
+  """All values less than or equal the given value."""
+  foursquareId_lte: String
+
+  """All values greater than the given value."""
+  foursquareId_gt: String
+
+  """All values greater than or equal the given value."""
+  foursquareId_gte: String
+
+  """All values containing the given string."""
+  foursquareId_contains: String
+
+  """All values not containing the given string."""
+  foursquareId_not_contains: String
+
+  """All values starting with the given string."""
+  foursquareId_starts_with: String
+
+  """All values not starting with the given string."""
+  foursquareId_not_starts_with: String
+
+  """All values ending with the given string."""
+  foursquareId_ends_with: String
+
+  """All values not ending with the given string."""
+  foursquareId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -2559,9 +2604,7 @@ input BarSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BarSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -2582,6 +2625,7 @@ input BarSubscriptionWhereInput {
 }
 
 input BarUpdateInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2600,6 +2644,7 @@ input BarUpdateInput {
 }
 
 input BarUpdateManyDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2612,6 +2657,7 @@ input BarUpdateManyDataInput {
 }
 
 input BarUpdateManyMutationInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2685,6 +2731,7 @@ input BarUpdatephotosInput {
 }
 
 input BarUpdateWithoutBarChangesDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2702,6 +2749,7 @@ input BarUpdateWithoutBarChangesDataInput {
 }
 
 input BarUpdateWithoutBarCommentsDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2719,6 +2767,7 @@ input BarUpdateWithoutBarCommentsDataInput {
 }
 
 input BarUpdateWithoutBarRatingDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2736,6 +2785,7 @@ input BarUpdateWithoutBarRatingDataInput {
 }
 
 input BarUpdateWithoutBeerListDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2753,6 +2803,7 @@ input BarUpdateWithoutBeerListDataInput {
 }
 
 input BarUpdateWithoutCreatedByDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2770,6 +2821,7 @@ input BarUpdateWithoutCreatedByDataInput {
 }
 
 input BarUpdateWithoutLikedByDataInput {
+  foursquareId: String
   name: String
   address: String
   lat: String
@@ -2877,6 +2929,46 @@ input BarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  foursquareId: String
+
+  """All values that are not equal to given value."""
+  foursquareId_not: String
+
+  """All values that are contained in given list."""
+  foursquareId_in: [String!]
+
+  """All values that are not contained in given list."""
+  foursquareId_not_in: [String!]
+
+  """All values less than the given value."""
+  foursquareId_lt: String
+
+  """All values less than or equal the given value."""
+  foursquareId_lte: String
+
+  """All values greater than the given value."""
+  foursquareId_gt: String
+
+  """All values greater than or equal the given value."""
+  foursquareId_gte: String
+
+  """All values containing the given string."""
+  foursquareId_contains: String
+
+  """All values not containing the given string."""
+  foursquareId_not_contains: String
+
+  """All values starting with the given string."""
+  foursquareId_starts_with: String
+
+  """All values not starting with the given string."""
+  foursquareId_not_starts_with: String
+
+  """All values ending with the given string."""
+  foursquareId_ends_with: String
+
+  """All values not ending with the given string."""
+  foursquareId_not_ends_with: String
   name: String
 
   """All values that are not equal to given value."""
@@ -3610,9 +3702,7 @@ input BeerChangeSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerChangeSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -4218,9 +4308,7 @@ input BeerCommentSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerCommentSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -4918,9 +5006,7 @@ input BeerListItemSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerListItemSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -5170,9 +5256,7 @@ input BeerListSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerListSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -5587,9 +5671,7 @@ input BeerRatingSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerRatingSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -6061,9 +6143,7 @@ input BeerSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -6172,9 +6252,7 @@ input BeerTypeSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BeerTypeSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -7064,9 +7142,7 @@ input BrewerySubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [BrewerySubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -8288,9 +8364,7 @@ input UserSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [UserSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
